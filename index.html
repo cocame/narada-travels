@@ -346,6 +346,38 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
   footer { padding: 24px 16px; flex-direction: column; text-align: center; }
   .emotions { padding: 64px 16px; }
 }
+/* Floating scroll-to-tours button */
+.fab-tours {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 999;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--c);
+  color: #fff;
+  font-size: 22px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(232,83,58,0.4);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .3s, transform .3s, background .2s;
+  pointer-events: none;
+}
+.fab-tours.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.fab-tours:hover { background: #d44530; }
+@media (max-width: 767px) {
+  .fab-tours { bottom: 20px; right: 16px; width: 46px; height: 46px; font-size: 19px; }
+}
 </style>
 </head>
 <body>
@@ -789,6 +821,24 @@ document.getElementById('bForm').addEventListener('submit', async function(e) {
     document.getElementById('fok').style.display = 'block';
   } catch(err) { alert('Ошибка. Напишите нам в Telegram напрямую.'); }
 });
+</script>
+
+<!-- Floating button -->
+<button class="fab-tours" id="fabTours" aria-label="К экскурсиям">⚓</button>
+<script>
+(function(){
+  const btn = document.getElementById('fabTours');
+  const hero = document.querySelector('.hero') || document.querySelector('nav');
+  function onScroll(){
+    const threshold = hero ? hero.offsetHeight : 400;
+    btn.classList.toggle('visible', window.scrollY > threshold);
+  }
+  window.addEventListener('scroll', onScroll, {passive: true});
+  btn.addEventListener('click', function(){
+    const tours = document.getElementById('tours');
+    if(tours) tours.scrollIntoView({behavior:'smooth'});
+  });
+})();
 </script>
 </body>
 </html>
