@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Экскурсии из Дананга — Narada Travels</title>
+<meta name="description" content="Экскурсии из Дананга с русскоязычным гидом. Хюэ, Хойан, Острова Чам, Ба На Хиллс. Трансфер от отеля, оплата в рублях.">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; min-height: 100vh; background: #f5f5f5; font-family: 'Onest', sans-serif; -webkit-font-smoothing: antialiased; }
+
+/* Глобальный контейнер */
+.w { max-width: 1440px; width: 100%; margin: 0 auto; background: #fff; box-shadow: 0 0 50px rgba(0,0,0,0.15); overflow: hidden; }
+
+:root {
+  --c: #E8533A;
+  --dark: #111;
+  --gray: #6B7280;
+  --border: #E5E7EB;
+  --r: 8px;
+  --bg: #FAFAF8;
+}
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  height: 64px; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 56px;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo img { height: 32px; }
+.logo-txt { font-size: 17px; font-weight: 700; color: var(--dark); }
+.nav-r { display: flex; align-items: center; gap: 28px; }
+.nav-links { display: flex; gap: 24px; list-style: none; }
+.nav-links a { text-decoration: none; color: var(--gray); font-size: 13px; font-weight: 500; transition: color .2s; }
+.nav-links a:hover { color: var(--dark); }
+.nav-cta {
+  background: var(--dark); color: #fff;
+  padding: 9px 20px; border-radius: var(--r);
+  text-decoration: none; font-size: 13px; font-weight: 600;
+}
+.burger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+.burger span { display: block; width: 22px; height: 1.5px; background: var(--dark); }
+
+/* ── ЭТАЖ 1: HERO ── */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 88vh;
+  min-height: 520px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('images/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.hero-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 55%, transparent 100%);
+}
+.hero-content {
+  position: relative; z-index: 1;
+  padding: 0 8% 7%;
+  width: 100%;
+}
+/* Заголовок — одна-две широкие строки, без max-width, без ограничений */
+.hero-content h1 {
+  font-size: clamp(2.8rem, 6.5vw, 7rem);
+  font-weight: 800;
+  line-height: 1.05;
+  color: #fff;
+  letter-spacing: -0.03em;
+  margin-bottom: 32px;
+}
+.btn-white {
+  display: inline-block;
+  background: #fff; color: var(--dark);
+  padding: 15px 36px; border-radius: var(--r);
+  text-decoration: none; font-size: 16px; font-weight: 700;
+  transition: all .2s;
+}
+.btn-white:hover { background: rgba(255,255,255,0.9); transform: translateY(-1px); }
+
+/* ── ЭТАЖ 2: ТОЛЬКО ЭКСКУРСИИ ── */
+.tours { padding: 72px 56px; }
+.tours h2 {
+  font-size: clamp(26px, 3vw, 42px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--dark);
+  margin-bottom: 40px;
+}
+.bento {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 240px;
+  gap: 10px;
+}
+.bc { position: relative; border-radius: var(--r); overflow: hidden; cursor: pointer; }
+.bc img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.bc:hover img { transform: scale(1.04); }
+.bc::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0) 55%);
+}
+.bc-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 18px 20px; z-index: 1; }
+.bc-title { font-size: clamp(13px, 1.4vw, 17px); font-weight: 700; color: #fff; line-height: 1.25; margin-bottom: 4px; }
+.bc-sub { font-size: 11px; color: rgba(255,255,255,0.65); }
+.bc-book {
+  position: absolute; top: 12px; right: 12px; z-index: 2;
+  background: rgba(255,255,255,0.15); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.25); color: #fff;
+  padding: 6px 12px; border-radius: var(--r);
+  font-size: 12px; font-weight: 600; text-decoration: none;
+  opacity: 0; transition: opacity .3s;
+}
+.bc:hover .bc-book { opacity: 1; }
+/* Кнопка раскрытия — прямоугольник, не круг */
+.bc-expand {
+  position: absolute; bottom: 12px; right: 12px; z-index: 2;
+  background: rgba(255,255,255,0.15); backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.2); color: #fff;
+  width: 30px; height: 30px; border-radius: var(--r);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; cursor: pointer; transition: all .3s;
+}
+.bc.open .bc-expand { background: var(--c); border-color: var(--c); }
+
+.b-hue    { grid-column: span 5; grid-row: span 2; }
+.b-hoian  { grid-column: span 7; grid-row: span 2; }
+.b-bana   { grid-column: span 4; grid-row: span 2; }
+.b-danang { grid-column: span 4; }
+.b-kalmar { grid-column: span 4; }
+.b-springs{ grid-column: span 5; grid-row: span 2; }
+.b-cham   { grid-column: span 4; grid-row: span 2; }
+.b-vin    { grid-column: span 3; }
+.b-surf   { grid-column: span 3; }
+.b-hayvan { grid-column: span 7; }
+.b-sea    { grid-column: span 5; }
+
+/* ── ЭТАЖ 3: ГИД ПО ДАНАНГУ (BENTO GRID) ── */
+.guide { padding: 72px 56px; background: #f7f7f5; }
+.guide h2 { font-size: clamp(24px,3vw,40px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; }
+.guide-sub { font-size: 15px; color: var(--gray); margin-bottom: 40px; }
+.guide-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-auto-rows: minmax(210px, auto);
+  gap: 10px;
+}
+.gc {
+  background: #fff; border-radius: var(--r); padding: 28px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  border: 1.5px solid var(--border); overflow: hidden;
+  transition: border-color .2s, transform .3s ease; cursor: pointer;
+}
+.gc:hover { border-color: #d1d5db; transform: scale(1.02); }
+.gc.tall { grid-row: span 2; justify-content: space-between; }
+.gc-icon { font-size: 28px; margin-bottom: auto; }
+.gc.tall .gc-icon { margin-bottom: 0; }
+.gc h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; line-height: 1.3; color: var(--dark); }
+.gc p { font-size: 13px; color: var(--gray); line-height: 1.55; margin-bottom: 14px; }
+.gc-cta {
+  display: inline-block;
+  font-size: 12px; font-weight: 600; text-decoration: none;
+  color: var(--c); border-bottom: 1px solid rgba(232,83,58,0.3);
+  transition: border-color .2s;
+}
+.gc-cta:hover { border-color: var(--c); }
+
+/* Фото-карточки с фоном и оверлеем */
+.gc.photo { position: relative; border: none; }
+.gc-bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+.gc.photo::before { content:''; position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.72) 100%); z-index:1; }
+.gc.photo > *:not(.gc-bg-img) { position: relative; z-index: 2; }
+.gc.photo h3, .gc.photo .gc-icon { color: #fff; }
+.gc.photo p { color: rgba(255,255,255,0.82); }
+
+/* Ресторанные карточки */
+.gc.rest { justify-content: flex-start; }
+.gc.rest .gc-icon { font-size: 22px; margin-bottom: 10px; }
+.gc.rest p { flex: 1; }
+.gc-img { width: calc(100% + 56px); margin: -28px -28px 16px; height: 160px; object-fit: cover; display: block; }
+.rest-meta { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 8px 0 12px; }
+.rest-meta span { font-size: 12px; color: var(--gray); }
+
+/* ── ЭТАЖ 4: ОТЗЫВЫ ── */
+.emotions { padding: 96px 56px; background: #fff; text-align: center; }
+.emotions h2 { font-size: clamp(28px,4vw,52px); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 20px; }
+.emotions-sub { font-size: 16px; color: var(--gray); line-height: 1.65; max-width: 540px; margin: 0 auto 48px; }
+.btn-tg {
+  display: inline-block; background: #229ED9; color: #fff;
+  padding: 18px 44px; border-radius: var(--r);
+  text-decoration: none; font-size: 17px; font-weight: 700; transition: all .2s;
+}
+.btn-tg:hover { background: #1a8bc4; transform: translateY(-1px); }
+
+/* ── FAQ ── */
+.faq { padding: 48px 56px; background: #f7f7f5; }
+.faq h2 { font-size: clamp(28px,3.5vw,48px); font-weight: 800; letter-spacing: -0.02em; text-align: center; margin-bottom: 32px; }
+.faq-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; align-items: start; }
+
+.fi { background: #fff; border-radius: var(--r); margin-bottom: 8px; overflow: hidden; }
+.fq {
+  width: 100%; background: none; border: none; text-align: left;
+  padding: 17px 20px; font-family: 'Onest', sans-serif;
+  font-size: 15px; font-weight: 500; color: var(--dark);
+  cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px;
+}
+.fi-icon {
+  width: 24px; height: 24px; border-radius: var(--r);
+  background: #FFF0ED; display: flex; align-items: center; justify-content: center;
+  font-size: 16px; color: var(--c); flex-shrink: 0; transition: transform .3s, background .3s;
+}
+.fi.open .fi-icon { transform: rotate(45deg); background: var(--c); color: #fff; }
+.fa { font-size: 14px; color: var(--gray); line-height: 1.75; max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .3s; padding: 0 20px; }
+.fi.open .fa { max-height: 200px; padding: 0 20px 18px; }
+
+/* ── ФОРМА ── */
+.form-s { padding: 72px 56px; background: #111; }
+.form-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.form-left h2 { font-size: clamp(24px,3vw,40px); font-weight: 800; color: #fff; letter-spacing: -0.02em; margin-bottom: 14px; }
+.form-left p { font-size: 15px; color: rgba(255,255,255,0.4); line-height: 1.65; margin-bottom: 28px; }
+.clinks { display: flex; flex-direction: column; gap: 10px; }
+.clink {
+  display: flex; align-items: center; gap: 12px;
+  padding: 13px 18px; border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--r); text-decoration: none; color: #fff;
+  font-size: 14px; font-weight: 500; transition: all .2s;
+}
+.clink:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.04); }
+.clink-icon { width: 32px; height: 32px; border-radius: var(--r); display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+.ctg { background: #229ED9; } .cvk { background: #0077FF; }
+.fform { display: flex; flex-direction: column; gap: 12px; }
+.field { display: flex; flex-direction: column; gap: 5px; }
+.field label { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+.field input, .field select, .field textarea {
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--r); padding: 12px 14px;
+  font-family: 'Onest', sans-serif; font-size: 14px; color: #fff; outline: none;
+  transition: border-color .2s;
+}
+.field input::placeholder, .field textarea::placeholder { color: rgba(255,255,255,0.2); }
+.field select option { background: #1a1a1a; color: #fff; }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--c); }
+.frow { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.fsubmit {
+  background: var(--c); color: #fff; border: none;
+  padding: 14px 32px; border-radius: var(--r);
+  font-family: 'Onest', sans-serif; font-size: 14px; font-weight: 700;
+  cursor: pointer; align-self: flex-start; transition: all .2s; margin-top: 4px;
+}
+.fsubmit:hover { background: #d44430; transform: translateY(-1px); }
+#fok { display: none; padding: 16px; background: rgba(22,163,74,0.12); border: 1px solid rgba(22,163,74,0.3); border-radius: var(--r); color: #86efac; font-size: 14px; margin-top: 10px; }
+
+/* ── DRAWER ── */
+.overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; backdrop-filter: blur(4px); }
+.overlay.open { display: block; }
+.drawer {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 201;
+  background: #fff; border-radius: 16px 16px 0 0;
+  padding: 32px 48px 48px; max-height: 85vh; overflow-y: auto;
+  transform: translateY(100%); transition: transform .4s cubic-bezier(.4,0,.2,1);
+}
+.drawer.open { transform: translateY(0); }
+.d-handle { width: 40px; height: 4px; background: #e5e7eb; border-radius: 2px; margin: 0 auto 24px; }
+.d-close {
+  position: absolute; top: 20px; right: 20px;
+  background: var(--dark); color: #fff; border: none;
+  width: 34px; height: 34px; border-radius: var(--r);
+  cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center;
+}
+.d-title { font-size: 24px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 6px; }
+.d-price { color: var(--c); font-size: 15px; font-weight: 700; margin-bottom: 20px; }
+.d-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+.d-lbl { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gray); margin-bottom: 12px; }
+.prog { list-style: none; }
+.prog li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid #f3f4f6; font-size: 13px; line-height: 1.5; }
+.prog li:last-child { border: none; }
+.prog-t { font-weight: 700; color: var(--c); min-width: 40px; font-size: 12px; flex-shrink: 0; }
+.inc { display: flex; flex-direction: column; gap: 5px; margin-bottom: 16px; }
+.inc-i { font-size: 13px; display: flex; gap: 8px; align-items: flex-start; }
+.y { color: #16a34a; font-weight: 700; flex-shrink: 0; }
+.n { color: #dc2626; font-weight: 700; flex-shrink: 0; }
+.ptbl { border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; margin-top: 12px; }
+.pr { display: flex; justify-content: space-between; padding: 9px 14px; font-size: 13px; border-bottom: 1px solid var(--border); }
+.pr:last-child { border: none; }
+.pr:first-child { background: #f9fafb; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gray); }
+.pv { font-weight: 700; color: var(--c); }
+.pnote { font-size: 11px; color: var(--gray); margin-top: 8px; }
+.d-cta { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--c); color: #fff;
+  padding: 12px 26px; border-radius: var(--r);
+  text-decoration: none; font-size: 14px; font-weight: 700;
+  border: none; cursor: pointer; font-family: inherit; transition: all .2s;
+}
+.btn-primary:hover { background: #d44430; transform: translateY(-1px); }
+.btn-outline {
+  background: transparent; color: var(--dark);
+  padding: 12px 26px; border-radius: var(--r);
+  font-size: 14px; font-weight: 500;
+  border: 1.5px solid var(--border); text-decoration: none; transition: all .2s;
+}
+.btn-outline:hover { border-color: var(--dark); }
+
+/* ── FOOTER ── */
+footer {
+  background: #121212; padding: 32px 56px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 16px; border-top: 1px solid rgba(255,255,255,0.06);
+}
+.flogo { font-size: 15px; font-weight: 700; color: #fff; }
+footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .w { max-width: 100%; box-shadow: none; }
+  nav { padding: 0 16px; }
+  .nav-links, .nav-cta { display: none; }
+  .burger { display: flex; }
+  .hero { height: 70vh; }
+  .hero-content { padding: 0 6% 12%; }
+  .bento { grid-template-columns: 1fr !important; grid-auto-rows: 220px; }
+  .b-hue,.b-hoian,.b-bana,.b-danang,.b-kalmar,.b-springs,.b-cham,.b-vin,.b-surf,.b-hayvan,.b-sea { grid-column: span 1 !important; grid-row: span 1 !important; }
+  .tours, .guide, .emotions, .faq, .form-s { padding: 40px 16px; }
+  .faq-wrap { grid-template-columns: 1fr; }
+  .guide-grid { grid-template-columns: 1fr !important; grid-auto-rows: auto; }
+  .guide-grid .gc { grid-column: span 1 !important; grid-row: span 1 !important; }
+  .gc { min-height: 180px; }
+  .d-grid { grid-template-columns: 1fr; }
+  .drawer { padding: 20px 16px 40px; }
+  .form-wrap { grid-template-columns: 1fr; gap: 32px; }
+  .frow { grid-template-columns: 1fr; }
+  footer { padding: 24px 16px; flex-direction: column; text-align: center; }
+  .emotions { padding: 64px 16px; }
+}
+</style>
+</head>
+<body>
+<div class="w">
+
+<nav>
+  <a class="logo" href="#">
+    <img src="images/logo.png" alt="Narada Travels">
+    <span class="logo-txt">Narada</span>
+  </a>
+  <div class="nav-r">
+    <ul class="nav-links">
+      <li><a href="#tours">Экскурсии</a></li>
+      <li><a href="#guide">Гид</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#form" class="nav-cta">Написать нам</a>
+    <div class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- ── ЭТАЖ 1: ГЛАВНЫЙ БАННЕР ── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h1>Добро пожаловать в Дананг</h1>
+    <a href="#form" class="btn-white">Напиши нам</a>
+  </div>
+</section>
+
+<!-- ── ЭТАЖ 2: ТОЛЬКО ЭКСКУРСИИ ── -->
+<section class="tours" id="tours">
+  <h2>Экскурсии из Дананга</h2>
+  <div class="bento">
+    <div class="bc b-hue" onclick="openD('hue')">
+      <img src="images/hue.jpg" alt="Экскурсия в Хюэ из Дананга">
+      <div class="bc-info">
+        <div class="bc-title">Хюэ — здесь драконы шепчут легенды</div>
+        <div class="bc-sub">Ежедневно · Русский гид · от 85$</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
+      <div class="bc-expand" onclick="event.stopPropagation();openD('hue')">+</div>
+    </div>
+    <div class="bc b-hoian" onclick="openD('hoian')">
+      <img src="images/hoian.jpg" alt="Экскурсия в Хойан из Дананга">
+      <div class="bc-info">
+        <div class="bc-title">Хойан — древний город ЮНЕСКО</div>
+        <div class="bc-sub">Ежедневно · Русский гид · от 58$</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
+      <div class="bc-expand" onclick="event.stopPropagation();openD('hoian')">+</div>
+    </div>
+    <div class="bc b-bana" onclick="openD('bana')">
+      <img src="images/bana.jpg" alt="Ба На Хиллс Золотой мост">
+      <div class="bc-info">
+        <div class="bc-title">Ба На Хиллс — Золотой мост</div>
+        <div class="bc-sub">Ежедневно · от 48$</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
+      <div class="bc-expand" onclick="event.stopPropagation();openD('bana')">+</div>
+    </div>
+    <div class="bc b-danang" onclick="openD('danang')">
+      <img src="images/danang-city.jpg" alt="Дананг за один день">
+      <div class="bc-info">
+        <div class="bc-title">Дананг за один день</div>
+        <div class="bc-sub">Шоу Дракона по пятницам · от 64$</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
+      <div class="bc-expand" onclick="event.stopPropagation();openD('danang')">+</div>
+    </div>
+    <div class="bc b-kalmar" onclick="openD('kalmar')">
+      <img src="images/kalmar.jpg" alt="Охота на кальмара рыбалка Дананг">
+      <div class="bc-info">
+        <div class="bc-title">Охота на кальмара</div>
+        <div class="bc-sub">Эксклюзив · от 90$</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
+      <div class="bc-expand" onclick="event.stopPropagation();openD('kalmar')">+</div>
+    </div>
+    <div class="bc b-springs" onclick="openD('springs')">
+      <img src="images/springs.jpg" alt="Горячие источники экскурсия из Дананга">
+      <div class="bc-info">
+        <div class="bc-title">Горячие источники — гора удачи</div>
+        <div class="bc-sub">Онсэн · Аквапарк · от 72$</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
+      <div class="bc-expand" onclick="event.stopPropagation();openD('springs')">+</div>
+    </div>
+    <div class="bc b-cham" onclick="openD('cham')">
+      <img src="images/cham.jpg" alt="Острова Чам снорклинг ЮНЕСКО">
+      <div class="bc-info">
+        <div class="bc-title">Острова Чам — ЮНЕСКО</div>
+        <div class="bc-sub">Снорклинг · Обед включён · от 60$</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
+      <div class="bc-expand" onclick="event.stopPropagation();openD('cham')">+</div>
+    </div>
+    <div class="bc b-vin" onclick="openD('vin')">
+      <img src="images/vinwonders.jpg" alt="VinWonders Хойан парк">
+      <div class="bc-info">
+        <div class="bc-title">VinWonders Хойан</div>
+        <div class="bc-sub">Сафари · от 60$</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
+      <div class="bc-expand" onclick="event.stopPropagation();openD('vin')">+</div>
+    </div>
+    <div class="bc b-surf" onclick="openD('surf')">
+      <img src="images/surf.jpg" alt="Урок серфинга Дананг">
+      <div class="bc-info">
+        <div class="bc-title">Урок сёрфинга</div>
+        <div class="bc-sub">Видео в подарок · от 40$</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
+      <div class="bc-expand" onclick="event.stopPropagation();openD('surf')">+</div>
+    </div>
+    <div class="bc b-hayvan" onclick="openD('hayvan')">
+      <img src="images/hayvan.jpg" alt="Купание в водопадах перевал Хайван">
+      <div class="bc-info">
+        <div class="bc-title">Купание в водопадах на перевале Хайван</div>
+        <div class="bc-sub">Горный серпантин · Ворота неба · от 65$</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
+      <div class="bc-expand" onclick="event.stopPropagation();openD('hayvan')">+</div>
+    </div>
+    <div class="bc b-sea" onclick="openD('sea')">
+      <img src="images/sea.jpg" alt="Морская прогулка Дананг">
+      <div class="bc-info">
+        <div class="bc-title">Морская прогулка</div>
+        <div class="bc-sub">Рыбалка · Снорклинг · САП · от 70$</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
+      <div class="bc-expand" onclick="event.stopPropagation();openD('sea')">+</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="faq" id="faq">
+  <h2>Частые вопросы</h2>
+  <div class="faq-wrap">
+    <div class="fi"><button class="fq">Нужно ли знать вьетнамский или английский? <span class="fi-icon">+</span></button><div class="fa">Нет. Все наши гиды говорят по-русски. Всё общение — на вашем языке от встречи до возвращения в отель.</div></div>
+    <div class="fi"><button class="fq">Как оплатить тур? <span class="fi-icon">+</span></button><div class="fa">Принимаем: доллары наличными, донги наличными и переводом по QR-коду, рубли переводом по СБП, USDT на Bybit по UID.<br><br>Не принимаем: доллары старого образца, оплату с карты через терминал, криптокошельки.</div></div>
+    <div class="fi"><button class="fq">Есть ли скидки для детей? <span class="fi-icon">+</span></button><div class="fa">Да. Дети до 3 лет — бесплатно в большинстве туров. Точные условия смотрите в описании каждого тура.</div></div>
+    <div class="fi"><button class="fq">Что включено в стоимость? <span class="fi-icon">+</span></button><div class="fa">Трансфер от/до отеля и вода. Гид, входные билеты и обед — смотрите в описании каждого тура.</div></div>
+    <div class="fi"><button class="fq">Почему нужна предоплата? <span class="fi-icon">+</span></button><div class="fa">Мы заранее бронируем транспорт, а для некоторых экскурсий — входные билеты, обеды и активности. Предоплата подтверждает ваше место в туре.</div></div>
+    <div class="fi"><button class="fq">Можно ли отменить или перенести? <span class="fi-icon">+</span></button><div class="fa">При отмене менее чем за 24 часа предоплата не возвращается. Перенос даты возможен при наличии свободных мест.</div></div>
+    <div class="fi"><button class="fq">Забираете ли вы из отелей в Хойане? <span class="fi-icon">+</span></button><div class="fa">Да, возможен трансфер из Хойана за дополнительную оплату. Условия зависят от экскурсии и количества человек.</div></div>
+    <div class="fi"><button class="fq">Можно ли с коляской? <span class="fi-icon">+</span></button><div class="fa">Наши экскурсии не подходят для колясок из-за особенностей маршрутов. Для малышей рекомендуем слинг или переноску.</div></div>
+  </div>
+</section>
+
+
+<!-- ── ЭТАЖ 3: ГИД ПО ДАНАНГУ — лайфхаки + рестораны ── -->
+<section class="guide" id="guide">
+  <h2>Гид по Данангу</h2>
+  <p class="guide-sub">Секретные локации, лучшие рестораны и советы от команды Narada</p>
+  <div class="guide-grid">
+
+    <!-- Лайфхаки -->
+    <div class="gc" style="padding:0;overflow:hidden;display:flex;flex-direction:column;">
+      <img src="images/guide-vietnam.jpg" alt="" style="height:50%;flex-shrink:0;width:100%;object-fit:cover;object-position:center;display:block;">
+      <div style="height:50%;padding:20px;display:flex;flex-direction:column;gap:8px;overflow-y:auto;">
+        <h3>Что нужно знать перед поездкой</h3>
+        <p>🛂 <b>Документы</b> — 45 дней без визы. Обратный билет могут проверить.</p>
+        <p>💵 <b>Деньги</b> — Донг. Доллары лучше рублей. Мир не работает. Сбер/Озон — QR. Apple Pay с зарубежной картой.</p>
+        <p>📶 <b>Связь</b> — симка в зоне прилёта (3 доллара за 5 ГБ) или e-sim на trip.com.</p>
+        <p>🛵 <b>Транспорт</b> — Grab дешевле такси. Шлем обязателен. Электробайки без прав, от 110 кубов — права кат. А.</p>
+        <p>🚶 <b>Улица</b> — переходить медленно и уверенно — объедут.</p>
+        <p>🏥 <b>Здоровье</b> — страховка обязательна. Репеллент от комаров (денге). Только бутилированная вода.</p>
+        <p><b>Главное правило:</b> Торгуйтесь. Улыбайтесь. Не пейте из-под крана.</p>
+        <a href="#tours" class="gc-cta" style="color:#333;border-bottom-color:rgba(0,0,0,0.2);">Смотреть все экскурсии →</a>
+      </div>
+    </div>
+
+    <!-- Кофейни -->
+    <div class="gc" style="grid-column: span 2; padding: 20px; justify-content: flex-start;">
+      <img src="images/guide-coffee-info.jpg" alt="Виды вьетнамского кофе" style="width:100%;border-radius:6px;display:block">
+    </div>
+
+    <!-- Лучшие пляжи -->
+    <div class="gc rest" style="padding:16px;">
+      <img src="images/guide-beach.jpg" alt="" style="width:calc(100% + 32px);margin:-16px -16px 16px;height:200px;object-fit:cover;display:block;">
+      <div class="gc-icon">🌊</div>
+      <h3>Пляжи без толп</h3>
+      <p>Бай Бак на севере — почти всегда пустой, вид на Сонтра. Nam О — рыбацкий посёлок с диким пляжем. Ми Кхе хорош до 9:00 — потом набегают туристы.</p>
+    </div>
+
+    <!-- Ночной Дананг -->
+    <div class="gc rest" style="padding:16px;">
+      <img src="images/danang-city.jpg" alt="" style="width:calc(100% + 32px);margin:-16px -16px 16px;height:200px;object-fit:cover;display:block;">
+      <div class="gc-icon">🌙</div>
+      <h3>Ночной Дананг</h3>
+      <p>Дракон-мост дышит огнём каждую пт и сб в 21:00 — смотрите с набережной Бах Данг бесплатно. Ночной рынок Сон Тра с 18:00: еда, сувениры, живая музыка.</p>
+    </div>
+
+    <!-- Ресторан 1 — морепродукты -->
+    <div class="gc rest" style="grid-column: span 2;">
+      <img class="gc-img" src="images/rest-seafood.jpg" alt="Bé Mặn — морепродукты Дананга">
+      <div class="gc-icon">🦞</div>
+      <h3>Bé Mặn — лучшие морепродукты Дананга</h3>
+      <p>Ресторан без туристических наценок: омары, крабы и тигровые креветки — всё прямо из аквариума, готовят на углях при тебе. Приходите к 18:00, к 20:00 обычно полный зал.</p>
+      <div class="rest-meta"><span><a href="https://maps.app.goo.gl/WZnoF9ahvew64TfJA" target="_blank" rel="noopener" style="color:var(--gray);text-decoration:none;">📍 Lô 9 Võ Nguyên Giáp, Sơn Trà</a></span><span>💵 от 8&nbsp;$ / чел</span><span>🕐 10:00–22:00</span></div>
+    </div>
+
+    <!-- Ресторан 2 — Ми Куанг -->
+    <div class="gc rest" style="padding:16px;">
+      <img src="images/rest-miquang.jpg" alt="Mì Quảng — Michelin Guide" style="width:calc(100% + 32px);margin:-16px -16px 16px;height:200px;object-fit:cover;display:block;">
+      <div class="gc-icon">🍜</div>
+      <h3>Mì Quảng — гид Мишлен</h3>
+      <p>Ми Куанг — кулинарная икона Центрального Вьетнама. Стоимость 1–2 $.</p>
+      <p>Попробовать с нами на экскурсии <a href="javascript:void(0)" onclick="openD('hoian')" style="color:var(--dark);text-decoration:underline;">Хойан →</a></p>
+      <div class="rest-meta"><span><a href="https://maps.app.goo.gl/AjkTFPP6YXRZoB4N7" target="_blank" rel="noopener" style="color:var(--gray);text-decoration:none;">📍 397 Đ. Trần Hưng Đạo, An Hải</a></span><span>💵 1–2 $</span></div>
+    </div>
+
+    <!-- Ресторан 3 — руфтоп бар -->
+    <div class="gc rest">
+      <img class="gc-img" src="images/rest-rooftop.jpg" alt="Sky36 — руфтоп бар Дананг">
+      <div class="gc-icon">🍹</div>
+      <h3>Sky36 — руфтоп на 36-м этаже</h3>
+      <p>Лучший вид на реку Хан и Дракон-мост. Коктейли от 5&nbsp;$, шоу огня каждую пт и сб. Дресс-код smart casual — в шортах и шлёпанцах не пустят.</p>
+      <div class="rest-meta"><span><a href="https://maps.app.goo.gl/LzYF1XsDsZHxcRjM7" target="_blank" rel="noopener" style="color:var(--gray);text-decoration:none;">📍 36 Bạch Đằng, Hải Châu (Novotel)</a></span><span>💵 от 5&nbsp;$ / напиток</span><span>🕐 18:00–02:00</span></div>
+    </div>
+
+    <!-- Ресторан 4 — Баньми -->
+    <div class="gc rest">
+      <img class="gc-img" src="images/rest-banhmi.jpg" alt="Bánh Mì Bà Lan — лучший баньми">
+      <div class="gc-icon">🥖</div>
+      <h3>Bánh Mì Bà Lan</h3>
+      <p>К 7 утра уже очередь — мотоциклисты, студенты, местные с работы. Хрустящий багет с печёночным паштетом, яйцом, свежей кинзой и острым чили — 25&nbsp;000 донгов (1&nbsp;$). В мировые рейтинги попал не за маркетинг, а за вкус. После 11 приходить смысла нет — разобрано.</p>
+      <div class="rest-meta"><span><a href="https://maps.app.goo.gl/XCGx2HQcRtfA5BFB9" target="_blank" rel="noopener" style="color:var(--gray);text-decoration:none;">📍 160 Nguyễn Chí Thanh, Hải Châu</a></span><span>💵 ~1&nbsp;$</span><span>🕐 6:30–11:00</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── ЭТАЖ 4: ОТЗЫВЫ ── -->
+<section class="emotions" id="emotions">
+  <h2>Свежие эмоции</h2>
+  <p class="emotions-sub">Мы не копируем отзывы на сайт. Посмотрите живые чаты, фотографии и честные мнения наших туристов в реальном времени.</p>
+  <a href="https://t.me/Narada_reviews" target="_blank" class="btn-tg">Читать отзывы в Telegram →</a>
+</section>
+
+<!-- ── ФОРМА ── -->
+<section class="form-s" id="form">
+  <div class="form-wrap">
+    <div class="form-left">
+      <h2>Оставьте заявку</h2>
+      <p>Свяжемся в течение часа. Или напишите напрямую.</p>
+      <div class="clinks">
+        <a href="https://t.me/narada_travels" class="clink"><div class="clink-icon ctg">✈️</div>Telegram канал</a>
+        <a href="https://t.me/taysafinskaya" class="clink"><div class="clink-icon ctg">💬</div>Написать Таис</a>
+        <a href="https://vk.com/narada_travels_danang" class="clink"><div class="clink-icon cvk">📱</div>ВКонтакте</a>
+      </div>
+    </div>
+    <div>
+      <form class="fform" id="bForm">
+        <div class="frow">
+          <div class="field"><label>Ваше имя</label><input type="text" name="name" placeholder="Как вас зовут?" required></div>
+          <div class="field"><label>Контакт для связи</label><input type="text" name="contact" placeholder="Telegram, WhatsApp, телефон" required></div>
+        </div>
+        <div class="field">
+          <label>Экскурсия</label>
+          <select name="tour" required>
+            <option value="">Выберите тур</option>
+            <option>Хюэ — имперский город (от 85$)</option>
+            <option>Хойан — древний город ЮНЕСКО (от 58$)</option>
+            <option>Ба На Хиллс — Золотой мост (от 48$)</option>
+            <option>Горячие источники (от 72$)</option>
+            <option>Дананг за один день (от 64$)</option>
+            <option>VinWonders Хойан (от 60$)</option>
+            <option>Острова Чам (от 60$)</option>
+            <option>Охота на кальмара (от 90$)</option>
+            <option>Морская прогулка (от 70$)</option>
+            <option>Урок сёрфинга (от 40$)</option>
+            <option>Купание в водопадах на перевале Хайван (от 65$)</option>
+          </select>
+        </div>
+        <div class="frow">
+          <div class="field"><label>Кол-во человек</label><input type="number" name="people" placeholder="2" min="1" required></div>
+        </div>
+        <div class="field">
+          <label>Примерные даты поездки</label>
+          <div class="frow">
+            <div class="field"><label style="font-size:11px;opacity:.6;letter-spacing:0;text-transform:none">Дата от</label><input type="date" name="date_from"></div>
+            <div class="field"><label style="font-size:11px;opacity:.6;letter-spacing:0;text-transform:none">Дата до</label><input type="date" name="date_to"></div>
+          </div>
+        </div>
+        <div class="field"><label>Комментарий</label><textarea name="comment" rows="3" placeholder="Дети, пожелания, вопросы..."></textarea></div>
+        <button type="submit" class="fsubmit">Отправить заявку</button>
+      </form>
+      <div id="fok">Заявка отправлена! Свяжемся в ближайшее время.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="flogo">Narada Travels & Guides</div>
+  <p>Экскурсии из Дананга с русскоязычным гидом · Вьетнам</p>
+  <p>© 2026 Narada</p>
+</footer>
+
+</div><!-- /w -->
+
+<div class="overlay" id="overlay" onclick="closeD()"></div>
+<div class="drawer" id="drawer">
+  <div class="d-handle"></div>
+  <button class="d-close" onclick="closeD()">✕</button>
+  <div id="d-content"></div>
+</div>
+
+<script>
+const tours = {
+  hue:{title:"Хюэ — здесь драконы шепчут легенды",price:"от 85$",
+    prog:[["07:30","Встреча в отеле, перевал Хай-Ван"],["","Императорская цитадель — 600 лет истории"],["12:00","Обед"],["","Гробница Кхай Диня — лучшее фото тура"],["","Пагода Тхьен Му — 400 лет над Ароматной рекой"],["","Деревня благовоний"],["21:30","Возвращение в отель"]],
+    inc:["Трансфер от/до отеля","Русскоязычный гид","Входные билеты","Обед","Вода"],
+    exc:["Наличные VND на сувениры"],
+    prices:[["Категория","Цена"],["Взрослые и дети от 10 лет","85 $"],["Дети до 10 лет","43 $"],["Дети до 3 лет","Бесплатно"]]},
+  hoian:{title:"Хойан — древний город ЮНЕСКО",price:"от 58$",
+    prog:[["14:00","Встреча в отеле"],["","Кокосовый лес — круглые лодки-корзины, шоу на воде"],["","Старый город — Японский мост XVI века, храмы"],["18:30","Ужин"],["","Фонарики на реке Хоай"],["","Ночной рынок на острове Ан Хой"],["22:00","Возвращение в отель"]],
+    inc:["Трансфер от/до отеля","Русскоязычный гид","Кокосовые лодки","Билеты","Ужин","Вода"],
+    exc:["Билет в музей","Фонарики"],
+    prices:[["Категория","Цена"],["Взрослые и дети от 10 лет","58 $"],["Дети до 10 лет","29 $"],["Дети до 3 лет","Бесплатно"]]},
+  bana:{title:"Ба На Хиллс — Золотой мост",price:"от 48$",
+    prog:[["08:00","Выезд (возьмите тёплую накидку)"],["","Канатная дорога — парим над джунглями"],["","Золотой мост — ладони великана"],["","Французская деревня — соборы, винные погреба"],["","Fantasy Park — горные сани, лабиринт"],["13:00","Шведский стол + ваучер на пиво"],["18:00","Возвращение"]],
+    inc:["Трансфер от/до отеля","Русскоязычный гид","Вода"],
+    exc:["Входные билеты (отдельно)"],
+    prices:[["Категория","Цена"],["Рост выше 140 см","48 $"],["Рост 100–140 см","24 $"],["Рост ниже 1 м","Бесплатно"],["Билет взрослый","1 300 000 VND"],["Билет детский","1 000 000 VND"]]},
+  danang:{title:"Дананг за один день",price:"от 64$",
+    prog:[["12:00","Встреча в отеле"],["","Мраморные горы — пещеры, панорама на океан"],["","Леди Будда на Обезьяньей горе"],["17:00","Обед"],["","Вечерний круиз по реке Хан"],["Пт","Шоу Дракона с борта"],["21:00","Возвращение"]],
+    inc:["Трансфер от/до отеля","Русскоязычный гид","Билеты","Круиз","Обед","Вода"],
+    exc:[],
+    prices:[["Категория","Цена"],["Взрослые и дети от 10 лет","64 $"],["Дети до 10 лет","32 $"],["Дети до 3 лет","Бесплатно"]]},
+  kalmar:{title:"Охота на кальмара — рыбалка",price:"от 90$",
+    prog:[["1","Охота на кальмара ночью"],["2","Спокойная рыбалка"],["3","Профессиональная — в открытом море"],["4","Частная лодка — только для вас"],["07:00","до 12:00"],["13:00","до 18:00"],["18:00","до 23:00"],["23:00","до 04:00"]],
+    inc:["Трансфер от/до отеля","Рыболовные снасти","Обед: Ми Куанг","Вода"],
+    exc:["Наличные VND на чаевые"],
+    prices:[["Формат","Цена"],["Форматы 1–3 (за человека)","90 $"],["Частная лодка до 8 чел","360 $"]]},
+  springs:{title:"Горячие источники — гора удачи",price:"от 72$",
+    prog:[["08:30","Выезд в горы"],["","Парк динозавров и кино 12D"],["","Храм Бога богатства — мешочек удачи"],["","Аквапарк и Ленивая река"],["","Яйцо долголетия в кипящем источнике"],["12:00","Шведский стол в Красном Драконе"],["","Термальный комплекс — онсэн, три вида саун"],["16:30","Возвращение"]],
+    inc:["Трансфер от/до отеля","Русскоязычный гид","Вода"],
+    exc:["Входные билеты (отдельно)","Обед","Массаж"],
+    prices:[["Категория","Цена"],["Рост выше 140 см","72 $"],["Рост ниже 140 см","36 $"],["Рост ниже 1 м","Бесплатно"],["Билет рост от 140 см","1 400 000 VND"],["Билет рост 100–140 см","1 100 000 VND"]]},
+  cham:{title:"Острова Чам — ЮНЕСКО",price:"от 60$",
+    prog:[["07:30","Встреча в отеле"],["","Скоростной катер — 20 мин по волнам"],["","Музей заповедника, пагода, колодец желаний"],["","Снорклинг — рыбки едят с рук"],["12:00","Обед из морепродуктов"],["","Пляж Бай Чонг — гамак под пальмами"],["16:00","Возвращение"]],
+    inc:["Трансфер от/до отеля","Русскоязычный гид","Катер","Снаряжение","Обед","Вода"],
+    exc:["Дайвинг с аквалангом — 100 $"],
+    prices:[["Категория","Цена"],["Взрослые и дети от 10 лет","60 $"],["Дети до 10 лет","30 $"],["Дети до 3 лет","Бесплатно"]]},
+  vin:{title:"VinWonders Хойан",price:"от 60$",
+    prog:[["09:00","Выезд в VinWonders"],["","River Safari — жирафы, зебры, белые львы"],["","Adventure Land — 100 аттракционов"],["","Water World — водный парк"],["13:00","Шведский стол Deli Land — 70+ блюд"],["","Колесо обозрения 60м, шоу птиц"],["17:00","Возвращение"]],
+    inc:["Трансфер от/до отеля","Русскоязычный гид","Вода"],
+    exc:["Входные билеты (отдельно)"],
+    prices:[["Категория","Цена"],["Рост от 140 см","60 $"],["Рост 100–140 см","30 $"],["Рост ниже 1 м","Бесплатно"],["Билет взрослый","950 000 VND"],["Билет детский","600 000 VND"]]},
+  surf:{title:"Урок сёрфинга в Дананге",price:"от 40$",
+    prog:[["","Встреча на споте, знакомство с инструктором"],["10 мин","Теория и техника безопасности"],["","Отработка на суше"],["75 мин","Практика в воде"],["Бонус","Видеосъёмка — в подарок"]],
+    inc:["Трансфер от/до отеля","Русский инструктор","Сёрфборд","Лайкра","Защита от солнца","Видеосъёмка"],
+    exc:["Наличные VND на чаевые"],
+    prices:[["Формат","Цена"],["Групповой (до 3 чел)","40 $"],["Индивидуально 1/1","80 $"],["Сплит для двоих","110 $"]]},
+  hayvan:{title:"Купание в водопадах на перевале Хайван",price:"от 65$",
+    prog:[["08:00","Встреча у отеля"],["09:00","Перевал Хайван — фотоостановка с панорамой на море"],["09:15","Hai Van Quan — исторические ворота неба"],["12:30","Жемчужная лагуна"],["13:00","Обед"],["14:00","Каскад водопадов — купание"],["17:00","Возвращение в отель"]],
+    inc:["Трансфер от/до отеля","Русскоязычный гид"],
+    exc:["Обед (оплачивается на месте)"],
+    prices:[["Категория","Цена"],["Взрослые и дети от 10 лет","65 $"],["Дети до 10 лет","33 $"],["Дети до 3 лет","Бесплатно"]]},
+  sea:{title:"Морская прогулка в Дананге",price:"от 70$",
+    prog:[["08–10","Старт на выбор: 08:00, 09:00 или 10:00"],["","Морская рыбалка"],["","Снорклинг — кораллы, яркие рыбы"],["","САП-борды"],["","Возвращение в порт"]],
+    inc:["Трансфер от/до отеля","Гид","Рыболовные снасти","Снорклинг","САП-борды","Вода"],
+    exc:["Наличные VND на чаевые"],
+    prices:[["Категория","Цена"],["Рост от 140 см","70 $"],["Рост до 140 см","35 $"],["До 100 см","Бесплатно"]]}
+};
+
+function openD(key) {
+  const t = tours[key];
+  if (!t) return;
+  const prog = t.prog.map(([time,text]) => `<li class="prog-item"><span class="prog-t">${time}</span><span>${text}</span></li>`).join('');
+  const inc = t.inc.map(i => `<div class="inc-i"><span class="y">✓</span><span>${i}</span></div>`).join('');
+  const exc = t.exc.map(i => `<div class="inc-i"><span class="n">✗</span><span>${i}</span></div>`).join('');
+  const prices = t.prices.map(([cat,val]) => `<div class="pr"><span>${cat}</span><span class="pv">${val}</span></div>`).join('');
+  const hasHeight = t.prices.some(([cat]) => /рост|см/i.test(cat));
+  const heightCard = hasHeight ? `<div style="background:#fffbeb;border-left:4px solid #E8533A;border-radius:0 8px 8px 0;padding:16px 20px;margin-top:12px;width:100%;box-sizing:border-box"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="font-size:16px">📏</span><span style="font-size:15px;font-weight:700;color:#111">Билет по росту ребёнка</span></div><p style="font-size:14px;color:#6B7280;margin:0 0 8px;line-height:1.6">В парке измеряют рост <strong style="color:#111">в обуви</strong> — стойками на входе и у ресторана. Если подошва добавила 2 см и ребёнок дотянулся до 140 см — платите взрослый билет. Спорить бесполезно.</p><p style="font-size:14px;color:#6B7280;margin:0;line-height:1.6">Лайфхак: наденьте ребёнку <strong style="color:#111">кеды на плоской подошве</strong> и измерьте дома заранее.</p></div>` : '';
+  document.getElementById('d-content').innerHTML = `
+    <div class="d-title">${t.title}</div>
+    <div class="d-price">${t.price}</div>
+    <div class="d-grid">
+      <div>
+        <div class="d-lbl">Программа</div>
+        <ul class="prog">${prog}</ul>
+      </div>
+      <div>
+        <div class="d-lbl">Что включено</div>
+        <div class="inc">${inc}${exc}</div>
+        <div class="d-lbl">Стоимость</div>
+        <div class="ptbl">${prices}</div>
+        ${heightCard}
+        <p class="pnote">Оплата: $, донги, рубли, USDT</p>
+        <div class="d-cta">
+          <a href="#form" class="btn-primary" onclick="closeD()">Забронировать</a>
+          <button class="btn-outline" onclick="closeD()">Закрыть</button>
+        </div>
+      </div>
+    </div>`;
+  document.getElementById('overlay').classList.add('open');
+  document.getElementById('drawer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeD() {
+  document.getElementById('overlay').classList.remove('open');
+  document.getElementById('drawer').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function toggleMenu() {
+  const links = document.querySelector('.nav-links');
+  const cta = document.querySelector('.nav-cta');
+  const show = links.style.display !== 'flex';
+  links.style.cssText = show ? 'display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:#fff;padding:20px;gap:16px;border-bottom:1px solid #E5E7EB;z-index:99' : 'display:none';
+  cta && (cta.style.display = show ? 'block' : '');
+}
+
+document.querySelectorAll('.fq').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.fi').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+document.getElementById('bForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const d = new FormData(this);
+  const dateFrom = d.get('date_from') || '';
+  const dateTo = d.get('date_to') || '';
+  const dates = dateFrom && dateTo ? `${dateFrom} — ${dateTo}` : dateFrom || dateTo || 'не указаны';
+  const text = `Новая заявка!\n\nИмя: ${d.get('name')}\nКонтакт: ${d.get('contact')}\nТур: ${d.get('tour')}\nЧеловек: ${d.get('people')}\nДаты: ${dates}\nКомментарий: ${d.get('comment')||'нет'}`;
+  try {
+    await fetch('https://api.telegram.org/bot8455166453:AAH5IKJlFTSEUS-UdK7uMA15jW98FwvESvg/sendMessage', {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({chat_id:'6304136477', text})
+    });
+    this.style.display = 'none';
+    document.getElementById('fok').style.display = 'block';
+  } catch(err) { alert('Ошибка. Напишите нам в Telegram напрямую.'); }
+});
+</script>
+</body>
+</html>
