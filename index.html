@@ -354,10 +354,12 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
   z-index: 999;
   width: 52px;
   height: 52px;
-  border-radius: 50%;
+  border-radius: var(--r);
   background: var(--c);
   color: #fff;
-  font-size: 22px;
+  font-size: 20px;
+  font-family: 'Onest', sans-serif;
+  font-weight: 700;
   border: none;
   cursor: pointer;
   display: flex;
@@ -374,9 +376,9 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
   transform: translateY(0);
   pointer-events: auto;
 }
-.fab-tours:hover { background: #d44530; }
+.fab-tours:hover { background: #d44430; transform: translateY(-1px); }
 @media (max-width: 767px) {
-  .fab-tours { bottom: 20px; right: 16px; width: 46px; height: 46px; font-size: 19px; }
+  .fab-tours { bottom: 20px; right: 16px; width: 46px; height: 46px; font-size: 18px; }
 }
 </style>
 </head>
