@@ -735,7 +735,7 @@ const tours = {
     inc:["Трансфер от/до отеля","Русскоязычный гид","Вода"],
     exc:["Входные билеты (отдельно)"],
     note:["Входные билеты — что входит:<br>— приватный трансфер<br>— канатная дорога туда и обратно<br>— Золотой мост<br>— ужин шведский стол<br>— 2 бокала крафтового пива<br>— вечернее кабаре-шоу в Beer Plaza Restaurant."],
-    prices:[["Категория","Цена"],["Рост выше 140 см","48 $"],["Рост 100–140 см","24 $"],["Рост ниже 1 м","Бесплатно"],["Билет взрослый","1 300 000 VND"],["Билет детский","1 000 000 VND"]]},
+    prices:[["Категория","Цена"],["Рост выше 140 см","48 $"],["Рост 100–140 см","24 $"],["Рост ниже 1 м","Бесплатно"],["Утро с 08:00",""],["Билет взрослый","1 300 000 VND"],["Билет детский","1 000 000 VND"],["Вечер с 15:00",""],["Билет взрослый","1 100 000 VND"],["Билет детский","900 000 VND"]]},
   danang:{title:"Дананг за один день",price:"от 64$",
     prog:[["12:00","Встреча в отеле"],["","Мраморные горы — пещеры, панорама на океан"],["","Леди Будда на Обезьяньей горе"],["17:00","Обед"],["","Вечерний круиз по реке Хан"],["Пт","Шоу Дракона с борта"],["21:00","Возвращение"]],
     inc:["Трансфер от/до отеля","Русскоязычный гид","Билеты","Круиз","Вода"],
@@ -787,7 +787,9 @@ function openD(key) {
   const inc = t.inc.map(i => `<div class="inc-i"><span class="y">✓</span><span>${i}</span></div>`).join('');
   const exc = t.exc.map(i => `<div class="inc-i"><span class="n">✗</span><span>${i}</span></div>`).join('');
   const note = (t.note||[]).map(i => `<div class="inc-i"><span style="color:var(--gray);font-size:13px">ℹ</span><span>${i}</span></div>`).join('');
-  const prices = t.prices.map(([cat,val]) => `<div class="pr"><span>${cat}</span><span class="pv">${val}</span></div>`).join('');
+  const prices = t.prices.map(([cat,val]) => val===''
+    ? `<div class="pr" style="background:#f0f4f8;font-weight:700;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--gray);margin-top:6px">${cat}</div>`
+    : `<div class="pr"><span>${cat}</span><span class="pv">${val}</span></div>`).join('');
   const hasHeight = t.prices.some(([cat]) => /рост|см/i.test(cat));
   const heightCard = hasHeight ? `<div style="background:#fffbeb;border-left:4px solid #E8533A;border-radius:0 8px 8px 0;padding:16px 20px;margin-top:12px;width:100%;box-sizing:border-box"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="font-size:16px">📏</span><span style="font-size:15px;font-weight:700;color:#111">Билет по росту ребёнка</span></div><p style="font-size:14px;color:#6B7280;margin:0 0 8px;line-height:1.6">В парке измеряют рост <strong style="color:#111">в обуви</strong> — стойками на входе и у ресторана. Если подошва добавила 2 см и ребёнок дотянулся до 140 см — платите взрослый билет. Спорить бесполезно.</p><p style="font-size:14px;color:#6B7280;margin:0;line-height:1.6">Лайфхак: наденьте ребёнку <strong style="color:#111">кеды на плоской подошве</strong> и измерьте дома заранее.</p></div>` : '';
   document.getElementById('d-content').innerHTML = `
