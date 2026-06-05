@@ -1,0 +1,15 @@
+{
+  "updated_at": "",
+  "period_days": 30,
+  "summary": {
+    "active_users": 0,
+    "sessions": 0,
+    "page_views": 0,
+    "avg_session_duration": 0,
+    "bounce_rate": 0
+  },
+  "daily": [],
+  "top_pages": [],
+  "devices": [],
+  "countries": []
+}
