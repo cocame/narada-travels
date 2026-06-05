@@ -1,128 +1,109 @@
 #!/usr/bin/env python3
-"""Fetch Google Analytics 4 data and write to stats/data.json."""
+"""Fetch Yandex.Metrika stats and write to stats/data.json."""
 
 import json
 import os
 import sys
 from datetime import datetime, timezone
+from urllib.parse import urlencode
+from urllib.request import Request, urlopen
+from urllib.error import HTTPError
 
-from google.analytics.data_v1beta import BetaAnalyticsDataClient
-from google.analytics.data_v1beta.types import (
-    DateRange,
-    Dimension,
-    Metric,
-    RunReportRequest,
-)
-from google.oauth2 import service_account
-
-PROPERTY_ID = "396354995"
+COUNTER_ID = "109555301"
 DAYS = 30
+BASE = "https://api-metrika.yandex.net/stat/v1/data"
 OUT_FILE = os.path.join(os.path.dirname(__file__), "data.json")
 
 
-def build_client() -> BetaAnalyticsDataClient:
-    key_json = os.environ.get("GA_SERVICE_ACCOUNT_KEY")
-    if not key_json:
-        sys.exit("GA_SERVICE_ACCOUNT_KEY env var is not set")
-    info = json.loads(key_json)
-    creds = service_account.Credentials.from_service_account_info(
-        info,
-        scopes=["https://www.googleapis.com/auth/analytics.readonly"],
-    )
-    return BetaAnalyticsDataClient(credentials=creds)
+def get(token: str, params: dict) -> dict:
+    params["ids"] = COUNTER_ID
+    params.setdefault("date1", f"{DAYS}daysAgo")
+    params.setdefault("date2", "today")
+    url = f"{BASE}?{urlencode(params)}"
+    req = Request(url, headers={"Authorization": f"OAuth {token}"})
+    with urlopen(req) as r:
+        return json.load(r)
 
 
-def run(client: BetaAnalyticsDataClient) -> dict:
-    period = f"{DAYS}daysAgo"
-    dr = DateRange(start_date=period, end_date="today")
-
-    # Summary metrics
-    summary_resp = client.run_report(RunReportRequest(
-        property=f"properties/{PROPERTY_ID}",
-        date_ranges=[dr],
-        metrics=[
-            Metric(name="activeUsers"),
-            Metric(name="sessions"),
-            Metric(name="screenPageViews"),
-            Metric(name="averageSessionDuration"),
-            Metric(name="bounceRate"),
-        ],
-    ))
-    row = summary_resp.rows[0].metric_values if summary_resp.rows else None
+def fetch(token: str) -> dict:
+    # Summary
+    s = get(token, {
+        "metrics": ",".join([
+            "ym:s:visits",
+            "ym:s:users",
+            "ym:s:pageviews",
+            "ym:s:bounceRate",
+            "ym:s:avgVisitDurationSeconds",
+        ]),
+    })
+    totals = s.get("totals", [[0, 0, 0, 0, 0]])[0]
     summary = {
-        "active_users":           int(row[0].value)             if row else 0,
-        "sessions":               int(row[1].value)             if row else 0,
-        "page_views":             int(row[2].value)             if row else 0,
-        "avg_session_duration":   round(float(row[3].value), 1) if row else 0,
-        "bounce_rate":            round(float(row[4].value), 4) if row else 0,
+        "active_users":          int(totals[1]),
+        "sessions":              int(totals[0]),
+        "page_views":            int(totals[2]),
+        "avg_session_duration":  round(float(totals[4]), 1),
+        "bounce_rate":           round(float(totals[3]) / 100, 4),
     }
 
-    # Daily visitors (last 30 days)
-    daily_resp = client.run_report(RunReportRequest(
-        property=f"properties/{PROPERTY_ID}",
-        date_ranges=[dr],
-        dimensions=[Dimension(name="date")],
-        metrics=[Metric(name="activeUsers"), Metric(name="sessions")],
-        order_bys=[{"dimension": {"dimension_name": "date"}}],
-    ))
+    # Daily chart
+    d = get(token, {
+        "dimensions": "ym:s:date",
+        "metrics": "ym:s:visits,ym:s:users",
+        "sort": "ym:s:date",
+        "limit": DAYS,
+    })
     daily = [
         {
-            "date":     r.dimension_values[0].value,
-            "users":    int(r.metric_values[0].value),
-            "sessions": int(r.metric_values[1].value),
+            "date":     row["dimensions"][0]["name"],
+            "sessions": int(row["metrics"][0]),
+            "users":    int(row["metrics"][1]),
         }
-        for r in daily_resp.rows
+        for row in d.get("data", [])
     ]
 
     # Top pages
-    pages_resp = client.run_report(RunReportRequest(
-        property=f"properties/{PROPERTY_ID}",
-        date_ranges=[dr],
-        dimensions=[Dimension(name="pagePath")],
-        metrics=[Metric(name="screenPageViews"), Metric(name="activeUsers")],
-        order_bys=[{"metric": {"metric_name": "screenPageViews"}, "desc": True}],
-        limit=10,
-    ))
+    p = get(token, {
+        "dimensions": "ym:s:URLPath",
+        "metrics": "ym:s:pageviews,ym:s:users",
+        "sort": "-ym:s:pageviews",
+        "limit": 10,
+    })
     top_pages = [
         {
-            "path":  r.dimension_values[0].value,
-            "views": int(r.metric_values[0].value),
-            "users": int(r.metric_values[1].value),
+            "path":  row["dimensions"][0]["name"],
+            "views": int(row["metrics"][0]),
+            "users": int(row["metrics"][1]),
         }
-        for r in pages_resp.rows
+        for row in p.get("data", [])
     ]
 
-    # Device breakdown
-    device_resp = client.run_report(RunReportRequest(
-        property=f"properties/{PROPERTY_ID}",
-        date_ranges=[dr],
-        dimensions=[Dimension(name="deviceCategory")],
-        metrics=[Metric(name="sessions")],
-        order_bys=[{"metric": {"metric_name": "sessions"}, "desc": True}],
-    ))
+    # Devices
+    dv = get(token, {
+        "dimensions": "ym:s:deviceCategory",
+        "metrics": "ym:s:visits",
+        "sort": "-ym:s:visits",
+    })
     devices = [
         {
-            "device":   r.dimension_values[0].value,
-            "sessions": int(r.metric_values[0].value),
+            "device":   row["dimensions"][0]["name"],
+            "sessions": int(row["metrics"][0]),
         }
-        for r in device_resp.rows
+        for row in dv.get("data", [])
     ]
 
-    # Top countries
-    country_resp = client.run_report(RunReportRequest(
-        property=f"properties/{PROPERTY_ID}",
-        date_ranges=[dr],
-        dimensions=[Dimension(name="country")],
-        metrics=[Metric(name="activeUsers")],
-        order_bys=[{"metric": {"metric_name": "activeUsers"}, "desc": True}],
-        limit=10,
-    ))
+    # Countries
+    c = get(token, {
+        "dimensions": "ym:s:regionCountry",
+        "metrics": "ym:s:users",
+        "sort": "-ym:s:users",
+        "limit": 10,
+    })
     countries = [
         {
-            "country": r.dimension_values[0].value,
-            "users":   int(r.metric_values[0].value),
+            "country": row["dimensions"][0]["name"],
+            "users":   int(row["metrics"][0]),
         }
-        for r in country_resp.rows
+        for row in c.get("data", [])
     ]
 
     return {
@@ -137,8 +118,13 @@ def run(client: BetaAnalyticsDataClient) -> dict:
 
 
 if __name__ == "__main__":
-    client = build_client()
-    data = run(client)
+    token = os.environ.get("YM_TOKEN")
+    if not token:
+        sys.exit("YM_TOKEN env var is not set")
+    try:
+        data = fetch(token)
+    except HTTPError as e:
+        sys.exit(f"Metrika API error {e.code}: {e.read().decode()[:400]}")
     with open(OUT_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
     print(f"Wrote {OUT_FILE}")

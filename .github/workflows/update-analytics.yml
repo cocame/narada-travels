@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write   # GITHUB_TOKEN can push the updated data.json
+  contents: write
 
 jobs:
   fetch-and-commit:
@@ -22,12 +22,9 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install dependencies
-        run: pip install google-analytics-data google-auth
-
-      - name: Fetch GA4 data
+      - name: Fetch Yandex.Metrika data
         env:
-          GA_SERVICE_ACCOUNT_KEY: ${{ secrets.GA_SERVICE_ACCOUNT_KEY }}
+          YM_TOKEN: ${{ secrets.YM_TOKEN }}
         run: python stats/fetch_analytics.py
 
       - name: Commit updated data.json
