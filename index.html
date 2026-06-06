@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+<meta charset="UTF-8">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3ZBBP5JVSS"></script>
 <script>
@@ -14,7 +15,6 @@
 <script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109555301', 'ym');ym(109555301, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/109555301" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Narada Travels — Экскурсии из Дананга с русскоязычным гидом | Вьетнам</title>
 <meta name="description" content="Экскурсии из Дананга с русскоязычным гидом. Золотой мост и руки бога на Ба На Хиллс, Хойан — город фонариков, острова Чам, Хюэ — имперский город. Трансфер от отеля, оплата в рублях и долларах.">
@@ -110,12 +110,15 @@ nav {
 }
 .btn-white {
   display: inline-block;
-  background: #fff; color: var(--dark);
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
   padding: 15px 36px; border-radius: var(--r);
   text-decoration: none; font-size: 16px; font-weight: 700;
   transition: all .2s;
 }
-.btn-white:hover { background: rgba(255,255,255,0.9); transform: translateY(-1px); }
+.btn-white:hover { background: rgba(255,255,255,0.25); transform: translateY(-1px); }
 
 /* ── ЭТАЖ 2: ТОЛЬКО ЭКСКУРСИИ ── */
 .tours { padding: 72px 56px; }
@@ -133,6 +136,18 @@ nav {
   gap: 10px;
 }
 .bc { position: relative; border-radius: var(--r); overflow: hidden; cursor: pointer; }
+.bc-badge {
+  position: absolute; top: 16px; left: 16px; z-index: 3;
+  display: inline-flex; align-items: center;
+  padding: 6px 14px;
+  background: rgba(20, 18, 15, 0.55);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--r);
+  color: rgba(255,255,255,0.92);
+  font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  white-space: nowrap;
+}
 .bc img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
 .bc:hover img { transform: scale(1.04); }
 .bc::after {
@@ -162,6 +177,7 @@ nav {
 }
 .bc.open .bc-expand { background: var(--c); border-color: var(--c); }
 
+.b-bana-evening { display: block; width: 100%; aspect-ratio: 21/7; margin-bottom: 10px; }
 .b-hue    { grid-column: span 5; grid-row: span 2; }
 .b-hoian  { grid-column: span 7; grid-row: span 2; }
 .b-bana   { grid-column: span 4; grid-row: span 2; }
@@ -360,6 +376,8 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
   .hero { height: 70vh; }
   .hero-content { padding: 0 6% 12%; }
   .bento { grid-template-columns: 1fr !important; grid-auto-rows: auto; }
+  .b-bana-evening { aspect-ratio: 4/3 !important; }
+  .b-bana-evening img { height: 100% !important; object-fit: cover !important; }
   .b-hue,.b-hoian,.b-bana,.b-danang,.b-kalmar,.b-springs,.b-cham,.b-vin,.b-surf,.b-hayvan,.b-sea,.b-dong { grid-column: span 1 !important; grid-row: span 1 !important; }
   .bc { height: auto; }
   .bc img { height: auto; object-fit: unset; }
@@ -436,13 +454,23 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
   <div class="hero-bg"></div>
   <div class="hero-content">
     <h1>Добро пожаловать в Дананг</h1>
-    <a href="#form" class="btn-white">Напиши нам</a>
+    <a href="#form" class="btn-white">Написать нам</a>
   </div>
 </section>
 
 <!-- ── ЭТАЖ 2: ТОЛЬКО ЭКСКУРСИИ ── -->
 <section class="tours" id="tours">
   <h2>Экскурсии из Дананга</h2>
+  <div class="bc b-bana-evening" onclick="openD('bana-evening')">
+    <img src="images/bana-evening.webp" alt="Вечерний Ба На Хиллс — Тайны золотого моста">
+    <div class="bc-badge">Эксклюзив</div>
+    <div class="bc-info">
+      <div class="bc-title">Вечерний Ба На Хиллс — Тайны золотого моста</div>
+      <div class="bc-sub">Ежедневно · Русский гид · Ужин · Живое шоу · от 192$</div>
+    </div>
+    <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
+    <div class="bc-expand" onclick="event.stopPropagation();openD('bana-evening')">+</div>
+  </div>
   <div class="bento">
     <div class="bc b-hue" onclick="openD('hue')">
       <img src="images/hue.jpg" alt="Экскурсия в Хюэ из Дананга">
@@ -737,6 +765,12 @@ const tours = {
     exc:[],
     note:["Обед оплачивается по меню – каждый за свой заказ."],
     prices:[["Категория","Цена"],["Взрослые и дети от 10 лет","85 $"],["Дети до 10 лет","43 $"],["Дети до 3 лет","Бесплатно"]]},
+  "bana-evening":{title:"Вечерний Ба На Хиллс — Тайны золотого моста",price:"от 192$",
+    prog:[["14:00","Встречаемся у вашего отеля. По дороге — горы, серпантин"],["","Канатная дорога — джунгли под ногами, облака впереди"],["","Золотой мост — каменные ладони держат мост над пропастью, внизу зажигается Дананг"],["","Французская деревня — парк просыпается с наступлением темноты"],["","Ужин (шведский стол) в Beer Plaza Restaurant + живое шоу на сцене"],["","Винные погреба Дебай — старинные французские галереи под парком"],["","Смотровая площадка — море и огни города"],["","Спуск на канатке при звёздах"],["21:00","Возвращение в отель"]],
+    inc:["Трансфер от/до отеля","Русскоязычный гид","Бутылка воды"],
+    exc:["Входные билеты + УЖИН","Винные погреба Дебай — 100 000 VND (на месте)","Горная железная дорога, горки, скалолазание"],
+    note:["Входные билеты включают: круговую канатную дорогу, ужин-шведский стол, бесплатный стакан Sun KraftBeer (500мл) или фастфуд, бесплатные игры и аттракционы.<br>🧥 Возьмите тёплую накидку — наверху прохладно<br>👟 Удобную обувь — много ходьбы, брусчатка<br>🌂 Дождевик — погода меняется быстро"],
+    prices:[["Формат","Цена"],["Индивидуально до 4 человек","192 $"],["Каждый следующий участник","+ 48 $"],["",""],["Входные билеты + УЖИН",""],["Взрослые и дети выше 140 см","1 100 000 VND"],["Дети 100–140 см","900 000 VND"],["Дети до 100 см","Бесплатно"]]},
   hoian:{title:"Хойан — древний город ЮНЕСКО",price:"от 58$",
     prog:[["14:00","Встреча в отеле"],["","Кокосовый лес — круглые лодки-корзины, шоу на воде"],["","Старый город — Японский мост XVI века, храмы"],["18:30","Ужин"],["","Фонарики на реке Хоай"],["","Ночной рынок на острове Ан Хой"],["22:00","Возвращение в отель"]],
     inc:["Трансфер от/до отеля","Русскоязычный гид","Кокосовые лодки","Билеты","Вода"],
