@@ -6,323 +6,114 @@
 <title>Stats · narada-travels.com</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
   background: #f5f5f7;
-  color: #1d1d1f;
-  min-height: 100vh;
-  padding: 48px 24px 64px;
+  display: flex;
+  flex-direction: column;
 }
-
-.container { max-width: 860px; margin: 0 auto; }
 
 header {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
-  margin-bottom: 40px;
-  flex-wrap: wrap;
-  gap: 8px;
+  padding: 14px 24px;
+  background: #fff;
+  border-bottom: 1px solid #e8e8ed;
+  flex-shrink: 0;
 }
-.site-name { font-size: 22px; font-weight: 600; letter-spacing: -0.3px; }
+.site-name { font-size: 15px; font-weight: 600; letter-spacing: -0.2px; color: #1d1d1f; }
 .site-name span { color: #6e6e73; font-weight: 400; }
-.updated { font-size: 12px; color: #6e6e73; }
-
-.period-tabs {
-  display: flex;
-  background: #e8e8ed;
-  border-radius: 10px;
-  padding: 3px;
-  margin-bottom: 24px;
-  width: fit-content;
-}
-.tab {
-  padding: 6px 18px;
-  border-radius: 8px;
+.open-link {
   font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  color: #6e6e73;
-  border: none;
-  background: transparent;
-  transition: all 0.15s;
-  user-select: none;
-}
-.tab.active {
-  background: #fff;
-  color: #1d1d1f;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-}
-
-.section-label {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #6e6e73;
-  margin-bottom: 12px;
-}
-
-.metrics-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-bottom: 32px;
-}
-.metric-card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 22px 20px 20px;
-}
-.metric-label { font-size: 13px; color: #6e6e73; margin-bottom: 8px; }
-.metric-value {
-  font-size: 36px;
-  font-weight: 600;
-  letter-spacing: -1px;
-  line-height: 1;
-}
-.metric-sub { font-size: 12px; color: #6e6e73; margin-top: 6px; }
-
-.panel {
-  background: #fff;
-  border-radius: 16px;
-  padding: 22px 20px;
-  margin-bottom: 16px;
-}
-
-.source-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 9px 0;
-}
-.source-row + .source-row { border-top: 1px solid #f0f0f5; }
-.source-name { font-size: 14px; flex: 1; }
-.source-bar-wrap {
-  flex: 2;
-  height: 4px;
-  background: #f0f0f5;
-  border-radius: 2px;
-  overflow: hidden;
-}
-.source-bar {
-  height: 100%;
-  background: #0066cc;
-  border-radius: 2px;
-}
-.source-count { font-size: 14px; font-weight: 500; width: 36px; text-align: right; }
-
-.page-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 9px 0;
-}
-.page-row + .page-row { border-top: 1px solid #f0f0f5; }
-.page-num { font-size: 12px; color: #c7c7cc; width: 16px; flex-shrink: 0; }
-.page-path {
-  font-size: 13px;
-  flex: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   color: #0066cc;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: #f0f6ff;
+  transition: background 0.15s;
 }
-.page-visits { font-size: 13px; font-weight: 500; color: #6e6e73; white-space: nowrap; }
+.open-link:hover { background: #d8eaff; }
 
-.empty { color: #c7c7cc; font-size: 13px; padding: 8px 0; }
+iframe {
+  flex: 1;
+  border: none;
+  width: 100%;
+}
 
-footer {
-  margin-top: 32px;
+.fallback {
+  display: none;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 40px 24px;
   text-align: center;
-  font-size: 12px;
-  color: #c7c7cc;
 }
-
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-.loading { animation: pulse 1.4s ease-in-out infinite; color: #c7c7cc !important; }
-
-@media (max-width: 600px) {
-  .metrics-grid { grid-template-columns: repeat(2, 1fr); }
-  .metric-value { font-size: 28px; }
-  body { padding: 32px 16px 48px; }
+.fallback-title { font-size: 17px; font-weight: 600; color: #1d1d1f; }
+.fallback-sub { font-size: 14px; color: #6e6e73; max-width: 320px; line-height: 1.5; }
+.fallback-btn {
+  margin-top: 8px;
+  display: inline-block;
+  padding: 12px 28px;
+  background: #0066cc;
+  color: #fff;
+  border-radius: 980px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.2s;
 }
-@media (max-width: 380px) {
-  .metrics-grid { grid-template-columns: 1fr; }
-}
+.fallback-btn:hover { opacity: 0.8; }
 </style>
 </head>
 <body>
-<div class="container">
 
-  <header>
-    <div class="site-name">narada-travels.com <span>· Stats</span></div>
-    <div class="updated" id="updated">загрузка...</div>
-  </header>
+<header>
+  <div class="site-name">narada-travels.com <span>· Stats</span></div>
+  <a class="open-link" href="https://metrika.yandex.ru/dashboard?id=109555301" target="_blank">Открыть в Метрике ↗</a>
+</header>
 
-  <div class="period-tabs">
-    <button class="tab active" onclick="switchPeriod('today',this)">Сегодня</button>
-    <button class="tab" onclick="switchPeriod('week',this)">7 дней</button>
-    <button class="tab" onclick="switchPeriod('month',this)">30 дней</button>
-  </div>
+<iframe
+  id="frame"
+  src="https://metrika.yandex.ru/dashboard?id=109555301"
+  allowfullscreen
+  loading="lazy">
+</iframe>
 
-  <div class="metrics-grid">
-    <div class="metric-card">
-      <div class="metric-label">Визиты</div>
-      <div class="metric-value loading" id="val-visits">—</div>
-    </div>
-    <div class="metric-card">
-      <div class="metric-label">Пользователи</div>
-      <div class="metric-value loading" id="val-users">—</div>
-    </div>
-    <div class="metric-card">
-      <div class="metric-label">Отказы</div>
-      <div class="metric-value loading" id="val-bounce">—</div>
-    </div>
-  </div>
-
-  <div class="section-label">Источники трафика <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#c7c7cc">(30 дней)</span></div>
-  <div class="panel" id="sources-panel">
-    <div class="empty loading">загрузка...</div>
-  </div>
-
-  <div class="section-label">Популярные страницы <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#c7c7cc">(30 дней)</span></div>
-  <div class="panel">
-    <div id="pages-list" class="empty loading">загрузка...</div>
-  </div>
-
-  <footer>Яндекс.Метрика · счётчик 109555301 · обновляется ежедневно в 06:00 МСК</footer>
+<div class="fallback" id="fallback">
+  <div class="fallback-title">Дашборд нельзя встроить напрямую</div>
+  <div class="fallback-sub">Яндекс.Метрика блокирует встраивание в iframe. Откройте статистику в отдельной вкладке.</div>
+  <a class="fallback-btn" href="https://metrika.yandex.ru/dashboard?id=109555301" target="_blank">Открыть статистику</a>
 </div>
 
 <script>
-const SOURCE_LABELS = {
-  'Прямые заходы': 'Прямые',
-  'Direct traffic': 'Прямые',
-  'Переходы по ссылкам с сайтов': 'Ссылки',
-  'Link traffic': 'Ссылки',
-  'Referral traffic': 'Ссылки',
-  'Переходы из поисковых систем': 'Поиск',
-  'Search engine traffic': 'Поиск',
-  'Organic search': 'Поиск',
-  'Переходы из социальных сетей': 'Соцсети',
-  'Social network traffic': 'Соцсети',
-  'Переходы из рекламных систем': 'Реклама',
-  'Ad system traffic': 'Реклама',
-  'Paid search': 'Реклама',
-  'Внутренние переходы': 'Внутренние',
-  'Internal traffic': 'Внутренние',
-  'Переходы с почтовых рассылок': 'Email',
-  'Email traffic': 'Email',
-};
+const frame = document.getElementById('frame');
+const fallback = document.getElementById('fallback');
 
-let data = null;
-let period = 'today';
+frame.addEventListener('error', showFallback);
 
-function fmt(n) {
-  if (n == null || isNaN(n)) return '—';
-  return Math.round(n).toLocaleString('ru-RU');
-}
-
-function renderMetrics() {
-  if (!data) return;
-  const p = data[period] || {};
-  const setV = (id, val, suffix) => {
-    const el = document.getElementById(id);
-    el.textContent = val != null ? fmt(val) + (suffix || '') : '—';
-    el.classList.remove('loading');
-  };
-  setV('val-visits', p.visits);
-  setV('val-users', p.users);
-  if (period === 'today') {
-    setV('val-bounce', p.bounce != null ? Math.round(p.bounce) : null, '%');
-  } else {
-    document.getElementById('val-bounce').textContent = '—';
-    document.getElementById('val-bounce').classList.remove('loading');
+// Detect X-Frame-Options block: if frame loads but is empty (cross-origin block)
+frame.addEventListener('load', function() {
+  try {
+    // If we can access contentDocument, it loaded fine
+    const doc = frame.contentDocument;
+    if (!doc || !doc.body || doc.body.innerHTML === '') showFallback();
+  } catch(e) {
+    // Cross-origin — likely blocked, show fallback after brief delay
+    setTimeout(function() {
+      if (frame.offsetHeight < 10) showFallback();
+    }, 2000);
   }
+});
+
+function showFallback() {
+  frame.style.display = 'none';
+  fallback.style.display = 'flex';
 }
-
-function renderSources() {
-  const panel = document.getElementById('sources-panel');
-  const rows = data.sources || [];
-  if (!rows.length) { panel.innerHTML = '<div class="empty">Нет данных</div>'; return; }
-  const max = rows[0].visits;
-  panel.innerHTML = rows.map(r => {
-    const name = SOURCE_LABELS[r.name] || r.name;
-    const pct = max > 0 ? Math.round(r.visits / max * 100) : 0;
-    return `<div class="source-row">
-      <span class="source-name">${name}</span>
-      <div class="source-bar-wrap"><div class="source-bar" style="width:${pct}%"></div></div>
-      <span class="source-count">${Math.round(r.visits)}</span>
-    </div>`;
-  }).join('');
-}
-
-function renderPages() {
-  const list = document.getElementById('pages-list');
-  const rows = data.pages || [];
-  if (!rows.length) { list.innerHTML = '<div class="empty">Нет данных</div>'; list.classList.remove('loading'); return; }
-
-  const merged = [];
-  const idx = {};
-  for (const r of rows) {
-    let path;
-    try { path = new URL(r.url).pathname || '/'; } catch { path = r.url; }
-    if (path in idx) {
-      merged[idx[path]].visits += r.visits;
-    } else {
-      idx[path] = merged.length;
-      merged.push({ path, visits: r.visits, url: r.url });
-    }
-  }
-  merged.sort((a, b) => b.visits - a.visits);
-
-  list.classList.remove('loading');
-  list.innerHTML = merged.map((r, i) => {
-    const display = r.path === '/' ? '/ (главная)' : r.path;
-    return `<div class="page-row">
-      <span class="page-num">${i + 1}</span>
-      <span class="page-path" title="${r.url}">${display}</span>
-      <span class="page-visits">${Math.round(r.visits)} визитов</span>
-    </div>`;
-  }).join('');
-}
-
-function renderUpdated() {
-  if (!data || !data.updated) return;
-  const d = new Date(data.updated);
-  const s = d.toLocaleString('ru-RU', {
-    day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Moscow'
-  });
-  document.getElementById('updated').textContent = 'обновлено ' + s + ' МСК';
-}
-
-function switchPeriod(p, btn) {
-  period = p;
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  btn.classList.add('active');
-  renderMetrics();
-}
-
-fetch('data.json?t=' + Date.now())
-  .then(r => r.ok ? r.json() : Promise.reject(r.status))
-  .then(d => {
-    data = d;
-    renderMetrics();
-    renderSources();
-    renderPages();
-    renderUpdated();
-  })
-  .catch(() => {
-    ['val-visits','val-users','val-bounce'].forEach(id => {
-      const el = document.getElementById(id);
-      el.textContent = '—';
-      el.classList.remove('loading');
-    });
-    document.getElementById('sources-panel').innerHTML = '<div class="empty">Данные обновляются...</div>';
-    document.getElementById('pages-list').innerHTML = '<div class="empty">Данные обновляются...</div>';
-    document.getElementById('updated').textContent = 'данные ещё не загружены';
-  });
 </script>
 </body>
 </html>
