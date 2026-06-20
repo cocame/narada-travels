@@ -11,109 +11,87 @@ html, body { height: 100%; }
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
   background: #f5f5f7;
+  color: #1d1d1f;
   display: flex;
-  flex-direction: column;
-}
-
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 24px;
-  background: #fff;
-  border-bottom: 1px solid #e8e8ed;
-  flex-shrink: 0;
-}
-.site-name { font-size: 15px; font-weight: 600; letter-spacing: -0.2px; color: #1d1d1f; }
-.site-name span { color: #6e6e73; font-weight: 400; }
-.open-link {
-  font-size: 13px;
-  color: #0066cc;
-  text-decoration: none;
-  padding: 6px 12px;
-  border-radius: 8px;
-  background: #f0f6ff;
-  transition: background 0.15s;
-}
-.open-link:hover { background: #d8eaff; }
-
-iframe {
-  flex: 1;
-  border: none;
-  width: 100%;
-}
-
-.fallback {
-  display: none;
-  flex: 1;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  min-height: 100vh;
   padding: 40px 24px;
-  text-align: center;
 }
-.fallback-title { font-size: 17px; font-weight: 600; color: #1d1d1f; }
-.fallback-sub { font-size: 14px; color: #6e6e73; max-width: 320px; line-height: 1.5; }
-.fallback-btn {
-  margin-top: 8px;
-  display: inline-block;
-  padding: 12px 28px;
+
+.card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px 36px 36px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+}
+
+.logo {
+  font-size: 13px;
+  font-weight: 500;
+  color: #6e6e73;
+  letter-spacing: 0.02em;
+  margin-bottom: 28px;
+}
+
+.icon {
+  font-size: 48px;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+  margin-bottom: 10px;
+}
+
+.sub {
+  font-size: 14px;
+  color: #6e6e73;
+  line-height: 1.55;
+  margin-bottom: 32px;
+}
+
+.btn {
+  display: block;
   background: #0066cc;
   color: #fff;
+  text-decoration: none;
+  padding: 14px 24px;
   border-radius: 980px;
   font-size: 15px;
   font-weight: 500;
-  text-decoration: none;
+  letter-spacing: -0.1px;
   transition: opacity 0.2s;
+  margin-bottom: 12px;
 }
-.fallback-btn:hover { opacity: 0.8; }
+.btn:hover { opacity: 0.82; }
+
+.counter {
+  font-size: 12px;
+  color: #c7c7cc;
+  margin-top: 24px;
+}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="site-name">narada-travels.com <span>· Stats</span></div>
-  <a class="open-link" href="https://metrika.yandex.ru/dashboard?id=109555301" target="_blank">Открыть в Метрике ↗</a>
-</header>
-
-<iframe
-  id="frame"
-  src="https://metrika.yandex.ru/dashboard?id=109555301"
-  allowfullscreen
-  loading="lazy">
-</iframe>
-
-<div class="fallback" id="fallback">
-  <div class="fallback-title">Дашборд нельзя встроить напрямую</div>
-  <div class="fallback-sub">Яндекс.Метрика блокирует встраивание в iframe. Откройте статистику в отдельной вкладке.</div>
-  <a class="fallback-btn" href="https://metrika.yandex.ru/dashboard?id=109555301" target="_blank">Открыть статистику</a>
+<div class="card">
+  <div class="logo">narada-travels.com</div>
+  <div class="icon">📊</div>
+  <h1>Статистика сайта</h1>
+  <p class="sub">Данные Яндекс.Метрики открываются в новой вкладке — уже авторизованных под аккаунтом владельца счётчика.</p>
+  <a class="btn" href="https://metrika.yandex.ru/dashboard?id=109555301" target="_blank">
+    Открыть дашборд →
+  </a>
+  <div class="counter">Счётчик 109555301</div>
 </div>
 
-<script>
-const frame = document.getElementById('frame');
-const fallback = document.getElementById('fallback');
-
-frame.addEventListener('error', showFallback);
-
-// Detect X-Frame-Options block: if frame loads but is empty (cross-origin block)
-frame.addEventListener('load', function() {
-  try {
-    // If we can access contentDocument, it loaded fine
-    const doc = frame.contentDocument;
-    if (!doc || !doc.body || doc.body.innerHTML === '') showFallback();
-  } catch(e) {
-    // Cross-origin — likely blocked, show fallback after brief delay
-    setTimeout(function() {
-      if (frame.offsetHeight < 10) showFallback();
-    }, 2000);
-  }
-});
-
-function showFallback() {
-  frame.style.display = 'none';
-  fallback.style.display = 'flex';
-}
-</script>
 </body>
 </html>
