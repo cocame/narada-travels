@@ -190,7 +190,6 @@ nav {
 .b-springs{ grid-column: span 5; grid-row: span 2; }
 .b-cham   { grid-column: span 4; grid-row: span 2; }
 .b-vin    { grid-column: span 3; }
-.b-surf   { grid-column: span 3; }
 .b-hayvan { grid-column: span 7; }
 .b-sea    { grid-column: span 5; }
 .b-dong   { grid-column: span 7; }
@@ -382,7 +381,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
   .bento { grid-template-columns: 1fr !important; grid-auto-rows: auto; }
   .b-bana-evening { aspect-ratio: 4/3 !important; }
   .b-bana-evening img { height: 100% !important; object-fit: cover !important; }
-  .b-hue,.b-hoian,.b-bana,.b-danang,.b-kalmar,.b-springs,.b-cham,.b-vin,.b-surf,.b-hayvan,.b-sea,.b-dong { grid-column: span 1 !important; grid-row: span 1 !important; }
+  .b-hue,.b-hoian,.b-bana,.b-danang,.b-kalmar,.b-springs,.b-cham,.b-vin,.b-hayvan,.b-sea,.b-dong { grid-column: span 1 !important; grid-row: span 1 !important; }
   .bc { height: auto; }
   .bc img { height: auto; object-fit: unset; }
   .tours, .guide, .emotions, .faq, .form-s { padding: 40px 16px; }
@@ -547,15 +546,6 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-expand" onclick="event.stopPropagation();openD('vin')">+</div>
-    </div>
-    <div class="bc b-surf" onclick="openD('surf')">
-      <img src="images/surf.jpg" alt="Урок серфинга Дананг">
-      <div class="bc-info">
-        <div class="bc-title">Урок сёрфинга</div>
-        <div class="bc-sub">Видео в подарок · 40$</div>
-      </div>
-      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
-      <div class="bc-expand" onclick="event.stopPropagation();openD('surf')">+</div>
     </div>
     <div class="bc b-hayvan" onclick="openD('hayvan')">
       <img src="images/hayvan.jpg" alt="Купание в водопадах перевал Хайван">
@@ -888,12 +878,6 @@ const tours = {
     exc:["Входные билеты (отдельно)"],
     note:["Входной билет включает:<br>✓ Доступ во все тематические зоны<br>✓ Безлимитный трансфер на багги<br>✓ Обед"],
     prices:[["Формат","Цена"],["Индивидуально до 4 человек","240 $"],["Каждый следующий участник","+ 60 $"],["",""],["Взрослый / ребенок выше 140 см","60 $"],["Ребенок 100–140 см","30 $"],["Ребенок ниже 100 см","Бесплатно"],["Входные билеты",""],["Входной билет взрослый / ребенок выше 140 см","950 000 VND"],["Ребенок 100–140 см","600 000 VND"]]},
-  surf:{title:"Урок сёрфинга в Дананге",price:"40$",
-    seo:"Серфинг в Дананге — уроки с русским инструктором для новичков и тех, кто хочет освежить навык. Обучение начинается с теории и практики на суше, затем выход в воду. Видеосъёмка в подарок, доступны групповой и индивидуальный форматы.",
-    prog:[["","Встреча на споте, знакомство с инструктором"],["10 мин","Теория и техника безопасности"],["","Отработка на суше"],["75 мин","Практика в воде"],["Бонус","Видеосъёмка — в подарок"]],
-    inc:["Трансфер от/до отеля","Русский инструктор","Сёрфборд","Лайкра","Защита от солнца","Видеосъёмка"],
-    exc:[],
-    prices:[["Формат","Цена"],["Групповой (до 3 чел)","40 $"],["Индивидуально 1/1","80 $"],["Сплит для двоих","110 $"]]},
   hayvan:{title:"Купание в водопадах на перевале Хайван",price:"65$",
     seo:"Перевал Хайван (Hai Van Pass) — экскурсия из Дананга с гидом из России по самой красивой дороге Вьетнама. Панорама на море, исторические Ворота неба и купание в водопадах на каскаде по пути. Жемчужная лагуна и обед включены в маршрут.",
     prog:[["08:00","Встреча у отеля"],["09:00","Перевал Хайван — фотоостановка с панорамой на море"],["09:15","Hai Van Quan — исторические ворота неба"],["12:30","Жемчужная лагуна"],["13:00","Обед"],["14:00","Каскад водопадов — купание"],["17:00","Возвращение в отель"]],
