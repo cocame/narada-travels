@@ -1,9 +1,10 @@
 # macOS
 .DS_Store
 
-# Wrangler: локальный кэш и стейт, содержит ID аккаунта Cloudflare
+# Код Cloudflare Worker держим вне публичного репозитория.
+# Живёт локально в worker/ и деплоится через wrangler; на GitHub не публикуется.
+worker/
 .wrangler/
-worker/.wrangler/
 
 # Секреты — никогда не коммитим
 .env

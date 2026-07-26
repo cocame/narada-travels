@@ -12,7 +12,7 @@
 </script>
 
 <!-- Yandex.Metrika counter -->
-<script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109555301', 'ym');ym(109555301, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/109555301" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109555301', 'ym');ym(109555301, 'init', {ssr:true, webvisor:false, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/109555301" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -308,6 +308,23 @@ nav {
 }
 .fsubmit:hover { background: #d44430; transform: translateY(-1px); }
 #fok { display: none; padding: 16px; background: rgba(22,163,74,0.12); border: 1px solid rgba(22,163,74,0.3); border-radius: var(--r); color: #86efac; font-size: 14px; margin-top: 10px; }
+
+.fconsent { display: flex; align-items: flex-start; gap: 9px; margin-top: 2px; cursor: pointer; }
+.fconsent input {
+  appearance: none; -webkit-appearance: none; flex-shrink: 0;
+  width: 15px; height: 15px; margin-top: 1px; cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.28); border-radius: 3px; background: transparent;
+  transition: background .15s, border-color .15s;
+}
+.fconsent input:checked { background: var(--c); border-color: var(--c); }
+.fconsent input:checked::after {
+  content: '✓'; display: block; color: #fff; font-size: 11px; font-weight: 700;
+  line-height: 13px; text-align: center;
+}
+.fconsent input:focus-visible { outline: 2px solid var(--c); outline-offset: 2px; }
+.fconsent span { font-size: 11px; line-height: 1.5; color: rgba(255,255,255,0.35); }
+.fconsent a { color: rgba(255,255,255,0.5); text-decoration: underline; text-underline-offset: 2px; }
+.fconsent a:hover { color: rgba(255,255,255,0.75); }
 
 /* ── DRAWER ── */
 .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; backdrop-filter: blur(4px); }
@@ -794,6 +811,10 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
         </div>
         <div class="field"><label>Комментарий</label><textarea name="comment" rows="3" placeholder="Дети, пожелания, вопросы..."></textarea></div>
         <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <label class="fconsent">
+          <input type="checkbox" name="consent" required>
+          <span>Согласен на обработку персональных данных — имя и контакт нужны, чтобы ответить на заявку. <a href="/privacy.html" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a></span>
+        </label>
         <button type="submit" class="fsubmit">Отправить заявку</button>
       </form>
       <div id="fok">Заявка отправлена! Свяжемся в ближайшее время.</div>
@@ -804,7 +825,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
 <footer>
   <div class="flogo">Narada Travels & Guides</div>
   <p>Экскурсии из Дананга с русскоязычным гидом · Вьетнам</p>
-  <p>© 2026 Narada</p>
+  <p>© 2026 Narada · <a href="/privacy.html" style="color:rgba(255,255,255,0.35);text-decoration:underline;text-underline-offset:2px">Политика конфиденциальности</a></p>
 </footer>
 
 </div><!-- /w -->
@@ -962,7 +983,7 @@ document.querySelectorAll('.fq').forEach(btn => {
   });
 });
 
-// Заявки уходят на Cloudflare Worker (код: worker/form-worker.js).
+// Заявки уходят на Cloudflare Worker — его код держим вне публичного репозитория.
 // Токен бота лежит в переменных окружения воркера и в браузер не попадает.
 const FORM_ENDPOINT = 'https://narada-form.cocame.workers.dev';
 
@@ -979,7 +1000,8 @@ document.getElementById('bForm').addEventListener('submit', async function(e) {
       method: 'POST', headers: {'Content-Type':'application/json'},
       body: JSON.stringify({
         name: d.get('name'), contact: d.get('contact'), tour: d.get('tour'),
-        people: d.get('people'), dates, comment: d.get('comment'), website: d.get('website')
+        people: d.get('people'), dates, comment: d.get('comment'),
+        consent: d.get('consent') === 'on', website: d.get('website')
       })
     });
     if (!r.ok) throw new Error(r.status);
