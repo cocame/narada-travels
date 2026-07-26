@@ -793,6 +793,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
           </div>
         </div>
         <div class="field"><label>Комментарий</label><textarea name="comment" rows="3" placeholder="Дети, пожелания, вопросы..."></textarea></div>
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <button type="submit" class="fsubmit">Отправить заявку</button>
       </form>
       <div id="fok">Заявка отправлена! Свяжемся в ближайшее время.</div>
@@ -961,21 +962,33 @@ document.querySelectorAll('.fq').forEach(btn => {
   });
 });
 
+// Заявки уходят на Cloudflare Worker (код: worker/form-worker.js).
+// Токен бота лежит в переменных окружения воркера и в браузер не попадает.
+const FORM_ENDPOINT = 'https://narada-form.cocame.workers.dev';
+
 document.getElementById('bForm').addEventListener('submit', async function(e) {
   e.preventDefault();
+  const btn = this.querySelector('.fsubmit');
   const d = new FormData(this);
   const dateFrom = d.get('date_from') || '';
   const dateTo = d.get('date_to') || '';
-  const dates = dateFrom && dateTo ? `${dateFrom} — ${dateTo}` : dateFrom || dateTo || 'не указаны';
-  const text = `Новая заявка!\n\nИмя: ${d.get('name')}\nКонтакт: ${d.get('contact')}\nТур: ${d.get('tour')}\nЧеловек: ${d.get('people')}\nДаты: ${dates}\nКомментарий: ${d.get('comment')||'нет'}`;
+  const dates = dateFrom && dateTo ? `${dateFrom} — ${dateTo}` : dateFrom || dateTo || '';
+  btn.disabled = true;
   try {
-    await fetch('https://api.telegram.org/bot8455166453:AAH5IKJlFTSEUS-UdK7uMA15jW98FwvESvg/sendMessage', {
+    const r = await fetch(FORM_ENDPOINT, {
       method: 'POST', headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({chat_id:'6304136477', text})
+      body: JSON.stringify({
+        name: d.get('name'), contact: d.get('contact'), tour: d.get('tour'),
+        people: d.get('people'), dates, comment: d.get('comment'), website: d.get('website')
+      })
     });
+    if (!r.ok) throw new Error(r.status);
     this.style.display = 'none';
     document.getElementById('fok').style.display = 'block';
-  } catch(err) { alert('Ошибка. Напишите нам в Telegram напрямую.'); }
+  } catch(err) {
+    btn.disabled = false;
+    alert('Ошибка. Напишите нам в Telegram напрямую.');
+  }
 });
 </script>
 
