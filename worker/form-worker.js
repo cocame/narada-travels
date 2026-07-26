@@ -44,6 +44,13 @@ export default {
     if (request.method !== 'POST') return json({ ok: false }, 405, headers);
     if (!ALLOWED_ORIGINS.includes(origin)) return json({ ok: false }, 403, headers);
 
+    // Лимит по IP: 5 заявок в минуту. Origin можно подделать из скрипта, это — нельзя.
+    const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+    // Лимит best-effort: счётчик у Cloudflare согласуется не мгновенно, так что
+    // это потолок против массового бурста, а не строгая защита от точечного спама.
+    const rl = await env.FORM_LIMIT.limit({ key: ip });
+    if (!rl.success) return json({ ok: false, error: 'too_many_requests' }, 429, headers);
+
     let d;
     try {
       d = await request.json();

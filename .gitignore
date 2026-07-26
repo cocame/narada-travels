@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# Wrangler: локальный кэш и стейт, содержит ID аккаунта Cloudflare
+.wrangler/
+worker/.wrangler/
+
+# Секреты — никогда не коммитим
+.env
+.env.*
+.dev.vars
+
+node_modules/
