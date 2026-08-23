@@ -257,18 +257,20 @@ nav {
 .btn-tg:hover { background: #1a8bc4; transform: translateY(-1px); }
 
 /* ── РОСТ РЕБЁНКА ── */
-.height { padding: 72px 56px; background: #fff; }
-.height h2 { font-size: clamp(28px,3.5vw,48px); font-weight: 800; letter-spacing: -0.02em; text-align: center; margin-bottom: 12px; }
-.height-sub { font-size: 16px; color: var(--gray); line-height: 1.65; max-width: 640px; margin: 0 auto 36px; text-align: center; }
-.height-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; align-items: start; }
-.hcard { background: var(--bg); border: 1px solid var(--border); border-radius: var(--r); padding: 26px 24px; }
-.hcard h3 { font-size: 17px; font-weight: 800; margin-bottom: 14px; letter-spacing: -0.01em; }
-.hcard ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.height { padding: 0 56px 72px; }
+.b-height { display: block; width: 100%; aspect-ratio: 21/7; }
+.b-height img { object-position: center 42%; }
+/* Раскрытая карточка: фото и текст рядом, без пустот */
+.h-body { display: grid; grid-template-columns: 340px 1fr; gap: 28px; align-items: start; }
+.h-photo { width: 100%; border-radius: var(--r); display: block; }
+.h-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 32px; align-items: start; }
+.hcard h3 { font-size: 15px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.01em; }
+.hcard ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .hcard li { font-size: 14px; color: var(--gray); line-height: 1.7; padding-left: 16px; position: relative; }
 .hcard li::before { content: '—'; position: absolute; left: 0; color: var(--c); }
 .hcard b { color: var(--dark); font-weight: 700; }
 .height-note {
-  margin-top: 16px; padding: 20px 24px; border-radius: var(--r);
+  grid-column: 1 / -1; padding: 16px 20px; border-radius: var(--r);
   background: #FDF2F0; border: 1px solid rgba(232,83,58,0.28);
   font-size: 14px; line-height: 1.7; color: var(--dark);
 }
@@ -423,9 +425,12 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
   .b-hue,.b-hoian,.b-bana,.b-danang,.b-kalmar,.b-springs,.b-cham,.b-vin,.b-hayvan,.b-sea,.b-dong { grid-column: span 1 !important; grid-row: span 1 !important; }
   .bc { height: auto; }
   .bc img { height: auto; object-fit: unset; }
-  .tours, .guide, .emotions, .faq, .form-s, .height { padding: 40px 16px; }
+  .tours, .guide, .emotions, .faq, .form-s { padding: 40px 16px; }
+  .height { padding: 0 16px 40px; }
+  .b-height { aspect-ratio: 4/3 !important; }
+  .b-height img { height: 100% !important; object-fit: cover !important; }
   .faq-wrap { grid-template-columns: 1fr; }
-  .height-grid { grid-template-columns: 1fr; }
+  .h-body, .h-cols { grid-template-columns: 1fr; }
   .guide-grid { grid-template-columns: 1fr !important; grid-auto-rows: auto; }
   .guide-grid .gc { grid-column: span 1 !important; grid-row: span 1 !important; }
   .gc { min-height: 180px; }
@@ -619,38 +624,15 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
 
 <!-- ── РОСТ РЕБЁНКА ── -->
 <section class="height" id="height">
-  <h2>📏 Как измеряют рост ребёнка</h2>
-  <p class="height-sub">В парках Вьетнама — Ба На Хиллс и других — цена зависит не от возраста, а от роста. Если ребёнок выше 140 см, он считается взрослым.</p>
-  <div class="height-grid">
-
-    <div class="hcard">
-      <h3>Как измеряют</h3>
-      <ul>
-        <li><b>Ростомер.</b> На входе и в ресторане стоят твёрдые стойки с отметками. Ребёнка ставят к ним вплотную.</li>
-        <li><b>В обуви.</b> Измеряют в том, в чём пришли. Если подошва кроссовок прибавила 2 см и ребёнок стал выше отметки — платят за взрослый билет. Снимать обувь никто не разрешит.</li>
-        <li><b>Двойной контроль.</b> Сначала рост проверяют перед посадкой в кабинку, потом ещё раз на входе в ресторан. Если там планка коснулась макушки — заставят доплатить.</li>
-        <li><b>Спорить бесполезно.</b> У персонала камеры и инструкции. Показать паспорт или договориться не получится. Коснулся планки — плати.</li>
-      </ul>
+  <div class="bc b-height" onclick="openHeight()">
+    <img src="images/height-chart.webp" alt="Ростомер на входе в Ба На Хиллс">
+    <div class="bc-badge">Важно с детьми</div>
+    <div class="bc-info">
+      <div class="bc-title">📏 Как измеряют рост ребёнка</div>
+      <div class="bc-sub">Цена по росту, а не по возрасту · Выше 140 см — взрослый билет</div>
     </div>
-
-    <div class="hcard">
-      <h3>Если рост около 140 см</h3>
-      <ul>
-        <li><b>Обувь.</b> Высокие кроссовки — это лишние деньги. Наденьте ребёнку кеды или сандалии на плоской подошве.</li>
-        <li><b>Замер дома.</b> Обязательно измерьте ребёнка у стены — именно в той обуви, в которой поедете. Есть 140 см — готовьте деньги.</li>
-      </ul>
-    </div>
-
-    <div class="hcard">
-      <h3>Доплата и возврат</h3>
-      <ul>
-        <li>Если на замере ребёнок оказался 140 см и выше, доплатить нужно сразу: и за билет в парк, и за сам тур.</li>
-        <li>Если доплачивать вы откажетесь, возврата денег за тур и билеты не будет — они сгорают.</li>
-      </ul>
-    </div>
-
+    <div class="bc-expand" onclick="event.stopPropagation();openHeight()">+</div>
   </div>
-  <div class="height-note"><b>Важно:</b> измерьте ребёнка дома до поездки. Это единственный способ не столкнуться с доплатой на входе.</div>
 </section>
 
 <!-- ── FAQ ── -->
@@ -1013,6 +995,48 @@ function openD(key) {
           <button class="btn-outline" onclick="closeD()">Закрыть</button>
         </div>
       </div>
+    </div>`;
+  document.getElementById('overlay').classList.add('open');
+  document.getElementById('drawer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function openHeight() {
+  document.getElementById('d-content').innerHTML = `
+    <div class="d-title">📏 Как измеряют рост ребёнка</div>
+    <p class="d-seo">В парках Вьетнама — Ба На Хиллс и других — цена зависит не от возраста, а от роста. Если ребёнок выше 140 см, он считается взрослым.</p>
+    <div class="h-body">
+      <img class="h-photo" src="images/height-chart.webp" alt="Ростомер на входе в Ба На Хиллс">
+      <div class="h-cols">
+        <div class="hcard">
+          <h3>Как измеряют</h3>
+          <ul>
+            <li><b>Ростомер.</b> На входе и в ресторане стоят твёрдые стойки с отметками. Ребёнка ставят к ним вплотную.</li>
+            <li><b>В обуви.</b> Измеряют в том, в чём пришли. Если подошва кроссовок прибавила 2 см и ребёнок стал выше отметки — платят за взрослый билет. Снимать обувь никто не разрешит.</li>
+            <li><b>Двойной контроль.</b> Сначала рост проверяют перед посадкой в кабинку, потом ещё раз на входе в ресторан. Если там планка коснулась макушки — заставят доплатить.</li>
+            <li><b>Спорить бесполезно.</b> У персонала камеры и инструкции. Показать паспорт или договориться не получится. Коснулся планки — плати.</li>
+          </ul>
+        </div>
+        <div class="hcard">
+          <h3>Если рост около 140 см</h3>
+          <ul>
+            <li><b>Обувь.</b> Высокие кроссовки — это лишние деньги. Наденьте ребёнку кеды или сандалии на плоской подошве.</li>
+            <li><b>Замер дома.</b> Обязательно измерьте ребёнка у стены — именно в той обуви, в которой поедете. Есть 140 см — готовьте деньги.</li>
+          </ul>
+        </div>
+        <div class="hcard">
+          <h3>Доплата и возврат</h3>
+          <ul>
+            <li>Если на замере ребёнок оказался 140 см и выше, доплатить нужно сразу: и за билет в парк, и за сам тур.</li>
+            <li>Если доплачивать вы откажетесь, возврата денег за тур и билеты не будет — они сгорают.</li>
+          </ul>
+        </div>
+        <div class="height-note"><b>Важно:</b> измерьте ребёнка дома до поездки. Это единственный способ не столкнуться с доплатой на входе.</div>
+      </div>
+    </div>
+    <div class="d-cta" style="margin-top:24px">
+      <a href="#form" class="btn-primary" onclick="closeD()">Забронировать</a>
+      <button class="btn-outline" onclick="closeD()">Закрыть</button>
     </div>`;
   document.getElementById('overlay').classList.add('open');
   document.getElementById('drawer').classList.add('open');
