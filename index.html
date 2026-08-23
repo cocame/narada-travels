@@ -190,17 +190,14 @@ nav {
    Сдвиг влево возвращает в кадр вторую руку и пролёт моста. */
 .b-bana img { object-position: 18% center; }
 .b-bana-priv { grid-column: span 4; }
-.b-springs{ grid-column: span 5; grid-row: span 2; }
-/* Узкая и высокая плитка: фото ростомера вертикальное */
-.b-height { grid-column: span 3; grid-row: span 2; }
-.b-height img { object-position: center 45%; }
+.b-springs{ grid-column: span 4; grid-row: span 2; }
+.b-cham   { grid-column: span 4; grid-row: span 2; }
 .b-danang { grid-column: span 4; }
 .b-kalmar { grid-column: span 4; }
 .b-vin    { grid-column: span 4; }
-.b-cham   { grid-column: span 4; grid-row: span 2; }
 .b-hayvan { grid-column: span 8; }
 .b-sea    { grid-column: span 4; }
-.b-dong   { grid-column: span 4; }
+.b-dong   { grid-column: span 12; }
 
 /* ── ЭТАЖ 3: ГИД ПО ДАНАНГУ (BENTO GRID) ── */
 .guide { padding: 72px 56px; background: #f7f7f5; }
@@ -260,20 +257,18 @@ nav {
 .btn-tg:hover { background: #1a8bc4; transform: translateY(-1px); }
 .emotions-btns { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
 
-/* ── РОСТ РЕБЁНКА ── */
-/* Раскрытая карточка: фото и текст рядом, без пустот */
-.h-body { display: grid; grid-template-columns: 340px 1fr; gap: 28px; align-items: start; }
-.h-photo { width: 100%; border-radius: var(--r); display: block; }
-/* Один столбец: при двух блоки разной длины оставляли дыры справа */
-.h-cols { display: grid; grid-template-columns: 1fr; gap: 22px; align-items: start; }
-.h-photo { position: sticky; top: 0; }
+/* ── РОСТ РЕБЁНКА (внутри частых вопросов) ── */
+/* Ответ длиннее обычного, поэтому свой запас высоты */
+.fi.open .fa.tall { max-height: 2000px; padding-bottom: 22px; }
+.fa.tall .h-photo { width: 100%; max-width: 260px; border-radius: var(--r); display: block; margin: 14px 0 18px; }
+.fa.tall .hcard { margin-bottom: 18px; }
 .hcard h3 { font-size: 15px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.01em; }
 .hcard ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .hcard li { font-size: 14px; color: var(--gray); line-height: 1.7; padding-left: 16px; position: relative; }
 .hcard li::before { content: '—'; position: absolute; left: 0; color: var(--c); }
 .hcard b { color: var(--dark); font-weight: 700; }
 .height-note {
-  grid-column: 1 / -1; padding: 16px 20px; border-radius: var(--r);
+  padding: 16px 20px; border-radius: var(--r);
   background: #FDF2F0; border: 1px solid rgba(232,83,58,0.28);
   font-size: 14px; line-height: 1.7; color: var(--dark);
 }
@@ -559,14 +554,14 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-expand" onclick="event.stopPropagation();openD('springs')">+</div>
     </div>
-    <div class="bc b-height" onclick="openHeight()">
-      <img src="images/height-chart.webp" alt="Ростомер на входе в Ба На Хиллс">
-      <div class="bc-badge">Важно с детьми</div>
+    <div class="bc b-cham" onclick="openD('cham')">
+      <img src="images/cham.jpg" alt="Острова Чам снорклинг ЮНЕСКО">
       <div class="bc-info">
-        <div class="bc-title">📏 Как измеряют рост ребёнка</div>
-        <div class="bc-sub">Цена по росту, а не по возрасту · Выше 140 см — взрослый билет</div>
+        <div class="bc-title">Острова Чам — ЮНЕСКО</div>
+        <div class="bc-sub">Снорклинг · Обед включён · 70$</div>
       </div>
-      <div class="bc-expand" onclick="event.stopPropagation();openHeight()">+</div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
+      <div class="bc-expand" onclick="event.stopPropagation();openD('cham')">+</div>
     </div>
     <div class="bc b-danang" onclick="openD('danang')">
       <img src="images/danang-city.jpg" alt="Дананг за один день">
@@ -594,15 +589,6 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-expand" onclick="event.stopPropagation();openD('vin')">+</div>
-    </div>
-    <div class="bc b-cham" onclick="openD('cham')">
-      <img src="images/cham.jpg" alt="Острова Чам снорклинг ЮНЕСКО">
-      <div class="bc-info">
-        <div class="bc-title">Острова Чам — ЮНЕСКО</div>
-        <div class="bc-sub">Снорклинг · Обед включён · 70$</div>
-      </div>
-      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
-      <div class="bc-expand" onclick="event.stopPropagation();openD('cham')">+</div>
     </div>
     <div class="bc b-hayvan" onclick="openD('hayvan')">
       <img src="images/hayvan.jpg" alt="Купание в водопадах перевал Хайван">
@@ -644,9 +630,37 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
     <div class="fi"><button class="fq">Что включено в стоимость? <span class="fi-icon">+</span></button><div class="fa">Трансфер от/до отеля и вода. Гид, входные билеты и обед — смотрите в описании каждого тура.</div></div>
     <div class="fi"><button class="fq">Почему нужна предоплата? <span class="fi-icon">+</span></button><div class="fa">Мы заранее бронируем транспорт, а для некоторых экскурсий — входные билеты, обеды и активности. Предоплата подтверждает ваше место в туре.</div></div>
     <div class="fi"><button class="fq">Можно ли отменить или перенести? <span class="fi-icon">+</span></button><div class="fa">При отмене менее чем за 24 часа предоплата не возвращается. Перенос даты возможен при наличии свободных мест.</div></div>
-    <div class="fi"><button class="fq">Забираете ли вы из отелей в Хойане? <span class="fi-icon">+</span></button><div class="fa">Да, возможен трансфер из Хойана за дополнительную оплату. Условия зависят от экскурсии и количества человек.</div></div>
     <div class="fi"><button class="fq">Можно ли с коляской? <span class="fi-icon">+</span></button><div class="fa">Наши экскурсии не подходят для колясок из-за особенностей маршрутов. Для малышей рекомендуем слинг или переноску.</div></div>
     <div class="fi"><button class="fq">Сколько человек нужно, чтобы ехать без посторонних? <span class="fi-icon">+</span></button><div class="fa">Ограничений нет. Мы организуем тур даже для 1 человека.</div></div>
+    <div class="fi"><button class="fq">📏 Как измеряют рост ребёнка? <span class="fi-icon">+</span></button><div class="fa tall">
+      В парках Вьетнама — Ба На Хиллс и других — цена зависит не от возраста, а от роста. Если ребёнок выше 140 см, он считается взрослым.
+      <img class="h-photo" src="images/height-chart.webp" alt="Ростомер на входе в Ба На Хиллс">
+      <div class="hcard">
+        <h3>Как измеряют</h3>
+        <ul>
+          <li><b>Ростомер.</b> На входе и в ресторане стоят твёрдые стойки с отметками. Ребёнка ставят к ним вплотную.</li>
+          <li><b>В обуви.</b> Измеряют в том, в чём пришли. Если подошва кроссовок прибавила 2 см и ребёнок стал выше отметки — платят за взрослый билет. Снимать обувь никто не разрешит.</li>
+          <li><b>Двойной контроль.</b> Сначала рост проверяют перед посадкой в кабинку, потом ещё раз на входе в ресторан. Если там планка коснулась макушки — заставят доплатить.</li>
+          <li><b>Спорить бесполезно.</b> У персонала камеры и инструкции. Показать паспорт или договориться не получится. Коснулся планки — плати.</li>
+        </ul>
+      </div>
+      <div class="hcard">
+        <h3>Если рост около 140 см</h3>
+        <ul>
+          <li><b>Обувь.</b> Высокие кроссовки — это лишние деньги. Наденьте ребёнку кеды или сандалии на плоской подошве.</li>
+          <li><b>Замер дома.</b> Обязательно измерьте ребёнка у стены — именно в той обуви, в которой поедете.</li>
+          <li><b>138–139 см — пограничный рост.</b> Лучше сразу оплатить взрослый билет: 300 000 донгов не стоят ваших нервов.</li>
+        </ul>
+      </div>
+      <div class="hcard">
+        <h3>Доплата и возврат</h3>
+        <ul>
+          <li>Если на замере ребёнок оказался 140 см и выше, доплатить нужно сразу: и за билет в парк, и за сам тур.</li>
+          <li>Если доплачивать вы откажетесь, возврата денег за тур и билеты не будет — они сгорают.</li>
+        </ul>
+      </div>
+      <div class="height-note"><b>И главное:</b> группа ждать не будет ваших разборок. Деньги за экскурсию не возвращаются.</div>
+    </div></div>
   </div>
 </section>
 
@@ -998,49 +1012,6 @@ function openD(key) {
           <button class="btn-outline" onclick="closeD()">Закрыть</button>
         </div>
       </div>
-    </div>`;
-  document.getElementById('overlay').classList.add('open');
-  document.getElementById('drawer').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function openHeight() {
-  document.getElementById('d-content').innerHTML = `
-    <div class="d-title">📏 Как измеряют рост ребёнка</div>
-    <p class="d-seo">В парках Вьетнама — Ба На Хиллс и других — цена зависит не от возраста, а от роста. Если ребёнок выше 140 см, он считается взрослым.</p>
-    <div class="h-body">
-      <img class="h-photo" src="images/height-chart.webp" alt="Ростомер на входе в Ба На Хиллс">
-      <div class="h-cols">
-        <div class="hcard">
-          <h3>Как измеряют</h3>
-          <ul>
-            <li><b>Ростомер.</b> На входе и в ресторане стоят твёрдые стойки с отметками. Ребёнка ставят к ним вплотную.</li>
-            <li><b>В обуви.</b> Измеряют в том, в чём пришли. Если подошва кроссовок прибавила 2 см и ребёнок стал выше отметки — платят за взрослый билет. Снимать обувь никто не разрешит.</li>
-            <li><b>Двойной контроль.</b> Сначала рост проверяют перед посадкой в кабинку, потом ещё раз на входе в ресторан. Если там планка коснулась макушки — заставят доплатить.</li>
-            <li><b>Спорить бесполезно.</b> У персонала камеры и инструкции. Показать паспорт или договориться не получится. Коснулся планки — плати.</li>
-          </ul>
-        </div>
-        <div class="hcard">
-          <h3>Если рост около 140 см</h3>
-          <ul>
-            <li><b>Обувь.</b> Высокие кроссовки — это лишние деньги. Наденьте ребёнку кеды или сандалии на плоской подошве.</li>
-            <li><b>Замер дома.</b> Обязательно измерьте ребёнка у стены — именно в той обуви, в которой поедете.</li>
-            <li><b>138–139 см — пограничный рост.</b> Лучше сразу оплатить взрослый билет: 300 000 донгов не стоят ваших нервов.</li>
-          </ul>
-        </div>
-        <div class="hcard">
-          <h3>Доплата и возврат</h3>
-          <ul>
-            <li>Если на замере ребёнок оказался 140 см и выше, доплатить нужно сразу: и за билет в парк, и за сам тур.</li>
-            <li>Если доплачивать вы откажетесь, возврата денег за тур и билеты не будет — они сгорают.</li>
-          </ul>
-        </div>
-        <div class="height-note"><b>И главное:</b> группа ждать не будет ваших разборок. Деньги за экскурсию не возвращаются.</div>
-      </div>
-    </div>
-    <div class="d-cta" style="margin-top:24px">
-      <a href="#form" class="btn-primary" onclick="closeD()">Забронировать</a>
-      <button class="btn-outline" onclick="closeD()">Закрыть</button>
     </div>`;
   document.getElementById('overlay').classList.add('open');
   document.getElementById('drawer').classList.add('open');
