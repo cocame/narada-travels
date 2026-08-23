@@ -190,14 +190,17 @@ nav {
    Сдвиг влево возвращает в кадр вторую руку и пролёт моста. */
 .b-bana img { object-position: 18% center; }
 .b-bana-priv { grid-column: span 4; }
+.b-springs{ grid-column: span 5; grid-row: span 2; }
+/* Узкая и высокая плитка: фото ростомера вертикальное */
+.b-height { grid-column: span 3; grid-row: span 2; }
+.b-height img { object-position: center 45%; }
 .b-danang { grid-column: span 4; }
 .b-kalmar { grid-column: span 4; }
-.b-springs{ grid-column: span 5; grid-row: span 2; }
+.b-vin    { grid-column: span 4; }
 .b-cham   { grid-column: span 4; grid-row: span 2; }
-.b-vin    { grid-column: span 3; }
-.b-hayvan { grid-column: span 7; }
-.b-sea    { grid-column: span 5; }
-.b-dong   { grid-column: span 7; }
+.b-hayvan { grid-column: span 8; }
+.b-sea    { grid-column: span 4; }
+.b-dong   { grid-column: span 4; }
 
 /* ── ЭТАЖ 3: ГИД ПО ДАНАНГУ (BENTO GRID) ── */
 .guide { padding: 72px 56px; background: #f7f7f5; }
@@ -257,9 +260,6 @@ nav {
 .btn-tg:hover { background: #1a8bc4; transform: translateY(-1px); }
 
 /* ── РОСТ РЕБЁНКА ── */
-.height { padding: 0 56px 72px; }
-.b-height { display: block; width: 100%; aspect-ratio: 21/7; }
-.b-height img { object-position: center 42%; }
 /* Раскрытая карточка: фото и текст рядом, без пустот */
 .h-body { display: grid; grid-template-columns: 340px 1fr; gap: 28px; align-items: start; }
 .h-photo { width: 100%; border-radius: var(--r); display: block; }
@@ -424,13 +424,10 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
   .bento { grid-template-columns: 1fr !important; grid-auto-rows: auto; }
   .b-bana-evening { aspect-ratio: 4/3 !important; }
   .b-bana-evening img { height: 100% !important; object-fit: cover !important; }
-  .b-hue,.b-hoian,.b-bana,.b-danang,.b-kalmar,.b-springs,.b-cham,.b-vin,.b-hayvan,.b-sea,.b-dong { grid-column: span 1 !important; grid-row: span 1 !important; }
+  .b-hue,.b-hoian,.b-bana,.b-danang,.b-kalmar,.b-springs,.b-cham,.b-vin,.b-hayvan,.b-sea,.b-dong,.b-height { grid-column: span 1 !important; grid-row: span 1 !important; }
   .bc { height: auto; }
   .bc img { height: auto; object-fit: unset; }
   .tours, .guide, .emotions, .faq, .form-s { padding: 40px 16px; }
-  .height { padding: 0 16px 40px; }
-  .b-height { aspect-ratio: 4/3 !important; }
-  .b-height img { height: 100% !important; object-fit: cover !important; }
   .faq-wrap { grid-template-columns: 1fr; }
   .h-body, .h-cols { grid-template-columns: 1fr; }
   .guide-grid { grid-template-columns: 1fr !important; grid-auto-rows: auto; }
@@ -549,6 +546,24 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-expand" onclick="event.stopPropagation();openD('bana')">+</div>
     </div>
+    <div class="bc b-springs" onclick="openD('springs')">
+      <img src="images/springs.jpg" alt="Горячие источники экскурсия из Дананга">
+      <div class="bc-info">
+        <div class="bc-title">Горячие источники — гора удачи</div>
+        <div class="bc-sub">Онсэн · Аквапарк · 72$</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
+      <div class="bc-expand" onclick="event.stopPropagation();openD('springs')">+</div>
+    </div>
+    <div class="bc b-height" onclick="openHeight()">
+      <img src="images/height-chart.webp" alt="Ростомер на входе в Ба На Хиллс">
+      <div class="bc-badge">Важно с детьми</div>
+      <div class="bc-info">
+        <div class="bc-title">📏 Как измеряют рост ребёнка</div>
+        <div class="bc-sub">Цена по росту, а не по возрасту · Выше 140 см — взрослый билет</div>
+      </div>
+      <div class="bc-expand" onclick="event.stopPropagation();openHeight()">+</div>
+    </div>
     <div class="bc b-danang" onclick="openD('danang')">
       <img src="images/danang-city.jpg" alt="Дананг за один день">
       <div class="bc-info">
@@ -567,14 +582,14 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-expand" onclick="event.stopPropagation();openD('kalmar')">+</div>
     </div>
-    <div class="bc b-springs" onclick="openD('springs')">
-      <img src="images/springs.jpg" alt="Горячие источники экскурсия из Дананга">
+    <div class="bc b-vin" onclick="openD('vin')">
+      <img src="images/vinwonders.jpg" alt="VinWonders Хойан парк">
       <div class="bc-info">
-        <div class="bc-title">Горячие источники — гора удачи</div>
-        <div class="bc-sub">Онсэн · Аквапарк · 72$</div>
+        <div class="bc-title">VinWonders Хойан</div>
+        <div class="bc-sub">Сафари · 60$</div>
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
-      <div class="bc-expand" onclick="event.stopPropagation();openD('springs')">+</div>
+      <div class="bc-expand" onclick="event.stopPropagation();openD('vin')">+</div>
     </div>
     <div class="bc b-cham" onclick="openD('cham')">
       <img src="images/cham.jpg" alt="Острова Чам снорклинг ЮНЕСКО">
@@ -584,15 +599,6 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-expand" onclick="event.stopPropagation();openD('cham')">+</div>
-    </div>
-    <div class="bc b-vin" onclick="openD('vin')">
-      <img src="images/vinwonders.jpg" alt="VinWonders Хойан парк">
-      <div class="bc-info">
-        <div class="bc-title">VinWonders Хойан</div>
-        <div class="bc-sub">Сафари · 60$</div>
-      </div>
-      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
-      <div class="bc-expand" onclick="event.stopPropagation();openD('vin')">+</div>
     </div>
     <div class="bc b-hayvan" onclick="openD('hayvan')">
       <img src="images/hayvan.jpg" alt="Купание в водопадах перевал Хайван">
@@ -621,21 +627,9 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-expand" onclick="event.stopPropagation();openD('dong')">+</div>
     </div>
-  </div>
+</div>
 </section>
 
-<!-- ── РОСТ РЕБЁНКА ── -->
-<section class="height" id="height">
-  <div class="bc b-height" onclick="openHeight()">
-    <img src="images/height-chart.webp" alt="Ростомер на входе в Ба На Хиллс">
-    <div class="bc-badge">Важно с детьми</div>
-    <div class="bc-info">
-      <div class="bc-title">📏 Как измеряют рост ребёнка</div>
-      <div class="bc-sub">Цена по росту, а не по возрасту · Выше 140 см — взрослый билет</div>
-    </div>
-    <div class="bc-expand" onclick="event.stopPropagation();openHeight()">+</div>
-  </div>
-</section>
 
 <!-- ── FAQ ── -->
 <section class="faq" id="faq">
