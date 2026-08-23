@@ -263,7 +263,9 @@ nav {
 /* Раскрытая карточка: фото и текст рядом, без пустот */
 .h-body { display: grid; grid-template-columns: 340px 1fr; gap: 28px; align-items: start; }
 .h-photo { width: 100%; border-radius: var(--r); display: block; }
-.h-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 32px; align-items: start; }
+/* Один столбец: при двух блоки разной длины оставляли дыры справа */
+.h-cols { display: grid; grid-template-columns: 1fr; gap: 22px; align-items: start; }
+.h-photo { position: sticky; top: 0; }
 .hcard h3 { font-size: 15px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.01em; }
 .hcard ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .hcard li { font-size: 14px; color: var(--gray); line-height: 1.7; padding-left: 16px; position: relative; }
