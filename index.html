@@ -429,6 +429,9 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
   .bc { height: auto; }
   .bc img { height: auto; object-fit: unset; }
   .tours, .guide, .emotions, .faq, .form-s { padding: 40px 16px; }
+  /* На телефоне мыши нет: касание залипало как наведение и кнопка
+     висела на одной случайной карточке. Убираем — бронь есть внутри. */
+  .bc-book { display: none; }
   .faq-wrap { grid-template-columns: 1fr; }
   .h-body, .h-cols { grid-template-columns: 1fr; }
   .guide-grid { grid-template-columns: 1fr !important; grid-auto-rows: auto; }
