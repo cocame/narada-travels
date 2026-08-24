@@ -292,7 +292,8 @@ nav {
 }
 .fi.open .fi-icon { transform: rotate(45deg); background: var(--c); color: #fff; }
 .fa { font-size: 14px; color: var(--gray); line-height: 1.75; max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .3s; padding: 0 20px; }
-.fi.open .fa { max-height: 200px; padding: 0 20px 18px; }
+/* 200px не хватало: длинные ответы обрезались на середине строки */
+.fi.open .fa { max-height: 500px; padding: 0 20px 18px; }
 
 /* ── ФОРМА ── */
 .form-s { padding: 72px 56px; background: #111; }
