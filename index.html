@@ -111,7 +111,16 @@ nav {
   line-height: 1.05;
   color: #fff;
   letter-spacing: -0.03em;
-  margin-bottom: 32px;
+  margin-bottom: 14px;
+}
+/* Подзаголовок — одна строка на десктопе, две на телефоне */
+.hero-sub {
+  font-size: clamp(1rem, 1.5vw, 1.375rem);
+  font-weight: 500;
+  line-height: 1.4;
+  color: rgba(255,255,255,0.85);
+  max-width: 560px;
+  margin-bottom: 30px;
 }
 .btn-white {
   display: inline-block;
@@ -500,14 +509,15 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <h1>Добро пожаловать в Дананг</h1>
+    <h1>Экскурсии из Дананга</h1>
+    <p class="hero-sub">Индивидуальные экскурсии с русскоязычным гидом</p>
     <a href="#form" class="btn-white">Написать нам</a>
   </div>
 </section>
 
 <!-- ── ЭТАЖ 2: ТОЛЬКО ЭКСКУРСИИ ── -->
 <section class="tours" id="tours">
-  <h2>Экскурсии из Дананга</h2>
+  <h2>Программы и цены</h2>
   <div class="bc b-bana-evening" onclick="openD('bana-evening')">
     <img src="images/bana-evening.webp" alt="Вечерний Ба На Хиллс — Тайны золотого моста">
     <div class="bc-badge">Эксклюзив</div>
