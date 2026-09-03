@@ -227,7 +227,12 @@ nav {
   grid-auto-rows: 240px;
   gap: 10px;
 }
-.bc { position: relative; border-radius: var(--r); overflow: hidden; cursor: pointer; }
+/* scroll-margin — чтобы при переходе по ссылке вида /#hue карточка не липла
+   к самому краю экрана, а вставала с отступом. */
+.bc { position: relative; border-radius: var(--r); overflow: hidden; cursor: pointer; scroll-margin-top: 24px; }
+/* Подсветка карточки, на которую пришли по ссылке: гаснет сама через 2,5 с. */
+.bc.bc-target { outline: 2px solid var(--accent); outline-offset: 3px; }
+.bc.bc-target-off { outline-color: transparent; transition: outline-color .8s ease; }
 .bc-badge {
   position: absolute; top: 16px; left: 16px; z-index: 3;
   display: inline-flex; align-items: center;
@@ -671,7 +676,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
 <!-- ── ЭТАЖ 2: ТОЛЬКО ЭКСКУРСИИ ── -->
 <section class="tours" id="tours">
   <h2>Программы и цены</h2>
-  <div class="bc b-bana-evening" onclick="openD('bana-evening')">
+  <div class="bc b-bana-evening" id="bana-evening" onclick="openD('bana-evening')">
     <img src="images/bana-evening-sunset.webp" alt="Вечерний Ба На Хиллс — Тайны золотого моста" style="object-position:center 45%">
     <div class="bc-badge">Эксклюзив</div>
     <div class="bc-info">
@@ -682,7 +687,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
     <div class="bc-expand" onclick="event.stopPropagation();openD('bana-evening')">+</div>
   </div>
   <div class="bento">
-    <div class="bc b-hue" onclick="openD('hue')">
+    <div class="bc b-hue" id="hue" onclick="openD('hue')">
       <img src="images/hue.jpg" alt="Экскурсия в Хюэ из Дананга">
       <div class="bc-info">
         <h3 class="bc-title">Императорский Хюэ</h3>
@@ -691,7 +696,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-expand" onclick="event.stopPropagation();openD('hue')">+</div>
     </div>
-    <div class="bc b-hoian" onclick="openD('hoian')">
+    <div class="bc b-hoian" id="hoian" onclick="openD('hoian')">
       <img src="images/hoian-sunset.webp" alt="Экскурсия в Хойан из Дананга">
       <div class="bc-info">
         <h3 class="bc-title">Древний Хойан</h3>
@@ -700,7 +705,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-expand" onclick="event.stopPropagation();openD('hoian')">+</div>
     </div>
-    <div class="bc b-bana" onclick="openD('bana')">
+    <div class="bc b-bana" id="bana" onclick="openD('bana')">
       <img src="images/bana-cable-car.webp" alt="Ба На Хиллс Золотой мост">
       <div class="bc-info">
         <h3 class="bc-title">Ба На Хиллс: Золотой мост</h3>
@@ -709,7 +714,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-expand" onclick="event.stopPropagation();openD('bana')">+</div>
     </div>
-    <div class="bc b-springs" onclick="openD('springs')">
+    <div class="bc b-springs" id="springs" onclick="openD('springs')">
       <img src="images/springs.jpg" alt="Горячие источники экскурсия из Дананга">
       <div class="bc-info">
         <h3 class="bc-title">Горячие источники — гора удачи</h3>
@@ -718,7 +723,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-expand" onclick="event.stopPropagation();openD('springs')">+</div>
     </div>
-    <div class="bc b-cham" onclick="openD('cham')">
+    <div class="bc b-cham" id="cham" onclick="openD('cham')">
       <img src="images/cham.jpg" alt="Острова Чам снорклинг ЮНЕСКО">
       <div class="bc-info">
         <h3 class="bc-title">Острова Чам — ЮНЕСКО</h3>
@@ -727,7 +732,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-expand" onclick="event.stopPropagation();openD('cham')">+</div>
     </div>
-    <div class="bc b-danang" onclick="openD('danang')">
+    <div class="bc b-danang" id="danang" onclick="openD('danang')">
       <img src="images/dragon-fire.webp" alt="Дананг за один день">
       <div class="bc-info">
         <h3 class="bc-title">Дананг за один день</h3>
@@ -736,7 +741,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-expand" onclick="event.stopPropagation();openD('danang')">+</div>
     </div>
-    <div class="bc b-kalmar" onclick="openD('kalmar')">
+    <div class="bc b-kalmar" id="kalmar" onclick="openD('kalmar')">
       <img src="images/kalmar.jpg" alt="Рыбалка во Вьетнаме Дананг">
       <div class="bc-info">
         <h3 class="bc-title">Рыбалка во Вьетнаме</h3>
@@ -745,7 +750,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-expand" onclick="event.stopPropagation();openD('kalmar')">+</div>
     </div>
-    <div class="bc b-vin" onclick="openD('vin')">
+    <div class="bc b-vin" id="vin" onclick="openD('vin')">
       <img src="images/vinwonders.jpg" alt="VinWonders Хойан парк">
       <div class="bc-info">
         <h3 class="bc-title">VinWonders Хойан</h3>
@@ -754,7 +759,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-expand" onclick="event.stopPropagation();openD('vin')">+</div>
     </div>
-    <div class="bc b-hayvan" onclick="openD('hayvan')">
+    <div class="bc b-hayvan" id="hayvan" onclick="openD('hayvan')">
       <img src="images/hayvan.jpg" alt="Купание в водопадах перевал Хайван">
       <div class="bc-info">
         <h3 class="bc-title">Купание в водопадах на перевале Хайван</h3>
@@ -763,7 +768,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-expand" onclick="event.stopPropagation();openD('hayvan')">+</div>
     </div>
-    <div class="bc b-sea" onclick="openD('sea')">
+    <div class="bc b-sea" id="sea" onclick="openD('sea')">
       <img src="images/sea.jpg" alt="Морская прогулка Дананг">
       <div class="bc-info">
         <h3 class="bc-title">Морская прогулка</h3>
@@ -772,7 +777,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-expand" onclick="event.stopPropagation();openD('sea')">+</div>
     </div>
-    <div class="bc b-dong" onclick="openD('dong')">
+    <div class="bc b-dong" id="dong" onclick="openD('dong')">
       <img src="images/dong-giang.webp" alt="Небесные врата Донг Зянг" style="object-position:center 55%">
       <div class="bc-info">
         <h3 class="bc-title">Небесные врата Донг Зянг</h3>
@@ -1248,6 +1253,27 @@ document.getElementById('bForm').addEventListener('submit', async function(e) {
     const tours = document.getElementById('tours');
     if(tours) tours.scrollIntoView({behavior:'smooth'});
   });
+})();
+
+// Ссылка на конкретную экскурсию: /#hue, /#dong и так далее.
+// Браузер прыгает по якорю сам, но делает это до загрузки фотографий —
+// картинки догружаются, высота меняется, и нужная карточка уезжает.
+// Поэтому доводим прокрутку после load и подсвечиваем, куда именно попали.
+(function(){
+  function goToCard(){
+    const key = decodeURIComponent(location.hash.replace('#',''));
+    if(!key) return;
+    const card = document.getElementById(key);
+    if(!card || !card.classList.contains('bc')) return;
+    card.scrollIntoView({block:'center'});
+    card.classList.add('bc-target');
+    setTimeout(function(){
+      card.classList.add('bc-target-off');
+      setTimeout(function(){ card.classList.remove('bc-target','bc-target-off'); }, 900);
+    }, 2500);
+  }
+  window.addEventListener('load', goToCard);
+  window.addEventListener('hashchange', goToCard);
 })();
 </script>
 </body>
