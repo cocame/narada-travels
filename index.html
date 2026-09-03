@@ -253,8 +253,8 @@ nav {
 }
 .bc-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 18px 20px; z-index: 1; }
 .bc-title { font-size: clamp(13px, 1.4vw, 17px); font-weight: 700; color: #fff; line-height: 1.25; margin-bottom: 4px; }
-/* Отступ справа под кнопки «🔗» и «+»: без него вторая строка подписи заезжала под них. */
-.bc-sub { font-size: 11px; color: rgba(255,255,255,0.65); padding-right: 74px; }
+/* Отступ справа под кнопку «🔗»: без него вторая строка подписи заезжала под неё. */
+.bc-sub { font-size: 11px; color: rgba(255,255,255,0.65); padding-right: 36px; }
 .bc-book {
   position: absolute; top: 12px; right: 12px; z-index: 2;
   background: var(--accent);
@@ -265,19 +265,10 @@ nav {
 }
 .bc:hover .bc-book { opacity: 1; }
 .bc-book:hover { background: var(--accent-hover); }
-/* Кнопка раскрытия — прямоугольник, не круг */
-.bc-expand {
-  position: absolute; bottom: 12px; right: 12px; z-index: 2;
-  background: rgba(255,255,255,0.15); backdrop-filter: blur(6px);
-  border: 1px solid rgba(255,255,255,0.2); color: #fff;
-  width: 30px; height: 30px; border-radius: var(--r);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 17px; cursor: pointer; transition: all .3s;
-}
-.bc.open .bc-expand { background: var(--c); border-color: var(--c); }
-/* Кнопка «скопировать ссылку на эту экскурсию» — рядом с раскрытием, тот же вид. */
+/* Кнопка «скопировать ссылку на эту экскурсию». Раньше рядом стояла «+»,
+   но она лишь повторяла нажатие на саму карточку — убрана, угол освободился. */
 .bc-link {
-  position: absolute; bottom: 12px; right: 50px; z-index: 2;
+  position: absolute; bottom: 12px; right: 12px; z-index: 2;
   background: rgba(255,255,255,0.15); backdrop-filter: blur(6px);
   border: 1px solid rgba(255,255,255,0.2); color: #fff;
   width: 30px; height: 30px; border-radius: var(--r);
@@ -703,7 +694,6 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
     </div>
     <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
     <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'bana-evening')">🔗</div>
-      <div class="bc-expand" onclick="event.stopPropagation();openD('bana-evening')">+</div>
   </div>
   <div class="bento">
     <div class="bc b-hue" id="hue" onclick="openD('hue')">
@@ -714,7 +704,6 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'hue')">🔗</div>
-      <div class="bc-expand" onclick="event.stopPropagation();openD('hue')">+</div>
     </div>
     <div class="bc b-hoian" id="hoian" onclick="openD('hoian')">
       <img src="images/hoian-sunset.webp" alt="Экскурсия в Хойан из Дананга">
@@ -724,7 +713,6 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'hoian')">🔗</div>
-      <div class="bc-expand" onclick="event.stopPropagation();openD('hoian')">+</div>
     </div>
     <div class="bc b-bana" id="bana" onclick="openD('bana')">
       <img src="images/bana-cable-car.webp" alt="Ба На Хиллс Золотой мост">
@@ -734,7 +722,6 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'bana')">🔗</div>
-      <div class="bc-expand" onclick="event.stopPropagation();openD('bana')">+</div>
     </div>
     <div class="bc b-springs" id="springs" onclick="openD('springs')">
       <img src="images/springs.jpg" alt="Горячие источники экскурсия из Дананга">
@@ -744,7 +731,6 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'springs')">🔗</div>
-      <div class="bc-expand" onclick="event.stopPropagation();openD('springs')">+</div>
     </div>
     <div class="bc b-cham" id="cham" onclick="openD('cham')">
       <img src="images/cham.jpg" alt="Острова Чам снорклинг ЮНЕСКО">
@@ -754,7 +740,6 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'cham')">🔗</div>
-      <div class="bc-expand" onclick="event.stopPropagation();openD('cham')">+</div>
     </div>
     <div class="bc b-danang" id="danang" onclick="openD('danang')">
       <img src="images/dragon-fire.webp" alt="Дананг за один день">
@@ -764,7 +749,6 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'danang')">🔗</div>
-      <div class="bc-expand" onclick="event.stopPropagation();openD('danang')">+</div>
     </div>
     <div class="bc b-kalmar" id="kalmar" onclick="openD('kalmar')">
       <img src="images/kalmar.jpg" alt="Рыбалка во Вьетнаме Дананг">
@@ -774,7 +758,6 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'kalmar')">🔗</div>
-      <div class="bc-expand" onclick="event.stopPropagation();openD('kalmar')">+</div>
     </div>
     <div class="bc b-vin" id="vin" onclick="openD('vin')">
       <img src="images/vinwonders.jpg" alt="VinWonders Хойан парк">
@@ -784,7 +767,6 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'vin')">🔗</div>
-      <div class="bc-expand" onclick="event.stopPropagation();openD('vin')">+</div>
     </div>
     <div class="bc b-hayvan" id="hayvan" onclick="openD('hayvan')">
       <img src="images/hayvan.jpg" alt="Купание в водопадах перевал Хайван">
@@ -794,7 +776,6 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'hayvan')">🔗</div>
-      <div class="bc-expand" onclick="event.stopPropagation();openD('hayvan')">+</div>
     </div>
     <div class="bc b-sea" id="sea" onclick="openD('sea')">
       <img src="images/sea.jpg" alt="Морская прогулка Дананг">
@@ -804,7 +785,6 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'sea')">🔗</div>
-      <div class="bc-expand" onclick="event.stopPropagation();openD('sea')">+</div>
     </div>
     <div class="bc b-dong" id="dong" onclick="openD('dong')">
       <img src="images/dong-giang.webp" alt="Небесные врата Донг Зянг" style="object-position:center 55%">
@@ -814,7 +794,6 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'dong')">🔗</div>
-      <div class="bc-expand" onclick="event.stopPropagation();openD('dong')">+</div>
     </div>
 </div>
 </section>
