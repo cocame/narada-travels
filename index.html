@@ -253,8 +253,8 @@ nav {
 }
 .bc-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 18px 20px; z-index: 1; }
 .bc-title { font-size: clamp(13px, 1.4vw, 17px); font-weight: 700; color: #fff; line-height: 1.25; margin-bottom: 4px; }
-/* Отступ справа под кнопку «+»: без него вторая строка подписи заезжала под неё. */
-.bc-sub { font-size: 11px; color: rgba(255,255,255,0.65); padding-right: 36px; }
+/* Отступ справа под кнопки «🔗» и «+»: без него вторая строка подписи заезжала под них. */
+.bc-sub { font-size: 11px; color: rgba(255,255,255,0.65); padding-right: 74px; }
 .bc-book {
   position: absolute; top: 12px; right: 12px; z-index: 2;
   background: var(--accent);
@@ -275,6 +275,24 @@ nav {
   font-size: 17px; cursor: pointer; transition: all .3s;
 }
 .bc.open .bc-expand { background: var(--c); border-color: var(--c); }
+/* Кнопка «скопировать ссылку на эту экскурсию» — рядом с раскрытием, тот же вид. */
+.bc-link {
+  position: absolute; bottom: 12px; right: 50px; z-index: 2;
+  background: rgba(255,255,255,0.15); backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.2); color: #fff;
+  width: 30px; height: 30px; border-radius: var(--r);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; cursor: pointer; transition: all .3s;
+}
+.bc-link:hover { background: rgba(255,255,255,0.3); }
+/* Подтверждение копирования — одно на страницу, всплывает снизу. */
+.copy-toast {
+  position: fixed; left: 50%; bottom: 32px; transform: translateX(-50%);
+  z-index: 100; padding: 12px 22px; border-radius: var(--r);
+  background: rgba(20,18,15,0.92); color: #fff; font-size: 14px; font-weight: 600;
+  opacity: 0; pointer-events: none; transition: opacity .3s;
+}
+.copy-toast.show { opacity: 1; }
 
 /* Верхний баннер вне сетки. Высота фиксированная, ровно как у полосы из двух
    рядов сетки (240 + 10 + 240), чтобы совпасть по высоте с нижним Донг Зянгом. */
@@ -684,7 +702,8 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
       <div class="bc-sub">Магия Маленькой Европы · Золотой мост «Руки Бога» · Канатка с рекордами Гиннесса</div>
     </div>
     <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
-    <div class="bc-expand" onclick="event.stopPropagation();openD('bana-evening')">+</div>
+    <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'bana-evening')">🔗</div>
+      <div class="bc-expand" onclick="event.stopPropagation();openD('bana-evening')">+</div>
   </div>
   <div class="bento">
     <div class="bc b-hue" id="hue" onclick="openD('hue')">
@@ -694,6 +713,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
         <div class="bc-sub">Здесь драконы шепчут легенды: запретный город и величие династий · 88$</div>
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
+      <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'hue')">🔗</div>
       <div class="bc-expand" onclick="event.stopPropagation();openD('hue')">+</div>
     </div>
     <div class="bc b-hoian" id="hoian" onclick="openD('hoian')">
@@ -703,6 +723,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
         <div class="bc-sub">Старый город, кокосовые джунгли, рисовые поля, фонарики на ночной реке · 65$</div>
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
+      <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'hoian')">🔗</div>
       <div class="bc-expand" onclick="event.stopPropagation();openD('hoian')">+</div>
     </div>
     <div class="bc b-bana" id="bana" onclick="openD('bana')">
@@ -712,6 +733,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
         <div class="bc-sub">Сказка в облаках · Французская деревня · Винные погреба · 50$</div>
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
+      <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'bana')">🔗</div>
       <div class="bc-expand" onclick="event.stopPropagation();openD('bana')">+</div>
     </div>
     <div class="bc b-springs" id="springs" onclick="openD('springs')">
@@ -721,6 +743,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
         <div class="bc-sub">Онсэн · Аквапарк · 72$</div>
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
+      <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'springs')">🔗</div>
       <div class="bc-expand" onclick="event.stopPropagation();openD('springs')">+</div>
     </div>
     <div class="bc b-cham" id="cham" onclick="openD('cham')">
@@ -730,6 +753,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
         <div class="bc-sub">Снорклинг · Обед включён · 70$</div>
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
+      <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'cham')">🔗</div>
       <div class="bc-expand" onclick="event.stopPropagation();openD('cham')">+</div>
     </div>
     <div class="bc b-danang" id="danang" onclick="openD('danang')">
@@ -739,6 +763,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
         <div class="bc-sub">Шоу Дракона · Мраморные горы · Полуостров · Речной круиз · Ночной рынок · 67$</div>
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
+      <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'danang')">🔗</div>
       <div class="bc-expand" onclick="event.stopPropagation();openD('danang')">+</div>
     </div>
     <div class="bc b-kalmar" id="kalmar" onclick="openD('kalmar')">
@@ -748,6 +773,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
         <div class="bc-sub">Эксклюзив · 75$</div>
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
+      <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'kalmar')">🔗</div>
       <div class="bc-expand" onclick="event.stopPropagation();openD('kalmar')">+</div>
     </div>
     <div class="bc b-vin" id="vin" onclick="openD('vin')">
@@ -757,6 +783,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
         <div class="bc-sub">Сафари · 60$</div>
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
+      <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'vin')">🔗</div>
       <div class="bc-expand" onclick="event.stopPropagation();openD('vin')">+</div>
     </div>
     <div class="bc b-hayvan" id="hayvan" onclick="openD('hayvan')">
@@ -766,6 +793,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
         <div class="bc-sub">Горный серпантин · Ворота неба · 65$</div>
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
+      <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'hayvan')">🔗</div>
       <div class="bc-expand" onclick="event.stopPropagation();openD('hayvan')">+</div>
     </div>
     <div class="bc b-sea" id="sea" onclick="openD('sea')">
@@ -775,6 +803,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
         <div class="bc-sub">Снорклинг · САП · 70$</div>
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
+      <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'sea')">🔗</div>
       <div class="bc-expand" onclick="event.stopPropagation();openD('sea')">+</div>
     </div>
     <div class="bc b-dong" id="dong" onclick="openD('dong')">
@@ -784,6 +813,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
         <div class="bc-sub">Здесь стираются границы между мирами. Пещеры · Водопады · Стеклянный мост · Деревня Ко Ту · 70$</div>
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
+      <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'dong')">🔗</div>
       <div class="bc-expand" onclick="event.stopPropagation();openD('dong')">+</div>
     </div>
 </div>
@@ -1254,6 +1284,41 @@ document.getElementById('bForm').addEventListener('submit', async function(e) {
     if(tours) tours.scrollIntoView({behavior:'smooth'});
   });
 })();
+
+// Копирование ссылки на карточку. clipboard работает только на https,
+// поэтому оставлен запасной путь через скрытое поле — иначе на части
+// браузеров кнопка молча не срабатывала бы.
+function copyCardLink(ev, key) {
+  ev.stopPropagation();
+  const link = location.origin + location.pathname + '#' + key;
+  const done = () => showCopyToast('Ссылка скопирована');
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(link).then(done, () => fallbackCopy(link, done));
+  } else {
+    fallbackCopy(link, done);
+  }
+}
+function fallbackCopy(text, done) {
+  const t = document.createElement('textarea');
+  t.value = text;
+  t.style.cssText = 'position:fixed;left:-9999px;top:0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done(); }
+  catch(e) { showCopyToast(text); }
+  t.remove();
+}
+function showCopyToast(msg) {
+  let el = document.getElementById('copyToast');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = 'copyToast'; el.className = 'copy-toast';
+    document.body.appendChild(el);
+  }
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(el._t);
+  el._t = setTimeout(() => el.classList.remove('show'), 2200);
+}
 
 // Ссылка на конкретную экскурсию: /#hue, /#dong и так далее.
 // Браузер прыгает по якорю сам, но делает это до загрузки фотографий —
