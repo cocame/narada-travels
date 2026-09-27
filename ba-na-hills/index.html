@@ -246,7 +246,13 @@ main {
   padding: 14px 24px; border-bottom: none;
 }
 
-/* Подзаголовок группы внутри таблицы — без заливки */
+/* Подзаголовок группы внутри таблицы — без заливки.
+   Рядом повторяем названия колонок: ниже первого экрана шапка уже не
+   видна, и непонятно, где дневной тур, а где вечерний. */
+.grp th.c {
+  font-size: 15px; font-weight: 800; letter-spacing: -0.01em;
+  text-transform: none; color: var(--dark);
+}
 .grp th {
   font-size: 12px; font-weight: 700; letter-spacing: .12em;
   text-transform: uppercase; color: var(--gray);
@@ -370,6 +376,7 @@ footer a { color: rgba(255,255,255,0.35); text-decoration: underline; text-under
   .tbl thead th:first-child { font-size: 11px; }
   .tbl tbody th[scope="row"] { font-size: 13.5px; }
   .grp th { padding-top: 26px; font-size: 11px; }
+  .grp th.c { font-size: 13.5px; }
   .notice-row td { font-size: 12px; padding: 12px 9px; }
   .e { margin-right: 4px; }
   .steps .t { display: block; margin-right: 0; }
@@ -383,6 +390,7 @@ footer a { color: rgba(255,255,255,0.35); text-decoration: underline; text-under
 }
 @media (max-width: 380px) {
   .tbl th, .tbl td { padding: 13px 7px; font-size: 13.5px; }
+  .grp th.c { font-size: 12.5px; }
 }
 </style>
 </head>
@@ -485,7 +493,11 @@ footer a { color: rgba(255,255,255,0.35); text-decoration: underline; text-under
         </td>
       </tr>
 
-      <tr class="grp"><th scope="colgroup" colspan="3">Стоимость экскурсии</th></tr>
+      <tr class="grp">
+        <th scope="rowgroup">Стоимость экскурсии</th>
+        <th scope="col" class="c"><span class="e">☀️</span>Дневной тур</th>
+        <th scope="col" class="c"><span class="e">🌙</span>Вечерний тур</th>
+      </tr>
 
       <tr>
         <th scope="row">Взрослый / ребёнок выше 140 см</th>
@@ -517,7 +529,11 @@ footer a { color: rgba(255,255,255,0.35); text-decoration: underline; text-under
 
       <tr class="notice-row"><td colspan="3">Входные билеты оплачиваются отдельно</td></tr>
 
-      <tr class="grp"><th scope="colgroup" colspan="3">Стоимость входных билетов</th></tr>
+      <tr class="grp">
+        <th scope="rowgroup">Стоимость входных билетов</th>
+        <th scope="col" class="c"><span class="e">☀️</span>Дневной тур</th>
+        <th scope="col" class="c"><span class="e">🌙</span>Вечерний тур</th>
+      </tr>
 
       <tr>
         <th scope="row">Взрослый / ребёнок выше 140 см</th>
