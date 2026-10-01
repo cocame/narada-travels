@@ -390,6 +390,47 @@ footer a { color: rgba(255,255,255,0.35); text-decoration: underline; text-under
   .stop-d, .prog-t { font-size: 13.5px; }
   .hmodal-box h2 { font-size: 17px; }
 }
+
+/* ── Возврат к списку экскурсий ──
+   Ссылка живёт в залипающей шапке, поэтому доступна с любого места страницы.
+   Намеренно не внутри .nav-links: тот блок на телефоне скрывается, а бургера
+   здесь нет — и человек оставался без единого пути назад к списку туров. */
+.navback {
+  display: inline-flex; align-items: center; gap: 7px;
+  margin-left: 20px; padding: 7px 14px;
+  border: 1px solid var(--line); border-radius: 999px;
+  font-size: 13px; font-weight: 600; color: var(--dark);
+  text-decoration: none; white-space: nowrap;
+  transition: border-color .2s, background .2s;
+}
+.navback:hover { border-color: var(--dark); background: #faf9f7; }
+.navback .arw { font-size: 14px; line-height: 1; }
+.nav-l { display: flex; align-items: center; min-width: 0; }
+
+/* Вторая дверь — внизу страницы, рядом с «Забронировать»:
+   дочитал до конца, не захотел бронировать — сразу видит, куда идти дальше. */
+.cta-back {
+  display: inline-block; margin-left: 14px;
+  padding: 16px 32px; border-radius: var(--btn-r);
+  border: 1px solid var(--line); background: transparent;
+  color: var(--dark); text-decoration: none; font-size: 15px; font-weight: 600;
+  transition: border-color .2s;
+}
+.cta-back:hover { border-color: var(--dark); }
+
+@media (max-width: 768px) {
+  /* Подпись у логотипа уступает место ссылке назад — она важнее. */
+  .logo-txt { display: none; }
+  .navback { margin-left: 12px; padding: 7px 12px; font-size: 12.5px; }
+  .cta-back { display: block; margin: 12px auto 0; text-align: center; }
+}
+@media (max-width: 380px) {
+  /* На самом узком экране жертвуем «Написать нам», а не подписью у стрелки:
+     голая стрелка — это снова «угадай, куда нажать». Кнопка заявки
+     всё равно есть внизу страницы. */
+  .nav-cta { display: none; }
+  .navback { padding: 7px 12px; }
+}
 </style>
 </head>
 <body>
@@ -397,10 +438,14 @@ footer a { color: rgba(255,255,255,0.35); text-decoration: underline; text-under
 <div class="w">
 
 <nav>
+  <div class="nav-l">
   <a class="logo" href="/">
     <img src="../images/logo.png" alt="Narada Travels">
     <span class="logo-txt">Narada</span>
   </a>
+  <a class="navback" href="/#tours"><span class="arw">←</span><span>Все экскурсии</span></a>
+  </div>
+
   <div class="nav-r">
     <ul class="nav-links">
       <li><a href="/#tours">Экскурсии</a></li>
@@ -481,6 +526,7 @@ footer a { color: rgba(255,255,255,0.35); text-decoration: underline; text-under
 
   <div class="cta">
     <a href="https://t.me/taysafinskaya?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20Narada%20Travels.%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%B1%D1%80%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D1%8D%D0%BA%D1%81%D0%BA%D1%83%D1%80%D1%81%D0%B8%D1%8E%20%D0%B2%20%D0%A5%D1%8E%D1%8D." target="_blank" rel="noopener noreferrer" class="btn-primary">Забронировать</a>
+    <a href="/#tours" class="cta-back">← Все экскурсии Дананга</a>
   </div>
 
 </main>
