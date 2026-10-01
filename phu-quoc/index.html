@@ -698,33 +698,24 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
 }
 
 /* ── Переход в соседний регион ──
-   Переключатель в шапке — для тех, кто уже знает, что направлений два.
-   Этот блок — для тех, кто не знает: мимо него не пролистаешь и целиться
-   в слово не нужно, нажимается вся плашка целиком. */
-.regband { padding: 0 56px 72px; }
-.regband-card {
-  display: flex; align-items: center; justify-content: space-between; gap: 32px;
-  padding: 40px 48px; border-radius: var(--r);
-  text-decoration: none; color: #fff;
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-.regband-card.to-pq { background: linear-gradient(135deg, #0b4f6c 0%, #1b7a8c 45%, #3fa8a0 100%); }
-.regband-card.to-dn { background: linear-gradient(135deg, #2b1b4d 0%, #7a3f6d 48%, #c96f4a 100%); }
-.regband-card:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.18); }
-.regband-kicker { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,0.66); margin-bottom: 10px; }
-.regband-card h2 { font-size: clamp(22px,2.6vw,34px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 10px; color: #fff; text-align: left; }
-.regband-card p { font-size: 15px; line-height: 1.6; color: rgba(255,255,255,0.82); max-width: 580px; }
+   Было цветной плашкой во всю ширину — чужеродно на сайте, который
+   держится на фотографиях и белом. Сделано по образцу секции отзывов:
+   белый фон, заголовок по центру, одна кнопка. */
+.regband { padding: 64px 56px; background: #fff; text-align: center; border-top: 1px solid var(--border); }
+.regband h2 { font-size: clamp(24px,3vw,40px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 14px; }
+.regband p { font-size: 15px; color: var(--gray); line-height: 1.65; max-width: 560px; margin: 0 auto 28px; }
 .regband-go {
-  flex-shrink: 0; display: inline-flex; align-items: center; gap: 10px;
-  background: #fff; color: var(--dark);
-  padding: 15px 28px; border-radius: var(--btn-r);
-  font-size: 15px; font-weight: 700; white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--accent); color: var(--accent-text);
+  padding: 15px 32px; border-radius: var(--btn-r);
+  text-decoration: none; font-size: 15px; font-weight: 600;
+  transition: background .2s ease;
 }
+.regband-go:hover { background: var(--accent-hover); }
 .regband-go .arw { transition: transform .2s ease; }
-.regband-card:hover .arw { transform: translateX(4px); }
+.regband-go:hover .arw { transform: translateX(4px); }
 @media (max-width: 768px) {
-  .regband { padding: 0 16px 40px; }
-  .regband-card { flex-direction: column; align-items: flex-start; gap: 22px; padding: 28px 22px; }
+  .regband { padding: 44px 20px; }
   .regband-go { width: 100%; justify-content: center; }
 }
 </style>
@@ -841,14 +832,9 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
 
 <!-- ── ПЕРЕХОД НА ДАНАНГ ── -->
 <section class="regband">
-  <a class="regband-card to-dn" href="/">
-    <div>
-      <div class="regband-kicker">Второе направление</div>
-      <h2>Экскурсии из Дананга</h2>
-      <p>Ба На Хиллс и Золотой мост, древний Хойан с фонариками, императорский Хюэ, острова Чам и стеклянный мост Донг Зянг. Больше десяти программ на центральном побережье.</p>
-    </div>
-    <span class="regband-go">Смотреть все экскурсии <span class="arw">→</span></span>
-  </a>
+  <h2>Мы работаем и в Дананге</h2>
+  <p>Ба На Хиллс и Золотой мост, древний Хойан с фонариками, императорский Хюэ, острова Чам и стеклянный мост Донг Зянг. Больше десяти программ на центральном побережье.</p>
+  <a class="regband-go" href="/">Смотреть экскурсии из Дананга <span class="arw">→</span></a>
 </section>
 
 <!-- ── FAQ ── -->
