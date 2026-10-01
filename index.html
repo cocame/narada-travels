@@ -652,26 +652,81 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
 }
 
 /* ── Переход в соседний регион ──
-   Было цветной плашкой во всю ширину — чужеродно на сайте, который
-   держится на фотографиях и белом. Сделано по образцу секции отзывов:
-   белый фон, заголовок по центру, одна кнопка. */
-.regband { padding: 64px 56px; background: #fff; text-align: center; border-top: 1px solid var(--border); }
-.regband h2 { font-size: clamp(24px,3vw,40px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 14px; }
-.regband p { font-size: 15px; color: var(--gray); line-height: 1.65; max-width: 560px; margin: 0 auto 28px; }
+   Стоит сразу под обложкой, а не в конце страницы: до низа долистывают
+   единицы, а про второе направление не знает вообще никто. Узкая полоса
+   в одну строку — чтобы сообщить, но не отодвинуть список туров вниз. */
+.regband { background: #faf9f7; border-bottom: 1px solid var(--border); }
+.regband-in {
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  padding: 18px 56px;
+}
+.regband-in p { font-size: 15px; line-height: 1.5; color: var(--gray); }
+.regband-in p b { color: var(--dark); font-weight: 700; }
 .regband-go {
-  display: inline-flex; align-items: center; gap: 10px;
+  flex-shrink: 0; display: inline-flex; align-items: center; gap: 8px;
   background: var(--accent); color: var(--accent-text);
-  padding: 15px 32px; border-radius: var(--btn-r);
-  text-decoration: none; font-size: 15px; font-weight: 600;
+  padding: 11px 22px; border-radius: var(--btn-r);
+  text-decoration: none; font-size: 14px; font-weight: 600; white-space: nowrap;
   transition: background .2s ease;
 }
 .regband-go:hover { background: var(--accent-hover); }
 .regband-go .arw { transition: transform .2s ease; }
-.regband-go:hover .arw { transform: translateX(4px); }
+.regband-go:hover .arw { transform: translateX(3px); }
 @media (max-width: 768px) {
-  .regband { padding: 44px 20px; }
+  .regband-in { flex-direction: column; align-items: flex-start; gap: 12px; padding: 16px 20px; }
+  .regband-in p { font-size: 14px; }
   .regband-go { width: 100%; justify-content: center; }
 }
+
+/* ── Залипающая шапка ──
+   Как у агрегаторов: у Трипстера на странице города поиск «Куда вы
+   собираетесь?» уезжает в шапку и висит там всегда. Раньше шапка лежала
+   внутри обложки и после прокрутки пропадала насовсем — вместе с
+   переключателем направлений. Теперь она закреплена: прозрачная поверх
+   обложки, белая дальше по странице. */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 60; height: 76px;
+      display: block; padding: 0; background: transparent;
+      transition: background .25s ease, box-shadow .25s ease; }
+.nav-inner { max-width: 1440px; height: 100%; margin: 0 auto;
+             display: flex; align-items: center; justify-content: space-between;
+             padding: 0 56px; }
+nav.solid { background: rgba(255,255,255,0.96); backdrop-filter: blur(12px);
+            box-shadow: 0 1px 0 rgba(0,0,0,0.07); }
+nav.solid .logo-txt { color: var(--dark); }
+nav.solid .nav-links a { color: var(--gray); }
+nav.solid .nav-links a:hover { color: var(--dark); }
+nav.solid .burger span { background: var(--dark); }
+nav.solid .regnav { background: rgba(17,17,17,0.07); }
+nav.solid .regnav a { color: var(--gray); }
+nav.solid .regnav a:hover { color: var(--dark); background: rgba(17,17,17,0.06); }
+nav.solid .regnav a.on { background: var(--dark); color: #fff; }
+@media (max-width: 768px) { nav { height: 68px; } .nav-inner { padding: 0 16px; } }
+
+/* ── Направления в подвале ──
+   Третья точка входа, как список городов в подвале у Спутника:
+   на любой странице, в предсказуемом месте. */
+.fdirs { display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; margin: 14px 0 10px; }
+.fdirs a { color: #fff; font-size: 13.5px; font-weight: 600; text-decoration: none;
+           border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 2px; }
+.fdirs a:hover { border-color: #fff; }
+.fdirs a.on { opacity: .45; border-color: transparent; pointer-events: none; }
+
+/* ── Напоминание в конце списка туров ──
+   Четвёртая точка: дочитал список до конца, своего не нашёл. */
+.regtail { padding: 0 56px 72px; }
+.regtail-in { border-top: 1px solid var(--border); padding-top: 32px;
+              display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.regtail-in p { font-size: 15px; color: var(--gray); }
+.regtail-in p b { color: var(--dark); font-weight: 700; }
+@media (max-width: 768px) {
+  .regtail { padding: 0 20px 44px; }
+  .regtail-in { flex-direction: column; align-items: flex-start; gap: 14px; }
+}
+
+/* Якоря не должны уезжать под закреплённую шапку: без этого «Частые вопросы»
+   после перехода по /#faq оказывались за ней. */
+section[id], .bc { scroll-margin-top: 92px; }
+@media (max-width: 768px) { section[id], .bc { scroll-margin-top: 80px; } }
 </style>
 </head>
 <body>
@@ -680,23 +735,25 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
 <section class="hero">
   <div class="hero-bg"></div>
 
-<nav>
-  <a class="logo" href="#">
-    <img src="images/logo.png" alt="Narada Travels">
-    <span class="logo-txt">Narada Travels</span>
-  </a>
-  <div class="nav-r">
-    <div class="regnav">
-      <a href="/" class="on">Дананг</a>
-      <a href="/phu-quoc/">Фукуок</a>
+<nav id="siteNav">
+  <div class="nav-inner">
+    <a class="logo" href="#">
+      <img src="images/logo.png" alt="Narada Travels">
+      <span class="logo-txt">Narada Travels</span>
+    </a>
+    <div class="nav-r">
+      <div class="regnav">
+        <a href="/" class="on">Дананг</a>
+        <a href="/phu-quoc/">Фукуок</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#tours">Экскурсии</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#emotions">Отзывы</a></li>
+      </ul>
+      <a href="#form" class="nav-cta">Написать нам</a>
+      <div class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
     </div>
-    <ul class="nav-links">
-      <li><a href="#tours">Экскурсии</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#emotions">Отзывы</a></li>
-    </ul>
-    <a href="#form" class="nav-cta">Написать нам</a>
-    <div class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
   </div>
 </nav>
 
@@ -704,6 +761,14 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
     <h1>Экскурсии из Дананга</h1>
     <p class="hero-sub">Индивидуальные экскурсии с русскоязычным гидом</p>
     <a href="#form" class="btn-white">Написать нам</a>
+  </div>
+</section>
+
+<!-- ── ПЕРЕХОД НА ФУКУОК ── -->
+<section class="regband">
+  <div class="regband-in">
+    <p><b>Мы работаем и на Фукуоке</b> — канатная дорога почти 8 километров над морем, южные острова и снорклинг, сафари и пляж морских звёзд.</p>
+    <a class="regband-go" href="/phu-quoc/">Смотреть 7 экскурсий <span class="arw">→</span></a>
   </div>
 </section>
 
@@ -863,11 +928,12 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
 </section>
 
 
-<!-- ── ПЕРЕХОД НА ФУКУОК ── -->
-<section class="regband">
-  <h2>Мы работаем и на Фукуоке</h2>
-  <p>Канатная дорога почти 8 километров над морем, южные острова и снорклинг, сафари с жирафами и пляж морских звёзд. Семь программ на острове — тот же русскоязычный гид.</p>
-  <a class="regband-go" href="/phu-quoc/">Смотреть экскурсии на Фукуоке <span class="arw">→</span></a>
+<!-- ── НАПОМИНАНИЕ О СОСЕДНЕМ НАПРАВЛЕНИИ ── -->
+<section class="regtail">
+  <div class="regtail-in">
+      <p><b>Не нашли подходящую экскурсию?</b> У нас есть ещё семь программ на Фукуоке.</p>
+      <a class="regband-go" href="/phu-quoc/">Смотреть Фукуок <span class="arw">→</span></a>
+  </div>
 </section>
 
 <!-- ── FAQ ── -->
@@ -988,6 +1054,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
 <footer>
   <div class="flogo">Narada Travels</div>
   <p>Экскурсии из Дананга с русскоязычным гидом · Вьетнам</p>
+  <p class="fdirs"><a href="/" class="on">Экскурсии из Дананга</a><a href="/phu-quoc/" class="">Экскурсии на Фукуоке</a></p>
   <p>© 2026 Narada · <a href="/privacy.html" style="color:rgba(255,255,255,0.35);text-decoration:underline;text-underline-offset:2px">Политика конфиденциальности</a></p>
 </footer>
 
@@ -1225,8 +1292,21 @@ document.getElementById('bForm').addEventListener('submit', async function(e) {
 </script>
 
 <!-- Floating button -->
-<button class="fab-tours" id="fabTours" aria-label="К экскурсиям">↑</button>
+<button class="fab-tours" id="fabTours" aria-label="Наверх, к меню" title="Наверх, к меню">↑</button>
 <script>
+// Шапка закреплена и прозрачна поверх обложки; дальше по странице ей нужен
+// фон, иначе тёмные буквы лягут на фотографию карточек и пропадут.
+(function(){
+  const nav = document.getElementById('siteNav');
+  function onScroll(){ nav.classList.toggle('solid', window.scrollY > 40); }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  // Переход по якорю (/#faq) прокручивает страницу без события scroll,
+  // поэтому состояние пересчитываем ещё и после загрузки.
+  window.addEventListener('load', onScroll);
+  setTimeout(onScroll, 60);
+  onScroll();
+})();
+
 (function(){
   const btn = document.getElementById('fabTours');
   const hero = document.querySelector('.hero') || document.querySelector('nav');
@@ -1235,9 +1315,20 @@ document.getElementById('bForm').addEventListener('submit', async function(e) {
     btn.classList.toggle('visible', window.scrollY > threshold);
   }
   window.addEventListener('scroll', onScroll, {passive: true});
+  window.addEventListener('load', onScroll);
+  setTimeout(onScroll, 60);
+  onScroll();
+  // Наверх, а не к списку туров: шапка на этой странице не залипает,
+  // она лежит внутри обложки. Пролистал обложку — и меню с переключателем
+  // «Дананг · Фукуок» больше не достать ничем, кроме прокрутки в самый верх.
+  // Стрелка вверх и должна означать «вверх».
   btn.addEventListener('click', function(){
-    const tours = document.getElementById('tours');
-    if(tours) tours.scrollIntoView({behavior:'smooth'});
+    const было = window.scrollY;
+    window.scrollTo({top: 0, behavior: 'smooth'});
+    // Плавная прокрутка кое-где не срабатывает молча — проверено, в одном
+    // из браузеров scrollTo с behavior:'smooth' не делает ничего. Кнопка
+    // обязана работать всегда, поэтому доезжаем рывком, если не поехали.
+    setTimeout(function(){ if (window.scrollY === было) window.scrollTo(0, 0); }, 120);
   });
 })();
 

@@ -433,6 +433,13 @@ footer a { color: rgba(255,255,255,0.35); text-decoration: underline; text-under
   .nav-cta { display: none; }
   .navback { padding: 7px 12px; }
 }
+
+/* Направления в подвале — третья точка входа, как список городов
+   в подвале у агрегаторов: на любой странице, в предсказуемом месте. */
+.fdirs { display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; margin: 14px 0 10px; }
+.fdirs a { color: #fff; font-size: 13.5px; font-weight: 600; text-decoration: none;
+           border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 2px; }
+.fdirs a:hover { border-color: #fff; }
 </style>
 </head>
 <body>
@@ -615,6 +622,7 @@ footer a { color: rgba(255,255,255,0.35); text-decoration: underline; text-under
 <footer>
   <div class="flogo">Narada Travels</div>
   <p>Экскурсии из Дананга с русскоязычным гидом · Вьетнам</p>
+  <p class="fdirs"><a href="/">Экскурсии из Дананга</a><a href="/phu-quoc/">Экскурсии на Фукуоке</a></p>
   <p>© 2026 Narada · <a href="/privacy.html">Политика конфиденциальности</a></p>
 </footer>
 
