@@ -833,6 +833,47 @@ nav.solid .dirmenu-btn:hover { border-color: #c9c9c9; }
 </style>
 </head>
 <body>
+<script>
+// ── Метки источника ──────────────────────────────────────────
+// Человек приходит по рекламе на одну страницу, ходит по сайту и отправляет
+// заявку уже с другой — в адресе меток к тому моменту нет. Поэтому запоминаем
+// их при первом заходе и достаём при отправке. Храним 90 дней: позже метка
+// уже ни о чём не говорит. Ничего личного здесь не лежит — только откуда пришёл.
+(function(){
+  try {
+    var П = new URLSearchParams(location.search);
+    var ПОЛЯ = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','yclid'];
+    var КЛЮЧ = 'narada_src';
+    var есть = ПОЛЯ.some(function(k){ return П.get(k); });
+    if (есть) {
+      // Новая метка перебивает старую: интересна последняя реклама, которая сработала.
+      var д = { t: Date.now(), ref: document.referrer || '', land: location.pathname };
+      ПОЛЯ.forEach(function(k){ var v = П.get(k); if (v) д[k] = v.slice(0, 120); });
+      localStorage.setItem(КЛЮЧ, JSON.stringify(д));
+    } else if (!localStorage.getItem(КЛЮЧ) && document.referrer &&
+               document.referrer.indexOf(location.host) === -1) {
+      // Меток нет, но пришёл с чужого сайта — сохраняем хотя бы его.
+      localStorage.setItem(КЛЮЧ, JSON.stringify({
+        t: Date.now(), ref: document.referrer, land: location.pathname }));
+    }
+  } catch (e) {}
+})();
+function источникЗаявки(){
+  var д = {};
+  try { д = JSON.parse(localStorage.getItem('narada_src') || '{}') || {}; } catch (e) {}
+  if (д.t && Date.now() - д.t > 90 * 24 * 3600 * 1000) д = {};
+  var части = [];
+  ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','yclid']
+    .forEach(function(k){ if (д[k]) части.push(k.replace('utm_','') + ': ' + д[k]); });
+  return {
+    utm:  части.join(' · '),
+    land: д.land || '',
+    ref:  д.ref || document.referrer || '',
+    page: location.pathname
+  };
+}
+</script>
+
 <div class="w">
 
 <section class="hero">
@@ -1324,7 +1365,8 @@ document.getElementById('bForm').addEventListener('submit', async function(e) {
       body: JSON.stringify({
         name: d.get('name'), contact: d.get('contact'), tour: d.get('tour'),
         people: d.get('people'), dates, comment: '',
-        consent: d.get('consent') === 'on', website: d.get('website')
+        consent: d.get('consent') === 'on', website: d.get('website'),
+        ...источникЗаявки()
       })
     });
     if (!r.ok) throw new Error(r.status);
