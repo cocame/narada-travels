@@ -727,6 +727,63 @@ nav.solid .regnav a.on { background: var(--dark); color: #fff; }
    после перехода по /#faq оказывались за ней. */
 section[id], .bc { scroll-margin-top: 92px; }
 @media (max-width: 768px) { section[id], .bc { scroll-margin-top: 80px; } }
+
+/* ── Выпадающее меню направлений ──
+   Вместо таблетки-переключателя: показывает, сколько экскурсий в каждом
+   направлении, и спокойно растёт до пяти пунктов без передела шапки.
+   Приём не агрегаторский — у тех поиск, потому что городов тысяча;
+   здесь направлений два, и их честнее просто перечислить. */
+.dirmenu { position: relative; }
+.dirmenu-btn {
+  appearance: none; cursor: pointer; font-family: inherit;
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 7px 14px; border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.34); background: rgba(17,17,17,0.42);
+  backdrop-filter: blur(8px);
+  color: #fff; font-size: 13px; font-weight: 600; line-height: 1;
+  transition: background .2s, border-color .2s, color .2s;
+}
+.dirmenu-btn:hover { background: rgba(17,17,17,0.58); }
+.dirmenu-caret { font-size: 10px; transition: transform .2s ease; }
+.dirmenu-btn[aria-expanded="true"] .dirmenu-caret { transform: rotate(180deg); }
+nav.solid .dirmenu-btn { background: #fff; border-color: var(--border); color: var(--dark); }
+nav.solid .dirmenu-btn:hover { border-color: #c9c9c9; }
+
+.dirmenu-panel {
+  position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%) translateY(-6px);
+  min-width: 290px; padding: 8px; border-radius: 14px;
+  background: #fff; box-shadow: 0 16px 44px rgba(0,0,0,0.18); border: 1px solid var(--border);
+  opacity: 0; visibility: hidden; transition: opacity .18s ease, transform .18s ease, visibility .18s;
+  z-index: 70;
+}
+.dirmenu.open .dirmenu-panel { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+.dirmenu-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 9px 10px; border-radius: 10px; text-decoration: none;
+  transition: background .15s ease;
+}
+.dirmenu-item:hover { background: #f5f4f1; }
+.dirmenu-thumb { width: 54px; height: 40px; border-radius: 7px; flex-shrink: 0; background-size: cover; background-position: center; }
+.t-danang { background-image: url('/images/danang-city.jpg'); }
+/* ФОТО ФУКУОКА СЮДА: background-image: url('/images/phu-quoc-hero.jpg'); */
+.t-pq { background-image: linear-gradient(135deg, #0b4f6c 0%, #2a9d9c 60%, #7fc9b4 100%); }
+.dirmenu-name { display: block; font-size: 14.5px; font-weight: 700; color: var(--dark); line-height: 1.3; }
+.dirmenu-cnt { display: block; font-size: 12.5px; color: var(--gray); margin-top: 2px; }
+.dirmenu-cur { color: var(--accent); font-weight: 700; }
+.dirmenu-item.on { background: #faf9f7; }
+.dirmenu-item.on .dirmenu-cnt { color: var(--accent); }
+
+/* ── Хлебные крошки на обложке ── */
+.crumbs { font-size: 13px; color: rgba(255,255,255,0.72); margin-bottom: 12px; letter-spacing: .01em; }
+.crumbs .sep { padding: 0 7px; opacity: .6; }
+.crumbs b { color: #fff; font-weight: 600; }
+
+@media (max-width: 768px) {
+  .dirmenu-btn { padding: 7px 12px; font-size: 12.5px; }
+  .dirmenu-panel { left: auto; right: -40px; transform: translateY(-6px); min-width: 260px; }
+  .dirmenu.open .dirmenu-panel { transform: translateY(0); }
+  .crumbs { font-size: 12px; margin-bottom: 10px; }
+}
 </style>
 </head>
 <body>
@@ -742,9 +799,18 @@ section[id], .bc { scroll-margin-top: 92px; }
       <span class="logo-txt">Narada Travels</span>
     </a>
     <div class="nav-r">
-      <div class="regnav">
-        <a href="/" class="on">Дананг</a>
-        <a href="/phu-quoc/">Фукуок</a>
+      <div class="dirmenu">
+        <button class="dirmenu-btn" type="button" aria-expanded="false" aria-haspopup="true">Направления <span class="dirmenu-caret">▾</span></button>
+        <div class="dirmenu-panel" role="menu">
+        <a class="dirmenu-item on" href="/" role="menuitem">
+          <span class="dirmenu-thumb t-danang"></span>
+          <span><span class="dirmenu-name">Дананг</span><span class="dirmenu-cnt">12 экскурсий <span class="dirmenu-cur">· вы здесь</span></span></span>
+        </a>
+        <a class="dirmenu-item" href="/phu-quoc/" role="menuitem">
+          <span class="dirmenu-thumb t-pq"></span>
+          <span><span class="dirmenu-name">Фукуок</span><span class="dirmenu-cnt">7 экскурсий</span></span>
+        </a>
+        </div>
       </div>
       <ul class="nav-links">
         <li><a href="#tours">Экскурсии</a></li>
@@ -758,6 +824,7 @@ section[id], .bc { scroll-margin-top: 92px; }
 </nav>
 
   <div class="hero-content">
+    <p class="crumbs">Вьетнам<span class="sep">›</span><b>Дананг</b></p>
     <h1>Экскурсии из Дананга</h1>
     <p class="hero-sub">Индивидуальные экскурсии с русскоязычным гидом</p>
     <a href="#form" class="btn-white">Написать нам</a>
@@ -1294,6 +1361,22 @@ document.getElementById('bForm').addEventListener('submit', async function(e) {
 <!-- Floating button -->
 <button class="fab-tours" id="fabTours" aria-label="Наверх, к меню" title="Наверх, к меню">↑</button>
 <script>
+// Меню направлений. Открывается щелчком, а не наведением: на телефоне
+// наведения нет, а список направлений нужен там в первую очередь.
+(function(){
+  const wrap = document.querySelector('.dirmenu');
+  if(!wrap) return;
+  const btn = wrap.querySelector('.dirmenu-btn');
+  function close(){ wrap.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    const открыто = wrap.classList.toggle('open');
+    btn.setAttribute('aria-expanded', открыто ? 'true' : 'false');
+  });
+  document.addEventListener('click', function(e){ if(!wrap.contains(e.target)) close(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+})();
+
 // Шапка закреплена и прозрачна поверх обложки; дальше по странице ей нужен
 // фон, иначе тёмные буквы лягут на фотографию карточек и пропадут.
 (function(){
