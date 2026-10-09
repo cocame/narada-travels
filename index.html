@@ -784,6 +784,27 @@ nav.solid .dirmenu-btn:hover { border-color: #c9c9c9; }
   .dirmenu.open .dirmenu-panel { transform: translateY(0); }
   .crumbs { font-size: 12px; margin-bottom: 10px; }
 }
+
+/* Фукуок пока не запущен: пункт виден, но никуда не ведёт — показывать
+   недоделанную страницу хуже, чем честно написать «скоро». */
+.dirmenu-item.soon { cursor: default; opacity: .55; }
+.dirmenu-item.soon:hover { background: transparent; }
+.fsoon { color: rgba(255,255,255,0.45); font-size: 13.5px; font-weight: 600; }
+
+/* Направления видны сразу, без нажатия: выпадающее меню требовало
+   сначала догадаться, что внутрь надо заглянуть. */
+.regnav { display: flex; align-items: center; gap: 3px; padding: 3px;
+          border-radius: 999px; background: rgba(17,17,17,0.42); backdrop-filter: blur(8px); }
+.regnav span { display: block; padding: 6px 14px; border-radius: 999px;
+               font-size: 12.5px; font-weight: 600; line-height: 1; white-space: nowrap; }
+.regnav-on { background: #fff; color: var(--dark); }
+.regnav-soon { color: rgba(255,255,255,0.72); }
+nav.solid .regnav { background: rgba(17,17,17,0.07); }
+nav.solid .regnav-on { background: var(--dark); color: #fff; }
+nav.solid .regnav-soon { color: var(--gray); }
+@media (max-width: 768px) {
+  .regnav span { padding: 6px 11px; font-size: 12px; }
+}
 </style>
 </head>
 <body>
@@ -840,18 +861,9 @@ function источникЗаявки(){
       <span class="logo-txt">Narada Travels</span>
     </a>
     <div class="nav-r">
-      <div class="dirmenu">
-        <button class="dirmenu-btn" type="button" aria-expanded="false" aria-haspopup="true">Направления <span class="dirmenu-caret">▾</span></button>
-        <div class="dirmenu-panel" role="menu">
-        <a class="dirmenu-item on" href="/" role="menuitem">
-          <span class="dirmenu-thumb t-danang"></span>
-          <span><span class="dirmenu-name">Дананг</span><span class="dirmenu-cnt">Ба На Хиллс, Хойан, Хюэ <span class="dirmenu-cur">· вы здесь</span></span></span>
-        </a>
-        <a class="dirmenu-item" href="/phu-quoc/" role="menuitem">
-          <span class="dirmenu-thumb t-pq"></span>
-          <span><span class="dirmenu-name">Фукуок</span><span class="dirmenu-cnt">Канатка, острова, сафари</span></span>
-        </a>
-        </div>
+      <div class="regnav">
+        <span class="regnav-on">Дананг</span>
+        <span class="regnav-soon">Фукуок — скоро</span>
       </div>
       <ul class="nav-links">
         <li><a href="#tours">Экскурсии</a></li>
@@ -869,14 +881,6 @@ function источникЗаявки(){
     <h1>Экскурсии из Дананга</h1>
     <p class="hero-sub">Индивидуальные экскурсии с русскоязычным гидом</p>
     <a href="#form" class="btn-white">Написать нам</a>
-  </div>
-</section>
-
-<!-- ── ПЕРЕХОД НА ФУКУОК ── -->
-<section class="regband">
-  <div class="regband-in">
-    <p><b>Мы работаем и на Фукуоке</b> — канатная дорога почти 8 километров над морем, южные острова и снорклинг, сафари и пляж морских звёзд.</p>
-    <a class="regband-go" href="/phu-quoc/">Смотреть экскурсии <span class="arw">→</span></a>
   </div>
 </section>
 
@@ -1036,14 +1040,6 @@ function источникЗаявки(){
 </section>
 
 
-<!-- ── НАПОМИНАНИЕ О СОСЕДНЕМ НАПРАВЛЕНИИ ── -->
-<section class="regtail">
-  <div class="regtail-in">
-      <p><b>Не нашли подходящую экскурсию?</b> У нас есть ещё программы на Фукуоке.</p>
-      <a class="regband-go" href="/phu-quoc/">Смотреть Фукуок <span class="arw">→</span></a>
-  </div>
-</section>
-
 <!-- ── FAQ ── -->
 <section class="faq" id="faq">
   <h2>Частые вопросы</h2>
@@ -1113,14 +1109,6 @@ function источникЗаявки(){
     </div>
     <div>
       <form class="fform" id="bForm">
-        <div class="field">
-          <label>Куда едем</label>
-          <div class="regsw" id="regSw">
-            <button type="button" class="regsw-b on" data-region="danang">Дананг</button>
-            <button type="button" class="regsw-b" data-region="phuquoc">Фукуок</button>
-          </div>
-          <div class="reghint">Выбран по странице, с которой вы пришли. Можно переключить.</div>
-        </div>
         <div class="frow">
           <div class="field"><label>Ваше имя</label><input type="text" name="name" placeholder="Как вас зовут?" required></div>
           <div class="field"><label>Контакт для связи</label><input type="text" name="contact" placeholder="Telegram, WhatsApp, телефон" required></div>
@@ -1162,7 +1150,7 @@ function источникЗаявки(){
 <footer>
   <div class="flogo">Narada Travels</div>
   <p>Экскурсии из Дананга с русскоязычным гидом · Вьетнам</p>
-  <p class="fdirs"><a href="/" class="on">Экскурсии из Дананга</a><a href="/phu-quoc/" class="">Экскурсии на Фукуоке</a></p>
+  <p class="fdirs"><a href="/" class="on">Экскурсии из Дананга</a><span class="fsoon">Экскурсии на Фукуоке — скоро</span></p>
   <p>© 2026 Narada · <a href="/privacy.html" style="color:rgba(255,255,255,0.35);text-decoration:underline;text-underline-offset:2px">Политика конфиденциальности</a></p>
 </footer>
 
@@ -1403,22 +1391,6 @@ document.getElementById('bForm').addEventListener('submit', async function(e) {
 <!-- Floating button -->
 <button class="fab-tours" id="fabTours" aria-label="Наверх, к меню" title="Наверх, к меню">↑</button>
 <script>
-// Меню направлений. Открывается щелчком, а не наведением: на телефоне
-// наведения нет, а список направлений нужен там в первую очередь.
-(function(){
-  const wrap = document.querySelector('.dirmenu');
-  if(!wrap) return;
-  const btn = wrap.querySelector('.dirmenu-btn');
-  function close(){ wrap.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
-  btn.addEventListener('click', function(e){
-    e.stopPropagation();
-    const открыто = wrap.classList.toggle('open');
-    btn.setAttribute('aria-expanded', открыто ? 'true' : 'false');
-  });
-  document.addEventListener('click', function(e){ if(!wrap.contains(e.target)) close(); });
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
-})();
-
 // Шапка закреплена и прозрачна поверх обложки; дальше по странице ей нужен
 // фон, иначе тёмные буквы лягут на фотографию карточек и пропадут.
 (function(){
