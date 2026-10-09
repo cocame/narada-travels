@@ -805,6 +805,22 @@ nav.solid .regnav-soon { color: var(--gray); }
 @media (max-width: 768px) {
   .regnav span { padding: 6px 11px; font-size: 12px; }
 }
+
+/* Направления подписаны «скоро» мелким шрифтом: название читается сразу,
+   а статус не спорит с ним за внимание. */
+.regnav span { display: flex; align-items: baseline; gap: 6px; }
+.regnav em { font-style: normal; font-size: 10px; letter-spacing: .06em;
+             text-transform: uppercase; opacity: .62; }
+@media (max-width: 860px) { .regnav em { display: none; } }
+
+/* Направления кликаются все: что направление ещё не открыто, человек
+   узнаёт на его странице, а не в шапке — иначе шапка превращается
+   в список отказов. */
+.regnav a { text-decoration: none; }
+.regnav-off { color: rgba(255,255,255,0.72); transition: background .2s, color .2s; }
+.regnav-off:hover { background: rgba(255,255,255,0.16); color: #fff; }
+nav.solid .regnav-off { color: var(--gray); }
+nav.solid .regnav-off:hover { background: rgba(17,17,17,0.06); color: var(--dark); }
 </style>
 </head>
 <body>
@@ -863,7 +879,8 @@ function источникЗаявки(){
     <div class="nav-r">
       <div class="regnav">
         <span class="regnav-on">Дананг</span>
-        <span class="regnav-soon">Фукуок — скоро</span>
+        <a class="regnav-off" href="/phu-quoc/">Фукуок</a>
+        <a class="regnav-off" href="/nha-trang/">Нячанг</a>
       </div>
       <ul class="nav-links">
         <li><a href="#tours">Экскурсии</a></li>
@@ -1150,7 +1167,7 @@ function источникЗаявки(){
 <footer>
   <div class="flogo">Narada Travels</div>
   <p>Экскурсии из Дананга с русскоязычным гидом · Вьетнам</p>
-  <p class="fdirs"><a href="/" class="on">Экскурсии из Дананга</a><span class="fsoon">Экскурсии на Фукуоке — скоро</span></p>
+  <p class="fdirs"><a href="/" class="on">Экскурсии из Дананга</a><a href="/phu-quoc/">Экскурсии на Фукуоке</a><a href="/nha-trang/">Экскурсии в Нячанге</a></p>
   <p>© 2026 Narada · <a href="/privacy.html" style="color:rgba(255,255,255,0.35);text-decoration:underline;text-underline-offset:2px">Политика конфиденциальности</a></p>
 </footer>
 
