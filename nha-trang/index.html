@@ -58,6 +58,20 @@
     main { padding:48px 20px; }
     .btn { width:100%; }
   }
+
+  /* Направление ещё не открыто, но остров должен быть виден — это и есть
+     повод написать заранее, а не уйти с пустой страницы. */
+  main { position:relative; overflow:hidden; padding:96px 24px; }
+  .bg { position:absolute; inset:0; background-size:cover; background-position:center 58%; }
+  .bg::after { content:''; position:absolute; inset:0;
+      background:linear-gradient(to top, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.48) 45%, rgba(0,0,0,0.32) 100%); }
+  .in { position:relative; z-index:1; color:#fff; }
+  h1 { color:#fff; }
+  main p { color:rgba(255,255,255,0.88); }
+  .kicker { color:#fff; display:inline-block; padding:7px 16px; border-radius:999px;
+            background:rgba(255,255,255,0.18); backdrop-filter:blur(8px); }
+  .ghost { border-color:rgba(255,255,255,0.45); color:#fff; backdrop-filter:blur(6px); }
+  .ghost:hover { border-color:#fff; background:rgba(255,255,255,0.12); }
 </style>
 </head>
 <body>
@@ -75,6 +89,7 @@
 </nav>
 
 <main>
+  <div class="bg" style="background-image:linear-gradient(145deg,#0d3b5c 0%,#1e6f8f 55%,#4aa8b0 100%)"></div>
   <div class="in">
     <div class="kicker">Скоро</div>
     <h1>Экскурсии в Нячанге</h1>
