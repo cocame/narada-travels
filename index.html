@@ -619,9 +619,9 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
    Поэтому тёмная подложка вместо полупрозрачной белой: над светлым
    небом на обложке Дананга неактивная половина выцветала и читалась
    как выключенная. */
-.regnav { display: flex; align-items: center; gap: 2px; padding: 3px; border-radius: 999px; background: rgba(17,17,17,0.42); backdrop-filter: blur(8px); }
+.regnav { display: flex; align-items: center; gap: 2px; padding: 3px; border-radius: var(--r); background: rgba(17,17,17,0.42); backdrop-filter: blur(8px); }
 .regnav a {
-  display: block; padding: 5px 13px; border-radius: 999px;
+  display: block; padding: 5px 13px; border-radius: 6px;
   font-size: 12.5px; font-weight: 600; line-height: 1;
   color: rgba(255,255,255,0.95); text-decoration: none;
   transition: background .2s, color .2s;
@@ -794,8 +794,8 @@ nav.solid .dirmenu-btn:hover { border-color: #c9c9c9; }
 /* Направления видны сразу, без нажатия: выпадающее меню требовало
    сначала догадаться, что внутрь надо заглянуть. */
 .regnav { display: flex; align-items: center; gap: 3px; padding: 3px;
-          border-radius: 999px; background: rgba(17,17,17,0.42); backdrop-filter: blur(8px); }
-.regnav span { display: block; padding: 6px 14px; border-radius: 999px;
+          border-radius: var(--r); background: rgba(17,17,17,0.42); backdrop-filter: blur(8px); }
+.regnav span { display: block; padding: 6px 14px; border-radius: 6px;
                font-size: 12.5px; font-weight: 600; line-height: 1; white-space: nowrap; }
 .regnav-on { background: #fff; color: var(--dark); }
 .regnav-soon { color: rgba(255,255,255,0.72); }
@@ -821,6 +821,18 @@ nav.solid .regnav-soon { color: var(--gray); }
 .regnav-off:hover { background: rgba(255,255,255,0.16); color: #fff; }
 nav.solid .regnav-off { color: var(--gray); }
 nav.solid .regnav-off:hover { background: rgba(17,17,17,0.06); color: var(--dark); }
+
+/* Цена стоит в одной строке с названием, а не меткой поверх фото:
+   при наведении всплывает кнопка «Забронировать» и перекрывала её. */
+.bc-head { display: flex; align-items: baseline; justify-content: space-between;
+           gap: 14px; margin-bottom: 4px; }
+.bc-head .bc-title { margin-bottom: 0; }
+.bc-price { flex-shrink: 0; display: inline-flex; align-items: baseline; gap: 2px;
+            color: #fff; font-size: 20px; font-weight: 800; letter-spacing: -0.02em;
+            font-variant-numeric: tabular-nums; line-height: 1;
+            text-shadow: 0 1px 8px rgba(0,0,0,0.5); }
+.bc-price span { font-size: 13px; font-weight: 600; opacity: .75; }
+@media (max-width: 768px) { .bc-price { font-size: 18px; } }
 </style>
 </head>
 <body>
@@ -957,8 +969,8 @@ function источникЗаявки(){
     <div class="bc b-hue" id="hue" onclick="openD('hue')">
       <img src="images/hue.jpg" alt="Экскурсия в Хюэ из Дананга">
       <div class="bc-info">
-        <h3 class="bc-title">Императорский Хюэ</h3>
-        <div class="bc-sub">Здесь драконы шепчут легенды: запретный город и величие династий · 88$</div>
+        <div class="bc-head"><h3 class="bc-title">Императорский Хюэ</h3><div class="bc-price">88<span>$</span></div></div>
+        <div class="bc-sub">Здесь драконы шепчут легенды: запретный город и величие династий</div>
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'hue')">🔗</div>
@@ -966,8 +978,8 @@ function источникЗаявки(){
     <div class="bc b-hoian" id="hoian" onclick="openD('hoian')">
       <img src="images/hoian-sunset.webp" alt="Экскурсия в Хойан из Дананга">
       <div class="bc-info">
-        <h3 class="bc-title">Древний Хойан</h3>
-        <div class="bc-sub">Старый город, кокосовые джунгли, рисовые поля, фонарики на ночной реке · 65$</div>
+        <div class="bc-head"><h3 class="bc-title">Древний Хойан</h3><div class="bc-price">65<span>$</span></div></div>
+        <div class="bc-sub">Старый город, кокосовые джунгли, рисовые поля, фонарики на ночной реке</div>
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'hoian')">🔗</div>
@@ -975,8 +987,8 @@ function источникЗаявки(){
     <div class="bc b-bana" id="bana" onclick="openD('bana')">
       <img src="images/bana-cable-car.webp" alt="Ба На Хиллс Золотой мост">
       <div class="bc-info">
-        <h3 class="bc-title">Ба На Хиллс: Золотой мост</h3>
-        <div class="bc-sub">Сказка в облаках · Французская деревня · Винные погреба · 50$</div>
+        <div class="bc-head"><h3 class="bc-title">Ба На Хиллс: Золотой мост</h3><div class="bc-price">50<span>$</span></div></div>
+        <div class="bc-sub">Сказка в облаках · Французская деревня · Винные погреба</div>
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'bana')">🔗</div>
@@ -984,8 +996,8 @@ function источникЗаявки(){
     <div class="bc b-springs" id="springs" onclick="openD('springs')">
       <img src="images/springs.jpg" alt="Горячие источники экскурсия из Дананга">
       <div class="bc-info">
-        <h3 class="bc-title">Горячие источники — гора удачи</h3>
-        <div class="bc-sub">Онсэн · Аквапарк · 72$</div>
+        <div class="bc-head"><h3 class="bc-title">Горячие источники — гора удачи</h3><div class="bc-price">72<span>$</span></div></div>
+        <div class="bc-sub">Онсэн · Аквапарк</div>
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'springs')">🔗</div>
@@ -993,8 +1005,8 @@ function источникЗаявки(){
     <div class="bc b-cham" id="cham" onclick="openD('cham')">
       <img src="images/cham.jpg" alt="Острова Чам снорклинг ЮНЕСКО">
       <div class="bc-info">
-        <h3 class="bc-title">Острова Чам — ЮНЕСКО</h3>
-        <div class="bc-sub">Снорклинг · Обед включён · 70$</div>
+        <div class="bc-head"><h3 class="bc-title">Острова Чам — ЮНЕСКО</h3><div class="bc-price">70<span>$</span></div></div>
+        <div class="bc-sub">Снорклинг · Обед включён</div>
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'cham')">🔗</div>
@@ -1002,8 +1014,8 @@ function источникЗаявки(){
     <div class="bc b-danang" id="danang" onclick="openD('danang')">
       <img src="images/dragon-fire.webp" alt="Дананг за один день">
       <div class="bc-info">
-        <h3 class="bc-title">Дананг за один день</h3>
-        <div class="bc-sub">Шоу Дракона · Мраморные горы · Полуостров · Речной круиз · Ночной рынок · 67$</div>
+        <div class="bc-head"><h3 class="bc-title">Дананг за один день</h3><div class="bc-price">67<span>$</span></div></div>
+        <div class="bc-sub">Шоу Дракона · Мраморные горы · Полуостров · Речной круиз · Ночной рынок</div>
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'danang')">🔗</div>
@@ -1011,8 +1023,8 @@ function источникЗаявки(){
     <div class="bc b-kalmar" id="kalmar" onclick="openD('kalmar')">
       <img src="images/kalmar.jpg" alt="Рыбалка во Вьетнаме Дананг">
       <div class="bc-info">
-        <h3 class="bc-title">Рыбалка во Вьетнаме</h3>
-        <div class="bc-sub">Эксклюзив · 75$</div>
+        <div class="bc-head"><h3 class="bc-title">Рыбалка во Вьетнаме</h3><div class="bc-price">75<span>$</span></div></div>
+        <div class="bc-sub">Эксклюзив</div>
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'kalmar')">🔗</div>
@@ -1020,8 +1032,8 @@ function источникЗаявки(){
     <div class="bc b-vin" id="vin" onclick="openD('vin')">
       <img src="images/vinwonders.jpg" alt="VinWonders Хойан парк">
       <div class="bc-info">
-        <h3 class="bc-title">VinWonders Хойан</h3>
-        <div class="bc-sub">Сафари · 60$</div>
+        <div class="bc-head"><h3 class="bc-title">VinWonders Хойан</h3><div class="bc-price">60<span>$</span></div></div>
+        <div class="bc-sub">Сафари</div>
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'vin')">🔗</div>
@@ -1029,8 +1041,8 @@ function источникЗаявки(){
     <div class="bc b-hayvan" id="hayvan" onclick="openD('hayvan')">
       <img src="images/hayvan.jpg" alt="Купание в водопадах перевал Хайван">
       <div class="bc-info">
-        <h3 class="bc-title">Купание в водопадах на перевале Хайван</h3>
-        <div class="bc-sub">Горный серпантин · Ворота неба · 65$</div>
+        <div class="bc-head"><h3 class="bc-title">Купание в водопадах на перевале Хайван</h3><div class="bc-price">65<span>$</span></div></div>
+        <div class="bc-sub">Горный серпантин · Ворота неба</div>
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'hayvan')">🔗</div>
@@ -1038,8 +1050,8 @@ function источникЗаявки(){
     <div class="bc b-sea" id="sea" onclick="openD('sea')">
       <img src="images/sea.jpg" alt="Морская прогулка Дананг">
       <div class="bc-info">
-        <h3 class="bc-title">Морская прогулка</h3>
-        <div class="bc-sub">Снорклинг · САП · 70$</div>
+        <div class="bc-head"><h3 class="bc-title">Морская прогулка</h3><div class="bc-price">70<span>$</span></div></div>
+        <div class="bc-sub">Снорклинг · САП</div>
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'sea')">🔗</div>
@@ -1047,8 +1059,8 @@ function источникЗаявки(){
     <div class="bc b-dong" id="dong" onclick="openD('dong')">
       <img src="images/dong-giang.webp" alt="Небесные врата Донг Зянг" style="object-position:center 55%">
       <div class="bc-info">
-        <h3 class="bc-title">Небесные врата Донг Зянг</h3>
-        <div class="bc-sub">Здесь стираются границы между мирами. Пещеры · Водопады · Стеклянный мост · Деревня Ко Ту · 70$</div>
+        <div class="bc-head"><h3 class="bc-title">Небесные врата Донг Зянг</h3><div class="bc-price">70<span>$</span></div></div>
+        <div class="bc-sub">Здесь стираются границы между мирами. Пещеры · Водопады · Стеклянный мост · Деревня Ко Ту</div>
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'dong')">🔗</div>
