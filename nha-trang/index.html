@@ -874,13 +874,16 @@ nav.solid .regnav-soon { color: var(--gray); }
 .nt-yangbay   { grid-column: 9 / span 4;  grid-row: 5 / span 2; }
 .nt-fanrang   { grid-column: 1 / span 6;  grid-row: 7 / span 2; }
 .nt-saigon    { grid-column: 7 / span 6;  grid-row: 7 / span 2; }
-.nt-hontam    { grid-column: 1 / span 12; grid-row: 9 / span 2; }
+.nt-danang    { grid-column: 1 / span 5;  grid-row: 9 / span 2; }
+.nt-dananghoian { grid-column: 6 / span 7; grid-row: 9 / span 2; }
+.nt-hontam    { grid-column: 1 / span 12; grid-row: 11 / span 2; }
 
 @media (max-width: 900px) {
   .nt-grid { grid-template-columns: repeat(6, 1fr); }
   .nt-dalat, .nt-bridge, .nt-fanrang, .nt-saigon, .nt-katamaran {
     grid-column: span 6; grid-row: auto / span 2; }
-  .nt-dalat2, .nt-dalat2d, .nt-ostrova, .nt-hontam, .nt-diving, .nt-yangbay {
+  .nt-dalat2, .nt-dalat2d, .nt-ostrova, .nt-hontam, .nt-diving, .nt-yangbay,
+  .nt-danang, .nt-dananghoian {
     grid-column: span 3; grid-row: auto / span 2; }
 }
 @media (max-width: 620px) {
@@ -1084,6 +1087,24 @@ function источникЗаявки(){
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'katamaran')">🔗</div>
     </div>
+    <div class="bc nt-danang" id="danang" onclick="openD('danang')">
+      <img src="images/danang.jpg" alt="Мост Дракона в Дананге" loading="lazy">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Дананг за день</h3><div class="bc-price">160<span>$</span></div></div>
+        <div class="bc-sub">Мост Дракона, Ба На Хиллс и Золотой мост</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
+      <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'danang')">🔗</div>
+    </div>
+    <div class="bc nt-dananghoian" id="dananghoian" onclick="openD('dananghoian')">
+      <img src="images/danang-hoian.jpg" alt="Фонарики древнего Хойана" loading="lazy">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Дананг и Хойан, два дня</h3><div class="bc-price">210<span>$</span></div></div>
+        <div class="bc-sub">Золотой мост, мраморные пещеры и город фонариков</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
+      <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'dananghoian')">🔗</div>
+    </div>
   </div>
 </section>
 
@@ -1173,6 +1194,8 @@ function источникЗаявки(){
             <option value="Нячанг — Фанранг и Муйне, два дня">Фанранг и Муйне, два дня</option>
             <option value="Нячанг — Муйне и Сайгон, три дня">Муйне и Сайгон, три дня</option>
             <option value="Нячанг — Катамаран">Катамаран</option>
+            <option value="Нячанг — Дананг за день">Дананг за день</option>
+            <option value="Нячанг — Дананг и Хойан, два дня">Дананг и Хойан, два дня</option>
             <option value="Нячанг — Другое, напишу в сообщении">Другое, напишу в сообщении</option>
           </select>
         </div>
@@ -1318,7 +1341,19 @@ const tours = {
     prog:[["","Выход в море"],["","Южные острова"],["","Снорклинг и купание"],["","Рыбалка"],["","Обед на борту"],["","Встреча заката"]],
     inc:["Трансфер","Русскоязычный гид","Катамаран","Снорклинг","Рыбалка","Обед"],
     exc:["Дайвинг"],
-    prices:[["Палуба","Цена"],["Нижняя палуба","90 $"],["Верхняя палуба VIP, с гидроциклом","105 $"]]}
+    prices:[["Палуба","Цена"],["Нижняя палуба","90 $"],["Верхняя палуба VIP, с гидроциклом","105 $"]]},
+  danang:{title:"Дананг за день",price:"160$",
+    seo:"Ночной выезд из Нячанга в Дананг: мост Дракона, Аллея влюблённых, гора Ба На Хиллс с канатной дорогой и Золотой мост «Руки Бога», парк аттракционов.",
+    prog:[["19:30","Выезд из Нячанга"],["","Мост Дракона"],["","Аллея влюблённых"],["","Канатная дорога на Ба На Хиллс"],["","Золотой мост «Руки Бога»"],["","Французская деревня и парк аттракционов"],["05:30","Возвращение"]],
+    inc:["Трансфер","Русскоязычный гид","Канатная дорога","Входные билеты","Обед"],
+    exc:[],
+    prices:[["Категория","Цена"],["За человека","160 $"]]},
+  dananghoian:{title:"Дананг и Хойан, два дня",price:"210$",
+    seo:"Обзорная по Данангу, Золотой мост «Руки Бога», французская деревня и сад цветов, мраморные пещеры. На второй день древний Хойан и прогулка на лодках по мангровым зарослям.",
+    prog:[["19:30","Выезд из Нячанга"],["","День 1: обзорная по Данангу"],["","Золотой мост «Руки Бога»"],["","Французская деревня, сад цветов"],["","Мраморные пещеры"],["","Ночёвка в отеле"],["","День 2: древний Хойан"],["","Лодки по мангровым зарослям"],["05:30","Возвращение"]],
+    inc:["Трансфер","Русскоязычный гид","Отель","Канатная дорога","Входные билеты","Обеды"],
+    exc:[],
+    prices:[["Категория","Цена"],["За человека","210 $"]]}
 };
 
 function openD(key) {
@@ -1416,6 +1451,8 @@ const REGION_TOURS = {
     ["Нячанг — Фанранг и Муйне, два дня","Фанранг и Муйне, два дня"],
     ["Нячанг — Муйне и Сайгон, три дня","Муйне и Сайгон, три дня"],
     ["Нячанг — Катамаран","Катамаран"],
+    ["Нячанг — Дананг за день","Дананг за день"],
+    ["Нячанг — Дананг и Хойан, два дня","Дананг и Хойан, два дня"],
     ["Нячанг — Другое, напишу в сообщении","Другое, напишу в сообщении"]
   ]
 };
