@@ -833,6 +833,20 @@ nav.solid .regnav-off:hover { background: rgba(17,17,17,0.06); color: var(--dark
             text-shadow: 0 1px 8px rgba(0,0,0,0.5); }
 .bc-price span { font-size: 13px; font-weight: 600; opacity: .75; }
 @media (max-width: 768px) { .bc-price { font-size: 18px; } }
+
+/* «Уже во Вьетнаме» или «только планирую» — от этого зависит, отвечать
+   сейчас же или можно утром. Один вопрос вместо пошаговой анкеты:
+   при двух заявках в день каждый лишний шаг — потерянный человек. */
+.whensw { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 4px;
+          border-radius: var(--btn-r); background: rgba(255,255,255,0.07);
+          border: 1px solid rgba(255,255,255,0.14); }
+.whensw-b { appearance: none; border: 0; cursor: pointer; padding: 10px 12px;
+            border-radius: 6px; font-family: inherit; font-size: 14px; font-weight: 600;
+            background: transparent; color: rgba(255,255,255,0.72);
+            transition: background .2s, color .2s; }
+.whensw-b:hover { color: #fff; }
+.whensw-b.on { background: var(--accent); color: var(--accent-text); }
+.whensw-b:focus-visible { outline: 2px solid var(--c); outline-offset: 2px; }
 </style>
 </head>
 <body>
@@ -1138,9 +1152,16 @@ function источникЗаявки(){
     </div>
     <div>
       <form class="fform" id="bForm">
+        <div class="field">
+          <label>Когда едете</label>
+          <div class="whensw" id="whenSw">
+            <button type="button" class="whensw-b on" data-when="Планирую поездку">Планирую поездку</button>
+            <button type="button" class="whensw-b" data-when="Уже во Вьетнаме">Уже во Вьетнаме</button>
+          </div>
+        </div>
         <div class="frow">
           <div class="field"><label>Ваше имя</label><input type="text" name="name" placeholder="Как вас зовут?" required></div>
-          <div class="field"><label>Контакт для связи</label><input type="text" name="contact" placeholder="Telegram, WhatsApp, телефон" required></div>
+          <div class="field"><label>Телеграм для связи</label><input type="text" name="contact" placeholder="@username или телефон" required></div>
         </div>
         <div class="field">
           <label>Экскурсия</label>
@@ -1391,6 +1412,15 @@ setRegion(PAGE_REGION);
 // Токен бота лежит в переменных окружения воркера и в браузер не попадает.
 const FORM_ENDPOINT = 'https://narada-form.cocame.workers.dev';
 
+// Срочность заявки: кто уже на месте, ждать до утра не станет.
+let КОГДА = 'Планирую поездку';
+document.querySelectorAll('.whensw-b').forEach(b => {
+  b.addEventListener('click', () => {
+    КОГДА = b.dataset.when;
+    document.querySelectorAll('.whensw-b').forEach(x => x.classList.toggle('on', x === b));
+  });
+});
+
 document.getElementById('bForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   const btn = this.querySelector('.fsubmit');
@@ -1402,7 +1432,7 @@ document.getElementById('bForm').addEventListener('submit', async function(e) {
       method: 'POST', headers: {'Content-Type':'application/json'},
       body: JSON.stringify({
         name: d.get('name'), contact: d.get('contact'), tour: d.get('tour'),
-        people: d.get('people'), dates, comment: '',
+        people: d.get('people'), dates, comment: КОГДА,
         consent: d.get('consent') === 'on', website: d.get('website'),
         ...источникЗаявки()
       })
