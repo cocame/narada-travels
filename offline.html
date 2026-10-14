@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Нет интернета — Narada Travels</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="/images/favicon.png">
+<style>
+  /* Шрифт сайта подгружается из сети, а здесь сети нет — поэтому системный. */
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root { --dark:#111; --gray:#6B7280; --border:#E5E7EB;
+          --accent:#95845E; --accent-hover:#7F704F; --btn-r:9px; }
+  html, body { height:100%; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+         color:var(--dark); background:#FAFAF8; display:flex; align-items:center;
+         justify-content:center; text-align:center; padding:32px 24px;
+         -webkit-font-smoothing:antialiased; }
+  .in { max-width:420px; }
+  .logo { height:38px; margin-bottom:26px; opacity:.9; }
+  h1 { font-size:27px; font-weight:800; letter-spacing:-0.02em; margin-bottom:12px; }
+  p { font-size:16px; line-height:1.6; color:var(--gray); margin-bottom:28px; }
+  .btns { display:flex; flex-direction:column; gap:10px; }
+  .btn { display:block; padding:14px 24px; border-radius:var(--btn-r); border:0;
+         font-size:15px; font-weight:600; text-decoration:none; cursor:pointer;
+         font-family:inherit; transition:.2s; }
+  .primary { background:var(--accent); color:#fff; }
+  .primary:hover { background:var(--accent-hover); }
+  .ghost { border:1px solid var(--border); color:var(--dark); background:#fff; }
+  .ghost:hover { border-color:var(--dark); }
+</style>
+</head>
+<body>
+  <div class="in">
+    <img class="logo" src="/images/logo.png" alt="Narada Travels">
+    <h1>Нет интернета</h1>
+    <p>Страница не загрузилась — похоже, пропала связь. Проверьте соединение и попробуйте снова.</p>
+    <div class="btns">
+      <button class="btn primary" onclick="location.reload()">Обновить</button>
+      <a class="btn ghost" href="https://t.me/narada_travels">Написать в Telegram</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -12,6 +12,19 @@
 </script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- PWA: манифест и офлайн-режим — сайт упакован в приложение для Google Play.
+     Файлы лежат в корне: /manifest.webmanifest, /sw.js, /offline.html. -->
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192.png">
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('/sw.js').catch(function () {});
+    });
+  }
+</script>
 <title>Политика конфиденциальности · Narada Travels</title>
 <meta name="description" content="Как Narada Travels обрабатывает персональные данные, оставленные через форму заявки на сайте narada-travels.com.">
 <link rel="icon" href="images/favicon.png">

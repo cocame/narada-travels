@@ -1,0 +1,19 @@
+{
+  "name": "Narada Travels — экскурсии во Вьетнаме",
+  "short_name": "Narada",
+  "description": "Экскурсии из Дананга, на Фукуоке и в Нячанге с русскоязычным гидом",
+  "lang": "ru",
+  "dir": "ltr",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "id": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FAFAF8",
+  "theme_color": "#FFFFFF",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
