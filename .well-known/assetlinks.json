@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.naradatravels.app",
+        "sha256_cert_fingerprints": ["8B:1E:C6:BB:53:DE:51:E3:62:9A:97:AA:45:73:02:7E:44:95:D7:6C:AE:CA:A6:27:2F:3C:9C:30:B5:C5:69:23"]
+      }
+    }]
