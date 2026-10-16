@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P1GH6D3HYX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-P1GH6D3HYX');
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- PWA: манифест и офлайн-режим — сайт упакован в приложение для Google Play.
+     Файлы лежат в корне: /manifest.webmanifest, /sw.js, /offline.html. -->
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('/sw.js').catch(function () {});
+    });
+  }
+</script>
+
+<title>Политика конфиденциальности — Narada Travels</title>
+<meta name="description" content="Политика конфиденциальности приложения «Narada Travels» и сайта narada-travels.com: какие данные мы получаем, зачем и как их удалить. Русская и английская версии.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://narada-travels.com/privacy/">
+<link rel="icon" type="image/png" href="/images/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root { --c: #E8533A; --dark: #111; --gray: #6B7280; --border: #E5E7EB; --r: 8px;
+        --bg: #FAFAF8; --accent: #95845E; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body { background: var(--bg); font-family: 'Onest', -apple-system, BlinkMacSystemFont, sans-serif;
+             -webkit-font-smoothing: antialiased; color: var(--dark); }
+
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 20px 80px; }
+
+header {
+  position: sticky; top: 0; z-index: 10; background: rgba(250,250,248,.92);
+  backdrop-filter: saturate(180%) blur(12px); border-bottom: 1px solid var(--border);
+  margin: 0 -20px 40px; padding: 0 20px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+header a.home { font-weight: 800; font-size: 16px; color: var(--dark); text-decoration: none; letter-spacing: -.01em; }
+header a.back { font-size: 14px; color: var(--c); text-decoration: none; font-weight: 600; }
+
+/* Переключатель языков: две ссылки на якоря, обе версии на одной странице —
+   Google Play требует, чтобы политика открывалась сразу, без переходов. */
+.langs { display: flex; gap: 8px; margin-bottom: 32px; }
+.langs a {
+  padding: 8px 16px; border-radius: 999px; border: 1px solid var(--border);
+  background: #fff; color: var(--gray); font-size: 13.5px; font-weight: 600;
+  text-decoration: none; transition: border-color .2s, color .2s;
+}
+.langs a:hover { border-color: var(--dark); color: var(--dark); }
+
+h1 { font-size: 32px; font-weight: 800; letter-spacing: -.02em; line-height: 1.2; margin-bottom: 10px; }
+.upd { font-size: 13px; color: var(--gray); margin-bottom: 36px; }
+
+h2 {
+  font-size: 18px; font-weight: 700; margin: 36px 0 12px; letter-spacing: -.01em;
+  padding-top: 26px; border-top: 1px solid var(--border);
+}
+h2:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
+
+p, li { font-size: 15px; line-height: 1.7; color: #374151; }
+p { margin-bottom: 14px; }
+ul { margin: 0 0 16px 0; padding-left: 20px; }
+li { margin-bottom: 8px; }
+strong { color: var(--dark); font-weight: 600; }
+a { color: var(--c); }
+
+.part { scroll-margin-top: 80px; }
+.part + .part { margin-top: 72px; padding-top: 40px; border-top: 2px solid var(--border); }
+
+footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border);
+         font-size: 13px; color: var(--gray); }
+footer a { color: var(--gray); }
+
+@media (max-width: 600px) { h1 { font-size: 26px; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <a class="home" href="/">Narada Travels</a>
+  <a class="back" href="/">← На главную</a>
+</header>
+
+<div class="langs">
+  <a href="#ru">Русский</a>
+  <a href="#en">English</a>
+</div>
+
+<section class="part" id="ru">
+
+<h1>Политика конфиденциальности приложения «Narada Travels»</h1>
+<p class="upd">Дата вступления в силу: 16 октября 2026 г.</p>
+
+<h2>1. Кто мы</h2>
+<p>Приложение «Narada Travels» и сайт narada-travels.com принадлежат и управляются физическим лицом: Ленар Актасович Сахапов (Ханой, Вьетнам). Связаться с нами по вопросам конфиденциальности можно по адресу: <a href="mailto:cocame.city@gmail.com">cocame.city@gmail.com</a>.</p>
+
+<h2>2. О приложении</h2>
+<p>Приложение открывает сайт narada-travels.com в оболочке Android-приложения. В нём можно посмотреть экскурсии из Дананга, Фукуока и Нячанга и оставить заявку на экскурсию или на услуги: трансфер из отеля, билеты на автобусы, поезда и самолёты по Вьетнаму, личный гид-сопровождающий, услуги переводчика. Регистрации и личного кабинета в приложении нет.</p>
+
+<h2>3. Какие данные мы получаем</h2>
+<p><strong>Данные заявки.</strong> Когда вы оставляете заявку, форма открывает Telegram с заполненным текстом сообщения. Вы сами решаете, отправлять ли его. В сообщении оказывается только то, что вы ввели: имя, даты, количество человек, город, отель, пожелания, контакт для связи. Эти данные получаем только мы в переписке в Telegram.</p>
+<p><strong>Данные для билетов.</strong> Для покупки билета по вашей просьбе нам нужны имена пассажиров так, как они написаны в документе. Иногда перевозчик требует номер документа. Мы запрашиваем его только в личной переписке, никогда через формы приложения или сайта, и используем исключительно для оформления вашего билета.</p>
+<p><strong>Технические данные.</strong> Как и любой сайт, сервер может записывать в служебные журналы IP-адрес, тип устройства и браузера, время и адреса запрошенных страниц. Приложение сохраняет на устройстве копии страниц и служебные файлы (кэш), чтобы быстрее открываться и показывать базовую страницу без интернета.</p>
+<p>Мы не получаем доступ к вашей геолокации, контактам, фотографиям, камере, микрофону и файлам на устройстве.</p>
+
+<h2>4. Для чего мы используем данные</h2>
+<p>Чтобы ответить на вашу заявку, посчитать и назвать стоимость, подготовить и провести экскурсию, оформить трансфер, билет, услуги гида или переводчика, связаться с вами по заказу и улучшать работу сайта. Мы не продаём ваши данные и не используем их для рекламы.</p>
+
+<h2>5. Кому мы можем передавать данные</h2>
+<ul>
+  <li><strong>Telegram:</strong> через него идёт переписка по заявкам. На него распространяется политика конфиденциальности Telegram.</li>
+  <li><strong>Перевозчики и сервисы продажи билетов</strong> (например, Vexere): только данные пассажира, нужные для оформления вашего билета.</li>
+  <li><strong>Хостинг сайта:</strong> техническое хранение сайта и служебных журналов.</li>
+  <li><strong>Государственные органы:</strong> если этого требует закон.</li>
+</ul>
+<p>Других получателей у нас нет. В приложении нет рекламных сетей.</p>
+
+<h2>6. Сколько мы храним данные</h2>
+<p>Переписку по заявке мы храним, пока это нужно для выполнения заказа и решения возможных вопросов по нему. Данные документов (номера) мы не сохраняем после оформления билета. Вы можете в любой момент попросить удалить вашу переписку и данные, написав на <a href="mailto:cocame.city@gmail.com">cocame.city@gmail.com</a>.</p>
+
+<h2>7. Ваши права</h2>
+<p>Вы можете запросить, какие данные о вас у нас есть, попросить исправить или удалить их, а также отозвать согласие на их обработку. Напишите на <a href="mailto:cocame.city@gmail.com">cocame.city@gmail.com</a>, мы ответим в течение 30 дней. Если вы удалите приложение, все его данные на вашем устройстве удалятся вместе с ним.</p>
+
+<h2>8. Безопасность</h2>
+<p>Сайт работает по защищённому протоколу HTTPS. Мы стараемся не собирать лишнего и не пересылать документы без необходимости. Но ни одна система передачи данных не защищена полностью, поэтому не отправляйте нам в заявках то, что не нужно для заказа.</p>
+
+<h2>9. Дети</h2>
+<p>Приложение не предназначено для детей младше 13 лет, и мы сознательно не собираем их данные. Заказы для детей оформляют родители или опекуны.</p>
+
+<h2>10. Изменения политики</h2>
+<p>Мы можем обновлять эту политику. Новая версия публикуется на этой странице с новой датой вступления в силу.</p>
+
+<h2>11. Контакты</h2>
+<p>Ленар Актасович Сахапов, Ханой, Вьетнам. Эл. почта: <a href="mailto:cocame.city@gmail.com">cocame.city@gmail.com</a>.</p>
+
+</section>
+
+<section class="part" id="en" lang="en">
+
+<h1>Privacy Policy of the “Narada Travels” App</h1>
+<p class="upd">Effective date: October 16, 2026</p>
+
+<h2>1. Who we are</h2>
+<p>The “Narada Travels” app and the website narada-travels.com are owned and operated by an individual: Lenar Aktasovich Sakhapov (Hanoi, Vietnam). For privacy questions, contact us at <a href="mailto:cocame.city@gmail.com">cocame.city@gmail.com</a>.</p>
+
+<h2>2. About the app</h2>
+<p>The app opens the website narada-travels.com inside an Android app wrapper. You can browse tours from Da Nang, Phu Quoc and Nha Trang and send a request for a tour or for services: hotel transfer, bus, train and flight tickets within Vietnam, a personal accompanying guide, and interpreter services. There is no registration or user account in the app.</p>
+
+<h2>3. What data we receive</h2>
+<p><strong>Request data.</strong> When you submit a request, the form opens Telegram with a pre-filled message. You decide whether to send it. The message contains only what you entered: name, dates, number of people, city, hotel, wishes, and a contact for reply. We receive this data only through our Telegram conversation with you.</p>
+<p><strong>Ticket data.</strong> To buy a ticket at your request we need passenger names exactly as written in the travel document. Sometimes a carrier requires a document number. We ask for it only in a private conversation, never through forms in the app or on the website, and use it solely to issue your ticket.</p>
+<p><strong>Technical data.</strong> Like any website, the server may record in service logs your IP address, device and browser type, time, and the pages requested. The app stores copies of pages and service files (cache) on your device so it opens faster and can show a basic page without internet.</p>
+<p>We do not access your location, contacts, photos, camera, microphone, or files on your device.</p>
+
+<h2>4. How we use data</h2>
+<p>To respond to your request, calculate and quote the price, prepare and run the tour, arrange the transfer, ticket, guide or interpreter services, contact you about your order, and improve the website. We do not sell your data and do not use it for advertising.</p>
+
+<h2>5. Who we may share data with</h2>
+<ul>
+  <li><strong>Telegram:</strong> requests are handled through it. Telegram’s own privacy policy applies.</li>
+  <li><strong>Carriers and ticket-selling services</strong> (for example, Vexere): only the passenger data needed to issue your ticket.</li>
+  <li><strong>Website hosting provider:</strong> technical storage of the website and service logs.</li>
+  <li><strong>Public authorities:</strong> where required by law.</li>
+</ul>
+<p>We have no other recipients. The app contains no advertising networks.</p>
+
+<h2>6. How long we keep data</h2>
+<p>We keep the conversation about your request for as long as needed to fulfil the order and handle any follow-up questions. We do not keep document numbers after the ticket is issued. You can ask us at any time to delete your conversation and data by writing to <a href="mailto:cocame.city@gmail.com">cocame.city@gmail.com</a>.</p>
+
+<h2>7. Your rights</h2>
+<p>You can ask what data we hold about you, ask us to correct or delete it, and withdraw your consent to its processing. Write to <a href="mailto:cocame.city@gmail.com">cocame.city@gmail.com</a> and we will reply within 30 days. If you uninstall the app, all its data on your device is removed with it.</p>
+
+<h2>8. Security</h2>
+<p>The website uses HTTPS. We try to collect only what is needed and not to send documents unless necessary. No data transmission is completely secure, so please do not include in requests anything not needed for your order.</p>
+
+<h2>9. Children</h2>
+<p>The app is not intended for children under 13, and we do not knowingly collect their data. Orders for children are placed by parents or guardians.</p>
+
+<h2>10. Changes to this policy</h2>
+<p>We may update this policy. The new version will be published on this page with a new effective date.</p>
+
+<h2>11. Contact</h2>
+<p>Lenar Aktasovich Sakhapov, Hanoi, Vietnam. Email: <a href="mailto:cocame.city@gmail.com">cocame.city@gmail.com</a>.</p>
+
+</section>
+
+<footer>
+  © 2026 Narada Travels &amp; Guides · <a href="/">narada-travels.com</a>
+</footer>
+</div>
+
+</body>
+</html>
