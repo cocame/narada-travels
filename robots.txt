@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /stats/
+# Раздел услуг открыт только из приложения, поисковикам там делать нечего
+Disallow: /uslugi/
 
 Sitemap: https://narada-travels.com/sitemap.xml

@@ -25,6 +25,27 @@
     });
   }
 </script>
+<!-- Признак приложения: страницы с классом app-only видны только тем,
+     кто открыл сайт через приложение из Google Play. На обычном сайте их нет. -->
+<script>
+(function () {
+  try {
+    var q = new URLSearchParams(location.search);
+    var app = q.get('source') === 'pwa'
+      || (document.referrer || '').indexOf('android-app://') === 0
+      || matchMedia('(display-mode: standalone)').matches
+      || matchMedia('(display-mode: fullscreen)').matches
+      || matchMedia('(display-mode: minimal-ui)').matches
+      || sessionStorage.getItem('inApp') === '1';
+    if (app) { sessionStorage.setItem('inApp', '1'); document.documentElement.classList.add('in-app'); }
+  } catch (e) {}
+})();
+</script>
+<style>
+  .app-only { display: none; }
+  html.in-app .app-only { display: revert; }
+</style>
+
 <title>Экскурсия в Хюэ из Дананга на русском | Императорский Хюэ, Вьетнам</title>
 <meta name="description" content="Экскурсия в Хюэ из Дананга на русском: Императорская цитадель, гробница Кхай Диня, пагода Тхьен Му, деревня благовоний, заброшенный аквапарк и Hai Van Pass.">
 <link rel="canonical" href="https://narada-travels.com/hue/">

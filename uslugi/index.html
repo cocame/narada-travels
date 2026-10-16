@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P1GH6D3HYX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-P1GH6D3HYX');
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Услуги · Narada Travels</title>
+
+<!-- PWA: манифест и офлайн-режим — сайт упакован в приложение для Google Play. -->
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192.png">
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('/sw.js').catch(function () {});
+    });
+  }
+</script>
+
+<script>
+/* Страница только для приложения. Признак приложения тот же, что на
+   остальных страницах: метка в адресе, переход из android-app://,
+   режим standalone или уже распознанное приложение в этой вкладке.
+   Это скрытие, а не защита: кто знает адрес с ?source=pwa — увидит.
+   Ничего закрытого здесь нет, цены не называются. */
+(function () {
+  try {
+    var q = new URLSearchParams(location.search);
+    var app = q.get('source') === 'pwa'
+      || (document.referrer || '').indexOf('android-app://') === 0
+      || matchMedia('(display-mode: standalone)').matches
+      || matchMedia('(display-mode: fullscreen)').matches
+      || matchMedia('(display-mode: minimal-ui)').matches
+      || sessionStorage.getItem('inApp') === '1';
+    if (app) { sessionStorage.setItem('inApp', '1'); document.documentElement.classList.add('in-app'); }
+  } catch (e) {}
+  if (!document.documentElement.classList.contains('in-app')) location.replace('/');
+})();
+</script>
+
+<link rel="icon" type="image/png" href="/images/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root { --c: #E8533A; --dark: #111; --gray: #6B7280; --border: #E5E7EB; --r: 8px;
+        --bg: #FAFAF8; --accent: #95845E; --accent-hover: #7F704F; --btn-r: 9px; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { background: var(--bg); font-family: 'Onest', -apple-system, BlinkMacSystemFont, sans-serif;
+             -webkit-font-smoothing: antialiased; color: var(--dark); }
+
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 20px 72px; }
+
+header {
+  position: sticky; top: 0; z-index: 10; background: rgba(250,250,248,.92);
+  backdrop-filter: saturate(180%) blur(12px); border-bottom: 1px solid var(--border);
+  margin: 0 -20px 36px; padding: 0 20px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+header a.home { font-weight: 800; font-size: 16px; color: var(--dark); text-decoration: none; letter-spacing: -.01em; }
+header a.back { font-size: 14px; color: var(--c); text-decoration: none; font-weight: 600; }
+
+h1 { font-size: 34px; font-weight: 800; letter-spacing: -.02em; line-height: 1.15; margin-bottom: 10px; }
+.lead { font-size: 15px; line-height: 1.65; color: var(--gray); margin-bottom: 28px; }
+.lead a { color: var(--c); }
+
+/* Карточка услуги: закрытая — одна строка, открытая — описание и форма. */
+details {
+  background: #fff; border: 1px solid var(--border); border-radius: 12px;
+  margin-bottom: 12px; overflow: hidden;
+}
+details[open] { border-color: #D8D4CB; }
+summary {
+  padding: 17px 18px; font-size: 16.5px; font-weight: 700; letter-spacing: -.01em;
+  cursor: pointer; list-style: none; display: flex; align-items: center; gap: 10px;
+}
+summary::-webkit-details-marker { display: none; }
+summary::after {
+  content: '+'; margin-left: auto; font-size: 19px; font-weight: 400;
+  color: var(--gray); line-height: 1; transition: transform .2s ease;
+}
+details[open] summary::after { content: '−'; }
+.body { padding: 0 18px 20px; }
+.body > p { font-size: 14.5px; line-height: 1.65; color: #374151; margin-bottom: 12px; }
+.body ul { margin: 0 0 18px; padding-left: 18px; }
+.body li { font-size: 13.5px; line-height: 1.6; color: var(--gray); margin-bottom: 6px; }
+
+label { display: block; margin: 12px 0 5px; font-size: 12.5px; font-weight: 600; color: var(--gray); }
+input, select, textarea {
+  width: 100%; padding: 11px 13px; border: 1px solid var(--border); border-radius: var(--r);
+  font-family: inherit; font-size: 15px; color: var(--dark); background: #fff;
+}
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); }
+textarea { resize: vertical; }
+
+.chk { display: flex; gap: 9px; align-items: flex-start; margin: 18px 0 16px; }
+.chk input { width: auto; margin-top: 3px; flex-shrink: 0; accent-color: var(--accent); }
+.chk label { margin: 0; font-size: 12.5px; font-weight: 400; line-height: 1.5; color: var(--gray); }
+.chk label a { color: var(--c); }
+
+button {
+  width: 100%; padding: 14px; border: 0; border-radius: var(--btn-r);
+  background: var(--accent); color: #fff; font-family: inherit;
+  font-size: 15px; font-weight: 600; cursor: pointer; transition: background .2s;
+}
+button:hover { background: var(--accent-hover); }
+
+.msg {
+  display: none; margin-top: 12px; padding: 13px 15px; border-radius: var(--r);
+  background: #FFF0ED; border: 1px solid #FBD5CC; font-size: 13.5px;
+  line-height: 1.55; color: #374151;
+}
+
+footer { margin-top: 48px; padding-top: 22px; border-top: 1px solid var(--border);
+         font-size: 13px; color: var(--gray); }
+footer a { color: var(--gray); }
+
+@media (max-width: 600px) {
+  h1 { font-size: 27px; }
+  summary { font-size: 15.5px; padding: 16px; }
+  .body { padding: 0 16px 18px; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <a class="home" href="/">Narada Travels</a>
+  <a class="back" href="/">← На главную</a>
+</header>
+
+<h1>Услуги</h1>
+<p class="lead">Оставьте заявку, мы посчитаем и пришлём цену. Свяжемся в течение часа.</p>
+
+<div id="list"></div>
+
+<p class="lead" style="margin-top:24px">Экскурсии по Вьетнаму смотрите <a href="/#tours">на главной странице</a>.</p>
+
+<footer>
+  © 2026 Narada Travels &amp; Guides · <a href="/">narada-travels.com</a>
+</footer>
+</div>
+
+<script>
+var TG = 'taysafinskaya'; /* то же имя, что в кнопке «Написать Таис» на главной */
+var COMMON = [
+  ['Ваше имя', 'text', 1],
+  ['Контакт для связи (Telegram или телефон)', 'text', 1],
+  ['Комментарий', 'textarea', 0]
+];
+var SERVICES = [
+  { id: 'transfer', icon: '🚐', title: 'Трансфер из отеля',
+    lead: 'Закажите трансфер из отеля в удобное время. Укажите маршрут и дату: мы рассчитаем стоимость и пришлём цену.',
+    points: ['Цена считается под ваш маршрут и число пассажиров', 'Учитываем багаж и детские кресла', 'Подтверждаем поездку после согласования цены'],
+    fields: [['Откуда (отель или адрес)', 'text', 1], ['Куда', 'text', 1], ['Дата', 'date', 1], ['Время', 'time', 1],
+             ['Количество пассажиров', 'number', 1], ['Багаж (мест)', 'text', 0],
+             ['Детские кресла', 'select:Не нужны|Нужно одно|Нужно два', 0], ['Номер рейса (если аэропорт)', 'text', 0]] },
+  { id: 'tickets', icon: '🎫', title: 'Билеты по Вьетнаму',
+    lead: 'Подберём билеты на автобус, поезд или самолёт по Вьетнаму. Оставьте заявку: мы найдём варианты, посчитаем итоговую стоимость и пришлём цену.',
+    points: ['Автобусы, поезда и авиарейсы по Вьетнаму', 'Итоговая цена: стоимость билета и наш сервисный сбор. Называем её до оплаты', 'Условия возврата зависят от перевозчика, мы расскажем о них до оплаты', 'Для оформления нужны имена пассажиров как в паспорте. Номера паспортов в заявке не указывайте, при необходимости мы запросим их отдельно в личной переписке'],
+    fields: [['Вид транспорта', 'select:Автобус|Поезд|Самолёт', 1], ['Откуда', 'text', 1], ['Куда', 'text', 1], ['Дата поездки', 'date', 1],
+             ['Дата обратного билета (если нужен)', 'date', 0], ['Количество пассажиров', 'number', 1],
+             ['Имена пассажиров (как в паспорте)', 'textarea', 0]] },
+  { id: 'guide', icon: '🧭', title: 'Личный гид-сопровождающий',
+    lead: 'Русскоязычный гид рядом с вами на несколько часов или на несколько дней. Маршрут и темп подстраиваем под вас.',
+    points: ['Формат: на несколько часов или на несколько дней', 'Маршрут и темп подстраиваем под вас', 'Стоимость считаем по вашей заявке'],
+    fields: [['Город или район', 'text', 1], ['Дата начала', 'date', 1], ['Сколько дней или часов', 'text', 1],
+             ['Количество участников', 'number', 1], ['Пожелания по маршруту', 'textarea', 0]] },
+  { id: 'translator', icon: '🗣️', title: 'Услуги переводчика',
+    lead: 'Устный перевод и сопровождение: поможем объясниться в больнице, при оформлении документов, на встречах и в поездках.',
+    points: ['Устный перевод и сопровождение', 'Укажите языки, тип события, дату и длительность', 'Письменный перевод и заверение документов уточняйте в заявке'],
+    fields: [['Языки перевода', 'text', 1],
+             ['Тип события', 'select:Больница|Документы и оформление|Деловая встреча|Поездка или сопровождение|Другое', 1],
+             ['Дата', 'date', 1], ['Время начала', 'time', 0], ['Длительность (часов)', 'number', 0], ['Город и место', 'text', 1]] }
+];
+
+function field(id, i, f) {
+  var n = id + '_' + i, req = f[2] ? ' required' : '';
+  var h = '<label for="' + n + '">' + f[0] + (f[2] ? ' *' : '') + '</label>';
+  if (f[1] === 'textarea') return h + '<textarea id="' + n + '" name="' + f[0] + '" rows="3"' + req + '></textarea>';
+  if (f[1].indexOf('select:') === 0) {
+    var o = f[1].slice(7).split('|').map(function (x) { return '<option>' + x + '</option>'; }).join('');
+    return h + '<select id="' + n + '" name="' + f[0] + '"' + req + '>' + o + '</select>';
+  }
+  return h + '<input id="' + n + '" name="' + f[0] + '" type="' + f[1] + '"' + req + '>';
+}
+
+function submitForm(e) {
+  e.preventDefault();
+  var f = e.target;
+  var lines = ['Заявка из приложения: ' + f.getAttribute('data-title')];
+  [].forEach.call(f.elements, function (x) {
+    if (x.name && x.name !== 'consent' && x.value) lines.push(x.name + ': ' + x.value);
+  });
+  var адрес = 'https://t.me/' + TG + '?text=' + encodeURIComponent(lines.join('\n'));
+  // В приложении новое окно иногда не открывается молча — тогда уводим
+  // на Telegram прямо в текущем окне, чтобы заявка не потерялась.
+  var окно = window.open(адрес, '_blank');
+  if (!окно) location.href = адрес;
+  f.querySelector('.msg').style.display = 'block';
+}
+
+var list = document.getElementById('list');
+SERVICES.forEach(function (s) {
+  var d = document.createElement('details');
+  d.id = s.id;
+  var h = '<summary>' + s.icon + ' ' + s.title + '</summary><div class="body"><p>' + s.lead + '</p><ul>'
+        + s.points.map(function (p) { return '<li>' + p + '</li>'; }).join('') + '</ul>'
+        + '<form data-title="' + s.title + '">';
+  s.fields.concat(COMMON).forEach(function (f, i) { h += field(s.id, i, f); });
+  h += '<div class="chk"><input type="checkbox" id="' + s.id + '_c" name="consent" required>'
+     + '<label for="' + s.id + '_c">Согласен на обработку персональных данных. '
+     + '<a href="/privacy.html" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a></label></div>'
+     + '<button type="submit">Подготовить заявку</button>'
+     + '<div class="msg">Откроется Telegram с готовым сообщением. Отправьте его нам, мы посчитаем и пришлём цену.</div>'
+     + '</form></div>';
+  d.innerHTML = h;
+  d.querySelector('form').addEventListener('submit', submitForm);
+  list.appendChild(d);
+});
+if (location.hash) {
+  var t = document.querySelector(location.hash);
+  if (t && t.tagName === 'DETAILS') t.open = true;
+}
+</script>
+
+</body>
+</html>
