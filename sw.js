@@ -15,7 +15,7 @@
    GitHub Pages отдаёт файлы с Cache-Control: max-age=600, поэтому новая версия
    доезжает до людей в течение десяти минут. */
 
-const V = 'narada-v1';
+const V = 'narada-v2';   // v2 — смена иконки приложения, 16 октября 2026
 const OFFLINE = '/offline.html';
 
 self.addEventListener('install', e => {
