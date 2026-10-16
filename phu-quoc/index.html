@@ -887,6 +887,10 @@ nav.solid .regnav-soon { color: var(--gray); }
 .p-north   { grid-column: 5 / span 4;  grid-row: 3 / span 2; }
 .p-south   { grid-column: 9 / span 4;  grid-row: 3 / span 2; }
 .p-fishing { grid-column: 1 / span 12; grid-row: 5 / span 2; }
+/* Полоса во всю ширину — пропорция почти 4:1, и при обрезке по центру
+   от снимка оставался пустой верх мачты. Опускаем кадр: в полосу
+   попадает палуба с названием судна и спасательными кругами. */
+.p-fishing > img { object-position: center 70%; }
 @media (max-width: 768px) {
   .p-cable,.p-safari,.p-sea,.p-north,.p-south,.p-fishing {
     grid-column: span 1 !important; grid-row: span 1 !important; }
