@@ -896,6 +896,19 @@ nav.solid .regnav-soon { color: var(--gray); }
   position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: cover; display: block; }
 .pq-bento .bc, .p-sunset { background: #e9ecec; }
+
+/* ── Шапка на телефоне ──────────────────────────────────────
+   Вкладок стало четыре, и на 360 px бургер выдавливало за край экрана.
+   Вкладки ужимаются и, если совсем узко, прокручиваются внутри себя;
+   бургер при этом не двигается. Полосу прокрутки прячем: она тут
+   только как запас, обычно всё помещается. */
+@media (max-width: 768px) {
+  .nav-r { gap: 12px; min-width: 0; }
+  .regnav { min-width: 0; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+  .regnav::-webkit-scrollbar { display: none; }
+  .regnav span, .regnav a { flex: none; padding: 5px 9px; font-size: 11.5px; }
+  .burger { flex-shrink: 0; }
+}
 </style>
 </head>
 <body>

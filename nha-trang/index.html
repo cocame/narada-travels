@@ -944,6 +944,19 @@ nav.solid .regnav-soon { color: var(--gray); }
 .whensw-b:hover { color: #fff; }
 .whensw-b.on { background: var(--accent); color: var(--accent-text); }
 .whensw-b:focus-visible { outline: 2px solid var(--c); outline-offset: 2px; }
+
+/* ── Шапка на телефоне ──────────────────────────────────────
+   Вкладок стало четыре, и на 360 px бургер выдавливало за край экрана.
+   Вкладки ужимаются и, если совсем узко, прокручиваются внутри себя;
+   бургер при этом не двигается. Полосу прокрутки прячем: она тут
+   только как запас, обычно всё помещается. */
+@media (max-width: 768px) {
+  .nav-r { gap: 12px; min-width: 0; }
+  .regnav { min-width: 0; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+  .regnav::-webkit-scrollbar { display: none; }
+  .regnav span, .regnav a { flex: none; padding: 5px 9px; font-size: 11.5px; }
+  .burger { flex-shrink: 0; }
+}
 </style>
 </head>
 <body>
