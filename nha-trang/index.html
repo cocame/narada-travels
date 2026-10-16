@@ -48,6 +48,12 @@
 <style>
   .app-only { display: none; }
   html.in-app .app-only { display: revert; }
+  /* Вкладка в переключателе направлений — отдельной парой правил.
+     У шапки своё правило «.regnav a { display: block }», и оно весомее
+     простого «.app-only»: без этих двух строк вкладка торчала бы
+     и в обычном браузере, а в приложении съезжала бы в строку. */
+  .regnav a.app-only { display: none; }
+  html.in-app .regnav a.app-only { display: block; }
 </style>
 
 <title>Экскурсии из Нячанга с русскоязычным гидом | Narada Travels</title>
@@ -998,6 +1004,7 @@ function источникЗаявки(){
         <a class="regnav-off" href="/">Дананг</a>
         <a class="regnav-off" href="/phu-quoc/">Фукуок</a>
         <span class="regnav-on">Нячанг</span>
+        <a class="regnav-off app-only" href="/uslugi/">Услуги</a>
       </div>
       <ul class="nav-links">
         <li><a href="#tours">Экскурсии</a></li>

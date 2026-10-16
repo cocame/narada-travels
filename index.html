@@ -48,6 +48,12 @@
 <style>
   .app-only { display: none; }
   html.in-app .app-only { display: revert; }
+  /* Вкладка в переключателе направлений — отдельной парой правил.
+     У шапки своё правило «.regnav a { display: block }», и оно весомее
+     простого «.app-only»: без этих двух строк вкладка торчала бы
+     и в обычном браузере, а в приложении съезжала бы в строку. */
+  .regnav a.app-only { display: none; }
+  html.in-app .regnav a.app-only { display: block; }
 </style>
 
 <meta name="google-site-verification" content="FQHjm5Bm4UPgGnkoVYewSxVqqqmrRKcNjQAi1IPD_fc">
@@ -941,6 +947,7 @@ function источникЗаявки(){
         <span class="regnav-on">Дананг</span>
         <a class="regnav-off" href="/phu-quoc/">Фукуок</a>
         <a class="regnav-off" href="/nha-trang/">Нячанг</a>
+        <a class="regnav-off app-only" href="/uslugi/">Услуги</a>
       </div>
       <ul class="nav-links">
         <li><a href="#tours">Экскурсии</a></li>
@@ -998,14 +1005,6 @@ function источникЗаявки(){
       </span>
     </a>
 
-  </div>
-</section>
-
-<!-- ── УСЛУГИ: видно только в приложении ── -->
-<section class="regband app-only">
-  <div class="regband-in">
-    <p><b>Услуги в приложении</b> — трансфер из отеля, билеты по Вьетнаму, личный гид-сопровождающий и переводчик. Посчитаем и пришлём цену.</p>
-    <a class="regband-go" href="/uslugi/">Смотреть услуги <span class="arw">&#8594;</span></a>
   </div>
 </section>
 

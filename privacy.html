@@ -44,6 +44,12 @@
 <style>
   .app-only { display: none; }
   html.in-app .app-only { display: revert; }
+  /* Вкладка в переключателе направлений — отдельной парой правил.
+     У шапки своё правило «.regnav a { display: block }», и оно весомее
+     простого «.app-only»: без этих двух строк вкладка торчала бы
+     и в обычном браузере, а в приложении съезжала бы в строку. */
+  .regnav a.app-only { display: none; }
+  html.in-app .regnav a.app-only { display: block; }
 </style>
 
 <title>Политика конфиденциальности · Narada Travels</title>
