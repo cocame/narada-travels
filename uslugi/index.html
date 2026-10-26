@@ -220,7 +220,7 @@ SERVICES.forEach(function (s) {
   s.fields.concat(COMMON).forEach(function (f, i) { h += field(s.id, i, f); });
   h += '<div class="chk"><input type="checkbox" id="' + s.id + '_c" name="consent" required>'
      + '<label for="' + s.id + '_c">Согласен на обработку персональных данных. '
-     + '<a href="/privacy.html" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a></label></div>'
+     + '<a href="/privacy/" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a></label></div>'
      + '<button type="submit">Подготовить заявку</button>'
      + '<div class="msg">Откроется Telegram с готовым сообщением. Отправьте его нам, мы посчитаем и пришлём цену.</div>'
      + '</form></div>';
