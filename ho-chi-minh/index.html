@@ -1025,7 +1025,7 @@ nav.solid .citybar .all { color: var(--dark); }
    пустоты посередине. Города, которые туда не влезают (Хошимин, «Все
    направления»), — вторым рядом ниже, отдельной строкой. */
 /* Ханой — скоро: в строке виден, но никуда не ведёт. */
-.citybar .soon { opacity: .5; cursor: default; }
+.citybar .soon, .citybar2 .soon { opacity: .5; cursor: default; }
 .citybar2 { display: none; }
 @media (max-width: 768px) {
   nav { height: auto; }
@@ -1120,6 +1120,7 @@ function источникЗаявки(){
         <a href="/nha-trang/">Нячанг</a>
         <span class="on c2">Хошимин</span>
         <span class="soon only-preview" title="Скоро">Ханой</span>
+        <span class="soon only-preview c2" title="Скоро">Муйне</span>
         <a class="all only-preview c2" href="/vietnam/">Все<span class="all-long"> направления</span><span class="arw">→</span></a>
       </div></div>
     <div class="nav-r">
@@ -1137,6 +1138,7 @@ function источникЗаявки(){
        ссылки стоят в общей строке, здесь — копия для узкого экрана. -->
   <div class="citybar2 only-preview"><div class="citybar-in">
       <span class="on">Хошимин</span>
+      <span class="soon" title="Скоро">Муйне</span>
       <a class="all" href="/vietnam/">Все<span class="all-long"> направления</span><span class="arw">→</span></a>
   </div></div>
 </nav>
