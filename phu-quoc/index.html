@@ -945,8 +945,10 @@ nav.solid .regnav-soon { color: var(--gray); }
    блок. Кнопки той же формы, что и остальные, — без «таблеток». */
 .citybar { flex: 0 1 auto; min-width: 0; margin: 0 20px; display: flex; justify-content: center; }
 .citybar-in { display: flex; align-items: center; gap: 2px; padding: 3px; border-radius: var(--r); min-width: 0;
-              background: rgba(17,17,17,0.32); backdrop-filter: blur(8px);
               overflow-x: auto; scrollbar-width: none; }
+/* Вся шапка — одна полупрозрачная полоса во всю ширину, как была строка
+   городов: логотип, города, меню и кнопка на ней, без отдельных подложек. */
+nav:not(.solid) { background: rgba(17,17,17,0.38); backdrop-filter: blur(8px); }
 .citybar-in::-webkit-scrollbar { display: none; }
 .citybar-in > a, .citybar-in > span { flex: none; display: block; padding: 6px 12px; border-radius: 6px;
            font-size: 12.5px; font-weight: 600; line-height: 1; white-space: nowrap;
@@ -954,7 +956,6 @@ nav.solid .regnav-soon { color: var(--gray); }
 .citybar a:hover { background: rgba(255,255,255,0.16); color: #fff; }
 .citybar .on { background: #fff; color: var(--dark); }
 .citybar .all .arw { display: inline; margin-left: 5px; }
-nav.solid .citybar-in { background: rgba(17,17,17,0.06); }
 nav.solid .citybar a { color: var(--gray); }
 nav.solid .citybar a:hover { color: var(--dark); background: rgba(17,17,17,0.06); }
 nav.solid .citybar .on { background: var(--dark); color: #fff; }
