@@ -1003,28 +1003,30 @@ nav.solid .citybar .all { color: var(--dark); }
   .tours .bc { height: calc((100vh - var(--navh, 68px)) * 0.88) !important; height: calc((100svh - var(--navh, 68px)) * 0.88) !important;
                min-height: 0 !important; max-height: none !important; aspect-ratio: auto !important; }
 }
-/* ── Другие направления: лента под экскурсиями ──
-   Сама медленно едет, замирает под пальцем или мышью. Без библиотек,
-   фото грузятся, только когда до них долистали. */
-.morecities { padding: 8px 0 64px; overflow: hidden; }
+/* ── Другие направления: фото во всю ширину страницы ──
+   Один город на экран, сами сменяются раз в 5 секунд; листаются пальцем
+   и мышью, под пальцем замирают. Без библиотек, фото грузятся по мере показа. */
+.morecities { position: relative; padding: 8px 0 56px; }
 .morecities h2 { padding: 0 56px; margin: 0 0 20px; font-size: clamp(22px, 2.4vw, 32px); font-weight: 800; letter-spacing: -0.02em; color: var(--dark); }
-.mc-track { display: flex; gap: 12px; overflow-x: auto; padding: 0 56px 4px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.mc-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
 .mc-track::-webkit-scrollbar { display: none; }
-.mc-card { position: relative; flex: none; width: clamp(240px, 26vw, 340px); aspect-ratio: 4 / 5; border-radius: var(--r); overflow: hidden;
+.mc-card { position: relative; flex: 0 0 100%; height: clamp(380px, 64vh, 680px); scroll-snap-align: start; overflow: hidden;
   text-decoration: none; color: #fff; background: #222; }
-.mc-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
-.mc-card:hover img { transform: scale(1.04); }
-.mc-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.72) 0%, rgba(0,0,0,.15) 55%, rgba(0,0,0,0) 100%); }
-.mc-info { position: absolute; left: 18px; right: 18px; bottom: 18px; z-index: 1; display: grid; gap: 4px; }
-.mc-info b { font-size: 24px; font-weight: 800; letter-spacing: -0.01em; }
-.mc-info span { font-size: 13px; line-height: 1.4; color: rgba(255,255,255,.85); }
-.mc-go { position: absolute; top: 14px; right: 14px; z-index: 1; padding: 6px 12px; border-radius: 6px; background: rgba(255,255,255,.92); color: var(--dark); font-size: 12px; font-weight: 700; }
-.mc-card.soon .mc-go { background: rgba(255,255,255,.18); color: #fff; }
-.mc-card:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.mc-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.mc-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.7) 0%, rgba(0,0,0,.2) 45%, rgba(0,0,0,0) 75%); }
+.mc-info { position: absolute; left: 56px; right: 56px; bottom: 48px; z-index: 1; display: grid; gap: 8px; max-width: 640px; }
+.mc-info b { font-size: clamp(32px, 4.4vw, 60px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; }
+.mc-info > span:not(.mc-go) { font-size: clamp(14px, 1.3vw, 18px); line-height: 1.45; color: rgba(255,255,255,.88); }
+.mc-info .mc-go { justify-self: start; margin-top: 8px; padding: 11px 20px; border-radius: var(--btn-r, 8px); background: #fff; color: var(--dark); font-size: 14px; font-weight: 700; }
+.mc-card.soon .mc-info .mc-go { background: rgba(255,255,255,.18); color: #fff; backdrop-filter: blur(6px); }
+.mc-card:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+.mc-dots { position: absolute; left: 0; right: 0; bottom: 24px; display: flex; justify-content: center; gap: 8px; z-index: 2; pointer-events: none; }
+.mc-dots button { pointer-events: auto; width: 9px; height: 9px; padding: 0; border: 0; border-radius: 50%; background: var(--border, #d9d9d9); cursor: pointer; }
+.mc-dots button.on { background: var(--dark); width: 26px; border-radius: 5px; }
 @media (max-width: 768px) {
   .morecities h2 { padding: 0 16px; }
-  .mc-track { padding: 0 16px 4px; }
-  .mc-card { width: 72vw; }
+  .mc-card { height: 72vh; height: 72svh; max-height: 620px; }
+  .mc-info { left: 20px; right: 20px; bottom: 36px; }
 }
 </style>
 </head>
@@ -1203,55 +1205,26 @@ function источникЗаявки(){
   <div class="mc-track">
     <a class="mc-card" href="/">
       <img src="/images/bana-hero.webp" alt="Дананг" loading="lazy">
-      <span class="mc-go">Смотреть экскурсии →</span>
-      <span class="mc-info"><b>Дананг</b><span>Ба На Хиллс и Золотой мост, Хойан, Хюэ, острова Чам</span></span>
+      <span class="mc-info"><b>Дананг</b><span>Ба На Хиллс и Золотой мост, Хойан, Хюэ, острова Чам</span><span class="mc-go">Смотреть экскурсии →</span></span>
     </a>
     <a class="mc-card" href="/nha-trang/">
       <img src="/nha-trang/images/hero.jpg" alt="Нячанг" loading="lazy">
-      <span class="mc-go">Смотреть экскурсии →</span>
-      <span class="mc-info"><b>Нячанг</b><span>Далат, северные острова, Янгбэй, яхта Marmoris</span></span>
+      <span class="mc-info"><b>Нячанг</b><span>Далат, северные острова, Янгбэй, яхта Marmoris</span><span class="mc-go">Смотреть экскурсии →</span></span>
     </a>
     <a class="mc-card only-preview" href="/ho-chi-minh/">
       <img src="/ho-chi-minh/images/hero.jpg" alt="Хошимин" loading="lazy">
-      <span class="mc-go">Смотреть экскурсии →</span>
-      <span class="mc-info"><b>Хошимин</b><span>Обзорная по Сайгону, тоннели Кути, дельта Меконга</span></span>
+      <span class="mc-info"><b>Хошимин</b><span>Обзорная по Сайгону, тоннели Кути, дельта Меконга</span><span class="mc-go">Смотреть экскурсии →</span></span>
     </a>
     <a class="mc-card soon only-preview" href="/hanoi/">
       <img src="/hanoi/images/hero.jpg" alt="Ханой" loading="lazy">
-      <span class="mc-go">Скоро</span>
-      <span class="mc-info"><b>Ханой</b><span>Старый город и бухта Халонг</span></span>
+      <span class="mc-info"><b>Ханой</b><span>Старый город и бухта Халонг</span><span class="mc-go">Скоро</span></span>
     </a>
     <a class="mc-card soon only-preview" href="/mui-ne/">
       <img src="/mui-ne/images/hero.jpg" alt="Муйне" loading="lazy">
-      <span class="mc-go">Скоро</span>
-      <span class="mc-info"><b>Муйне</b><span>Дюны, ручей Фей и рыбацкая деревня</span></span>
-    </a>
-    <a tabindex="-1" aria-hidden="true" class="mc-card" href="/">
-      <img src="/images/bana-hero.webp" alt="Дананг" loading="lazy">
-      <span class="mc-go">Смотреть экскурсии →</span>
-      <span class="mc-info"><b>Дананг</b><span>Ба На Хиллс и Золотой мост, Хойан, Хюэ, острова Чам</span></span>
-    </a>
-    <a tabindex="-1" aria-hidden="true" class="mc-card" href="/nha-trang/">
-      <img src="/nha-trang/images/hero.jpg" alt="Нячанг" loading="lazy">
-      <span class="mc-go">Смотреть экскурсии →</span>
-      <span class="mc-info"><b>Нячанг</b><span>Далат, северные острова, Янгбэй, яхта Marmoris</span></span>
-    </a>
-    <a tabindex="-1" aria-hidden="true" class="mc-card only-preview" href="/ho-chi-minh/">
-      <img src="/ho-chi-minh/images/hero.jpg" alt="Хошимин" loading="lazy">
-      <span class="mc-go">Смотреть экскурсии →</span>
-      <span class="mc-info"><b>Хошимин</b><span>Обзорная по Сайгону, тоннели Кути, дельта Меконга</span></span>
-    </a>
-    <a tabindex="-1" aria-hidden="true" class="mc-card soon only-preview" href="/hanoi/">
-      <img src="/hanoi/images/hero.jpg" alt="Ханой" loading="lazy">
-      <span class="mc-go">Скоро</span>
-      <span class="mc-info"><b>Ханой</b><span>Старый город и бухта Халонг</span></span>
-    </a>
-    <a tabindex="-1" aria-hidden="true" class="mc-card soon only-preview" href="/mui-ne/">
-      <img src="/mui-ne/images/hero.jpg" alt="Муйне" loading="lazy">
-      <span class="mc-go">Скоро</span>
-      <span class="mc-info"><b>Муйне</b><span>Дюны, ручей Фей и рыбацкая деревня</span></span>
+      <span class="mc-info"><b>Муйне</b><span>Дюны, ручей Фей и рыбацкая деревня</span><span class="mc-go">Скоро</span></span>
     </a>
   </div>
+  <div class="mc-dots" aria-label="Выбрать город"></div>
 </section>
 
 
@@ -1676,25 +1649,31 @@ function showCopyToast(msg) {
 </script>
 
 <script>
-// Лента «Другие направления»: тихо едет сама; тронули — стоит, через 4 с снова едет.
+// Лента «Другие направления»: раз в 5 с следующий город; тронули — стоит 8 с.
 (function () {
   var t = document.querySelector('.mc-track'); if (!t) return;
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var paused = false, resume, last = 0, pos = 0;
-  function hold() { paused = true; clearTimeout(resume); resume = setTimeout(function () { paused = false; pos = t.scrollLeft; }, 4000); }
-  ['pointerenter','pointerdown','touchstart','wheel','focusin'].forEach(function (e) { t.addEventListener(e, hold, { passive: true }); });
-  t.addEventListener('pointerleave', function () { clearTimeout(resume); resume = setTimeout(function () { paused = false; pos = t.scrollLeft; }, 1200); });
-  function step(ts) {
-    var dt = last ? Math.min(ts - last, 50) : 16; last = ts;
-    if (!paused && t.offsetParent !== null) {
-      var half = t.scrollWidth / 2;
-      pos += dt * 0.025;
-      if (pos >= half) pos -= half;
-      t.scrollLeft = pos;
-    }
-    requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
+  var cards = [...t.querySelectorAll('.mc-card')], dots = document.querySelector('.mc-dots');
+  var vis = function () { return cards.filter(function (c) { return c.offsetParent !== null; }); };
+  function idx() { return Math.round(t.scrollLeft / t.clientWidth); }
+  function paint() { var i = idx(); [...dots.children].forEach(function (d, k) { d.classList.toggle('on', k === i); }); }
+  function go(i) { var n = vis().length; t.scrollTo({ left: ((i % n + n) % n) * t.clientWidth }); }
+  vis().forEach(function (c, k) {
+    var b = document.createElement('button'); b.type = 'button';
+    b.setAttribute('aria-label', c.querySelector('b').textContent);
+    b.addEventListener('click', function () { hold(); go(k); }); dots.appendChild(b);
+  });
+  paint(); t.addEventListener('scroll', function () { requestAnimationFrame(paint); }, { passive: true });
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { t.style.scrollBehavior = 'auto'; return; }
+  var until = 0;
+  function hold() { until = Date.now() + 8000; }
+  ['pointerdown', 'touchstart', 'wheel', 'focusin'].forEach(function (e) { t.addEventListener(e, hold, { passive: true }); });
+  t.addEventListener('pointerenter', function () { until = Infinity; });
+  t.addEventListener('pointerleave', function () { until = Date.now() + 2000; });
+  setInterval(function () {
+    if (Date.now() < until || document.hidden) return;
+    var r = t.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
+    go(idx() + 1);
+  }, 5000);
 })();
 </script>
 </body>
