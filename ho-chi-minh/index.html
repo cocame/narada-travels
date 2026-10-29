@@ -1030,7 +1030,7 @@ nav.solid .citybar .all { color: var(--dark); }
   .citybar { order: 3; flex: 1 0 100%; margin: 0 0 8px; justify-content: center; }
   .citybar-in { flex-wrap: wrap; justify-content: center; overflow: visible; padding: 0; }
   .citybar-in > a, .citybar-in > span { padding: 7px 10px; font-size: 12.5px; }
-  section[id], .bc { scroll-margin-top: 104px; }
+  section[id], .bc { scroll-margin-top: 128px; }
 }
 
 /* Все направления в форме: кнопок столько, сколько городов, в одну строку. */
@@ -1041,7 +1041,7 @@ nav.solid .citybar .all { color: var(--dark); }
    выглядывает примерно десятая часть следующей. Высота у всех одна,
    иначе одни туры видны целиком, а другие по полтора на экран. */
 @media (max-width: 768px) {
-  .tours .bc { height: calc((100vh - 100px) * 0.88) !important; height: calc((100svh - 100px) * 0.88) !important;
+  .tours .bc { height: calc((100vh - 120px) * 0.86) !important; height: calc((100svh - 120px) * 0.86) !important;
                min-height: 0 !important; max-height: none !important; aspect-ratio: auto !important; }
 }
 </style>
