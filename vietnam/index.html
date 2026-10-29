@@ -1052,16 +1052,16 @@ nav.solid .citybar .all { color: var(--dark); }
   html.preview section[id], html.preview .bc { scroll-margin-top: 124px; }
 }
 
-/* ── Страница направлений ── */
+/* ── Страница направлений ──
+   Шесть городов, по два в ряд: широкая и узкая карточки чередуются. */
 .vt-danang   { grid-column: 1 / span 7;  grid-row: 1 / span 2; }
 .vt-nhatrang { grid-column: 8 / span 5;  grid-row: 1 / span 2; }
-.vt-phuquoc  { grid-column: 1 / span 4;  grid-row: 3 / span 2; }
-.vt-hcm      { grid-column: 5 / span 4;  grid-row: 3 / span 2; }
-.vt-hanoi    { grid-column: 9 / span 4;  grid-row: 3 / span 2; }
+.vt-phuquoc  { grid-column: 1 / span 5;  grid-row: 3 / span 2; }
+.vt-hcm      { grid-column: 6 / span 7;  grid-row: 3 / span 2; }
+.vt-hanoi    { grid-column: 1 / span 7;  grid-row: 5 / span 2; }
+.vt-muine    { grid-column: 8 / span 5;  grid-row: 5 / span 2; }
 @media (max-width: 900px) {
-  .vt-danang, .vt-nhatrang { grid-column: span 6; grid-row: auto / span 2; }
-  .vt-phuquoc, .vt-hcm, .vt-hanoi { grid-column: span 3; grid-row: auto / span 2; }
-  .vt-hanoi { grid-column: span 6; }
+  .vt-danang, .vt-nhatrang, .vt-phuquoc, .vt-hcm, .vt-hanoi, .vt-muine { grid-column: span 6; grid-row: auto / span 2; }
 }
 a.dir-t { display: block; text-decoration: none; color: inherit; }
 .dir-t .bc-title { font-size: 26px; }
@@ -1220,6 +1220,14 @@ function источникЗаявки(){
       <div class="bc-info">
         <h3 class="bc-title">Ханой</h3>
         <div class="bc-sub">Старый город и бухта Халонг — программы скоро</div>
+      </div>
+      <span class="dir-go">Скоро</span>
+    </a>
+    <a class="bc dir-t vt-muine" href="/mui-ne/">
+      <img src="/mui-ne/images/hero.jpg" alt="Красный каньон и ручей Фей в Муйне" loading="lazy">
+      <div class="bc-info">
+        <h3 class="bc-title">Муйне</h3>
+        <div class="bc-sub">Дюны, ручей Фей и рыбацкая деревня — программы скоро</div>
       </div>
       <span class="dir-go">Скоро</span>
     </a>
