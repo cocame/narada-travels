@@ -1647,31 +1647,45 @@ function showCopyToast(msg) {
 </script>
 
 <script>
-// Лента «Другие направления»: раз в 5 с следующий город; тронули или листнули — стоит 8 с.
+// Лента «Другие направления»: раз в 5 с следующий город, всегда вперёд по кругу.
+// После последнего города стоит копия первого: доехали до неё — незаметно
+// перескакиваем в начало, поэтому лента никогда не едет назад.
 (function () {
   var t = document.querySelector('.mc-track'); if (!t) return;
-  var cards = [...t.querySelectorAll('.mc-card')], dots = document.querySelector('.mc-dots');
-  var vis = function () { return cards.filter(function (c) { return c.offsetParent !== null; }); };
+  var dots = document.querySelector('.mc-dots');
+  var cards = [...t.querySelectorAll('.mc-card')].filter(function (c) { return c.offsetParent !== null; });
+  var n = cards.length; if (n < 2) return;
+  var clone = cards[0].cloneNode(true);
+  clone.setAttribute('aria-hidden', 'true'); clone.tabIndex = -1; clone.classList.add('mc-clone');
+  t.appendChild(clone);
   function idx() { return Math.round(t.scrollLeft / t.clientWidth); }
-  function paint() { var i = idx(); [...dots.children].forEach(function (d, k) { d.classList.toggle('on', k === i); }); }
-  function go(i) { var n = vis().length; t.scrollTo({ left: ((i % n + n) % n) * t.clientWidth }); }
-  vis().forEach(function (c, k) {
+  function jump(i) { t.style.scrollBehavior = 'auto'; t.scrollLeft = i * t.clientWidth; t.style.scrollBehavior = ''; }
+  function paint() { var i = idx() % n; [...dots.children].forEach(function (d, k) { d.classList.toggle('on', k === i); }); }
+  var settle;
+  function onScroll() {
+    requestAnimationFrame(paint);
+    clearTimeout(settle);
+    settle = setTimeout(function () { if (idx() >= n) jump(0); }, 120);
+  }
+  t.addEventListener('scroll', onScroll, { passive: true });
+  cards.forEach(function (c, k) {
     var b = document.createElement('button'); b.type = 'button';
     b.setAttribute('aria-label', c.querySelector('b').textContent);
-    b.addEventListener('click', function () { hold(); go(k); }); dots.appendChild(b);
+    b.addEventListener('click', function () { hold(); t.scrollTo({ left: k * t.clientWidth }); }); dots.appendChild(b);
   });
-  paint(); t.addEventListener('scroll', function () { requestAnimationFrame(paint); }, { passive: true });
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { t.style.scrollBehavior = 'auto'; return; }
+  paint();
   var until = 0;
   function hold() { until = Date.now() + 8000; }
   // Пауза только от настоящего касания или листания вбок. Просто мышь над фото
   // не в счёт: фото во всю ширину, мышь над ним почти всегда.
   ['pointerdown', 'touchstart', 'focusin'].forEach(function (e) { t.addEventListener(e, hold, { passive: true }); });
   t.addEventListener('wheel', function (e) { if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) hold(); }, { passive: true });
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   setInterval(function () {
     if (Date.now() < until || document.hidden) return;
     var r = t.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
-    go(idx() + 1);
+    var i = idx(); if (i >= n) { jump(0); i = 0; }
+    t.scrollTo({ left: (i + 1) * t.clientWidth });
   }, 5000);
 })();
 </script>
