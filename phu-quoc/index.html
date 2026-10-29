@@ -943,13 +943,12 @@ nav.solid .regnav-soon { color: var(--gray); }
    Где места не хватает — второй строкой внутри самой шапки, без своей
    подложки: отдельная тёмная полоса под шапкой смотрелась как съехавший
    блок. Кнопки той же формы, что и остальные, — без «таблеток». */
-.citybar { position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-           height: 76px; display: flex; align-items: center; pointer-events: none; }
-.citybar-in { display: flex; align-items: center; gap: 2px; padding: 3px; border-radius: var(--r);
-              background: rgba(17,17,17,0.32); backdrop-filter: blur(8px); pointer-events: auto;
+.citybar { flex: 0 1 auto; min-width: 0; margin: 0 20px; display: flex; justify-content: center; }
+.citybar-in { display: flex; align-items: center; gap: 2px; padding: 3px; border-radius: var(--r); min-width: 0;
+              background: rgba(17,17,17,0.32); backdrop-filter: blur(8px);
               overflow-x: auto; scrollbar-width: none; }
 .citybar-in::-webkit-scrollbar { display: none; }
-.citybar-in > a, .citybar-in > span { flex: none; display: block; padding: 6px 13px; border-radius: 6px;
+.citybar-in > a, .citybar-in > span { flex: none; display: block; padding: 6px 12px; border-radius: 6px;
            font-size: 12.5px; font-weight: 600; line-height: 1; white-space: nowrap;
            color: rgba(255,255,255,0.9); text-decoration: none; transition: background .2s, color .2s; }
 .citybar a:hover { background: rgba(255,255,255,0.16); color: #fff; }
@@ -960,17 +959,12 @@ nav.solid .citybar a { color: var(--gray); }
 nav.solid .citybar a:hover { color: var(--dark); background: rgba(17,17,17,0.06); }
 nav.solid .citybar .on { background: var(--dark); color: #fff; }
 nav.solid .citybar .all { color: var(--dark); }
-html.preview .nav-links { gap: 22px; }
-@media (max-width: 1240px) {
-  html.preview nav { height: auto; }
-  html.preview .nav-inner { height: 76px; }
-  html.preview .citybar { position: static; transform: none; height: auto; justify-content: center; padding: 0 16px 10px; }
-}
+.nav-inner .logo, .nav-inner .nav-r { flex: none; }
+@media (max-width: 1240px) { .logo-txt { display: none; } .nav-links { gap: 18px; } }
+@media (max-width: 1024px) { .citybar { margin: 0 12px; } .nav-links { gap: 14px; } }
 @media (max-width: 768px) {
-  nav { height: auto; }
-  .nav-inner { height: 68px; }
-  .citybar { position: static; transform: none; height: auto; justify-content: flex-start; padding: 0 12px 10px; }
-  .citybar-in > a, .citybar-in > span { padding: 7px 11px; font-size: 12.5px; }
+  .citybar { margin: 0 10px; justify-content: flex-start; }
+  .citybar-in > a, .citybar-in > span { padding: 6px 9px; font-size: 12px; }
 }
 </style>
 </head>
@@ -1027,6 +1021,13 @@ function источникЗаявки(){
       <img src="images/logo.png" alt="Narada Travels">
       <span class="logo-txt">Narada Travels</span>
     </a>
+    <div class="citybar"><div class="citybar-in">
+        <a href="/">Дананг</a>
+        <span class="on">Фукуок</span>
+        <a href="/nha-trang/">Нячанг</a>
+        <a class="only-preview" href="/ho-chi-minh/">Хошимин</a>
+        <a class="all only-preview" href="/vietnam/">Все направления<span class="arw">→</span></a>
+      </div></div>
     <div class="nav-r">
       <ul class="nav-links">
         <li><a href="#tours">Экскурсии</a></li>
@@ -1038,13 +1039,6 @@ function источникЗаявки(){
       <div class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
     </div>
   </div>
-<div class="citybar"><div class="citybar-in">
-    <a href="/">Дананг</a>
-    <span class="on">Фукуок</span>
-    <a href="/nha-trang/">Нячанг</a>
-    <a class="only-preview" href="/ho-chi-minh/">Хошимин</a>
-    <a class="all only-preview" href="/vietnam/">Все направления<span class="arw">→</span></a>
-  </div></div>
 </nav>
 
   <div class="hero-content">
