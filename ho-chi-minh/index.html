@@ -35,6 +35,9 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 <style>
   html:not(.preview) .only-preview { display: none !important; }
+/* Заголовок над сеткой туров не показываем — по карточкам и так понятно.
+   В разметке он остаётся для поисковиков и экранного диктора. */
+.tours > h2 { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; margin:0; }
 </style>
 <meta name="robots" content="noindex, nofollow">
 <script>
