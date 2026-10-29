@@ -1062,9 +1062,9 @@ function источникЗаявки(){
         <a href="/">Дананг</a>
         <span class="on">Фукуок</span>
         <a href="/nha-trang/">Нячанг</a>
-        <span class="soon only-preview c2" title="Скоро">Ханой</span>
+        <a class="only-preview c2" href="/hanoi/">Ханой</a>
         <a class="only-preview" href="/ho-chi-minh/">Хошимин</a>
-        <span class="soon only-preview c2" title="Скоро">Муйне</span>
+        <a class="only-preview c2" href="/mui-ne/">Муйне</a>
         <a class="all only-preview c2" href="/vietnam/">Все<span class="all-long"> направления</span><span class="arw">→</span></a>
       </div></div>
     <div class="nav-r">
@@ -1081,8 +1081,8 @@ function источникЗаявки(){
   <!-- Телефон: второй ряд городов под шапкой. На компьютере эти же
        ссылки стоят в общей строке, здесь — копия для узкого экрана. -->
   <div class="citybar2 only-preview"><div class="citybar-in">
-      <span class="soon" title="Скоро">Ханой</span>
-      <span class="soon" title="Скоро">Муйне</span>
+      <a href="/hanoi/">Ханой</a>
+      <a href="/mui-ne/">Муйне</a>
       <a class="all" href="/vietnam/">Все<span class="all-long"> направления</span><span class="arw">→</span></a>
   </div></div>
 </nav>
@@ -1232,6 +1232,8 @@ function источникЗаявки(){
             <button type="button" class="regsw-b" data-region="phuquoc">Фукуок</button>
             <button type="button" class="regsw-b" data-region="nhatrang">Нячанг</button>
             <button type="button" class="regsw-b only-preview" data-region="hcm">Хошимин</button>
+            <button type="button" class="regsw-b only-preview" data-region="hanoi">Ханой</button>
+            <button type="button" class="regsw-b only-preview" data-region="muine">Муйне</button>
           </div>
           <div class="reghint">Выбран по странице, с которой вы пришли. Можно переключить.</div>
         </div>
@@ -1272,7 +1274,7 @@ function источникЗаявки(){
 <footer>
   <div class="flogo">Narada Travels</div>
   <p>Экскурсии на Фукуоке с русскоязычным гидом · Вьетнам</p>
-  <p class="fdirs"><a href="/">Экскурсии из Дананга</a><a href="/phu-quoc/" class="on">Экскурсии на Фукуоке</a><a href="/nha-trang/">Экскурсии в Нячанге</a><a class="only-preview" href="/ho-chi-minh/">Экскурсии в Хошимине</a><a class="only-preview" href="/vietnam/">Все направления</a></p>
+  <p class="fdirs"><a href="/">Экскурсии из Дананга</a><a href="/phu-quoc/" class="on">Экскурсии на Фукуоке</a><a href="/nha-trang/">Экскурсии в Нячанге</a><a class="only-preview" href="/ho-chi-minh/">Экскурсии в Хошимине</a><a class="only-preview" href="/hanoi/">Экскурсии в Ханое</a><a class="only-preview" href="/mui-ne/">Экскурсии в Муйне</a><a class="only-preview" href="/vietnam/">Все направления</a></p>
   <p>© 2026 Narada · <a href="/privacy/" style="color:rgba(255,255,255,0.35);text-decoration:underline;text-underline-offset:2px">Политика конфиденциальности</a></p>
 </footer>
 
@@ -1500,6 +1502,13 @@ const REGION_TOURS = {
     ["Хошимин — Туннели Кучи","Туннели Кучи"],
     ["Хошимин — Круиз по реке Сайгон","Круиз по реке Сайгон"],
     ["Хошимин — Другое, напишу в сообщении","Другое, напишу в сообщении"]
+  ],
+  // Туров пока нет — только заявка «подберите программу».
+  hanoi: [
+    ["Ханой — Подобрать программу","Подобрать программу, напишу в сообщении"]
+  ],
+  muine: [
+    ["Муйне — Подобрать программу","Подобрать программу, напишу в сообщении"]
   ]
 };
 

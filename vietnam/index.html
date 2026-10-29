@@ -1146,9 +1146,9 @@ function источникЗаявки(){
         <a href="/">Дананг</a>
         <a href="/phu-quoc/">Фукуок</a>
         <a href="/nha-trang/">Нячанг</a>
-        <span class="soon only-preview c2" title="Скоро">Ханой</span>
+        <a class="only-preview c2" href="/hanoi/">Ханой</a>
         <a class="only-preview" href="/ho-chi-minh/">Хошимин</a>
-        <span class="soon only-preview c2" title="Скоро">Муйне</span>
+        <a class="only-preview c2" href="/mui-ne/">Муйне</a>
         <span class="on c2">Все<span class="all-long"> направления</span></span>
       </div></div>
     <div class="nav-r">
@@ -1165,8 +1165,8 @@ function источникЗаявки(){
   <!-- Телефон: второй ряд городов под шапкой. На компьютере эти же
        ссылки стоят в общей строке, здесь — копия для узкого экрана. -->
   <div class="citybar2 only-preview"><div class="citybar-in">
-      <span class="soon" title="Скоро">Ханой</span>
-      <span class="soon" title="Скоро">Муйне</span>
+      <a href="/hanoi/">Ханой</a>
+      <a href="/mui-ne/">Муйне</a>
       <span class="on">Все<span class="all-long"> направления</span></span>
   </div></div>
 </nav>
@@ -1215,13 +1215,14 @@ function источникЗаявки(){
       </div>
       <span class="dir-go">Смотреть экскурсии <span class="arw">→</span></span>
     </a>
-    <div class="bc dir-t vt-hanoi dir-soon">
+    <a class="bc dir-t vt-hanoi" href="/hanoi/">
+      <img src="/hanoi/images/hero.jpg" alt="Улица с поездом в Ханое">
       <div class="bc-info">
         <h3 class="bc-title">Ханой</h3>
-        <div class="bc-sub">Халонг и север Вьетнама — готовим программы</div>
+        <div class="bc-sub">Старый город и бухта Халонг — программы скоро</div>
       </div>
       <span class="dir-go">Скоро</span>
-    </div>
+    </a>
   </div>
 </section>
 
@@ -1257,6 +1258,8 @@ function источникЗаявки(){
             <button type="button" class="regsw-b" data-region="phuquoc">Фукуок</button>
             <button type="button" class="regsw-b" data-region="nhatrang">Нячанг</button>
             <button type="button" class="regsw-b only-preview" data-region="hcm">Хошимин</button>
+            <button type="button" class="regsw-b only-preview" data-region="hanoi">Ханой</button>
+            <button type="button" class="regsw-b only-preview" data-region="muine">Муйне</button>
           </div>
           <div class="reghint">Выбран по странице, с которой вы пришли. Можно переключить.</div>
         </div>
@@ -1500,6 +1503,13 @@ const REGION_TOURS = {
     ["Хошимин — Туннели Кучи","Туннели Кучи"],
     ["Хошимин — Круиз по реке Сайгон","Круиз по реке Сайгон"],
     ["Хошимин — Другое, напишу в сообщении","Другое, напишу в сообщении"]
+  ],
+  // Туров пока нет — только заявка «подберите программу».
+  hanoi: [
+    ["Ханой — Подобрать программу","Подобрать программу, напишу в сообщении"]
+  ],
+  muine: [
+    ["Муйне — Подобрать программу","Подобрать программу, напишу в сообщении"]
   ]
 };
 
