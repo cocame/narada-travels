@@ -1009,7 +1009,9 @@ nav.solid .citybar .all { color: var(--dark); }
 @media (max-width: 1024px) { .citybar { margin: 0 12px; } .nav-links { gap: 14px; } }
 /* Телефон: верхняя строка как на компьютере — логотип, города, меню, без
    пустоты посередине. Города, которые туда не влезают (Хошимин, «Все
-   направления», потом Ханой), — вторым рядом ниже, отдельной строкой. */
+   направления»), — вторым рядом ниже, отдельной строкой. */
+/* Ханой — скоро: в строке виден, но никуда не ведёт. */
+.citybar .soon { opacity: .5; cursor: default; }
 .citybar2 { display: none; }
 @media (max-width: 768px) {
   nav { height: auto; }
@@ -1018,6 +1020,7 @@ nav.solid .citybar .all { color: var(--dark); }
   .citybar-in { gap: 0; padding: 0; }
   .citybar-in > a, .citybar-in > span { padding: 7px 8px; font-size: 12.5px; }
   .citybar .c2 { display: none; }
+  .citybar-in > a, .citybar-in > span { padding: 7px 7px; }
   .nav-r { gap: 0; }
   html.preview .citybar2 { display: flex; justify-content: center; padding: 2px 12px 10px; }
   .citybar2 .citybar-in { gap: 4px; }
@@ -1102,6 +1105,7 @@ function источникЗаявки(){
         <a href="/phu-quoc/">Фукуок</a>
         <span class="on">Нячанг</span>
         <a class="only-preview c2" href="/ho-chi-minh/">Хошимин</a>
+        <span class="soon only-preview" title="Скоро">Ханой</span>
         <a class="all only-preview c2" href="/vietnam/">Все<span class="all-long"> направления</span><span class="arw">→</span></a>
       </div></div>
     <div class="nav-r">
