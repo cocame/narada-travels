@@ -1026,17 +1026,19 @@ nav.solid .citybar .all { color: var(--dark); }
 .nav-inner .logo, .nav-inner .nav-r { flex: none; }
 @media (max-width: 1240px) { .logo-txt { display: none; } .nav-links { gap: 18px; } }
 @media (max-width: 1024px) { .citybar { margin: 0 12px; } .nav-links { gap: 14px; } }
-/* На телефоне города в одну строку с логотипом не влезают — переносим их
-   вторым рядом той же шапки, во всю ширину, без прокрутки вбок. */
+/* На телефоне всё в одну строку: логотип, города, бургер. Второй ряд
+   смотрелся как съехавшие вниз города. Чтобы влезло, кнопки плотнее,
+   а «Все направления» сокращается до «Все →». */
 @media (max-width: 768px) {
-  nav { height: auto; }
-  .nav-inner { flex-wrap: wrap; }
-  .nav-inner .logo, .nav-inner .nav-r { height: 56px; }
-  .citybar { order: 3; flex: 1 0 100%; margin: 0 0 8px; justify-content: center; }
-  .citybar-in { flex-wrap: wrap; justify-content: center; overflow: visible; padding: 0; }
-  .citybar-in > a, .citybar-in > span { padding: 7px 10px; font-size: 12.5px; }
-  section[id], .bc { scroll-margin-top: 128px; }
+  .nav-inner { padding: 0 12px; }
+  .citybar { flex: 1 1 auto; margin: 0 8px; justify-content: center; }
+  .citybar-in { gap: 0; padding: 0; }
+  .citybar-in > a, .citybar-in > span { padding: 6px 6px; font-size: 11.5px; }
+  .citybar .all-long { display: none; }
+  .citybar .all .arw { margin-left: 3px; }
+  .nav-r { gap: 0; }
 }
+@media (max-width: 370px) { .citybar-in > a, .citybar-in > span { padding: 6px 5px; } }
 
 /* ── Страница направлений ── */
 .vt-danang   { grid-column: 1 / span 7;  grid-row: 1 / span 2; }
@@ -1064,7 +1066,7 @@ a.dir-t { display: block; text-decoration: none; color: inherit; }
    выглядывает примерно десятая часть следующей. Высота у всех одна,
    иначе одни туры видны целиком, а другие по полтора на экран. */
 @media (max-width: 768px) {
-  .tours .bc { height: calc((100vh - 120px) * 0.86) !important; height: calc((100svh - 120px) * 0.86) !important;
+  .tours .bc { height: calc((100vh - 68px) * 0.86) !important; height: calc((100svh - 68px) * 0.86) !important;
                min-height: 0 !important; max-height: none !important; aspect-ratio: auto !important; }
 }
 </style>
@@ -1132,7 +1134,7 @@ function источникЗаявки(){
         <a href="/phu-quoc/">Фукуок</a>
         <a href="/nha-trang/">Нячанг</a>
         <a class="only-preview" href="/ho-chi-minh/">Хошимин</a>
-        <span class="on">Все направления</span>
+        <span class="on">Все<span class="all-long"> направления</span></span>
       </div></div>
     <div class="nav-r">
       <ul class="nav-links">
