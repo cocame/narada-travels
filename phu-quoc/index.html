@@ -1649,7 +1649,7 @@ function showCopyToast(msg) {
 </script>
 
 <script>
-// Лента «Другие направления»: раз в 5 с следующий город; тронули — стоит 8 с.
+// Лента «Другие направления»: раз в 5 с следующий город; тронули или листнули — стоит 8 с.
 (function () {
   var t = document.querySelector('.mc-track'); if (!t) return;
   var cards = [...t.querySelectorAll('.mc-card')], dots = document.querySelector('.mc-dots');
@@ -1666,9 +1666,10 @@ function showCopyToast(msg) {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) { t.style.scrollBehavior = 'auto'; return; }
   var until = 0;
   function hold() { until = Date.now() + 8000; }
-  ['pointerdown', 'touchstart', 'wheel', 'focusin'].forEach(function (e) { t.addEventListener(e, hold, { passive: true }); });
-  t.addEventListener('pointerenter', function () { until = Infinity; });
-  t.addEventListener('pointerleave', function () { until = Date.now() + 2000; });
+  // Пауза только от настоящего касания или листания вбок. Просто мышь над фото
+  // не в счёт: фото во всю ширину, мышь над ним почти всегда.
+  ['pointerdown', 'touchstart', 'focusin'].forEach(function (e) { t.addEventListener(e, hold, { passive: true }); });
+  t.addEventListener('wheel', function (e) { if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) hold(); }, { passive: true });
   setInterval(function () {
     if (Date.now() < until || document.hidden) return;
     var r = t.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
