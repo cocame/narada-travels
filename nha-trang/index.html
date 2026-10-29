@@ -979,34 +979,39 @@ nav.solid .regnav-soon { color: var(--gray); }
   .burger { flex-shrink: 0; }
 }
 
-/* ── Строка направлений под шапкой ──
-   Направлений стало много, в шапке рядом с логотипом они не помещались.
-   Отдельная строка под шапкой: все города видны сразу, без выпадающих
-   списков, плюс ссылка на страницу со всеми направлениями.
-   Кнопки той же формы, что переключатель в шапке, — без «таблеток». */
-.citybar { position: fixed; top: 76px; left: 0; right: 0; z-index: 59;
-           background: rgba(17,17,17,0.38); backdrop-filter: blur(8px);
-           transition: background .25s ease; }
-.citybar-in { max-width: 1440px; margin: 0 auto; padding: 7px 56px;
-              display: flex; align-items: center; justify-content: center; gap: 4px;
+/* ── Города в шапке ──
+   На широком экране — по центру той же строки, что логотип и меню.
+   Где места не хватает — второй строкой внутри самой шапки, без своей
+   подложки: отдельная тёмная полоса под шапкой смотрелась как съехавший
+   блок. Кнопки той же формы, что и остальные, — без «таблеток». */
+.citybar { position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+           height: 76px; display: flex; align-items: center; pointer-events: none; }
+.citybar-in { display: flex; align-items: center; gap: 2px; padding: 3px; border-radius: var(--r);
+              background: rgba(17,17,17,0.32); backdrop-filter: blur(8px); pointer-events: auto;
               overflow-x: auto; scrollbar-width: none; }
 .citybar-in::-webkit-scrollbar { display: none; }
-.citybar-in > a, .citybar-in > span { flex: none; display: block; padding: 7px 15px; border-radius: 6px;
-           font-size: 13px; font-weight: 600; line-height: 1; white-space: nowrap;
-           color: rgba(255,255,255,0.88); text-decoration: none; transition: background .2s, color .2s; }
+.citybar-in > a, .citybar-in > span { flex: none; display: block; padding: 6px 13px; border-radius: 6px;
+           font-size: 12.5px; font-weight: 600; line-height: 1; white-space: nowrap;
+           color: rgba(255,255,255,0.9); text-decoration: none; transition: background .2s, color .2s; }
 .citybar a:hover { background: rgba(255,255,255,0.16); color: #fff; }
 .citybar .on { background: #fff; color: var(--dark); }
-.citybar .all { color: #fff; }
 .citybar .all .arw { display: inline; margin-left: 5px; }
-nav.solid + .citybar { background: rgba(255,255,255,0.96); box-shadow: 0 1px 0 rgba(0,0,0,0.07); }
-nav.solid + .citybar a { color: var(--gray); }
-nav.solid + .citybar a:hover { color: var(--dark); background: rgba(17,17,17,0.06); }
-nav.solid + .citybar .on { background: var(--dark); color: #fff; }
-nav.solid + .citybar .all { color: var(--dark); }
+nav.solid .citybar-in { background: rgba(17,17,17,0.06); }
+nav.solid .citybar a { color: var(--gray); }
+nav.solid .citybar a:hover { color: var(--dark); background: rgba(17,17,17,0.06); }
+nav.solid .citybar .on { background: var(--dark); color: #fff; }
+nav.solid .citybar .all { color: var(--dark); }
+html.preview .nav-links { gap: 22px; }
+@media (max-width: 1240px) {
+  html.preview nav { height: auto; }
+  html.preview .nav-inner { height: 76px; }
+  html.preview .citybar { position: static; transform: none; height: auto; justify-content: center; padding: 0 16px 10px; }
+}
 @media (max-width: 768px) {
-  .citybar { top: 68px; }
-  .citybar-in { justify-content: flex-start; padding: 6px 12px; }
-  .citybar-in > a, .citybar-in > span { padding: 7px 12px; font-size: 12.5px; }
+  nav { height: auto; }
+  .nav-inner { height: 68px; }
+  .citybar { position: static; transform: none; height: auto; justify-content: flex-start; padding: 0 12px 10px; }
+  .citybar-in > a, .citybar-in > span { padding: 7px 11px; font-size: 12.5px; }
 }
 </style>
 </head>
@@ -1074,7 +1079,6 @@ function источникЗаявки(){
       <div class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
     </div>
   </div>
-</nav>
 <div class="citybar"><div class="citybar-in">
     <a href="/">Дананг</a>
     <a href="/phu-quoc/">Фукуок</a>
@@ -1082,6 +1086,7 @@ function источникЗаявки(){
     <a class="only-preview" href="/ho-chi-minh/">Хошимин</a>
     <a class="all only-preview" href="/vietnam/">Все направления<span class="arw">→</span></a>
   </div></div>
+</nav>
 
   <div class="hero-content">
     <p class="crumbs">Вьетнам<span class="sep">›</span><b>Нячанг</b></p>
