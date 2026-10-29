@@ -11,6 +11,27 @@
   gtag('config', 'G-P1GH6D3HYX');
 </script>
 
+<!-- Предпросмотр нового: Хошимин и «Все направления» пока видны только
+     по временной ссылке ?preview=…  Метка запоминается в браузере,
+     ?preview=off её снимает. Это не защита, а скрытие: страницы не в
+     поиске и не в меню, но открываются, если знать адрес и метку. -->
+<script>
+(function () {
+  try {
+    var q = new URLSearchParams(location.search).get('preview');
+    if (q === 'FRKVgSZpQC0') localStorage.setItem('narada_preview', '1');
+    if (q === 'off') localStorage.removeItem('narada_preview');
+    if (localStorage.getItem('narada_preview') === '1') document.documentElement.classList.add('preview');
+  } catch (e) {}
+})();
+document.addEventListener('DOMContentLoaded', function () {
+  if (!document.documentElement.classList.contains('preview')) return;
+  document.querySelectorAll('[data-preview-href]').forEach(function (a) { a.href = a.dataset.previewHref; });
+});
+</script>
+<style>
+  html:not(.preview) .only-preview { display: none !important; }
+</style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- PWA: манифест и офлайн-режим — сайт упакован в приложение для Google Play.
@@ -530,7 +551,7 @@ function источникЗаявки(){
     <img src="../images/logo.png" alt="Narada Travels">
     <span class="logo-txt">Narada</span>
   </a>
-  <a class="navback" href="/vietnam/"><span class="arw">←</span><span>Все экскурсии</span></a>
+  <a class="navback" href="/#tours" data-preview-href="/vietnam/"><span class="arw">←</span><span>Все экскурсии</span></a>
   </div>
 
   <div class="nav-r">

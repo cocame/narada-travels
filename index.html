@@ -15,6 +15,27 @@
 <script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109555301', 'ym');ym(109555301, 'init', {ssr:true, webvisor:false, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/109555301" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 
+<!-- Предпросмотр нового: Хошимин и «Все направления» пока видны только
+     по временной ссылке ?preview=…  Метка запоминается в браузере,
+     ?preview=off её снимает. Это не защита, а скрытие: страницы не в
+     поиске и не в меню, но открываются, если знать адрес и метку. -->
+<script>
+(function () {
+  try {
+    var q = new URLSearchParams(location.search).get('preview');
+    if (q === 'FRKVgSZpQC0') localStorage.setItem('narada_preview', '1');
+    if (q === 'off') localStorage.removeItem('narada_preview');
+    if (localStorage.getItem('narada_preview') === '1') document.documentElement.classList.add('preview');
+  } catch (e) {}
+})();
+document.addEventListener('DOMContentLoaded', function () {
+  if (!document.documentElement.classList.contains('preview')) return;
+  document.querySelectorAll('[data-preview-href]').forEach(function (a) { a.href = a.dataset.previewHref; });
+});
+</script>
+<style>
+  html:not(.preview) .only-preview { display: none !important; }
+</style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- PWA: манифест и офлайн-режим — сайт упакован в приложение для Google Play.
@@ -1001,8 +1022,8 @@ function источникЗаявки(){
     <span class="on">Дананг</span>
     <a href="/phu-quoc/">Фукуок</a>
     <a href="/nha-trang/">Нячанг</a>
-    <a href="/ho-chi-minh/">Хошимин</a>
-    <a class="all" href="/vietnam/">Все направления<span class="arw">→</span></a>
+    <a class="only-preview" href="/ho-chi-minh/">Хошимин</a>
+    <a class="all only-preview" href="/vietnam/">Все направления<span class="arw">→</span></a>
   </div></div>
 
   <div class="hero-content">
@@ -1286,7 +1307,7 @@ function источникЗаявки(){
 <footer>
   <div class="flogo">Narada Travels</div>
   <p>Экскурсии из Дананга с русскоязычным гидом · Вьетнам</p>
-  <p class="fdirs"><a href="/" class="on">Экскурсии из Дананга</a><a href="/phu-quoc/">Экскурсии на Фукуоке</a><a href="/nha-trang/">Экскурсии в Нячанге</a><a href="/ho-chi-minh/">Экскурсии в Хошимине</a><a href="/vietnam/">Все направления</a></p>
+  <p class="fdirs"><a href="/" class="on">Экскурсии из Дананга</a><a href="/phu-quoc/">Экскурсии на Фукуоке</a><a href="/nha-trang/">Экскурсии в Нячанге</a><a class="only-preview" href="/ho-chi-minh/">Экскурсии в Хошимине</a><a class="only-preview" href="/vietnam/">Все направления</a></p>
   <p>© 2026 Narada · <a href="/privacy/" style="color:rgba(255,255,255,0.35);text-decoration:underline;text-underline-offset:2px">Политика конфиденциальности</a></p>
 </footer>
 
