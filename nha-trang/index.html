@@ -957,6 +957,36 @@ nav.solid .regnav-soon { color: var(--gray); }
   .regnav span, .regnav a { flex: none; padding: 5px 9px; font-size: 11.5px; }
   .burger { flex-shrink: 0; }
 }
+
+/* ── Строка направлений под шапкой ──
+   Направлений стало много, в шапке рядом с логотипом они не помещались.
+   Отдельная строка под шапкой: все города видны сразу, без выпадающих
+   списков, плюс ссылка на страницу со всеми направлениями.
+   Кнопки той же формы, что переключатель в шапке, — без «таблеток». */
+.citybar { position: fixed; top: 76px; left: 0; right: 0; z-index: 59;
+           background: rgba(17,17,17,0.38); backdrop-filter: blur(8px);
+           transition: background .25s ease; }
+.citybar-in { max-width: 1440px; margin: 0 auto; padding: 7px 56px;
+              display: flex; align-items: center; justify-content: center; gap: 4px;
+              overflow-x: auto; scrollbar-width: none; }
+.citybar-in::-webkit-scrollbar { display: none; }
+.citybar-in > a, .citybar-in > span { flex: none; display: block; padding: 7px 15px; border-radius: 6px;
+           font-size: 13px; font-weight: 600; line-height: 1; white-space: nowrap;
+           color: rgba(255,255,255,0.88); text-decoration: none; transition: background .2s, color .2s; }
+.citybar a:hover { background: rgba(255,255,255,0.16); color: #fff; }
+.citybar .on { background: #fff; color: var(--dark); }
+.citybar .all { color: #fff; }
+.citybar .all .arw { display: inline; margin-left: 5px; }
+nav.solid + .citybar { background: rgba(255,255,255,0.96); box-shadow: 0 1px 0 rgba(0,0,0,0.07); }
+nav.solid + .citybar a { color: var(--gray); }
+nav.solid + .citybar a:hover { color: var(--dark); background: rgba(17,17,17,0.06); }
+nav.solid + .citybar .on { background: var(--dark); color: #fff; }
+nav.solid + .citybar .all { color: var(--dark); }
+@media (max-width: 768px) {
+  .citybar { top: 68px; }
+  .citybar-in { justify-content: flex-start; padding: 6px 12px; }
+  .citybar-in > a, .citybar-in > span { padding: 7px 12px; font-size: 12.5px; }
+}
 </style>
 </head>
 <body>
@@ -1013,12 +1043,6 @@ function источникЗаявки(){
       <span class="logo-txt">Narada Travels</span>
     </a>
     <div class="nav-r">
-      <div class="regnav">
-        <a class="regnav-off" href="/">Дананг</a>
-        <a class="regnav-off" href="/phu-quoc/">Фукуок</a>
-        <span class="regnav-on">Нячанг</span>
-        <a class="regnav-off app-only" href="/uslugi/">Услуги</a>
-      </div>
       <ul class="nav-links">
         <li><a href="#tours">Экскурсии</a></li>
         <li class="app-only"><a href="/uslugi/">Услуги</a></li>
@@ -1030,6 +1054,13 @@ function источникЗаявки(){
     </div>
   </div>
 </nav>
+<div class="citybar"><div class="citybar-in">
+    <a href="/">Дананг</a>
+    <a href="/phu-quoc/">Фукуок</a>
+    <span class="on">Нячанг</span>
+    <a href="/ho-chi-minh/">Хошимин</a>
+    <a class="all" href="/vietnam/">Все направления<span class="arw">→</span></a>
+  </div></div>
 
   <div class="hero-content">
     <p class="crumbs">Вьетнам<span class="sep">›</span><b>Нячанг</b></p>
@@ -1043,7 +1074,7 @@ function источникЗаявки(){
 <section class="regband">
   <div class="regband-in">
     <p><b>Мы работаем и в Дананге</b> — Ба На Хиллс и Золотой мост, древний Хойан, императорский Хюэ, острова Чам и стеклянный мост Донг Зянг.</p>
-    <a class="regband-go" href="/">Смотреть все экскурсии <span class="arw">→</span></a>
+    <a class="regband-go" href="/vietnam/">Смотреть все направления <span class="arw">→</span></a>
   </div>
 </section>
 
@@ -1280,7 +1311,7 @@ function источникЗаявки(){
 <footer>
   <div class="flogo">Narada Travels</div>
   <p>Экскурсии из Нячанга с русскоязычным гидом · Вьетнам</p>
-  <p class="fdirs"><a href="/">Экскурсии из Дананга</a><a href="/phu-quoc/">Экскурсии на Фукуоке</a><a href="/nha-trang/" class="on">Экскурсии из Нячанга</a></p>
+  <p class="fdirs"><a href="/">Экскурсии из Дананга</a><a href="/phu-quoc/">Экскурсии на Фукуоке</a><a href="/nha-trang/" class="on">Экскурсии из Нячанга</a><a href="/ho-chi-minh/">Экскурсии в Хошимине</a><a href="/vietnam/">Все направления</a></p>
   <p>© 2026 Narada · <a href="/privacy/" style="color:rgba(255,255,255,0.35);text-decoration:underline;text-underline-offset:2px">Политика конфиденциальности</a></p>
 </footer>
 
