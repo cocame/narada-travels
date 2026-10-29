@@ -1021,24 +1021,28 @@ nav.solid .citybar .all { color: var(--dark); }
 .nav-inner .logo, .nav-inner .nav-r { flex: none; }
 @media (max-width: 1240px) { .logo-txt { display: none; } .nav-links { gap: 18px; } }
 @media (max-width: 1024px) { .citybar { margin: 0 12px; } .nav-links { gap: 14px; } }
-/* Телефон: шапка из двух строк. Верхняя — как обычно, логотип и меню
-   во всю высоту. Под ней своя полоса городов во всю ширину, кнопки
-   разложены равномерно — туда же встанет Ханой. Если городов станет
-   больше, чем влезает, полоса листается вбок, верхняя строка не трогается. */
+/* Телефон: верхняя строка как на компьютере — логотип, города, меню, без
+   пустоты посередине. Города, которые туда не влезают (Хошимин, «Все
+   направления», потом Ханой), — вторым рядом ниже, отдельной строкой. */
+.citybar2 { display: none; }
 @media (max-width: 768px) {
   nav { height: auto; }
-  .nav-inner { flex-wrap: wrap; padding: 0 16px; }
-  .nav-inner .logo, .nav-inner .nav-r { height: 60px; }
-  .citybar { order: 3; flex: 1 0 100%; margin: 0 -16px; padding: 0 10px;
-             border-top: 1px solid rgba(255,255,255,0.14); }
-  nav.solid .citybar { border-top-color: rgba(17,17,17,0.08); }
-  .citybar-in { flex: 1; justify-content: space-between; gap: 0; padding: 6px 0; }
+  .nav-inner { height: 68px; padding: 0 12px; }
+  .citybar { flex: 1 1 auto; margin: 0 8px; justify-content: center; }
+  .citybar-in { gap: 0; padding: 0; }
   .citybar-in > a, .citybar-in > span { padding: 7px 8px; font-size: 12.5px; }
-  .citybar .all-long { display: none; }
-  .citybar .all .arw { margin-left: 3px; }
-  section[id], .bc { scroll-margin-top: 118px; }
+  .citybar .c2 { display: none; }
+  .nav-r { gap: 0; }
+  html.preview .citybar2 { display: flex; justify-content: center; padding: 2px 12px 10px; }
+  .citybar2 .citybar-in { gap: 4px; }
+  .citybar2 .all .arw { display: inline; margin-left: 5px; }
+  .citybar2 a { color: rgba(255,255,255,0.9); }
+  .citybar2 .on { background: #fff; color: var(--dark); }
+  nav.solid .citybar2 a { color: var(--gray); }
+  nav.solid .citybar2 .on { background: var(--dark); color: #fff; }
+  nav.solid .citybar2 .all { color: var(--dark); }
+  html.preview section[id], html.preview .bc { scroll-margin-top: 124px; }
 }
-@media (max-width: 370px) { .citybar-in > a, .citybar-in > span { padding: 7px 5px; font-size: 12px; } }
 
 /* Все направления в форме: кнопок столько, сколько городов, в одну строку. */
 .regsw { display: flex; }
@@ -1048,7 +1052,8 @@ nav.solid .citybar .all { color: var(--dark); }
    выглядывает примерно десятая часть следующей. Высота у всех одна,
    иначе одни туры видны целиком, а другие по полтора на экран. */
 @media (max-width: 768px) {
-  .tours .bc { height: calc((100vh - 110px) * 0.88) !important; height: calc((100svh - 110px) * 0.88) !important;
+  html.preview { --navh: 112px; }
+  .tours .bc { height: calc((100vh - var(--navh, 68px)) * 0.88) !important; height: calc((100svh - var(--navh, 68px)) * 0.88) !important;
                min-height: 0 !important; max-height: none !important; aspect-ratio: auto !important; }
 }
 </style>
@@ -1110,8 +1115,8 @@ function источникЗаявки(){
         <a href="/">Дананг</a>
         <a href="/phu-quoc/">Фукуок</a>
         <a href="/nha-trang/">Нячанг</a>
-        <span class="on">Хошимин</span>
-        <a class="all only-preview" href="/vietnam/">Все<span class="all-long"> направления</span><span class="arw">→</span></a>
+        <span class="on c2">Хошимин</span>
+        <a class="all only-preview c2" href="/vietnam/">Все<span class="all-long"> направления</span><span class="arw">→</span></a>
       </div></div>
     <div class="nav-r">
       <ul class="nav-links">
@@ -1124,6 +1129,12 @@ function источникЗаявки(){
       <div class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
     </div>
   </div>
+  <!-- Телефон: второй ряд городов под шапкой. На компьютере эти же
+       ссылки стоят в общей строке, здесь — копия для узкого экрана. -->
+  <div class="citybar2 only-preview"><div class="citybar-in">
+      <span class="on">Хошимин</span>
+      <a class="all" href="/vietnam/">Все<span class="all-long"> направления</span><span class="arw">→</span></a>
+  </div></div>
 </nav>
 
   <div class="hero-content">
