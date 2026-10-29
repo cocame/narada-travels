@@ -923,9 +923,11 @@ nav.solid .regnav-soon { color: var(--gray); }
 /* Бенто: размер плитки задаёт порядок чтения — крупные Далаты сверху,
    морские программы в середине, катамаран широкой полосой внизу. */
 .nt-grid { display: grid; grid-template-columns: repeat(12, 1fr);
-           grid-auto-rows: 150px; gap: 10px; }
+           grid-auto-rows: 150px; gap: 16px; }
+/* Фото из разных источников: одни кричащие, другие тусклые. Чуть приглушаем
+   насыщенность у всех, чтобы сетка читалась одним рядом, а не пёстрым ковром. */
 .nt-grid .bc > img { position: absolute; inset: 0; width: 100%; height: 100%;
-                     object-fit: cover; display: block; }
+                     object-fit: cover; display: block; filter: saturate(.82) brightness(.97); }
 
 .nt-dalat     { grid-column: 1 / span 7;  grid-row: 1 / span 2; }
 .nt-bridge    { grid-column: 8 / span 5;  grid-row: 1 / span 2; }
@@ -1226,7 +1228,7 @@ function источникЗаявки(){
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'yangbay')">🔗</div>
     </div>
     <div class="bc nt-hontam" id="hontam" onclick="openD('hontam')">
-      <img src="images/hontam.jpg" alt="Пляж острова Хон Там" loading="lazy">
+      <img src="images/hontam.jpg" alt="Пляж острова Хон Там с хижинами" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Остров Хон Там</h3><div class="bc-price">45<span>$</span></div></div>
         <div class="bc-sub">Снорклинг, белый песок и шведский стол</div>
@@ -1235,7 +1237,7 @@ function источникЗаявки(){
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'hontam')">🔗</div>
     </div>
     <div class="bc nt-diving" id="diving" onclick="openD('diving')">
-      <img src="images/diving.jpg" alt="Дайвинг у коралловых рифов" loading="lazy">
+      <img src="images/diving.jpg" alt="Дайверы у кораллового рифа" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Дайвинг</h3><div class="bc-price">95<span>$</span></div></div>
         <div class="bc-sub">Два погружения, коралловые рифы и подводные пещеры</div>
@@ -1244,7 +1246,7 @@ function источникЗаявки(){
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'diving')">🔗</div>
     </div>
     <div class="bc nt-fanrang" id="fanrang" onclick="openD('fanrang')">
-      <img src="images/muine.jpg" alt="Песчаные дюны Муйне" loading="lazy">
+      <img src="images/muine.jpg" alt="Дюны Муйне на рассвете" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Фанранг и Муйне, два дня</h3><div class="bc-price">190<span>$</span></div></div>
         <div class="bc-sub">Капибары, катер со стеклянным дном и джип по дюнам</div>
@@ -1253,7 +1255,7 @@ function источникЗаявки(){
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'fanrang')">🔗</div>
     </div>
     <div class="bc nt-saigon" id="saigon" onclick="openD('saigon')">
-      <img src="images/saigon.jpg" alt="Собор Нотр-Дам в Хошимине" loading="lazy">
+      <img src="images/saigon.jpg" alt="Ночной Сайгон над рекой" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Муйне и Сайгон, три дня</h3><div class="bc-price">410<span>$</span></div></div>
         <div class="bc-sub">Дюны, винный замок и ночь у моря</div>
