@@ -1003,6 +1003,29 @@ nav.solid .citybar .all { color: var(--dark); }
   .tours .bc { height: calc((100vh - var(--navh, 68px)) * 0.88) !important; height: calc((100svh - var(--navh, 68px)) * 0.88) !important;
                min-height: 0 !important; max-height: none !important; aspect-ratio: auto !important; }
 }
+/* ── Другие направления: лента под экскурсиями ──
+   Сама медленно едет, замирает под пальцем или мышью. Без библиотек,
+   фото грузятся, только когда до них долистали. */
+.morecities { padding: 8px 0 64px; overflow: hidden; }
+.morecities h2 { padding: 0 56px; margin: 0 0 20px; font-size: clamp(22px, 2.4vw, 32px); font-weight: 800; letter-spacing: -0.02em; color: var(--dark); }
+.mc-track { display: flex; gap: 12px; overflow-x: auto; padding: 0 56px 4px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.mc-track::-webkit-scrollbar { display: none; }
+.mc-card { position: relative; flex: none; width: clamp(240px, 26vw, 340px); aspect-ratio: 4 / 5; border-radius: var(--r); overflow: hidden;
+  text-decoration: none; color: #fff; background: #222; }
+.mc-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.mc-card:hover img { transform: scale(1.04); }
+.mc-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.72) 0%, rgba(0,0,0,.15) 55%, rgba(0,0,0,0) 100%); }
+.mc-info { position: absolute; left: 18px; right: 18px; bottom: 18px; z-index: 1; display: grid; gap: 4px; }
+.mc-info b { font-size: 24px; font-weight: 800; letter-spacing: -0.01em; }
+.mc-info span { font-size: 13px; line-height: 1.4; color: rgba(255,255,255,.85); }
+.mc-go { position: absolute; top: 14px; right: 14px; z-index: 1; padding: 6px 12px; border-radius: 6px; background: rgba(255,255,255,.92); color: var(--dark); font-size: 12px; font-weight: 700; }
+.mc-card.soon .mc-go { background: rgba(255,255,255,.18); color: #fff; }
+.mc-card:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 768px) {
+  .morecities h2 { padding: 0 16px; }
+  .mc-track { padding: 0 16px 4px; }
+  .mc-card { width: 72vw; }
+}
 </style>
 </head>
 <body>
@@ -1173,6 +1196,64 @@ function источникЗаявки(){
     </div>
   </div>
 </section>
+
+<!-- ── ДРУГИЕ НАПРАВЛЕНИЯ ── пока только в предпросмотре -->
+<section class="morecities only-preview" aria-label="Другие направления">
+  <h2>Другие направления</h2>
+  <div class="mc-track">
+    <a class="mc-card" href="/">
+      <img src="/images/bana-hero.webp" alt="Дананг" loading="lazy">
+      <span class="mc-go">Смотреть экскурсии →</span>
+      <span class="mc-info"><b>Дананг</b><span>Ба На Хиллс и Золотой мост, Хойан, Хюэ, острова Чам</span></span>
+    </a>
+    <a class="mc-card" href="/nha-trang/">
+      <img src="/nha-trang/images/hero.jpg" alt="Нячанг" loading="lazy">
+      <span class="mc-go">Смотреть экскурсии →</span>
+      <span class="mc-info"><b>Нячанг</b><span>Далат, северные острова, Янгбэй, яхта Marmoris</span></span>
+    </a>
+    <a class="mc-card only-preview" href="/ho-chi-minh/">
+      <img src="/ho-chi-minh/images/hero.jpg" alt="Хошимин" loading="lazy">
+      <span class="mc-go">Смотреть экскурсии →</span>
+      <span class="mc-info"><b>Хошимин</b><span>Обзорная по Сайгону, тоннели Кути, дельта Меконга</span></span>
+    </a>
+    <a class="mc-card soon only-preview" href="/hanoi/">
+      <img src="/hanoi/images/hero.jpg" alt="Ханой" loading="lazy">
+      <span class="mc-go">Скоро</span>
+      <span class="mc-info"><b>Ханой</b><span>Старый город и бухта Халонг</span></span>
+    </a>
+    <a class="mc-card soon only-preview" href="/mui-ne/">
+      <img src="/mui-ne/images/hero.jpg" alt="Муйне" loading="lazy">
+      <span class="mc-go">Скоро</span>
+      <span class="mc-info"><b>Муйне</b><span>Дюны, ручей Фей и рыбацкая деревня</span></span>
+    </a>
+    <a tabindex="-1" aria-hidden="true" class="mc-card" href="/">
+      <img src="/images/bana-hero.webp" alt="Дананг" loading="lazy">
+      <span class="mc-go">Смотреть экскурсии →</span>
+      <span class="mc-info"><b>Дананг</b><span>Ба На Хиллс и Золотой мост, Хойан, Хюэ, острова Чам</span></span>
+    </a>
+    <a tabindex="-1" aria-hidden="true" class="mc-card" href="/nha-trang/">
+      <img src="/nha-trang/images/hero.jpg" alt="Нячанг" loading="lazy">
+      <span class="mc-go">Смотреть экскурсии →</span>
+      <span class="mc-info"><b>Нячанг</b><span>Далат, северные острова, Янгбэй, яхта Marmoris</span></span>
+    </a>
+    <a tabindex="-1" aria-hidden="true" class="mc-card only-preview" href="/ho-chi-minh/">
+      <img src="/ho-chi-minh/images/hero.jpg" alt="Хошимин" loading="lazy">
+      <span class="mc-go">Смотреть экскурсии →</span>
+      <span class="mc-info"><b>Хошимин</b><span>Обзорная по Сайгону, тоннели Кути, дельта Меконга</span></span>
+    </a>
+    <a tabindex="-1" aria-hidden="true" class="mc-card soon only-preview" href="/hanoi/">
+      <img src="/hanoi/images/hero.jpg" alt="Ханой" loading="lazy">
+      <span class="mc-go">Скоро</span>
+      <span class="mc-info"><b>Ханой</b><span>Старый город и бухта Халонг</span></span>
+    </a>
+    <a tabindex="-1" aria-hidden="true" class="mc-card soon only-preview" href="/mui-ne/">
+      <img src="/mui-ne/images/hero.jpg" alt="Муйне" loading="lazy">
+      <span class="mc-go">Скоро</span>
+      <span class="mc-info"><b>Муйне</b><span>Дюны, ручей Фей и рыбацкая деревня</span></span>
+    </a>
+  </div>
+</section>
+
 
 <!-- ── FAQ ── -->
 <section class="faq" id="faq">
@@ -1594,5 +1675,27 @@ function showCopyToast(msg) {
 })();
 </script>
 
+<script>
+// Лента «Другие направления»: тихо едет сама; тронули — стоит, через 4 с снова едет.
+(function () {
+  var t = document.querySelector('.mc-track'); if (!t) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var paused = false, resume, last = 0, pos = 0;
+  function hold() { paused = true; clearTimeout(resume); resume = setTimeout(function () { paused = false; pos = t.scrollLeft; }, 4000); }
+  ['pointerenter','pointerdown','touchstart','wheel','focusin'].forEach(function (e) { t.addEventListener(e, hold, { passive: true }); });
+  t.addEventListener('pointerleave', function () { clearTimeout(resume); resume = setTimeout(function () { paused = false; pos = t.scrollLeft; }, 1200); });
+  function step(ts) {
+    var dt = last ? Math.min(ts - last, 50) : 16; last = ts;
+    if (!paused && t.offsetParent !== null) {
+      var half = t.scrollWidth / 2;
+      pos += dt * 0.025;
+      if (pos >= half) pos -= half;
+      t.scrollLeft = pos;
+    }
+    requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+})();
+</script>
 </body>
 </html>
