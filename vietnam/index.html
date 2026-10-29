@@ -1026,9 +1026,16 @@ nav.solid .citybar .all { color: var(--dark); }
 .nav-inner .logo, .nav-inner .nav-r { flex: none; }
 @media (max-width: 1240px) { .logo-txt { display: none; } .nav-links { gap: 18px; } }
 @media (max-width: 1024px) { .citybar { margin: 0 12px; } .nav-links { gap: 14px; } }
+/* На телефоне города в одну строку с логотипом не влезают — переносим их
+   вторым рядом той же шапки, во всю ширину, без прокрутки вбок. */
 @media (max-width: 768px) {
-  .citybar { margin: 0 10px; justify-content: flex-start; }
-  .citybar-in > a, .citybar-in > span { padding: 6px 9px; font-size: 12px; }
+  nav { height: auto; }
+  .nav-inner { flex-wrap: wrap; }
+  .nav-inner .logo, .nav-inner .nav-r { height: 56px; }
+  .citybar { order: 3; flex: 1 0 100%; margin: 0 0 8px; justify-content: center; }
+  .citybar-in { flex-wrap: wrap; justify-content: center; overflow: visible; padding: 0; }
+  .citybar-in > a, .citybar-in > span { padding: 7px 10px; font-size: 12.5px; }
+  section[id], .bc { scroll-margin-top: 104px; }
 }
 
 /* ── Страница направлений ── */
@@ -1052,6 +1059,14 @@ a.dir-t { display: block; text-decoration: none; color: inherit; }
 /* Все направления в форме: кнопок столько, сколько городов, в одну строку. */
 .regsw { display: flex; }
 .regsw-b { flex: 1 1 0; min-width: 0; padding: 10px 6px; }
+
+/* Телефон: каждая карточка — почти весь экран под шапкой, снизу
+   выглядывает примерно десятая часть следующей. Высота у всех одна,
+   иначе одни туры видны целиком, а другие по полтора на экран. */
+@media (max-width: 768px) {
+  .tours .bc { height: calc((100vh - 100px) * 0.88) !important; height: calc((100svh - 100px) * 0.88) !important;
+               min-height: 0 !important; max-height: none !important; aspect-ratio: auto !important; }
+}
 </style>
 </head>
 <body>
@@ -1395,7 +1410,7 @@ function toggleMenu() {
   const links = document.querySelector('.nav-links');
   const cta = document.querySelector('.nav-cta');
   const show = links.style.display !== 'flex';
-  links.style.cssText = show ? 'display:flex;flex-direction:column;position:fixed;top:68px;left:0;right:0;background:rgba(17,17,17,0.96);padding:20px;gap:16px;z-index:99' : 'display:none';
+  links.style.cssText = show ? 'display:flex;flex-direction:column;position:fixed;top:'+document.querySelector('nav').offsetHeight+'px;left:0;right:0;background:rgba(17,17,17,0.96);padding:20px;gap:16px;z-index:99' : 'display:none';
   cta && (cta.style.display = show ? 'block' : '');
 }
 
