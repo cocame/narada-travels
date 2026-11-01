@@ -31,6 +31,32 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 <style>
   html:not(.preview) .only-preview { display: none !important; }
+/* ── Другие направления: фото во всю ширину страницы ──
+   Один город на экран, сами сменяются раз в 3,5 секунды; листаются пальцем
+   и мышью, под пальцем замирают. Без библиотек, фото грузятся по мере показа. */
+.morecities { position: relative; padding: 8px 0 56px; }
+.morecities h2 { padding: 0 56px; margin: 0 0 20px; font-size: clamp(22px, 2.4vw, 32px); font-weight: 800; letter-spacing: -0.02em; color: var(--dark); }
+.mc-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.mc-track::-webkit-scrollbar { display: none; }
+.mc-card { position: relative; flex: 0 0 100%; aspect-ratio: 2 / 1; max-height: 76vh; min-height: 360px; scroll-snap-align: start; overflow: hidden;
+  text-decoration: none; color: #fff; background: #222; }
+.mc-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.mc-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.7) 0%, rgba(0,0,0,.2) 45%, rgba(0,0,0,0) 75%); }
+.mc-info { position: absolute; left: 56px; right: 56px; bottom: 48px; z-index: 1; display: grid; gap: 8px; max-width: 640px; }
+.mc-info b { font-size: clamp(32px, 4.4vw, 60px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; }
+.mc-info > span:not(.mc-go) { font-size: clamp(14px, 1.3vw, 18px); line-height: 1.45; color: rgba(255,255,255,.88); }
+.mc-info .mc-go { justify-self: start; margin-top: 8px; padding: 11px 20px; border-radius: var(--btn-r, 8px); background: #fff; color: var(--dark); font-size: 14px; font-weight: 700; }
+.mc-card.soon .mc-info .mc-go { background: rgba(255,255,255,.18); color: #fff; backdrop-filter: blur(6px); }
+.mc-card:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+.mc-dots { position: absolute; left: 0; right: 0; bottom: 24px; display: flex; justify-content: center; gap: 8px; z-index: 2; pointer-events: none; }
+.mc-dots button { pointer-events: auto; width: 9px; height: 9px; padding: 0; border: 0; border-radius: 50%; background: var(--border, #d9d9d9); cursor: pointer; }
+.mc-dots button.on { background: var(--dark); width: 26px; border-radius: 5px; }
+@media (max-width: 768px) {
+  .morecities h2 { padding: 0 16px; }
+  .mc-card { height: 72vh; height: 72svh; max-height: 620px; }
+  .mc-info { left: 20px; right: 20px; bottom: 36px; }
+}
+html.preview .only-public { display: none !important; }
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -682,6 +708,46 @@ function источникЗаявки(){
 
 </main>
 
+<!-- ── ДРУГИЕ НАПРАВЛЕНИЯ ── как на главной Дананга (01.11) -->
+<section class="morecities" aria-label="Other destinations">
+  <h2>Other destinations</h2>
+  <div class="mc-track">
+    <a class="mc-card" href="/en/phu-quoc/">
+      <img src="/images/cities/phuquoc.jpg" alt="Phu Quoc" loading="lazy">
+      <span class="mc-info"><b>Phu Quoc</b><span>Cable car, southern islands, safari, Sunset Town</span><span class="mc-go">See tours →</span></span>
+    </a>
+    <a class="mc-card" href="/en/nha-trang/">
+      <img src="/images/cities/nhatrang.jpg" alt="Nha Trang" loading="lazy">
+      <span class="mc-info"><b>Nha Trang</b><span>Dalat, northern islands, Yang Bay, Marmoris yacht</span><span class="mc-go">See tours →</span></span>
+    </a>
+    <a class="mc-card only-preview" href="/en/ho-chi-minh/">
+      <img src="/images/cities/hcm.jpg" alt="Ho Chi Minh" loading="lazy">
+      <span class="mc-info"><b>Ho Chi Minh</b><span>Saigon city tour, Cu Chi tunnels, Mekong Delta</span><span class="mc-go">See tours →</span></span>
+    </a>
+    <a class="mc-card soon only-preview" href="/en/hanoi/">
+      <img src="/images/cities/hanoi.jpg" alt="Hanoi" loading="lazy">
+      <span class="mc-info"><b>Hanoi</b><span>Old Quarter and Ha Long Bay</span><span class="mc-go">Soon</span></span>
+    </a>
+    <a class="mc-card soon only-preview" href="/en/mui-ne/">
+      <img src="/images/cities/muine.jpg" alt="Mui Ne" loading="lazy">
+      <span class="mc-info"><b>Mui Ne</b><span>Dunes, Fairy Stream and a fishing village</span><span class="mc-go">Soon</span></span>
+    </a>
+    <div class="mc-card soon only-public">
+      <img src="/images/cities/hcm.jpg" alt="Ho Chi Minh" loading="lazy">
+      <span class="mc-info"><b>Ho Chi Minh</b><span>Saigon city tour, Cu Chi tunnels, Mekong Delta</span><span class="mc-go">Soon</span></span>
+    </div>
+    <div class="mc-card soon only-public">
+      <img src="/images/cities/hanoi.jpg" alt="Hanoi" loading="lazy">
+      <span class="mc-info"><b>Hanoi</b><span>Old Quarter and Ha Long Bay</span><span class="mc-go">Soon</span></span>
+    </div>
+    <div class="mc-card soon only-public">
+      <img src="/images/cities/muine.jpg" alt="Mui Ne" loading="lazy">
+      <span class="mc-info"><b>Mui Ne</b><span>Dunes, Fairy Stream and a fishing village</span><span class="mc-go">Soon</span></span>
+    </div>
+  </div>
+  <div class="mc-dots" aria-label="Choose a city"></div>
+</section>
+
 <footer>
   <div class="flogo">Narada Travels</div>
   <p>Day tours from Da Nang with an English- or Russian-speaking guide · Vietnam</p>
@@ -691,5 +757,48 @@ function источникЗаявки(){
 
 </div><!-- /w -->
 
+<script>
+// Лента «Другие направления»: раз в 3,5 с следующий город (было 5 с — «очень медленно», 01.11), всегда вперёд по кругу.
+// После последнего города стоит копия первого: доехали до неё — незаметно
+// перескакиваем в начало, поэтому лента никогда не едет назад.
+(function () {
+  var t = document.querySelector('.mc-track'); if (!t) return;
+  var dots = document.querySelector('.mc-dots');
+  var cards = [...t.querySelectorAll('.mc-card')].filter(function (c) { return c.offsetParent !== null; });
+  var n = cards.length; if (n < 2) return;
+  var clone = cards[0].cloneNode(true);
+  clone.setAttribute('aria-hidden', 'true'); clone.tabIndex = -1; clone.classList.add('mc-clone');
+  t.appendChild(clone);
+  function idx() { return Math.round(t.scrollLeft / t.clientWidth); }
+  function jump(i) { t.style.scrollBehavior = 'auto'; t.scrollLeft = i * t.clientWidth; t.style.scrollBehavior = ''; }
+  function paint() { var i = idx() % n; [...dots.children].forEach(function (d, k) { d.classList.toggle('on', k === i); }); }
+  var settle;
+  function onScroll() {
+    requestAnimationFrame(paint);
+    clearTimeout(settle);
+    settle = setTimeout(function () { if (idx() >= n) jump(0); }, 120);
+  }
+  t.addEventListener('scroll', onScroll, { passive: true });
+  cards.forEach(function (c, k) {
+    var b = document.createElement('button'); b.type = 'button';
+    b.setAttribute('aria-label', c.querySelector('b').textContent);
+    b.addEventListener('click', function () { hold(); t.scrollTo({ left: k * t.clientWidth }); }); dots.appendChild(b);
+  });
+  paint();
+  var until = 0;
+  function hold() { until = Date.now() + 8000; }
+  // Пауза только от настоящего касания или листания вбок. Просто мышь над фото
+  // не в счёт: фото во всю ширину, мышь над ним почти всегда.
+  ['pointerdown', 'touchstart', 'focusin'].forEach(function (e) { t.addEventListener(e, hold, { passive: true }); });
+  t.addEventListener('wheel', function (e) { if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) hold(); }, { passive: true });
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  setInterval(function () {
+    if (Date.now() < until || document.hidden) return;
+    var r = t.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
+    var i = idx(); if (i >= n) { jump(0); i = 0; }
+    t.scrollTo({ left: (i + 1) * t.clientWidth });
+  }, 3500);
+})();
+</script>
 </body>
 </html>
