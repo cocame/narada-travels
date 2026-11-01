@@ -36,10 +36,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <!-- PWA: манифест и офлайн-режим — сайт упакован в приложение для Google Play.
      Файлы лежат в корне: /manifest.webmanifest, /sw.js, /offline.html. -->
-<link rel="manifest" href"/manifest.webmanifest">
+<link rel="manifest" href="/manifest.webmanifest">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="apple-touch-icon" href"/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="48x48" href"/favicon-48.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
@@ -523,7 +523,11 @@ footer a { color: rgba(255,255,255,0.35); text-decoration: underline; text-under
   #siteNav:not(.solid) .langsw a:not([aria-current]):hover{color:#fff;background:rgba(255,255,255,.14)}
   .langsw.float{position:fixed;top:12px;right:12px;z-index:999;background:#fff}
   /* телефон: только ссылка на другой язык, чтобы не выдавить меню */
-  @media (max-width:768px){.nav-r .langsw{border:0;padding:0;margin-right:6px} .nav-r .langsw a[aria-current]{display:none}}
+  .langsw.m2{display:none}
+  @media (max-width:768px){.nav-r .langsw{border:0;padding:0;margin-right:6px} .langsw a[aria-current]{display:none}
+    /* где есть второй ряд городов — язык там, верхний ряд не трогаем */
+    .nav-r .langsw.has2{display:none} .citybar2 .langsw.m2{display:inline-flex;border:0;padding:0;margin-left:4px}}
+  @media (max-width:420px){.citybar2 .all-long{display:none}}
 </style>
 <script>try{if(localStorage.getItem('narada_preview')==='1')document.documentElement.classList.add('preview')}catch(e){}</script>
 <!-- /langsw -->
@@ -574,19 +578,19 @@ function источникЗаявки(){
 
 <nav>
   <div class="nav-l">
-  <a class="logo" href"/en/" data-preview-href"/en/vietnam/">
+  <a class="logo" href="/en/" data-preview-href="/en/vietnam/">
     <img src="/images/logo.png" alt="Narada Travels">
     <span class="logo-txt">Narada</span>
   </a>
-  <a class="navback" href"/en/#tours" data-preview-href"/en/vietnam/"><span class="arw">←</span><span>All tours</span></a>
+  <a class="navback" href="/en/#tours" data-preview-href="/en/vietnam/"><span class="arw">←</span><span>All tours</span></a>
   </div>
 
   <div class="nav-r"><!-- langsw --><span class="langsw only-preview" aria-label="Language"><a href="/hoi-an/" hreflang="ru" lang="ru">RU</a><a href="/en/hoi-an/" hreflang="en" lang="en" aria-current="true">EN</a></span><!-- /langsw -->    <ul class="nav-links">
-      <li><a href"/en/#tours">Tours</a></li>
-      <li><a href"/en/#faq">FAQ</a></li>
-      <li><a href"/en/#emotions">Reviews</a></li>
+      <li><a href="/en/#tours">Tours</a></li>
+      <li><a href="/en/#faq">FAQ</a></li>
+      <li><a href="/en/#emotions">Reviews</a></li>
     </ul>
-    <a href"/en/#form" class="nav-cta">Contact us</a>  </div>
+    <a href="/en/#form" class="nav-cta">Contact us</a>  </div>
 </nav>
 
 <section class="hero">
@@ -652,7 +656,7 @@ function источникЗаявки(){
 
   <div class="cta">
     <a href="https://t.me/taysafinskaya?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20Narada%20Travels.%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%B1%D1%80%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D1%8D%D0%BA%D1%81%D0%BA%D1%83%D1%80%D1%81%D0%B8%D1%8E%20%D0%B2%20%D0%A5%D0%BE%D0%B9%D0%B0%D0%BD%20%D0%B8%20%D0%BA%D0%BE%D0%BA%D0%BE%D1%81%D0%BE%D0%B2%D1%8B%D0%B5%20%D0%B4%D0%B6%D1%83%D0%BD%D0%B3%D0%BB%D0%B8." target="_blank" rel="noopener noreferrer" class="btn-primary">Book</a>
-    <a href"/en/#tours" class="cta-back">← All Da Nang tours</a>
+    <a href="/en/#tours" class="cta-back">← All Da Nang tours</a>
   </div>
 
 </main>
@@ -660,8 +664,8 @@ function источникЗаявки(){
 <footer>
   <div class="flogo">Narada Travels</div>
   <p>Day tours from Da Nang with an English- or Russian-speaking guide · Vietnam</p>
-  <p class="fdirs"><a href"/en/">Day tours from Da Nang</a><a href"/en/phu-quoc/">Phu Quoc tours</a><a href"/en/nha-trang/">Nha Trang tours</a></p>
-  <p>© 2026 Narada · <a href"/privacy/#en">Privacy policy</a></p>
+  <p class="fdirs"><a href="/en/">Day tours from Da Nang</a><a href="/en/phu-quoc/">Phu Quoc tours</a><a href="/en/nha-trang/">Nha Trang tours</a></p>
+  <p>© 2026 Narada · <a href="/privacy/#en">Privacy policy</a></p>
 </footer>
 
 </div><!-- /w -->

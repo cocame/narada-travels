@@ -48,10 +48,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <!-- PWA: манифест и офлайн-режим — сайт упакован в приложение для Google Play.
      Файлы лежат в корне: /manifest.webmanifest, /sw.js, /offline.html. -->
-<link rel="manifest" href"/manifest.webmanifest">
+<link rel="manifest" href="/manifest.webmanifest">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="apple-touch-icon" href"/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="48x48" href"/favicon-48.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
@@ -93,16 +93,16 @@ document.addEventListener('DOMContentLoaded', function () {
 </style>
 
 <title>Vietnam Tours with an English- or Russian-Speaking Guide | Narada Travels</title>
-<meta name="description" content="Tours in Vietnam with an English- or Russian-speaking guide: Da Nang, Nha Trang, Phu Quoc and Ho Chi Minh City. Choose a destination — programs and prices are on each city's page.">
-<link rel="icon" type="image/png" href"/images/favicon.png">
+<meta name="description" content="Tours in Vietnam with an English- or Russian-speaking guide: Da Nang, Nha Trang, Phu Quoc and Ho Chi Minh. Choose a destination — programs and prices are on each city's page.">
+<link rel="icon" type="image/png" href="/images/favicon.png">
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://narada-travels.com/en/vietnam/">
-<meta name="keywords" content="Vietnam tours, English-speaking guide Vietnam, Da Nang tours, Nha Trang tours, Phu Quoc tours, Ho Chi Minh City tours">
+<meta name="keywords" content="Vietnam tours, English-speaking guide Vietnam, Da Nang tours, Nha Trang tours, Phu Quoc tours, Ho Chi Minh tours">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Narada Travels">
 <meta property="og:url" content="https://narada-travels.com/en/vietnam/">
 <meta property="og:title" content="Vietnam Tours with an English- or Russian-Speaking Guide | Narada Travels">
-<meta property="og:description" content="Tours in Vietnam with an English- or Russian-speaking guide: Da Nang, Nha Trang, Phu Quoc and Ho Chi Minh City. Choose a destination — programs and prices are on each city's page.">
+<meta property="og:description" content="Tours in Vietnam with an English- or Russian-speaking guide: Da Nang, Nha Trang, Phu Quoc and Ho Chi Minh. Choose a destination — programs and prices are on each city's page.">
 <meta property="og:image" content="https://narada-travels.com/images/og-preview.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Vietnam Tours with an English- or Russian-Speaking Guide | Narada Travels">
-<meta name="twitter:description" content="Tours in Vietnam with an English- or Russian-speaking guide: Da Nang, Nha Trang, Phu Quoc and Ho Chi Minh City. Choose a destination — programs and prices are on each city's page.">
+<meta name="twitter:description" content="Tours in Vietnam with an English- or Russian-speaking guide: Da Nang, Nha Trang, Phu Quoc and Ho Chi Minh. Choose a destination — programs and prices are on each city's page.">
 <meta name="twitter:image" content="https://narada-travels.com/images/og-preview.jpg">
 <meta name="twitter:image:alt" content="Vietnam tours with an English- or Russian-speaking guide">
 <script type="application/ld+json">
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
   "url": "https://narada-travels.com/en/vietnam/",
   "logo": "https://narada-travels.com/images/logo.png",
   "image": "https://narada-travels.com/images/og-preview.jpg",
-  "description": "Tours in Vietnam with an English- or Russian-speaking guide: Da Nang, Nha Trang, Phu Quoc and Ho Chi Minh City. Choose a destination — programs and prices are on each city's page.",
+  "description": "Tours in Vietnam with an English- or Russian-speaking guide: Da Nang, Nha Trang, Phu Quoc and Ho Chi Minh. Choose a destination — programs and prices are on each city's page.",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Da Nang",
@@ -1107,7 +1107,11 @@ a.dir-t { display: block; text-decoration: none; color: inherit; }
   #siteNav:not(.solid) .langsw a:not([aria-current]):hover{color:#fff;background:rgba(255,255,255,.14)}
   .langsw.float{position:fixed;top:12px;right:12px;z-index:999;background:#fff}
   /* телефон: только ссылка на другой язык, чтобы не выдавить меню */
-  @media (max-width:768px){.nav-r .langsw{border:0;padding:0;margin-right:6px} .nav-r .langsw a[aria-current]{display:none}}
+  .langsw.m2{display:none}
+  @media (max-width:768px){.nav-r .langsw{border:0;padding:0;margin-right:6px} .langsw a[aria-current]{display:none}
+    /* где есть второй ряд городов — язык там, верхний ряд не трогаем */
+    .nav-r .langsw.has2{display:none} .citybar2 .langsw.m2{display:inline-flex;border:0;padding:0;margin-left:4px}}
+  @media (max-width:420px){.citybar2 .all-long{display:none}}
 </style>
 <script>try{if(localStorage.getItem('narada_preview')==='1')document.documentElement.classList.add('preview')}catch(e){}</script>
 <!-- /langsw -->
@@ -1165,22 +1169,22 @@ function источникЗаявки(){
 </script>
 
 <nav id="siteNav">  <div class="nav-inner">
-    <a class="logo" href"/en/vietnam/">
+    <a class="logo" href="/en/vietnam/">
       <img src="/images/logo.png" alt="Narada Travels">
       <span class="logo-txt">Narada Travels</span>
     </a>
     <div class="citybar"><div class="citybar-in">
-        <a href"/en/">Da Nang</a>
-        <a href"/en/phu-quoc/">Phu Quoc</a>
-        <a href"/en/nha-trang/">Nha Trang</a>
-        <a class="c2" href"/en/hanoi/">Hanoi</a>
-        <a href"/en/ho-chi-minh/">Ho Chi Minh</a>
-        <a class="c2" href"/en/mui-ne/">Mui Ne</a>
+        <a href="/en/">Da Nang</a>
+        <a href="/en/phu-quoc/">Phu Quoc</a>
+        <a href="/en/nha-trang/">Nha Trang</a>
+        <a class="c2" href="/en/hanoi/">Hanoi</a>
+        <a href="/en/ho-chi-minh/">Ho Chi Minh</a>
+        <a class="c2" href="/en/mui-ne/">Mui Ne</a>
         <span class="on c2">All<span class="all-long"> destinations</span></span>
       </div></div>
     <div class="nav-r"><!-- langsw --><span class="langsw only-preview" aria-label="Language"><a href="/vietnam/" hreflang="ru" lang="ru">RU</a><a href="/en/vietnam/" hreflang="en" lang="en" aria-current="true">EN</a></span><!-- /langsw -->      <ul class="nav-links">
         <li><a href="#tours">Tours</a></li>
-        <li class="app-only"><a href"/en/uslugi/">Services</a></li>
+        <li class="app-only"><a href="/en/uslugi/">Services</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#emotions">Reviews</a></li>
       </ul>
@@ -1190,8 +1194,8 @@ function источникЗаявки(){
   <!-- Телефон: второй ряд городов под шапкой. На компьютере эти же
        ссылки стоят в общей строке, здесь — копия для узкого экрана. -->
   <div class="citybar2 only-preview"><div class="citybar-in">
-      <a href"/en/hanoi/">Hanoi</a>
-      <a href"/en/mui-ne/">Mui Ne</a>
+      <a href="/en/hanoi/">Hanoi</a>
+      <a href="/en/mui-ne/">Mui Ne</a>
       <span class="on">All<span class="all-long"> destinations</span></span>
   </div></div>
 </nav>
@@ -1208,7 +1212,7 @@ function источникЗаявки(){
 <section class="tours" id="tours">
   <h2>Destinations</h2>
   <div class="nt-grid">
-    <a class="bc dir-t vt-danang" href"/en/">
+    <a class="bc dir-t vt-danang" href="/en/">
       <img src="/images/bana-hero.webp" alt="Da Nang" style="object-position:center" loading="lazy">
       <div class="bc-info">
         <h3 class="bc-title">Da Nang</h3>
@@ -1216,7 +1220,7 @@ function источникЗаявки(){
       </div>
       <span class="dir-go">See tours <span class="arw">→</span></span>
     </a>
-    <a class="bc dir-t vt-nhatrang" href"/en/nha-trang/">
+    <a class="bc dir-t vt-nhatrang" href="/en/nha-trang/">
       <img src="/nha-trang/images/hero.jpg" alt="Nha Trang" style="object-position:center" loading="lazy">
       <div class="bc-info">
         <h3 class="bc-title">Nha Trang</h3>
@@ -1224,7 +1228,7 @@ function источникЗаявки(){
       </div>
       <span class="dir-go">See tours <span class="arw">→</span></span>
     </a>
-    <a class="bc dir-t vt-phuquoc" href"/en/phu-quoc/">
+    <a class="bc dir-t vt-phuquoc" href="/en/phu-quoc/">
       <img src="/phu-quoc/images/hero.jpg" alt="Phu Quoc" style="object-position:center" loading="lazy">
       <div class="bc-info">
         <h3 class="bc-title">Phu Quoc</h3>
@@ -1232,7 +1236,7 @@ function источникЗаявки(){
       </div>
       <span class="dir-go">See tours <span class="arw">→</span></span>
     </a>
-    <a class="bc dir-t vt-hcm" href"/en/ho-chi-minh/">
+    <a class="bc dir-t vt-hcm" href="/en/ho-chi-minh/">
       <img src="/ho-chi-minh/images/hero.jpg?v=2" alt="Ho Chi Minh" style="object-position:center" loading="lazy">
       <div class="bc-info">
         <h3 class="bc-title">Ho Chi Minh</h3>
@@ -1240,7 +1244,7 @@ function источникЗаявки(){
       </div>
       <span class="dir-go">See tours <span class="arw">→</span></span>
     </a>
-    <a class="bc dir-t vt-hanoi" href"/en/hanoi/">
+    <a class="bc dir-t vt-hanoi" href="/en/hanoi/">
       <img src="/hanoi/images/hero.jpg" alt="Train Street in Hanoi">
       <div class="bc-info">
         <h3 class="bc-title">Hanoi</h3>
@@ -1248,7 +1252,7 @@ function источникЗаявки(){
       </div>
       <span class="dir-go">Soon</span>
     </a>
-    <a class="bc dir-t vt-muine" href"/en/mui-ne/">
+    <a class="bc dir-t vt-muine" href="/en/mui-ne/">
       <img src="/mui-ne/images/hero.jpg?v=2" alt="Mui Ne dunes at sunset" loading="lazy">
       <div class="bc-info">
         <h3 class="bc-title">Mui Ne</h3>
@@ -1311,11 +1315,11 @@ function источникЗаявки(){
           <label>Tour</label>
           <select name="tour" id="fTour" required>
             <option value="">Choose a tour</option>
-            <option value="Ho Chi Minh City — City tour">Ho Chi Minh City tour</option>
-            <option value="Ho Chi Minh City — Mekong Delta">Mekong Delta</option>
-            <option value="Ho Chi Minh City — Cu Chi tunnels">Cu Chi tunnels</option>
-            <option value="Ho Chi Minh City — Saigon River cruise">Saigon River cruise</option>
-            <option value="Ho Chi Minh City — Other, I'll write in the message">Other, I'll write in the message</option>
+            <option value="Ho Chi Minh — City tour">Ho Chi Minh tour</option>
+            <option value="Ho Chi Minh — Mekong Delta">Mekong Delta</option>
+            <option value="Ho Chi Minh — Cu Chi tunnels">Cu Chi tunnels</option>
+            <option value="Ho Chi Minh — Saigon River cruise">Saigon River cruise</option>
+            <option value="Ho Chi Minh — Other, I'll write in the message">Other, I'll write in the message</option>
           </select>
         </div>
         <div class="frow">
@@ -1325,7 +1329,7 @@ function источникЗаявки(){
         <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <label class="fconsent">
           <input type="checkbox" name="consent" required>
-          <span>I agree to the processing of personal data — we need your name and contact to reply to your request. <a href"/privacy/#en" target="_blank" rel="noopener noreferrer">Privacy policy</a></span>
+          <span>I agree to the processing of personal data — we need your name and contact to reply to your request. <a href="/privacy/#en" target="_blank" rel="noopener noreferrer">Privacy policy</a></span>
         </label>
         <button type="submit" class="fsubmit">Send request</button>
       </form>
@@ -1337,8 +1341,8 @@ function источникЗаявки(){
 <footer>
   <div class="flogo">Narada Travels</div>
   <p>Vietnam tours with an English- or Russian-speaking guide</p>
-  <p class="fdirs"><a href"/en/">Day tours from Da Nang</a><a href"/en/phu-quoc/">Phu Quoc tours</a><a href"/en/nha-trang/">Tours from Nha Trang</a><a href"/en/ho-chi-minh/">Ho Chi Minh City tours</a><a href"/en/vietnam/" class="on">All destinations</a></p>
-  <p>© 2026 Narada · <a href"/privacy/#en" style="color:rgba(255,255,255,0.35);text-decoration:underline;text-underline-offset:2px">Privacy policy</a></p>
+  <p class="fdirs"><a href="/en/">Day tours from Da Nang</a><a href="/en/phu-quoc/">Phu Quoc tours</a><a href="/en/nha-trang/">Tours from Nha Trang</a><a href="/en/ho-chi-minh/">Ho Chi Minh tours</a><a href="/en/vietnam/" class="on">All destinations</a></p>
+  <p>© 2026 Narada · <a href="/privacy/#en" style="color:rgba(255,255,255,0.35);text-decoration:underline;text-underline-offset:2px">Privacy policy</a></p>
 </footer>
 
 </div><!-- /w -->
@@ -1395,8 +1399,8 @@ function источникЗаявки(){
 // переслал Ленар 29.10.2026, разобраны в ~/Downloads/hoshimin/ЧТО ПРОДАЁМ.md.
 // Продаём по цене партнёра, цены за группу.
 const tours = {
-  obzor:{title:"Ho Chi Minh City tour",price:"from $45 / person",
-    seo:"Ho Chi Minh City is a city of contrasts: old and modern, East and West. The War Remnants Museum or the History Museum of your choice, Vinh Nghiem Temple, workshops and exotic markets, the French quarter with City Hall, Notre-Dame Cathedral and the old Post Office, the Saigon River embankment and skyscrapers.",
+  obzor:{title:"Ho Chi Minh tour",price:"from $45 / person",
+    seo:"Ho Chi Minh is a city of contrasts: old and modern, East and West. The War Remnants Museum or the History Museum of your choice, Vinh Nghiem Temple, workshops and exotic markets, the French quarter with City Hall, Notre-Dame Cathedral and the old Post Office, the Saigon River embankment and skyscrapers.",
     prog:[["","War Remnants Museum or History Museum — your choice"],["","Vinh Nghiem Temple"],["","Local craft workshops and markets"],["","French quarter: City Hall, Notre-Dame Cathedral, Virgin Mary statue"],["","Old Post Office and Opera House"],["","Saigon River embankment, skyscrapers"],["","4 hours"]],
     inc:["Air-conditioned car","English- or Russian-speaking guide","Entrance tickets","A bottle of water"],
     exc:["Airport or station pickup — on request"],
@@ -1408,7 +1412,7 @@ const tours = {
     exc:[],
     prices:[["Group","Price"],["1 person","220 $"],["2 people","$240 for two"],["3 people","$260 for three"],["4 people","$280 for four"]]},
   kuchi:{title:"Cu Chi tunnels",price:"from $170",
-    seo:"50 km from Ho Chi Minh City lies an underground guerrilla city: over 200 km of tunnels on three levels, where about 17,000 people lived during the war. A black-and-white film from 1967, searching for hidden entrances, a walk through a tunnel, a field hospital, a weapons workshop and guerrilla food.",
+    seo:"50 km from Ho Chi Minh lies an underground guerrilla city: over 200 km of tunnels on three levels, where about 17,000 people lived during the war. A black-and-white film from 1967, searching for hidden entrances, a walk through a tunnel, a field hospital, a weapons workshop and guerrilla food.",
     prog:[["","A film shot here in 1967"],["","Searching for hidden entrances"],["","Walking underground through a widened section"],["","Field hospital and weapons workshop"],["","Tasting guerrilla food"],["","Shooting range — optional"],["","5–6 hours"]],
     inc:["Transport","English- or Russian-speaking guide","Entrance tickets"],
     exc:["Shooting — paid separately"],
@@ -1531,11 +1535,11 @@ const REGION_TOURS = {
     ["Nha Trang — Other, I'll write in the message","Other, I'll write in the message"]
   ],
   hcm: [
-    ["Ho Chi Minh City — City tour","Ho Chi Minh City tour"],
-    ["Ho Chi Minh City — Mekong Delta","Mekong Delta"],
-    ["Ho Chi Minh City — Cu Chi tunnels","Cu Chi tunnels"],
-    ["Ho Chi Minh City — Saigon River cruise","Saigon River cruise"],
-    ["Ho Chi Minh City — Other, I'll write in the message","Other, I'll write in the message"]
+    ["Ho Chi Minh — City tour","Ho Chi Minh tour"],
+    ["Ho Chi Minh — Mekong Delta","Mekong Delta"],
+    ["Ho Chi Minh — Cu Chi tunnels","Cu Chi tunnels"],
+    ["Ho Chi Minh — Saigon River cruise","Saigon River cruise"],
+    ["Ho Chi Minh — Other, I'll write in the message","Other, I'll write in the message"]
   ],
   // Туров пока нет — только заявка «подберите программу».
   hanoi: [

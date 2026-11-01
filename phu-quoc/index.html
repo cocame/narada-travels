@@ -1057,7 +1057,11 @@ nav.solid .citybar .soon, nav.solid .citybar2 .soon { color: var(--gray); }
   #siteNav:not(.solid) .langsw a:not([aria-current]):hover{color:#fff;background:rgba(255,255,255,.14)}
   .langsw.float{position:fixed;top:12px;right:12px;z-index:999;background:#fff}
   /* телефон: только ссылка на другой язык, чтобы не выдавить меню */
-  @media (max-width:768px){.nav-r .langsw{border:0;padding:0;margin-right:6px} .nav-r .langsw a[aria-current]{display:none}}
+  .langsw.m2{display:none}
+  @media (max-width:768px){.nav-r .langsw{border:0;padding:0;margin-right:6px} .langsw a[aria-current]{display:none}
+    /* где есть второй ряд городов — язык там, верхний ряд не трогаем */
+    .nav-r .langsw.has2{display:none} .citybar2 .langsw.m2{display:inline-flex;border:0;padding:0;margin-left:4px}}
+  @media (max-width:420px){.citybar2 .all-long{display:none}}
 </style>
 <script>try{if(localStorage.getItem('narada_preview')==='1')document.documentElement.classList.add('preview')}catch(e){}</script>
 <!-- /langsw -->
@@ -1123,7 +1127,7 @@ function источникЗаявки(){
         <a class="c2" href="/mui-ne/">Муйне</a>
         <a class="all only-preview c2" href="/vietnam/">Все<span class="all-long"> направления</span><span class="arw">→</span></a>
       </div></div>
-    <div class="nav-r"><!-- langsw --><span class="langsw only-preview" aria-label="Language"><a href="/phu-quoc/" hreflang="ru" lang="ru" aria-current="true">RU</a><a href="/en/phu-quoc/" hreflang="en" lang="en">EN</a></span><!-- /langsw -->      <ul class="nav-links">
+    <div class="nav-r"><!-- langsw --><span class="langsw has2 only-preview" aria-label="Language"><a href="/phu-quoc/" hreflang="ru" lang="ru" aria-current="true">RU</a><a href="/en/phu-quoc/" hreflang="en" lang="en">EN</a></span><!-- /langsw -->      <ul class="nav-links">
         <li><a href="#tours">Экскурсии</a></li>
         <li class="app-only"><a href="/uslugi/">Услуги</a></li>
         <li><a href="#faq">FAQ</a></li>
@@ -1138,7 +1142,7 @@ function источникЗаявки(){
       <a href="/hanoi/">Ханой</a>
       <a href="/mui-ne/">Муйне</a>
       <a class="all only-preview" href="/vietnam/">Все<span class="all-long"> направления</span><span class="arw">→</span></a>
-  </div></div>
+  <!-- langsw --><span class="langsw m2 only-preview" aria-label="Language"><a href="/phu-quoc/" hreflang="ru" lang="ru" aria-current="true">RU</a><a href="/en/phu-quoc/" hreflang="en" lang="en">EN</a></span><!-- /langsw --></div></div>
 </nav>
 
   <div class="hero-content">

@@ -101,7 +101,7 @@ def en_path(path):
 def fix_links(s, d):
     def href(m):
         p = en_path(m.group(2))
-        return m.group(1) + '"' + (p or m.group(2)) + '"'
+        return m.group(1) + '="' + (p or m.group(2)) + '"'
     s = re.sub(r'\b(href|data-preview-href)="(/[^"]*)"', href, s)
     # относительные картинки и видео → абсолютные, иначе из /en/… они не найдутся
     base = '/' + d + '/' if d else '/'
@@ -125,7 +125,11 @@ HEAD_BITS = """<!-- langsw -->
   #siteNav:not(.solid) .langsw a:not([aria-current]):hover{{color:#fff;background:rgba(255,255,255,.14)}}
   .langsw.float{{position:fixed;top:12px;right:12px;z-index:999;background:#fff}}
   /* телефон: только ссылка на другой язык, чтобы не выдавить меню */
-  @media (max-width:768px){{.nav-r .langsw{{border:0;padding:0;margin-right:6px}} .nav-r .langsw a[aria-current]{{display:none}}}}
+  .langsw.m2{{display:none}}
+  @media (max-width:768px){{.nav-r .langsw{{border:0;padding:0;margin-right:6px}} .langsw a[aria-current]{{display:none}}
+    /* где есть второй ряд городов — язык там, верхний ряд не трогаем */
+    .nav-r .langsw.has2{{display:none}} .citybar2 .langsw.m2{{display:inline-flex;border:0;padding:0;margin-left:4px}}}}
+  @media (max-width:420px){{.citybar2 .all-long{{display:none}}}}
 </style>
 <script>try{{if(localStorage.getItem('narada_preview')==='1')document.documentElement.classList.add('preview')}}catch(e){{}}</script>
 <!-- /langsw -->
@@ -147,8 +151,14 @@ def add_lang_bits(s, d, cur):
     s = re.sub(r'<!-- langsw -->.*?<!-- /langsw -->\n?', '', s, flags=re.S)
     s = s.replace('</head>', HEAD_BITS.format(alt=alt) + '</head>', 1)
     # сразу после строки городов — в начало правого блока шапки
+    row2 = '<div class="citybar2"><div class="citybar-in">'
     if '<div class="nav-r">' in s:
-        s = s.replace('<div class="nav-r">', '<div class="nav-r">' + switcher(ru, en, cur), 1)
+        sw = switcher(ru, en, cur)
+        if row2 in s:
+            sw = sw.replace('class="langsw', 'class="langsw has2', 1)
+            i = s.index(row2); j = s.index('</div></div>', i)
+            s = s[:j] + switcher(ru, en, cur).replace('class="langsw', 'class="langsw m2', 1) + s[j:]
+        s = s.replace('<div class="nav-r">', '<div class="nav-r">' + sw, 1)
     else:
         s = re.sub(r'(<body\b[^>]*>)', lambda m: m.group(1) + switcher(ru, en, cur, True), s, count=1)
     return s
@@ -184,6 +194,12 @@ def build():
                     lambda m: m.group(1) + (en_path(m.group(2)) or m.group(2)), en)
         # пока английская версия не открыта — не индексировать
         en = re.sub(r'<meta name="robots" content="[^"]*">', '<meta name="robots" content="noindex, follow">', en)
+        # длинные английские названия: Ho Chi Minh на телефоне уходит во второй ряд
+        if '<div class="citybar2">' in en:
+            en = en.replace('<a href="/en/ho-chi-minh/">Ho Chi Minh</a>', '<a class="c2" href="/en/ho-chi-minh/">Ho Chi Minh</a>', 1)
+            en = en.replace('<span class="on">Ho Chi Minh</span>', '<span class="on c2">Ho Chi Minh</span>', 1)
+            en = re.sub(r'(<div class="citybar2"><div class="citybar-in">\s*<a href="/en/hanoi/">Hanoi</a>)',
+                        r'\1<a href="/en/ho-chi-minh/">Ho Chi Minh</a>', en, count=1)
         en = add_lang_bits(en, d, 'en')
         out = os.path.join(ROOT, 'en', d, 'index.html')
         os.makedirs(os.path.dirname(out), exist_ok=True)
