@@ -66,8 +66,12 @@ document.addEventListener('DOMContentLoaded', function () {
       || matchMedia('(display-mode: standalone)').matches
       || matchMedia('(display-mode: fullscreen)').matches
       || matchMedia('(display-mode: minimal-ui)').matches
-      || sessionStorage.getItem('inApp') === '1';
-    if (app) { sessionStorage.setItem('inApp', '1'); document.documentElement.classList.add('in-app'); }
+      || window.navigator.standalone === true;
+    // Признак запоминаем навсегда (localStorage), а не до закрытия вкладки:
+    // иначе при сбое проверки связи с сайтом «Услуги» пропадают (01.11.2026)
+    if (app) localStorage.setItem('narada_app', '1');
+    if (app || localStorage.getItem('narada_app') === '1'
+        || sessionStorage.getItem('inApp') === '1') document.documentElement.classList.add('in-app');
   } catch (e) {}
 })();
 </script>

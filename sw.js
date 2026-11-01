@@ -15,7 +15,7 @@
    GitHub Pages отдаёт файлы с Cache-Control: max-age=600, поэтому новая версия
    доезжает до людей в течение десяти минут. */
 
-const V = 'narada-v3';   // v3 — кремовая иконка приложения, 16 октября 2026
+const V = 'narada-v4';   // v4 — /.well-known/ мимо service worker, признак приложения в localStorage, 1 ноября 2026
 const OFFLINE = '/offline.html';
 
 self.addEventListener('install', e => {
@@ -34,6 +34,8 @@ self.addEventListener('fetch', e => {
 
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return;
+  // assetlinks.json и прочее из /.well-known/ — всегда напрямую из сети, без кэша
+  if (url.pathname.startsWith('/.well-known/')) return;
 
   e.respondWith(
     fetch(req).then(res => {
