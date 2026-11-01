@@ -1120,11 +1120,10 @@ nav.solid .citybar .all { color: var(--dark); }
   /* Телефон: где есть меню «три полоски» — язык пунктом внутри меню, в шапке его нет.
      Где меню нет (страницы экскурсий) — в шапке только другой язык, тонкой рамкой.
      Квадратик внизу экрана (01.11) смотрелся заплаткой — убран. */
-  .nav-links .langli{display:none}
-  html:not(.preview) .langli.only-preview{display:none!important}
+  .nav-links .langli{display:none!important}
   @media (max-width:768px){
-    .nav-r .langsw.hasmenu{display:none!important}
-    .nav-links .langli{display:list-item}
+    /* под иконкой меню «три полоски», во втором ряду справа */
+    .nav-r .langsw.hasmenu{position:absolute;right:12px;top:75px;margin:0}
     .nav-r .langsw{border:1px solid rgba(17,17,17,.18);padding:0;margin-right:10px}
     #siteNav:not(.solid) .nav-r .langsw{border-color:rgba(255,255,255,.4)}
     .nav-r .langsw a[aria-current]{display:none}
