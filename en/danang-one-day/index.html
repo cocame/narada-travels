@@ -526,9 +526,14 @@ footer a { color: rgba(255,255,255,0.35); text-decoration: underline; text-under
   .langsw.float{position:fixed;top:12px;right:12px;z-index:999;background:#fff}
   /* логотип-капля чуть крупнее старого квадратика */
   .logo img.logo-mark{height:34px;width:auto}
-  /* Телефон: в шапке перед меню — только другой язык (EN или RU), тонкой рамкой.
+  /* Телефон: где есть меню «три полоски» — язык пунктом внутри меню, в шапке его нет.
+     Где меню нет (страницы экскурсий) — в шапке только другой язык, тонкой рамкой.
      Квадратик внизу экрана (01.11) смотрелся заплаткой — убран. */
+  .nav-links .langli{display:none}
+  html:not(.preview) .langli.only-preview{display:none!important}
   @media (max-width:768px){
+    .nav-r .langsw.hasmenu{display:none!important}
+    .nav-links .langli{display:list-item}
     .nav-r .langsw{border:1px solid rgba(17,17,17,.18);padding:0;margin-right:10px}
     #siteNav:not(.solid) .nav-r .langsw{border-color:rgba(255,255,255,.4)}
     .nav-r .langsw a[aria-current]{display:none}

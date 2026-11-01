@@ -1108,9 +1108,14 @@ a.dir-t { display: block; text-decoration: none; color: inherit; }
   .langsw.float{position:fixed;top:12px;right:12px;z-index:999;background:#fff}
   /* логотип-капля чуть крупнее старого квадратика */
   .logo img.logo-mark{height:34px;width:auto}
-  /* Телефон: в шапке перед меню — только другой язык (EN или RU), тонкой рамкой.
+  /* Телефон: где есть меню «три полоски» — язык пунктом внутри меню, в шапке его нет.
+     Где меню нет (страницы экскурсий) — в шапке только другой язык, тонкой рамкой.
      Квадратик внизу экрана (01.11) смотрелся заплаткой — убран. */
+  .nav-links .langli{display:none}
+  html:not(.preview) .langli.only-preview{display:none!important}
   @media (max-width:768px){
+    .nav-r .langsw.hasmenu{display:none!important}
+    .nav-links .langli{display:list-item}
     .nav-r .langsw{border:1px solid rgba(17,17,17,.18);padding:0;margin-right:10px}
     #siteNav:not(.solid) .nav-r .langsw{border-color:rgba(255,255,255,.4)}
     .nav-r .langsw a[aria-current]{display:none}
@@ -1186,12 +1191,12 @@ function источникЗаявки(){
         <a class="c2" href="/mui-ne/">Муйне</a>
         <span class="on c2">Все<span class="all-long"> направления</span></span>
       </div></div>
-    <div class="nav-r"><!-- langsw --><span class="langsw only-preview" aria-label="Language"><a href="/vietnam/" hreflang="ru" lang="ru" aria-current="true">RU</a><a href="/en/vietnam/" hreflang="en" lang="en">EN</a></span><!-- /langsw -->      <ul class="nav-links">
+    <div class="nav-r"><!-- langsw --><span class="langsw hasmenu only-preview" aria-label="Language"><a href="/vietnam/" hreflang="ru" lang="ru" aria-current="true">RU</a><a href="/en/vietnam/" hreflang="en" lang="en">EN</a></span><!-- /langsw -->      <ul class="nav-links">
         <li><a href="#tours">Экскурсии</a></li>
         <li class="app-only"><a href="/uslugi/">Услуги</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#emotions">Отзывы</a></li>
-      </ul>
+      <!-- langsw --><li class="langli only-preview"><a href="/en/vietnam/" hreflang="en" lang="en">English</a></li><!-- /langsw --></ul>
       <a href="#form" class="nav-cta">Написать нам</a>      <div class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
     </div>
   </div>

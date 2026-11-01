@@ -126,9 +126,14 @@ HEAD_BITS = """<!-- langsw -->
   .langsw.float{{position:fixed;top:12px;right:12px;z-index:999;background:#fff}}
   /* логотип-капля чуть крупнее старого квадратика */
   .logo img.logo-mark{{height:34px;width:auto}}
-  /* Телефон: в шапке перед меню — только другой язык (EN или RU), тонкой рамкой.
+  /* Телефон: где есть меню «три полоски» — язык пунктом внутри меню, в шапке его нет.
+     Где меню нет (страницы экскурсий) — в шапке только другой язык, тонкой рамкой.
      Квадратик внизу экрана (01.11) смотрелся заплаткой — убран. */
+  .nav-links .langli{{display:none}}
+  html:not(.preview) .langli.only-preview{{display:none!important}}
   @media (max-width:768px){{
+    .nav-r .langsw.hasmenu{{display:none!important}}
+    .nav-links .langli{{display:list-item}}
     .nav-r .langsw{{border:1px solid rgba(17,17,17,.18);padding:0;margin-right:10px}}
     #siteNav:not(.solid) .nav-r .langsw{{border-color:rgba(255,255,255,.4)}}
     .nav-r .langsw a[aria-current]{{display:none}}
@@ -157,7 +162,15 @@ def add_lang_bits(s, d, cur):
     s = s.replace('</head>', HEAD_BITS.format(alt=alt) + '</head>', 1)
     # сразу после строки городов — в начало правого блока шапки
     if '<div class="nav-r">' in s:
-        s = s.replace('<div class="nav-r">', '<div class="nav-r">' + switcher(ru, en, cur), 1)
+        sw = switcher(ru, en, cur)
+        if 'toggleMenu' in s and '<ul class="nav-links">' in s:
+            sw = sw.replace('class="langsw', 'class="langsw hasmenu', 1)
+            other, lang, label = (en, 'en', 'English') if cur == 'ru' else (ru, 'ru', 'Русский')
+            li = (f'<!-- langsw --><li class="langli only-preview"><a href="{other}" hreflang="{lang}" '
+                  f'lang="{lang}">{label}</a></li><!-- /langsw -->')
+            i = s.index('<ul class="nav-links">'); j = s.index('</ul>', i)
+            s = s[:j] + li + s[j:]
+        s = s.replace('<div class="nav-r">', '<div class="nav-r">' + sw, 1)
     else:
         s = re.sub(r'(<body\b[^>]*>)', lambda m: m.group(1) + switcher(ru, en, cur, True), s, count=1)
     return s
