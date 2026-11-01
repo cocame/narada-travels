@@ -1,0 +1,1880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P1GH6D3HYX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-P1GH6D3HYX');
+</script>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109555301', 'ym');ym(109555301, 'init', {ssr:true, webvisor:false, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/109555301" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<!-- Предпросмотр нового: Хошимин и «Все направления» пока видны только
+     по временной ссылке ?preview=…  Метка запоминается в браузере,
+     ?preview=off её снимает. Это не защита, а скрытие: страницы не в
+     поиске и не в меню, но открываются, если знать адрес и метку. -->
+<script>
+(function () {
+  try {
+    var q = new URLSearchParams(location.search).get('preview');
+    if (q === 'FRKVgSZpQC0') localStorage.setItem('narada_preview', '1');
+    if (q === 'off') localStorage.removeItem('narada_preview');
+    if (localStorage.getItem('narada_preview') === '1') document.documentElement.classList.add('preview');
+  } catch (e) {}
+})();
+document.addEventListener('DOMContentLoaded', function () {
+  if (!document.documentElement.classList.contains('preview')) return;
+  document.querySelectorAll('[data-preview-href]').forEach(function (a) { a.href = a.dataset.previewHref; });
+});
+</script>
+<style>
+  html:not(.preview) .only-preview { display: none !important; }
+  html.preview .only-public { display: none !important; }
+/* Заголовок над сеткой туров не показываем — по карточкам и так понятно.
+   В разметке он остаётся для поисковиков и экранного диктора. */
+.tours > h2 { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; margin:0; }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- PWA: манифест и офлайн-режим — сайт упакован в приложение для Google Play.
+     Файлы лежат в корне: /manifest.webmanifest, /sw.js, /offline.html. -->
+<link rel="manifest" href"/manifest.webmanifest">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="apple-touch-icon" href"/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="48x48" href"/favicon-48.png">
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('/sw.js').catch(function () {});
+    });
+  }
+</script>
+<!-- Признак приложения: страницы с классом app-only видны только тем,
+     кто открыл сайт через приложение из Google Play. На обычном сайте их нет. -->
+<script>
+(function () {
+  try {
+    var q = new URLSearchParams(location.search);
+    var app = q.get('source') === 'pwa'
+      || (document.referrer || '').indexOf('android-app://') === 0
+      || matchMedia('(display-mode: standalone)').matches
+      || window.navigator.standalone === true;
+    // fullscreen и minimal-ui бывают и у обычного браузера на компьютере,
+    // поэтому их учитываем только на этой странице и не запоминаем
+    var похоже = matchMedia('(display-mode: fullscreen)').matches
+      || matchMedia('(display-mode: minimal-ui)').matches;
+    // Надёжный признак запоминаем навсегда (localStorage), а не до закрытия вкладки:
+    // иначе при сбое проверки связи с сайтом «Услуги» пропадают (01.11.2026)
+    if (app) localStorage.setItem('narada_app', '1');
+    if (app || похоже || localStorage.getItem('narada_app') === '1'
+        || sessionStorage.getItem('inApp') === '1') document.documentElement.classList.add('in-app');
+  } catch (e) {}
+})();
+</script>
+<style>
+  .app-only { display: none; }
+  html.in-app .app-only { display: revert; }
+  /* Вкладка в переключателе направлений — отдельной парой правил.
+     У шапки своё правило «.regnav a { display: block }», и оно весомее
+     простого «.app-only»: без этих двух строк вкладка торчала бы
+     и в обычном браузере, а в приложении съезжала бы в строку. */
+  .regnav a.app-only { display: none; }
+  html.in-app .regnav a.app-only { display: block; }
+</style>
+
+<meta name="google-site-verification" content="FQHjm5Bm4UPgGnkoVYewSxVqqqmrRKcNjQAi1IPD_fc">
+<title>Day Tours from Da Nang with an English- or Russian-Speaking Guide | Narada Travels</title>
+<meta name="description" content="Private day tours from Da Nang with an English- or Russian-speaking guide: Ba Na Hills and the Golden Bridge, Hoi An, Hue, the Cham Islands. Hotel pickup, one-day programs.">
+<link rel="icon" type="image/png" href="/images/favicon.png">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://narada-travels.com/en/">
+<meta name="keywords" content="Da Nang tours, English-speaking guide Da Nang, Golden Bridge Vietnam, Hands of God Ba Na Hills, Hoi An lanterns, Cham Islands snorkeling, Da Nang hot springs, Hue Imperial City, Vietnam tours with guide, Da Nang tours 2026, Hai Van Pass, VinWonders Hoi An, Ba Na Hills, Golden Bridge Da Nang">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Narada Travels">
+<meta property="og:url" content="https://narada-travels.com/en/">
+<meta property="og:title" content="Day Tours from Da Nang with an English- or Russian-Speaking Guide | Narada Travels">
+<meta property="og:description" content="Private day tours from Da Nang with an English- or Russian-speaking guide: Ba Na Hills and the Golden Bridge, Hoi An, Hue, the Cham Islands. Hotel pickup, one-day programs.">
+<meta property="og:image" content="https://narada-travels.com/images/og-preview.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Day tours from Da Nang with an English- or Russian-speaking guide">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Day Tours from Da Nang with an English- or Russian-Speaking Guide | Narada Travels">
+<meta name="twitter:description" content="Private day tours from Da Nang with an English- or Russian-speaking guide: Ba Na Hills and the Golden Bridge, Hoi An, Hue, the Cham Islands. Hotel pickup, one-day programs.">
+<meta name="twitter:image" content="https://narada-travels.com/images/og-preview.jpg">
+<meta name="twitter:image:alt" content="Day tours from Da Nang with an English- or Russian-speaking guide">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  "@id": "https://narada-travels.com/en/#organization",
+  "name": "Narada Travels",
+  "url": "https://narada-travels.com/en/",
+  "logo": "https://narada-travels.com/images/logo.png",
+  "image": "https://narada-travels.com/images/og-preview.jpg",
+  "description": "Private day tours from Da Nang with an English- or Russian-speaking guide: Ba Na Hills and the Golden Bridge, Hoi An, Hue, the Cham Islands. Hotel pickup, one-day programs.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Đà Nẵng",
+    "addressCountry": "VN"
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Đà Nẵng" },
+    { "@type": "City", "name": "Hội An" },
+    { "@type": "City", "name": "Huế" }
+  ],
+  "availableLanguage": "ru",
+  "sameAs": [
+    "https://t.me/narada_travels",
+    "https://t.me/Narada_reviews",
+    "https://vk.com/narada_travels_danang",
+    "https://maps.app.goo.gl/9E23EeimF92MKjxa6"
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; min-height: 100vh; background: #f5f5f5; font-family: 'Onest', sans-serif; -webkit-font-smoothing: antialiased; }
+
+/* Глобальный контейнер */
+.w { max-width: 1440px; width: 100%; margin: 0 auto; background: #fff; box-shadow: 0 0 50px rgba(0,0,0,0.15); overflow: hidden; }
+
+:root {
+  --c: #E8533A;
+  --dark: #111;
+  --gray: #6B7280;
+  --border: #E5E7EB;
+  --r: 8px;
+  --bg: #FAFAF8;
+  /* Единая система CTA-кнопок */
+  --accent: #95845E;
+  --accent-hover: #7F704F;
+  --accent-text: #FFFFFF;
+  --btn-r: 9px;
+}
+
+/* NAV */
+nav {
+  position: absolute; top: 0; left: 0; right: 0; z-index: 5;
+  height: 76px; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 56px;
+  background: transparent;
+  border-bottom: none;
+}
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo img { height: 32px; }
+.logo-txt { font-size: 17px; font-weight: 700; color: #FFFFFF; }
+.nav-r { display: flex; align-items: center; gap: 28px; }
+.nav-links { display: flex; gap: 24px; list-style: none; }
+.nav-links a { text-decoration: none; color: #FFFFFF; font-size: 13px; font-weight: 500; opacity: .88; transition: opacity .2s; }
+.nav-links a:hover { opacity: 1; }
+.nav-cta {
+  background: var(--accent); color: var(--accent-text);
+  padding: 10px 22px; border-radius: var(--btn-r);
+  border: none; text-decoration: none; font-size: 13px; font-weight: 600;
+  transition: background .2s ease;
+}
+.nav-cta:hover { background: var(--accent-hover); }
+.burger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+.burger span { display: block; width: 22px; height: 1.5px; background: #FFFFFF; }
+
+/* ── ЭТАЖ 1: HERO ── */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 88vh;
+  min-height: 520px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('/images/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+/* Направленный overlay: слева и снизу темнее, справа фото остаётся светлым,
+   сверху — лёгкое затемнение только под меню. Без blur и без изменения насыщенности. */
+.hero-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to right, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.46) 30%, rgba(0,0,0,0.16) 60%, rgba(0,0,0,0) 100%),
+    linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.24) 30%, rgba(0,0,0,0) 58%),
+    linear-gradient(to bottom, rgba(0,0,0,0.34) 0%, rgba(0,0,0,0.08) 12%, rgba(0,0,0,0) 20%);
+}
+.hero-content {
+  position: relative; z-index: 1;
+  padding: 0 56px 72px;
+  width: 100%;
+}
+.hero-content h1 {
+  font-size: clamp(2rem, 4.4vw, 4.4rem);
+  font-weight: 800;
+  line-height: 1.06;
+  color: #FFFFFF;
+  letter-spacing: -0.03em;
+  max-width: 780px;
+  margin-bottom: 14px;
+}
+/* Подзаголовок — одна строка на десктопе, две на телефоне */
+.hero-sub {
+  font-size: clamp(1rem, 1.5vw, 1.375rem);
+  font-weight: 500;
+  line-height: 1.4;
+  color: #FFFFFF;
+  max-width: 560px;
+  margin-bottom: 30px;
+}
+.btn-white {
+  display: inline-block;
+  background: var(--accent);
+  border: none;
+  color: var(--accent-text);
+  padding: 15px 36px; border-radius: var(--btn-r);
+  text-decoration: none; font-size: 16px; font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.12);
+  transition: background .2s ease;
+}
+.btn-white:hover { background: var(--accent-hover); }
+
+/* ── ЭТАЖ 2: ТОЛЬКО ЭКСКУРСИИ ── */
+/* ── НАПРАВЛЕНИЯ ПОД HERO ── */
+.dirs { background: #FFFFFF; padding: 48px 56px; }
+.dirs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.dir {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none; cursor: pointer;
+  transition: transform .2s ease;
+}
+.dir-ico { flex-shrink: 0; transition: opacity .2s ease; }
+.dir-ico img { display: block; width: 56px; height: auto; }
+.dir-txt { min-width: 0; }
+/* Обе строки — единое название маршрута, без иерархии «заголовок + подпись» */
+.dir-name {
+  display: block;
+  font-size: 13.5px; font-weight: 500; line-height: 1.45;
+  color: #171717; letter-spacing: -0.005em;
+  transition: color .2s ease;
+}
+.dir-legend {
+  display: block; margin-top: 7px;
+  font-size: 12.5px; font-weight: 600; line-height: 1.2;
+  color: var(--accent); letter-spacing: .01em;
+  transition: color .2s ease;
+}
+.dir-legend .arw { display: inline-block; transition: transform .2s ease; }
+.dir:hover { transform: translateY(-2px); }
+.dir:hover .dir-name { color: var(--accent); }
+.dir:hover .dir-legend { color: var(--accent-hover); }
+.dir:hover .dir-ico { opacity: .78; }
+.dir:hover .arw { transform: translateX(3px); }
+
+.tours { padding: 72px 56px; }
+.tours h2 {
+  font-size: clamp(26px, 3vw, 42px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--dark);
+  margin-bottom: 40px;
+}
+.bento {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 240px;
+  gap: 10px;
+}
+/* scroll-margin — чтобы при переходе по ссылке вида /#hue карточка не липла
+   к самому краю экрана, а вставала с отступом. */
+.bc { position: relative; border-radius: var(--r); overflow: hidden; cursor: pointer; scroll-margin-top: 24px; }
+/* Подсветка карточки, на которую пришли по ссылке: гаснет сама через 2,5 с. */
+.bc.bc-target { outline: 2px solid var(--accent); outline-offset: 3px; }
+.bc.bc-target-off { outline-color: transparent; transition: outline-color .8s ease; }
+.bc-badge {
+  position: absolute; top: 16px; left: 16px; z-index: 3;
+  display: inline-flex; align-items: center;
+  padding: 6px 14px;
+  background: rgba(20, 18, 15, 0.55);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--r);
+  color: rgba(255,255,255,0.92);
+  font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  white-space: nowrap;
+}
+.bc img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.bc:hover img { transform: scale(1.04); }
+.bc::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0) 55%);
+}
+.bc-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 18px 20px; z-index: 1; }
+.bc-title { font-size: clamp(13px, 1.4vw, 17px); font-weight: 700; color: #fff; line-height: 1.25; margin-bottom: 4px; }
+/* Отступ справа под кнопку «🔗»: без него вторая строка подписи заезжала под неё. */
+.bc-sub { font-size: 11px; color: rgba(255,255,255,0.65); padding-right: 36px; }
+.bc-book {
+  position: absolute; top: 12px; right: 12px; z-index: 2;
+  background: var(--accent);
+  border: none; color: var(--accent-text);
+  padding: 7px 14px; border-radius: var(--btn-r);
+  font-size: 12px; font-weight: 600; text-decoration: none;
+  opacity: 0; transition: opacity .3s, background .2s ease;
+}
+.bc:hover .bc-book { opacity: 1; }
+.bc-book:hover { background: var(--accent-hover); }
+/* Кнопка «скопировать ссылку на эту экскурсию». Раньше рядом стояла «+»,
+   но она лишь повторяла нажатие на саму карточку — убрана, угол освободился. */
+.bc-link {
+  position: absolute; bottom: 12px; right: 12px; z-index: 2;
+  background: rgba(255,255,255,0.15); backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.2); color: #fff;
+  width: 30px; height: 30px; border-radius: var(--r);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; cursor: pointer; transition: all .3s;
+}
+.bc-link:hover { background: rgba(255,255,255,0.3); }
+/* Подтверждение копирования — одно на страницу, всплывает снизу. */
+.copy-toast {
+  position: fixed; left: 50%; bottom: 32px; transform: translateX(-50%);
+  z-index: 100; padding: 12px 22px; border-radius: var(--r);
+  background: rgba(20,18,15,0.92); color: #fff; font-size: 14px; font-weight: 600;
+  opacity: 0; pointer-events: none; transition: opacity .3s;
+}
+.copy-toast.show { opacity: 1; }
+
+/* Верхний баннер вне сетки. Высота фиксированная, ровно как у полосы из двух
+   рядов сетки (240 + 10 + 240), чтобы совпасть по высоте с нижним Донг Зянгом. */
+.b-bana-evening { display: block; width: 100%; height: 490px; margin-bottom: 10px; }
+
+/* Десктопная раскладка: асимметричное bento. Позиции заданы явно, поэтому
+   порядок карточек в разметке трогать не нужно — Донг Зянг остаётся последним.
+   Ряды 1-2 — два равных полотна, ряды 3-5 — вертикальный Ба На Хиллс слева
+   и разноширокие плитки справа, ряд 6 — Морская прогулка и Горячие источники
+   перед финальным Донг Зянгом на ряды 7-8 (490px, как верхний баннер). */
+.b-hue    { grid-column: 1 / span 6;  grid-row: 1 / span 2; }
+.b-bana   { grid-column: 7 / span 6;  grid-row: 1 / span 2; }
+.b-danang { grid-column: 1 / span 4;  grid-row: 3 / span 3; }
+.b-hoian  { grid-column: 5 / span 5;  grid-row: 3 / span 1; }
+.b-cham   { grid-column: 10 / span 3; grid-row: 3 / span 1; }
+.b-kalmar { grid-column: 5 / span 3;  grid-row: 4 / span 1; }
+.b-vin    { grid-column: 8 / span 5;  grid-row: 4 / span 1; }
+.b-hayvan { grid-column: 5 / span 8;  grid-row: 5 / span 1; }
+.b-sea    { grid-column: 1 / span 5;  grid-row: 6 / span 1; }
+.b-springs{ grid-column: 6 / span 7;  grid-row: 6 / span 1; }
+.b-dong   { grid-column: 1 / span 12; grid-row: 7 / span 2; }
+/* Вертикальное фото канатки в горизонтальном слоте: центр даёт кабину и замок. */
+.b-bana img { object-position: center center; }
+/* Дракон: в узких слотах cover режет по бокам, а пламя левее центра кадра.
+   Держим окно кадрирования на огне, иначе шапка пламени уходит за край. */
+.b-danang img { object-position: 30% center; }
+.b-bana-priv { grid-column: span 4; }
+
+/* ── ЭТАЖ 3: ГИД ПО ДАНАНГУ (BENTO GRID) ── */
+.guide { padding: 72px 56px; background: #f7f7f5; }
+.guide h2 { font-size: clamp(24px,3vw,40px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; }
+.guide-sub { font-size: 15px; color: var(--gray); margin-bottom: 40px; }
+.guide-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-auto-rows: minmax(210px, auto);
+  gap: 10px;
+}
+.gc {
+  background: #fff; border-radius: var(--r); padding: 28px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  border: 1.5px solid var(--border); overflow: hidden;
+  transition: border-color .2s, transform .3s ease; cursor: pointer;
+}
+.gc:hover { border-color: #d1d5db; transform: scale(1.02); }
+.gc.tall { grid-row: span 2; justify-content: space-between; }
+.gc-icon { font-size: 28px; margin-bottom: auto; }
+.gc.tall .gc-icon { margin-bottom: 0; }
+.gc h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; line-height: 1.3; color: var(--dark); }
+.gc p { font-size: 13px; color: var(--gray); line-height: 1.55; margin-bottom: 14px; }
+.gc-cta {
+  display: inline-block;
+  font-size: 12px; font-weight: 600; text-decoration: none;
+  color: var(--c); border-bottom: 1px solid rgba(232,83,58,0.3);
+  transition: border-color .2s;
+}
+.gc-cta:hover { border-color: var(--c); }
+
+/* Фото-карточки с фоном и оверлеем */
+.gc.photo { position: relative; border: none; }
+.gc-bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+.gc.photo::before { content:''; position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.72) 100%); z-index:1; }
+.gc.photo > *:not(.gc-bg-img) { position: relative; z-index: 2; }
+.gc.photo h3, .gc.photo .gc-icon { color: #fff; }
+.gc.photo p { color: rgba(255,255,255,0.82); }
+
+/* Ресторанные карточки */
+.gc.rest { justify-content: flex-start; }
+.gc.rest .gc-icon { font-size: 22px; margin-bottom: 10px; }
+.gc.rest p { flex: 1; }
+.gc-img { width: calc(100% + 56px); margin: -28px -28px 16px; height: 160px; object-fit: cover; display: block; }
+.rest-meta { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 8px 0 12px; }
+.rest-meta span { font-size: 12px; color: var(--gray); }
+
+/* ── ЭТАЖ 4: ОТЗЫВЫ ── */
+.emotions { padding: 96px 56px; background: #fff; text-align: center; }
+.emotions h2 { font-size: clamp(28px,4vw,52px); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 20px; }
+.emotions-sub { font-size: 16px; color: var(--gray); line-height: 1.65; max-width: 540px; margin: 0 auto 48px; }
+.btn-tg {
+  display: inline-block; background: #229ED9; color: #fff;
+  padding: 18px 44px; border-radius: var(--btn-r); border: none;
+  text-decoration: none; font-size: 17px; font-weight: 600; transition: background .2s ease;
+}
+.btn-tg:hover { background: #1a8bc4; }
+.emotions-btns { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+
+/* ── РОСТ РЕБЁНКА (внутри частых вопросов) ── */
+/* Ответ длиннее обычного, поэтому свой запас высоты */
+.fi.open .fa.tall { max-height: 2000px; padding-bottom: 22px; }
+.fa.tall .h-photo { width: 100%; max-width: 260px; border-radius: var(--r); display: block; margin: 14px 0 18px; }
+.fa.tall .hcard { margin-bottom: 18px; }
+.hcard h3 { font-size: 15px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.01em; }
+.hcard ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.hcard li { font-size: 14px; color: var(--gray); line-height: 1.7; padding-left: 16px; position: relative; }
+.hcard li::before { content: '—'; position: absolute; left: 0; color: var(--c); }
+.hcard b { color: var(--dark); font-weight: 700; }
+.height-note {
+  padding: 16px 20px; border-radius: var(--r);
+  background: #FDF2F0; border: 1px solid rgba(232,83,58,0.28);
+  font-size: 14px; line-height: 1.7; color: var(--dark);
+}
+
+/* ── FAQ ── */
+.faq { padding: 48px 56px; background: #f7f7f5; }
+.faq h2 { font-size: clamp(28px,3.5vw,48px); font-weight: 800; letter-spacing: -0.02em; text-align: center; margin-bottom: 32px; }
+.faq-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; align-items: start; }
+
+.fi { background: #fff; border-radius: var(--r); margin-bottom: 8px; overflow: hidden; }
+.fq {
+  width: 100%; background: none; border: none; text-align: left;
+  padding: 17px 20px; font-family: 'Onest', sans-serif;
+  font-size: 15px; font-weight: 500; color: var(--dark);
+  cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px;
+}
+.fi-icon {
+  width: 24px; height: 24px; border-radius: var(--r);
+  background: #FFF0ED; display: flex; align-items: center; justify-content: center;
+  font-size: 16px; color: var(--c); flex-shrink: 0; transition: transform .3s, background .3s;
+}
+.fi.open .fi-icon { transform: rotate(45deg); background: var(--c); color: #fff; }
+.fa { font-size: 14px; color: var(--gray); line-height: 1.75; max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .3s; padding: 0 20px; }
+/* 200px не хватало: длинные ответы обрезались на середине строки */
+.fi.open .fa { max-height: 500px; padding: 0 20px 18px; }
+
+/* ── ФОРМА ── */
+.form-s { padding: 72px 56px; background: #111; }
+.form-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.form-left h2 { font-size: clamp(24px,3vw,40px); font-weight: 800; color: #fff; letter-spacing: -0.02em; margin-bottom: 14px; }
+.form-left p { font-size: 15px; color: rgba(255,255,255,0.4); line-height: 1.65; margin-bottom: 28px; }
+.clinks { display: flex; flex-direction: column; gap: 10px; }
+.clink {
+  display: flex; align-items: center; gap: 12px;
+  padding: 13px 18px; border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--r); text-decoration: none; color: #fff;
+  font-size: 14px; font-weight: 500; transition: all .2s;
+}
+.clink:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.04); }
+.clink-icon { width: 32px; height: 32px; border-radius: var(--r); display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+.ctg { background: #229ED9; } .cvk { background: #0077FF; }
+.fform { display: flex; flex-direction: column; gap: 12px; }
+.field { display: flex; flex-direction: column; gap: 5px; }
+.field label { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,0.92); }
+.field input, .field select, .field textarea {
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--r); padding: 12px 14px;
+  font-family: 'Onest', sans-serif; font-size: 14px; color: #fff; outline: none;
+  transition: border-color .2s;
+}
+.field input::placeholder, .field textarea::placeholder { color: rgba(255,255,255,0.62); }
+.field select option { background: #1a1a1a; color: #fff; }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--c); }
+.frow { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.fsubmit {
+  background: var(--accent); color: var(--accent-text); border: none;
+  padding: 14px 32px; border-radius: var(--btn-r);
+  font-family: 'Onest', sans-serif; font-size: 14px; font-weight: 600;
+  cursor: pointer; align-self: flex-start; transition: background .2s ease; margin-top: 4px;
+}
+.fsubmit:hover { background: var(--accent-hover); }
+#fok { display: none; padding: 16px; background: rgba(22,163,74,0.12); border: 1px solid rgba(22,163,74,0.3); border-radius: var(--r); color: #86efac; font-size: 14px; margin-top: 10px; }
+
+.fconsent { display: flex; align-items: flex-start; gap: 9px; margin-top: 2px; cursor: pointer; }
+.fconsent input {
+  appearance: none; -webkit-appearance: none; flex-shrink: 0;
+  width: 15px; height: 15px; margin-top: 1px; cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.28); border-radius: 3px; background: transparent;
+  transition: background .15s, border-color .15s;
+}
+.fconsent input:checked { background: var(--c); border-color: var(--c); }
+.fconsent input:checked::after {
+  content: '✓'; display: block; color: #fff; font-size: 11px; font-weight: 700;
+  line-height: 13px; text-align: center;
+}
+.fconsent input:focus-visible { outline: 2px solid var(--c); outline-offset: 2px; }
+.fconsent span { font-size: 11px; line-height: 1.5; color: rgba(255,255,255,0.78); }
+.fconsent a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+.fconsent a:hover { color: rgba(255,255,255,0.75); }
+
+/* ── DRAWER ── */
+.overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; backdrop-filter: blur(4px); }
+.overlay.open { display: block; }
+.drawer {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 201;
+  background: #fff; border-radius: 16px 16px 0 0;
+  padding: 32px 48px 48px; max-height: 85vh; overflow-y: auto;
+  transform: translateY(100%); transition: transform .4s cubic-bezier(.4,0,.2,1);
+}
+.drawer.open { transform: translateY(0); }
+.d-handle { width: 40px; height: 4px; background: #e5e7eb; border-radius: 2px; margin: 0 auto 24px; }
+.d-close {
+  position: absolute; top: 20px; right: 20px;
+  background: var(--dark); color: #fff; border: none;
+  width: 34px; height: 34px; border-radius: var(--r);
+  cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center;
+}
+.d-title { font-size: 24px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 6px; }
+.d-price { color: var(--c); font-size: 15px; font-weight: 700; margin-bottom: 20px; }
+.d-seo { font-size: 14px; line-height: 1.6; color: var(--gray); margin: 0 0 20px; }
+.d-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+.d-lbl { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gray); margin-bottom: 12px; }
+.prog { list-style: none; }
+.prog li { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid #f3f4f6; font-size: 13px; line-height: 1.5; }
+.prog li:last-child { border: none; }
+.prog-t { font-weight: 700; color: var(--c); min-width: 40px; font-size: 12px; flex-shrink: 0; }
+.inc { display: flex; flex-direction: column; gap: 5px; margin-bottom: 16px; }
+.inc-i { font-size: 13px; display: flex; gap: 8px; align-items: flex-start; }
+.y { color: #16a34a; font-weight: 700; flex-shrink: 0; }
+.n { color: #dc2626; font-weight: 700; flex-shrink: 0; }
+.ptbl { border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; margin-top: 12px; }
+.pr { display: flex; justify-content: space-between; padding: 9px 14px; font-size: 13px; border-bottom: 1px solid var(--border); }
+.pr:last-child { border: none; }
+.pr:first-child { background: #f9fafb; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gray); }
+.pv { font-weight: 700; color: var(--c); }
+.pnote { font-size: 11px; color: var(--gray); margin-top: 8px; }
+.d-cta { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--accent); color: var(--accent-text);
+  padding: 12px 26px; border-radius: var(--btn-r);
+  text-decoration: none; font-size: 14px; font-weight: 600;
+  border: none; cursor: pointer; font-family: inherit; transition: background .2s ease;
+}
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-outline {
+  background: transparent; color: var(--dark);
+  padding: 12px 26px; border-radius: var(--btn-r);
+  font-size: 14px; font-weight: 500;
+  border: 1.5px solid var(--border); text-decoration: none; transition: border-color .2s ease;
+}
+.btn-outline:hover { border-color: var(--dark); }
+
+/* ── FOOTER ── */
+footer {
+  background: #121212; padding: 32px 56px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 16px; border-top: 1px solid rgba(255,255,255,0.06);
+}
+.flogo { font-size: 15px; font-weight: 700; color: #fff; }
+footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+/* Планшет: направления 2×2 */
+@media (max-width: 1439px) {
+  .dirs { padding: 40px 32px; }
+  .dirs-grid { grid-template-columns: repeat(2, 1fr); gap: 26px 26px; }
+}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .w { max-width: 100%; box-shadow: none; }
+  nav { padding: 0 16px; height: 68px; }
+  .nav-links, .nav-cta { display: none; }
+  .burger { display: flex; }
+  .hero { height: 70vh; }
+  .hero-content { padding: 0 20px 40px; }
+  .dirs { padding: 30px 20px; }
+  .dirs-grid { gap: 24px 18px; }
+  .dir { gap: 11px; }
+  .dir-ico img { width: 54px; }
+  .dir-t { font-size: 15px; }
+  .dir-s { font-size: 13.5px; }
+  .bento { grid-template-columns: 1fr !important; grid-auto-rows: auto; }
+  .b-bana-evening { aspect-ratio: 4/3 !important; }
+  .b-bana-evening img { height: 100% !important; object-fit: cover !important; }
+  .b-hue,.b-hoian,.b-bana,.b-danang,.b-kalmar,.b-springs,.b-cham,.b-vin,.b-hayvan,.b-sea,.b-dong,.b-height { grid-column: span 1 !important; grid-row: span 1 !important; }
+  /* Карточка держит единый размер независимо от пропорций фото: один тур
+     на экран плюс начало следующего. Раньше высота шла от самой картинки,
+     и широкий кадр превращал карточку в узкую полосу. */
+  .bc { height: 62vh; min-height: 340px; max-height: 560px; }
+  /* Хойан — широкая панорама в вертикальной карточке: по центру от неё
+     оставался один фонарик. Прижимаем кадр влево, к грозди фонарей. */
+  .b-hoian img { object-position: left center; }
+  .bc img { height: 100%; object-fit: cover; }
+  .tours, .guide, .emotions, .faq, .form-s { padding: 40px 16px; }
+  /* На телефоне мыши нет: касание залипало как наведение и кнопка
+     висела на одной случайной карточке. Убираем — бронь есть внутри. */
+  .bc-book { display: none; }
+  .faq-wrap { grid-template-columns: 1fr; }
+  .h-body, .h-cols { grid-template-columns: 1fr; }
+  .guide-grid { grid-template-columns: 1fr !important; grid-auto-rows: auto; }
+  .guide-grid .gc { grid-column: span 1 !important; grid-row: span 1 !important; }
+  .gc { min-height: 180px; }
+  .d-grid { grid-template-columns: 1fr; }
+  .drawer { padding: 20px 16px 40px; }
+  .form-wrap { grid-template-columns: 1fr; gap: 32px; }
+  .frow { grid-template-columns: 1fr; }
+  footer { padding: 24px 16px; flex-direction: column; text-align: center; }
+  .emotions { padding: 64px 16px; }
+}
+/* Floating scroll-to-tours button */
+.fab-tours {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 999;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--r);
+  background: #fff;
+  color: #111;
+  font-size: 20px;
+  font-family: 'Onest', sans-serif;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .3s, transform .3s, background .2s;
+  pointer-events: none;
+}
+.fab-tours.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.fab-tours:hover { background: rgba(255,255,255,0.9); transform: translateY(-1px); }
+@media (max-width: 767px) {
+  .fab-tours { bottom: 20px; right: 16px; width: 46px; height: 46px; font-size: 18px; }
+}
+
+/* Узкий телефон: направления в одну колонку, текст не сжимаем */
+/* Узкий экран: по одному направлению в строку */
+@media (max-width: 699px) {
+  .dirs-grid { grid-template-columns: 1fr; gap: 22px; }
+}
+
+/* ── Переключатель регионов в шапке ── */
+/* Про два направления не знает никто, кроме нас — значит переключатель
+   здесь не ярлык «я знаю, куда жму», а объявление: до блока внизу
+   страницы долистывают немногие, а шапку видят все и сразу.
+   Поэтому тёмная подложка вместо полупрозрачной белой: над светлым
+   небом на обложке Дананга неактивная половина выцветала и читалась
+   как выключенная. */
+.regnav { display: flex; align-items: center; gap: 2px; padding: 3px; border-radius: var(--r); background: rgba(17,17,17,0.42); backdrop-filter: blur(8px); }
+.regnav a {
+  display: block; padding: 5px 13px; border-radius: 6px;
+  font-size: 12.5px; font-weight: 600; line-height: 1;
+  color: rgba(255,255,255,0.95); text-decoration: none;
+  transition: background .2s, color .2s;
+}
+.regnav a:hover { color: #fff; background: rgba(255,255,255,0.16); }
+.regnav a.on { background: #fff; color: var(--dark); }
+
+/* ── Переключатель регионов в форме ── */
+.regsw { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 4px; border-radius: var(--btn-r); background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); }
+.regsw-b {
+  appearance: none; border: 0; cursor: pointer;
+  padding: 10px 12px; border-radius: 6px;
+  font-family: inherit; font-size: 14px; font-weight: 600;
+  background: transparent; color: rgba(255,255,255,0.72);
+  transition: background .2s, color .2s;
+}
+.regsw-b:hover { color: #fff; }
+.regsw-b.on { background: var(--accent); color: var(--accent-text); }
+.regsw-b:focus-visible { outline: 2px solid var(--c); outline-offset: 2px; }
+.reghint { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 6px; }
+
+@media (max-width: 768px) {
+  /* Переключатель регионов на телефоне не прячем — это единственный способ
+     перейти между Данангом и Фукуоком, меню там свёрнуто в бургер.
+     Вместо этого убираем подпись у логотипа, иначе шапка не помещается. */
+  .logo-txt { display: none; }
+  .regnav a { padding: 5px 11px; font-size: 12px; }
+}
+
+/* ── Переход в соседний регион ──
+   Стоит сразу под обложкой, а не в конце страницы: до низа долистывают
+   единицы, а про второе направление не знает вообще никто. Узкая полоса
+   в одну строку — чтобы сообщить, но не отодвинуть список туров вниз. */
+.regband { background: #faf9f7; border-bottom: 1px solid var(--border); }
+.regband-in {
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  padding: 18px 56px;
+}
+.regband-in p { font-size: 15px; line-height: 1.5; color: var(--gray); }
+.regband-in p b { color: var(--dark); font-weight: 700; }
+.regband-go {
+  flex-shrink: 0; display: inline-flex; align-items: center; gap: 8px;
+  background: var(--accent); color: var(--accent-text);
+  padding: 11px 22px; border-radius: var(--btn-r);
+  text-decoration: none; font-size: 14px; font-weight: 600; white-space: nowrap;
+  transition: background .2s ease;
+}
+.regband-go:hover { background: var(--accent-hover); }
+.regband-go .arw { transition: transform .2s ease; }
+.regband-go:hover .arw { transform: translateX(3px); }
+@media (max-width: 768px) {
+  .regband-in { flex-direction: column; align-items: flex-start; gap: 12px; padding: 16px 20px; }
+  .regband-in p { font-size: 14px; }
+  .regband-go { width: 100%; justify-content: center; }
+}
+
+/* ── Залипающая шапка ──
+   Как у агрегаторов: у Трипстера на странице города поиск «Куда вы
+   собираетесь?» уезжает в шапку и висит там всегда. Раньше шапка лежала
+   внутри обложки и после прокрутки пропадала насовсем — вместе с
+   переключателем направлений. Теперь она закреплена: прозрачная поверх
+   обложки, белая дальше по странице. */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 60; height: 76px;
+      display: block; padding: 0; background: transparent;
+      transition: background .25s ease, box-shadow .25s ease; }
+.nav-inner { max-width: 1440px; height: 100%; margin: 0 auto;
+             display: flex; align-items: center; justify-content: space-between;
+             padding: 0 56px; }
+nav.solid { background: rgba(255,255,255,0.96); backdrop-filter: blur(12px);
+            box-shadow: 0 1px 0 rgba(0,0,0,0.07); }
+nav.solid .logo-txt { color: var(--dark); }
+nav.solid .nav-links a { color: var(--gray); }
+nav.solid .nav-links a:hover { color: var(--dark); }
+nav.solid .burger span { background: var(--dark); }
+nav.solid .regnav { background: rgba(17,17,17,0.07); }
+nav.solid .regnav a { color: var(--gray); }
+nav.solid .regnav a:hover { color: var(--dark); background: rgba(17,17,17,0.06); }
+nav.solid .regnav a.on { background: var(--dark); color: #fff; }
+@media (max-width: 768px) { nav { height: 68px; } .nav-inner { padding: 0 16px; } }
+
+/* ── Направления в подвале ──
+   Третья точка входа, как список городов в подвале у Спутника:
+   на любой странице, в предсказуемом месте. */
+.fdirs { display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; margin: 14px 0 10px; }
+.fdirs a { color: #fff; font-size: 13.5px; font-weight: 600; text-decoration: none;
+           border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 2px; }
+.fdirs a:hover { border-color: #fff; }
+.fdirs a.on { opacity: .45; border-color: transparent; pointer-events: none; }
+
+/* ── Напоминание в конце списка туров ──
+   Четвёртая точка: дочитал список до конца, своего не нашёл. */
+.regtail { padding: 0 56px 72px; }
+.regtail-in { border-top: 1px solid var(--border); padding-top: 32px;
+              display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.regtail-in p { font-size: 15px; color: var(--gray); }
+.regtail-in p b { color: var(--dark); font-weight: 700; }
+@media (max-width: 768px) {
+  .regtail { padding: 0 20px 44px; }
+  .regtail-in { flex-direction: column; align-items: flex-start; gap: 14px; }
+}
+
+/* Якоря не должны уезжать под закреплённую шапку: без этого «Частые вопросы»
+   после перехода по /#faq оказывались за ней. */
+section[id], .bc { scroll-margin-top: 92px; }
+@media (max-width: 768px) { section[id], .bc { scroll-margin-top: 80px; } }
+
+/* ── Выпадающее меню направлений ──
+   Вместо таблетки-переключателя: показывает, сколько экскурсий в каждом
+   направлении, и спокойно растёт до пяти пунктов без передела шапки.
+   Приём не агрегаторский — у тех поиск, потому что городов тысяча;
+   здесь направлений два, и их честнее просто перечислить. */
+.dirmenu { position: relative; }
+.dirmenu-btn {
+  appearance: none; cursor: pointer; font-family: inherit;
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 7px 14px; border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.34); background: rgba(17,17,17,0.42);
+  backdrop-filter: blur(8px);
+  color: #fff; font-size: 13px; font-weight: 600; line-height: 1;
+  transition: background .2s, border-color .2s, color .2s;
+}
+.dirmenu-btn:hover { background: rgba(17,17,17,0.58); }
+.dirmenu-caret { font-size: 10px; transition: transform .2s ease; }
+.dirmenu-btn[aria-expanded="true"] .dirmenu-caret { transform: rotate(180deg); }
+nav.solid .dirmenu-btn { background: #fff; border-color: var(--border); color: var(--dark); }
+nav.solid .dirmenu-btn:hover { border-color: #c9c9c9; }
+
+.dirmenu-panel {
+  position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%) translateY(-6px);
+  min-width: 290px; padding: 8px; border-radius: 14px;
+  background: #fff; box-shadow: 0 16px 44px rgba(0,0,0,0.18); border: 1px solid var(--border);
+  opacity: 0; visibility: hidden; transition: opacity .18s ease, transform .18s ease, visibility .18s;
+  z-index: 70;
+}
+.dirmenu.open .dirmenu-panel { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+.dirmenu-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 9px 10px; border-radius: 10px; text-decoration: none;
+  transition: background .15s ease;
+}
+.dirmenu-item:hover { background: #f5f4f1; }
+.dirmenu-thumb { width: 54px; height: 40px; border-radius: 7px; flex-shrink: 0; background-size: cover; background-position: center; }
+.t-danang { background-image: url('/images/danang-city.jpg'); }
+/* ФОТО ФУКУОКА СЮДА: background-image: url('/images/phu-quoc-hero.jpg'); */
+.t-pq { background-image: linear-gradient(135deg, #0b4f6c 0%, #2a9d9c 60%, #7fc9b4 100%); }
+.dirmenu-name { display: block; font-size: 14.5px; font-weight: 700; color: var(--dark); line-height: 1.3; }
+.dirmenu-cnt { display: block; font-size: 12.5px; color: var(--gray); margin-top: 2px; }
+.dirmenu-cur { color: var(--accent); font-weight: 700; }
+.dirmenu-item.on { background: #faf9f7; }
+.dirmenu-item.on .dirmenu-cnt { color: var(--accent); }
+
+/* ── Хлебные крошки на обложке ── */
+.crumbs { font-size: 13px; color: rgba(255,255,255,0.72); margin-bottom: 12px; letter-spacing: .01em; }
+.crumbs .sep { padding: 0 7px; opacity: .6; }
+.crumbs b { color: #fff; font-weight: 600; }
+
+@media (max-width: 768px) {
+  .dirmenu-btn { padding: 7px 12px; font-size: 12.5px; }
+  .dirmenu-panel { left: auto; right: -40px; transform: translateY(-6px); min-width: 260px; }
+  .dirmenu.open .dirmenu-panel { transform: translateY(0); }
+  .crumbs { font-size: 12px; margin-bottom: 10px; }
+}
+
+/* Фукуок пока не запущен: пункт виден, но никуда не ведёт — показывать
+   недоделанную страницу хуже, чем честно написать «скоро». */
+.dirmenu-item.soon { cursor: default; opacity: .55; }
+.dirmenu-item.soon:hover { background: transparent; }
+.fsoon { color: rgba(255,255,255,0.45); font-size: 13.5px; font-weight: 600; }
+
+/* Направления видны сразу, без нажатия: выпадающее меню требовало
+   сначала догадаться, что внутрь надо заглянуть. */
+.regnav { display: flex; align-items: center; gap: 3px; padding: 3px;
+          border-radius: var(--r); background: rgba(17,17,17,0.42); backdrop-filter: blur(8px); }
+.regnav span { display: block; padding: 6px 14px; border-radius: 6px;
+               font-size: 12.5px; font-weight: 600; line-height: 1; white-space: nowrap; }
+.regnav-on { background: #fff; color: var(--dark); }
+.regnav-soon { color: rgba(255,255,255,0.72); }
+nav.solid .regnav { background: rgba(17,17,17,0.07); }
+nav.solid .regnav-on { background: var(--dark); color: #fff; }
+nav.solid .regnav-soon { color: var(--gray); }
+@media (max-width: 768px) {
+  .regnav span { padding: 6px 11px; font-size: 12px; }
+}
+
+/* Направления подписаны «скоро» мелким шрифтом: название читается сразу,
+   а статус не спорит с ним за внимание. */
+.regnav span { display: flex; align-items: baseline; gap: 6px; }
+.regnav em { font-style: normal; font-size: 10px; letter-spacing: .06em;
+             text-transform: uppercase; opacity: .62; }
+@media (max-width: 860px) { .regnav em { display: none; } }
+
+/* Направления кликаются все: что направление ещё не открыто, человек
+   узнаёт на его странице, а не в шапке — иначе шапка превращается
+   в список отказов. */
+.regnav a { text-decoration: none; }
+.regnav-off { color: rgba(255,255,255,0.72); transition: background .2s, color .2s; }
+.regnav-off:hover { background: rgba(255,255,255,0.16); color: #fff; }
+nav.solid .regnav-off { color: var(--gray); }
+nav.solid .regnav-off:hover { background: rgba(17,17,17,0.06); color: var(--dark); }
+
+/* Цена стоит в одной строке с названием, а не меткой поверх фото:
+   при наведении всплывает кнопка «Забронировать» и перекрывала её. */
+.bc-head { display: flex; align-items: baseline; justify-content: space-between;
+           gap: 14px; margin-bottom: 4px; }
+.bc-head .bc-title { margin-bottom: 0; }
+.bc-price { flex-shrink: 0; display: inline-flex; align-items: baseline; gap: 2px;
+            color: #fff; font-size: 20px; font-weight: 800; letter-spacing: -0.02em;
+            font-variant-numeric: tabular-nums; line-height: 1;
+            text-shadow: 0 1px 8px rgba(0,0,0,0.5); }
+.bc-price span { font-size: 13px; font-weight: 600; opacity: .75; }
+@media (max-width: 768px) { .bc-price { font-size: 18px; } }
+
+/* «Уже во Вьетнаме» или «только планирую» — от этого зависит, отвечать
+   сейчас же или можно утром. Один вопрос вместо пошаговой анкеты:
+   при двух заявках в день каждый лишний шаг — потерянный человек. */
+.whensw { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 4px;
+          border-radius: var(--btn-r); background: rgba(255,255,255,0.07);
+          border: 1px solid rgba(255,255,255,0.14); }
+.whensw-b { appearance: none; border: 0; cursor: pointer; padding: 10px 12px;
+            border-radius: 6px; font-family: inherit; font-size: 14px; font-weight: 600;
+            background: transparent; color: rgba(255,255,255,0.72);
+            transition: background .2s, color .2s; }
+.whensw-b:hover { color: #fff; }
+.whensw-b.on { background: var(--accent); color: var(--accent-text); }
+.whensw-b:focus-visible { outline: 2px solid var(--c); outline-offset: 2px; }
+
+/* ── Шапка на телефоне ──────────────────────────────────────
+   Вкладок стало четыре, и на 360 px бургер выдавливало за край экрана.
+   Вкладки ужимаются и, если совсем узко, прокручиваются внутри себя;
+   бургер при этом не двигается. Полосу прокрутки прячем: она тут
+   только как запас, обычно всё помещается. */
+@media (max-width: 768px) {
+  .nav-r { gap: 12px; min-width: 0; }
+  .regnav { min-width: 0; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+  .regnav::-webkit-scrollbar { display: none; }
+  .regnav span, .regnav a { flex: none; padding: 5px 9px; font-size: 11.5px; }
+  .burger { flex-shrink: 0; }
+}
+
+/* ── Города в шапке ──
+   На широком экране — по центру той же строки, что логотип и меню.
+   Где места не хватает — второй строкой внутри самой шапки, без своей
+   подложки: отдельная тёмная полоса под шапкой смотрелась как съехавший
+   блок. Кнопки той же формы, что и остальные, — без «таблеток». */
+.citybar { flex: 0 1 auto; min-width: 0; margin: 0 20px; display: flex; justify-content: center; }
+.citybar-in { display: flex; align-items: center; gap: 2px; padding: 3px; border-radius: var(--r); min-width: 0;
+              overflow-x: auto; scrollbar-width: none; }
+/* Вся шапка — одна полупрозрачная полоса во всю ширину, как была строка
+   городов: логотип, города, меню и кнопка на ней, без отдельных подложек. */
+nav:not(.solid) { background: rgba(17,17,17,0.38); backdrop-filter: blur(8px); }
+.citybar-in::-webkit-scrollbar { display: none; }
+.citybar-in > a, .citybar-in > span { flex: none; display: block; padding: 6px 12px; border-radius: 6px;
+           font-size: 12.5px; font-weight: 600; line-height: 1; white-space: nowrap;
+           color: rgba(255,255,255,0.9); text-decoration: none; transition: background .2s, color .2s; }
+.citybar a:hover { background: rgba(255,255,255,0.16); color: #fff; }
+.citybar .on { background: #fff; color: var(--dark); }
+.citybar .all .arw { display: inline; margin-left: 5px; }
+nav.solid .citybar a { color: var(--gray); }
+nav.solid .citybar a:hover { color: var(--dark); background: rgba(17,17,17,0.06); }
+nav.solid .citybar .on { background: var(--dark); color: #fff; }
+nav.solid .citybar .all { color: var(--dark); }
+.nav-inner .logo, .nav-inner .nav-r { flex: none; }
+@media (max-width: 1240px) { .logo-txt { display: none; } .nav-links { gap: 18px; } }
+@media (max-width: 1024px) { .citybar { margin: 0 12px; } .nav-links { gap: 14px; } }
+/* Телефон: верхняя строка как на компьютере — логотип, города, меню, без
+   пустоты посередине. Города, которые туда не влезают (Хошимин, «Все
+   направления»), — вторым рядом ниже, отдельной строкой. */
+/* Ханой — скоро: в строке виден, но никуда не ведёт. */
+.citybar .soon, .citybar2 .soon { opacity: .6; cursor: default; }
+/* «Скоро» — город ещё в работе: видно, что откроется, но ссылки нет */
+.citybar .soon em, .citybar2 .soon em { font-style: normal; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; margin-left: 4px; vertical-align: 1px; }
+nav.solid .citybar .soon, nav.solid .citybar2 .soon { color: var(--gray); }
+.citybar2 { display: none; }
+@media (max-width: 768px) {
+  nav { height: auto; }
+  .nav-inner { height: 68px; padding: 0 12px; }
+  .citybar { flex: 1 1 auto; margin: 0 8px; justify-content: center; }
+  .citybar-in { gap: 0; padding: 0; }
+  .citybar-in > a, .citybar-in > span { padding: 7px 8px; font-size: 12.5px; }
+  .citybar .c2 { display: none; }
+  .citybar-in > a, .citybar-in > span { padding: 7px 7px; }
+  .nav-r { gap: 0; }
+  .citybar2 { display: flex; justify-content: center; padding: 2px 12px 10px; }
+  .citybar2 .citybar-in { gap: 4px; }
+  .citybar2 .all .arw { display: inline; margin-left: 5px; }
+  .citybar2 a { color: rgba(255,255,255,0.9); }
+  .citybar2 .on { background: #fff; color: var(--dark); }
+  nav.solid .citybar2 a { color: var(--gray); }
+  nav.solid .citybar2 .on { background: var(--dark); color: #fff; }
+  nav.solid .citybar2 .all { color: var(--dark); }
+  html.preview section[id], html.preview .bc { scroll-margin-top: 124px; }
+}
+
+/* Все направления в форме: кнопок столько, сколько городов, в одну строку. */
+.regsw { display: flex; }
+.regsw-b { flex: 1 1 0; min-width: 0; padding: 10px 6px; }
+
+/* Телефон: каждая карточка — почти весь экран под шапкой, снизу
+   выглядывает примерно десятая часть следующей. Высота у всех одна,
+   иначе одни туры видны целиком, а другие по полтора на экран. */
+@media (max-width: 768px) {
+  html.preview { --navh: 112px; }
+  .tours .bc { height: calc((100vh - var(--navh, 68px)) * 0.88) !important; height: calc((100svh - var(--navh, 68px)) * 0.88) !important;
+               min-height: 0 !important; max-height: none !important; aspect-ratio: auto !important; }
+}
+/* ── Другие направления: фото во всю ширину страницы ──
+   Один город на экран, сами сменяются раз в 5 секунд; листаются пальцем
+   и мышью, под пальцем замирают. Без библиотек, фото грузятся по мере показа. */
+.morecities { position: relative; padding: 8px 0 56px; }
+.morecities h2 { padding: 0 56px; margin: 0 0 20px; font-size: clamp(22px, 2.4vw, 32px); font-weight: 800; letter-spacing: -0.02em; color: var(--dark); }
+.mc-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.mc-track::-webkit-scrollbar { display: none; }
+.mc-card { position: relative; flex: 0 0 100%; aspect-ratio: 2 / 1; max-height: 76vh; min-height: 360px; scroll-snap-align: start; overflow: hidden;
+  text-decoration: none; color: #fff; background: #222; }
+.mc-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.mc-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.7) 0%, rgba(0,0,0,.2) 45%, rgba(0,0,0,0) 75%); }
+.mc-info { position: absolute; left: 56px; right: 56px; bottom: 48px; z-index: 1; display: grid; gap: 8px; max-width: 640px; }
+.mc-info b { font-size: clamp(32px, 4.4vw, 60px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; }
+.mc-info > span:not(.mc-go) { font-size: clamp(14px, 1.3vw, 18px); line-height: 1.45; color: rgba(255,255,255,.88); }
+.mc-info .mc-go { justify-self: start; margin-top: 8px; padding: 11px 20px; border-radius: var(--btn-r, 8px); background: #fff; color: var(--dark); font-size: 14px; font-weight: 700; }
+.mc-card.soon .mc-info .mc-go { background: rgba(255,255,255,.18); color: #fff; backdrop-filter: blur(6px); }
+.mc-card:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+.mc-dots { position: absolute; left: 0; right: 0; bottom: 24px; display: flex; justify-content: center; gap: 8px; z-index: 2; pointer-events: none; }
+.mc-dots button { pointer-events: auto; width: 9px; height: 9px; padding: 0; border: 0; border-radius: 50%; background: var(--border, #d9d9d9); cursor: pointer; }
+.mc-dots button.on { background: var(--dark); width: 26px; border-radius: 5px; }
+@media (max-width: 768px) {
+  .morecities h2 { padding: 0 16px; }
+  .mc-card { height: 72vh; height: 72svh; max-height: 620px; }
+  .mc-info { left: 20px; right: 20px; bottom: 36px; }
+}
+</style>
+<!-- langsw -->
+<link rel="alternate" hreflang="ru" href="https://narada-travels.com/">
+<link rel="alternate" hreflang="en" href="https://narada-travels.com/en/">
+<style>
+  html:not(.preview) .langsw.only-preview{display:none!important}
+  .langsw{display:inline-flex;gap:2px;font:600 12px/1 system-ui,-apple-system,sans-serif;letter-spacing:.04em;align-items:center}
+  .langsw a{padding:5px 7px;border-radius:6px;color:inherit;text-decoration:none;opacity:.6}
+  .langsw a[aria-current]{opacity:1;background:rgba(127,127,127,.18)}
+  .langsw.float{position:fixed;top:10px;right:10px;z-index:999;background:rgba(255,255,255,.85);border-radius:8px;color:#222}
+  nav:not(.solid) .nav-r .langsw a{color:#fff}
+  .nav-r .langsw{margin-right:4px}
+  /* телефон: только ссылка на другой язык, чтобы не выдавить меню */
+  @media (max-width:768px){.nav-r .langsw a[aria-current]{display:none} .nav-r .langsw a{opacity:.9;padding:5px 8px}}
+</style>
+<script>try{if(localStorage.getItem('narada_preview')==='1')document.documentElement.classList.add('preview')}catch(e){}</script>
+<!-- /langsw -->
+</head>
+<body>
+<script>
+// ── Метки источника ──────────────────────────────────────────
+// Человек приходит по рекламе на одну страницу, ходит по сайту и отправляет
+// заявку уже с другой — в адресе меток к тому моменту нет. Поэтому запоминаем
+// их при первом заходе и достаём при отправке. Храним 90 дней: позже метка
+// уже ни о чём не говорит. Ничего личного здесь не лежит — только откуда пришёл.
+(function(){
+  try {
+    var П = new URLSearchParams(location.search);
+    var ПОЛЯ = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','yclid'];
+    var КЛЮЧ = 'narada_src';
+    var есть = ПОЛЯ.some(function(k){ return П.get(k); });
+    if (есть) {
+      // Новая метка перебивает старую: интересна последняя реклама, которая сработала.
+      var д = { t: Date.now(), ref: document.referrer || '', land: location.pathname };
+      ПОЛЯ.forEach(function(k){ var v = П.get(k); if (v) д[k] = v.slice(0, 120); });
+      localStorage.setItem(КЛЮЧ, JSON.stringify(д));
+    } else if (!localStorage.getItem(КЛЮЧ) && document.referrer &&
+               document.referrer.indexOf(location.host) === -1) {
+      // Меток нет, но пришёл с чужого сайта — сохраняем хотя бы его.
+      localStorage.setItem(КЛЮЧ, JSON.stringify({
+        t: Date.now(), ref: document.referrer, land: location.pathname }));
+    }
+  } catch (e) {}
+})();
+function источникЗаявки(){
+  var д = {};
+  try { д = JSON.parse(localStorage.getItem('narada_src') || '{}') || {}; } catch (e) {}
+  if (д.t && Date.now() - д.t > 90 * 24 * 3600 * 1000) д = {};
+  var части = [];
+  ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','yclid']
+    .forEach(function(k){ if (д[k]) части.push(k.replace('utm_','') + ': ' + д[k]); });
+  return {
+    utm:  части.join(' · '),
+    land: д.land || '',
+    ref:  д.ref || document.referrer || '',
+    page: location.pathname
+  };
+}
+</script>
+
+<div class="w">
+
+<section class="hero">
+  <div class="hero-bg"></div>
+
+<nav id="siteNav">  <div class="nav-inner">
+    <a class="logo" href"/en/" data-preview-href"/en/vietnam/">
+      <img src="/images/logo.png" alt="Narada Travels">
+      <span class="logo-txt">Narada Travels</span>
+    </a>
+    <div class="citybar"><div class="citybar-in">
+        <span class="on">Da Nang</span>
+        <a href"/en/phu-quoc/">Phu Quoc</a>
+        <a href"/en/nha-trang/">Nha Trang</a>
+        <a class="only-preview c2" href"/en/hanoi/">Hanoi</a>
+        <span class="soon only-public c2">Hanoi<em>soon</em></span>
+        <a class="only-preview" href"/en/ho-chi-minh/">Saigon</a>
+        <span class="soon only-public">Saigon<em>soon</em></span>
+        <a class="only-preview c2" href"/en/mui-ne/">Mui Ne</a>
+        <span class="soon only-public c2">Mui Ne<em>soon</em></span>
+        <a class="all only-preview c2" href"/en/vietnam/">All<span class="all-long"> destinations</span><span class="arw">→</span></a>
+      </div></div>
+    <div class="nav-r"><!-- langsw --><span class="langsw only-preview" aria-label="Language"><a href="/" hreflang="ru">RU</a><a href="/en/" hreflang="en" aria-current="true">EN</a></span><!-- /langsw -->      <ul class="nav-links">
+        <li><a href="#tours">Tours</a></li>
+        <li class="app-only"><a href"/en/uslugi/">Services</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#emotions">Reviews</a></li>
+      </ul>
+      <a href="#form" class="nav-cta">Contact us</a>
+      <div class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+  <!-- Телефон: второй ряд городов под шапкой. На компьютере эти же
+       ссылки стоят в общей строке, здесь — копия для узкого экрана. -->
+  <div class="citybar2"><div class="citybar-in">
+      <a class="only-preview" href"/en/hanoi/">Hanoi</a><span class="soon only-public">Hanoi<em>soon</em></span>
+      <a class="only-preview" href"/en/mui-ne/">Mui Ne</a><span class="soon only-public">Mui Ne<em>soon</em></span>
+      <a class="all only-preview" href"/en/vietnam/">All<span class="all-long"> destinations</span><span class="arw">→</span></a>
+  </div></div>
+</nav>
+
+  <div class="hero-content">
+    <p class="crumbs">Vietnam<span class="sep">›</span><b>Da Nang</b></p>
+    <h1>Day tours from Da Nang</h1>
+    <p class="hero-sub">Private tours with an English- or Russian-speaking guide</p>
+    <a href="#form" class="btn-white">Contact us</a>
+  </div>
+</section>
+
+<!-- ── НАПРАВЛЕНИЯ ── -->
+<section class="dirs">
+  <div class="dirs-grid">
+
+    <a class="dir" href"/en/ba-na-hills/">
+      <span class="dir-ico"><img src="/images/dir-bana.png" alt="Ba Na Hills" loading="lazy"></span>
+      <span class="dir-txt">
+        <span class="dir-name">Ba Na Hills, Golden Bridge,<br>a French village in the clouds</span>
+        <span class="dir-legend">Route legend <span class="arw">&#8594;</span></span>
+      </span>
+    </a>
+
+    <a class="dir" href"/en/danang-one-day/">
+      <span class="dir-ico"><img src="/images/dir-marble.png" alt="Marble Mountains" loading="lazy"></span>
+      <span class="dir-txt">
+        <span class="dir-name">Marble Mountains, caves,<br>Lady Buddha, Monkey Peninsula</span>
+        <span class="dir-legend">Route legend <span class="arw">&#8594;</span></span>
+      </span>
+    </a>
+
+    <a class="dir" href"/en/hoi-an/">
+      <span class="dir-ico"><img src="/images/dir-hoian.png" alt="Hoi An" loading="lazy"></span>
+      <span class="dir-txt">
+        <span class="dir-name">Ancient Hoi An, lanterns,<br>basket boats, coconut jungle</span>
+        <span class="dir-legend">Route legend <span class="arw">&#8594;</span></span>
+      </span>
+    </a>
+
+    <a class="dir" href"/en/hue/">
+      <span class="dir-ico"><img src="/images/dir-hue.png" alt="Hue" loading="lazy"></span>
+      <span class="dir-txt">
+        <span class="dir-name">Imperial Hue, the Hai Van<br>Pass, an abandoned water park</span>
+        <span class="dir-legend">Route legend <span class="arw">&#8594;</span></span>
+      </span>
+    </a>
+
+  </div>
+</section>
+
+<!-- ── ЭТАЖ 2: ТОЛЬКО ЭКСКУРСИИ ── -->
+<section class="tours" id="tours">
+  <h2>Programs and prices</h2>
+  <div class="bc b-bana-evening" id="bana-evening" onclick="openD('bana-evening')">
+    <img src="/images/bana-evening-sunset.webp" alt="Ba Na Hills by Night — Secrets of the Golden Bridge" style="object-position:center 45%">
+    <div class="bc-badge">Exclusive</div>
+    <div class="bc-info">
+      <h3 class="bc-title">Ba Na Hills by Night — Secrets of the Golden Bridge</h3>
+      <div class="bc-sub">The magic of Little Europe · The Golden Bridge “Hands of God” · A Guinness record cable car</div>
+    </div>
+    <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+    <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'bana-evening')">🔗</div>
+  </div>
+  <div class="bento">
+    <div class="bc b-hue" id="hue" onclick="openD('hue')">
+      <img src="/images/hue.jpg" alt="Hue tour from Da Nang">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Imperial Hue</h3><div class="bc-price">88<span>$</span></div></div>
+        <div class="bc-sub">Where dragons whisper legends: the Forbidden City and the grandeur of dynasties</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'hue')">🔗</div>
+    </div>
+    <div class="bc b-hoian" id="hoian" onclick="openD('hoian')">
+      <img src="/images/hoian-sunset.webp" alt="Hoi An tour from Da Nang">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Ancient Hoi An</h3><div class="bc-price">65<span>$</span></div></div>
+        <div class="bc-sub">Old town, coconut jungle, rice fields, lanterns on the night river</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'hoian')">🔗</div>
+    </div>
+    <div class="bc b-bana" id="bana" onclick="openD('bana')">
+      <img src="/images/bana-cable-car.webp" alt="Ba Na Hills Golden Bridge">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Ba Na Hills: Golden Bridge</h3><div class="bc-price">50<span>$</span></div></div>
+        <div class="bc-sub">A fairy tale in the clouds · French village · Wine cellars</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'bana')">🔗</div>
+    </div>
+    <div class="bc b-springs" id="springs" onclick="openD('springs')">
+      <img src="/images/springs.jpg" alt="Hot springs tour from Da Nang">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Hot Springs — Mountain of Fortune</h3><div class="bc-price">72<span>$</span></div></div>
+        <div class="bc-sub">Onsen · Water park</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'springs')">🔗</div>
+    </div>
+    <div class="bc b-cham" id="cham" onclick="openD('cham')">
+      <img src="/images/cham.jpg" alt="Cham Islands snorkeling UNESCO">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Cham Islands — UNESCO</h3><div class="bc-price">70<span>$</span></div></div>
+        <div class="bc-sub">Snorkeling · Lunch included</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'cham')">🔗</div>
+    </div>
+    <div class="bc b-danang" id="danang" onclick="openD('danang')">
+      <img src="/images/dragon-fire.webp" alt="Da Nang in One Day">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Da Nang in One Day</h3><div class="bc-price">67<span>$</span></div></div>
+        <div class="bc-sub">Dragon Bridge show · Marble Mountains · Peninsula · River cruise · Night market</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'danang')">🔗</div>
+    </div>
+    <div class="bc b-kalmar" id="kalmar" onclick="openD('kalmar')">
+      <img src="/images/kalmar.jpg" alt="Fishing in Vietnam Da Nang">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Fishing in Vietnam</h3><div class="bc-price">75<span>$</span></div></div>
+        <div class="bc-sub">Exclusive</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'kalmar')">🔗</div>
+    </div>
+    <div class="bc b-vin" id="vin" onclick="openD('vin')">
+      <img src="/images/vinwonders.jpg" alt="VinWonders Hoi An park">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">VinWonders Hoi An</h3><div class="bc-price">60<span>$</span></div></div>
+        <div class="bc-sub">Safari</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'vin')">🔗</div>
+    </div>
+    <div class="bc b-hayvan" id="hayvan" onclick="openD('hayvan')">
+      <img src="/images/hayvan.jpg" alt="Waterfall swimming on the Hai Van Pass">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Waterfall Swimming on the Hai Van Pass</h3><div class="bc-price">65<span>$</span></div></div>
+        <div class="bc-sub">Mountain serpentine · Gate of Heaven</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'hayvan')">🔗</div>
+    </div>
+    <div class="bc b-sea" id="sea" onclick="openD('sea')">
+      <img src="/images/sea.jpg" alt="Sea trip Da Nang">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Sea Trip</h3><div class="bc-price">70<span>$</span></div></div>
+        <div class="bc-sub">Snorkeling · SUP</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'sea')">🔗</div>
+    </div>
+    <div class="bc b-dong" id="dong" onclick="openD('dong')">
+      <img src="/images/dong-giang.webp" alt="Heaven's Gate Dong Giang" style="object-position:center 55%">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Heaven's Gate Dong Giang</h3><div class="bc-price">70<span>$</span></div></div>
+        <div class="bc-sub">Where the borders between worlds fade. Caves · Waterfalls · Glass bridge · Co Tu village</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'dong')">🔗</div>
+    </div>
+</div>
+</section>
+
+<!-- ── ДРУГИЕ НАПРАВЛЕНИЯ ── видят все. Города, которые ещё в работе,
+     посетителям показываем карточкой «Скоро» без ссылки; в предпросмотре — ссылки. -->
+<section class="morecities" aria-label="Other destinations">
+  <h2>Other destinations</h2>
+  <div class="mc-track">
+    <a class="mc-card" href"/en/phu-quoc/">
+      <img src="/images/cities/phuquoc.jpg" alt="Phu Quoc" loading="lazy">
+      <span class="mc-info"><b>Phu Quoc</b><span>Cable car, southern islands, safari, Sunset Town</span><span class="mc-go">See tours →</span></span>
+    </a>
+    <a class="mc-card" href"/en/nha-trang/">
+      <img src="/images/cities/nhatrang.jpg" alt="Nha Trang" loading="lazy">
+      <span class="mc-info"><b>Nha Trang</b><span>Dalat, northern islands, Yang Bay, Marmoris yacht</span><span class="mc-go">See tours →</span></span>
+    </a>
+    <a class="mc-card only-preview" href"/en/ho-chi-minh/">
+      <img src="/images/cities/hcm.jpg" alt="Saigon" loading="lazy">
+      <span class="mc-info"><b>Saigon</b><span>Saigon city tour, Cu Chi tunnels, Mekong Delta</span><span class="mc-go">See tours →</span></span>
+    </a>
+    <a class="mc-card soon only-preview" href"/en/hanoi/">
+      <img src="/images/cities/hanoi.jpg" alt="Hanoi" loading="lazy">
+      <span class="mc-info"><b>Hanoi</b><span>Old Quarter and Ha Long Bay</span><span class="mc-go">Soon</span></span>
+    </a>
+    <a class="mc-card soon only-preview" href"/en/mui-ne/">
+      <img src="/images/cities/muine.jpg" alt="Mui Ne" loading="lazy">
+      <span class="mc-info"><b>Mui Ne</b><span>Dunes, Fairy Stream and a fishing village</span><span class="mc-go">Soon</span></span>
+    </a>
+    <div class="mc-card soon only-public">
+      <img src="/images/cities/hcm.jpg" alt="Saigon" loading="lazy">
+      <span class="mc-info"><b>Saigon</b><span>Saigon city tour, Cu Chi tunnels, Mekong Delta</span><span class="mc-go">Soon</span></span>
+    </div>
+    <div class="mc-card soon only-public">
+      <img src="/images/cities/hanoi.jpg" alt="Hanoi" loading="lazy">
+      <span class="mc-info"><b>Hanoi</b><span>Old Quarter and Ha Long Bay</span><span class="mc-go">Soon</span></span>
+    </div>
+    <div class="mc-card soon only-public">
+      <img src="/images/cities/muine.jpg" alt="Mui Ne" loading="lazy">
+      <span class="mc-info"><b>Mui Ne</b><span>Dunes, Fairy Stream and a fishing village</span><span class="mc-go">Soon</span></span>
+    </div>
+  </div>
+  <div class="mc-dots" aria-label="Choose a city"></div>
+</section>
+
+
+
+<!-- ── FAQ ── -->
+<section class="faq" id="faq">
+  <h2>FAQ</h2>
+  <div class="faq-wrap">
+    <div class="fi"><button class="fq">📏 How is a child's height measured? <span class="fi-icon">+</span></button><div class="fa tall">
+      In Vietnam's parks — Ba Na Hills and others — the price depends on height, not age. A child taller than 140 cm counts as an adult.
+      <img class="h-photo" src="/images/height-chart.webp" alt="Height gauge at the Ba Na Hills entrance">
+      <div class="hcard">
+        <h3>How they measure</h3>
+        <ul>
+          <li><b>Height gauge.</b> At the entrance and in the restaurant there are rigid posts with marks. The child stands right against them.</li>
+          <li><b>With shoes on.</b> They measure in whatever you came in. If sneaker soles add 2 cm and the child goes over the mark, you pay for an adult ticket. Nobody will let you take your shoes off.</li>
+          <li><b>Double check.</b> Height is checked first before boarding the cable car, then again at the restaurant entrance. If the bar touches the top of the head there, you will have to pay extra.</li>
+          <li><b>Arguing is pointless.</b> Staff have cameras and instructions. Showing a passport or negotiating won't work. Touched the bar — you pay.</li>
+        </ul>
+      </div>
+      <div class="hcard">
+        <h3>If the height is around 140 cm</h3>
+        <ul>
+          <li><b>Shoes.</b> High sneakers cost extra money. Put the child in flat sneakers or sandals.</li>
+          <li><b>Measure at home.</b> Be sure to measure the child against a wall — in the exact shoes you will wear on the trip.</li>
+          <li><b>138–139 cm is borderline.</b> Better to buy an adult ticket straight away: 300,000 dong is not worth your nerves.</li>
+        </ul>
+      </div>
+      <div class="hcard">
+        <h3>Extra payment and refunds</h3>
+        <ul>
+          <li>If the child measures 140 cm or more, the difference must be paid on the spot — both for the park ticket and for the tour itself.</li>
+          <li>If you refuse to pay the difference, the tour and tickets are not refunded — they are forfeited.</li>
+        </ul>
+      </div>
+      <div class="height-note"><b>Most importantly:</b> the group will not wait while you sort it out. The tour price is not refunded.</div>
+    </div></div>
+    <div class="fi"><button class="fq">How do I pay for a tour? <span class="fi-icon">+</span></button><div class="fa">Tour prices are in US dollars. There are two ways to pay.<br><br><b>In two steps.</b> A deposit of 50% or more — no later than one day before the tour. The balance is paid to the guide in cash before departure, in dong or dollars.<br><br><b>Fully online.</b> 100% — also no later than one day before the tour.<br><br>Online we accept: rubles via SBP transfer, dong via QR code, USDT via Bybit UID transfer. Cash dollars — in some cases our staff member can come to you, only for hotels in the tourist area.<br><br>Cash dollars: only 100-dollar bills with the blue stripe, without creases, stamps or writing. Change is given in dong.<br><br>We do not accept: old-design dollars, bills smaller than 100 dollars, card payments via terminal, crypto wallets.<br><br>Rubles and dong are converted at the company's internal rate on the day of payment.</div></div>
+    <div class="fi"><button class="fq">Where is the meeting point in Da Nang? <span class="fi-icon">+</span></button><div class="fa">We pick you up for free from addresses and hotels in Da Nang's tourist areas. Transfers from remote areas cost extra depending on the distance. Please ask for details when booking.</div></div>
+    <div class="fi"><button class="fq">What is included in the price? <span class="fi-icon">+</span></button><div class="fa">Hotel transfer both ways and water. Guide, entrance tickets and lunch — see the description of each tour.</div></div>
+    <div class="fi"><button class="fq">Why is a deposit required? <span class="fi-icon">+</span></button><div class="fa">We book transport in advance, and for some tours also entrance tickets, lunches and activities. The deposit confirms your place on the tour.</div></div>
+    <div class="fi"><button class="fq">Can I cancel or reschedule? <span class="fi-icon">+</span></button><div class="fa">If you cancel less than 48 hours before the tour, the deposit is not refunded. Rescheduling is possible if seats are available.</div></div>
+    <div class="fi"><button class="fq">Can I bring a stroller? <span class="fi-icon">+</span></button><div class="fa">Our tours are not suitable for strollers because of the routes. For little ones we recommend a sling or baby carrier.</div></div>
+    <div class="fi"><button class="fq">How many people do I need for a private tour? <span class="fi-icon">+</span></button><div class="fa">No minimum. We will run a tour even for 1 person.</div></div>
+    <div class="fi"><button class="fq">Why do I have to send a passport photo for water tours? <span class="fi-icon">+</span></button><div class="fa">Under Vietnamese law, a passenger list is drawn up for passenger water transport. For foreign citizens it includes passport details. So a passport photo of every participant must be provided before the tour. Without these details boarding is not possible.</div></div>
+  </div>
+</section>
+
+
+<!-- ── ЭТАЖ 4: ОТЗЫВЫ ── -->
+<section class="emotions" id="emotions">
+  <h2>Fresh impressions</h2>
+  <p class="emotions-sub">We don't copy reviews onto the website. See live chats, photos and honest opinions of our travelers in real time.</p>
+  <div class="emotions-btns">
+    <a href="https://t.me/Narada_reviews" target="_blank" rel="noopener noreferrer" class="btn-tg">Read reviews on Telegram →</a>
+    <a href="https://maps.app.goo.gl/9E23EeimF92MKjxa6" target="_blank" rel="noopener noreferrer" class="btn-tg">Reviews on Google Maps →</a>
+  </div>
+</section>
+
+<!-- ── ФОРМА ── -->
+<section class="form-s" id="form">
+  <div class="form-wrap">
+    <div class="form-left">
+      <h2>Send a request</h2>
+      <p>We'll get back to you within an hour. Or message us directly.</p>
+      <div class="clinks">
+        <a href="https://t.me/narada_travels" class="clink"><div class="clink-icon ctg">✈️</div>Telegram channel</a>
+        <a href="https://t.me/taysafinskaya" class="clink"><div class="clink-icon ctg">💬</div>Message Tais</a>
+        <a href="https://vk.com/narada_travels_danang" class="clink"><div class="clink-icon cvk">📱</div>VKontakte</a>
+      </div>
+    </div>
+    <div>
+      <form class="fform" id="bForm">
+        <div class="field">
+          <label>Where to</label>
+          <div class="regsw" id="regSw">
+            <button type="button" class="regsw-b" data-region="danang">Da Nang</button>
+            <button type="button" class="regsw-b" data-region="phuquoc">Phu Quoc</button>
+            <button type="button" class="regsw-b" data-region="nhatrang">Nha Trang</button>
+            <button type="button" class="regsw-b only-preview" data-region="hcm">Saigon</button>
+            <button type="button" class="regsw-b only-preview" data-region="hanoi">Hanoi</button>
+            <button type="button" class="regsw-b only-preview" data-region="muine">Mui Ne</button>
+          </div>
+          <div class="reghint">Pre-selected from the page you came from. You can change it.</div>
+        </div>
+        <div class="field">
+          <label>When are you going</label>
+          <div class="whensw" id="whenSw">
+            <button type="button" class="whensw-b on" data-when="Planning a trip">Planning a trip</button>
+            <button type="button" class="whensw-b" data-when="Already in Vietnam">Already in Vietnam</button>
+          </div>
+        </div>
+        <div class="frow">
+          <div class="field"><label>Your name</label><input type="text" name="name" placeholder="What's your name?" required></div>
+          <div class="field"><label>Telegram or phone</label><input type="text" name="contact" placeholder="@username or phone" required></div>
+        </div>
+        <div class="field">
+          <label>Tour</label>
+          <select name="tour" id="fTour" required>
+            <option value="">Choose a tour</option>
+            <option value="Da Nang — Hue">Hue</option>
+            <option value="Da Nang — Hoi An">Hoi An</option>
+            <option value="Da Nang — Ba Na Hills">Ba Na Hills</option>
+            <option value="Da Nang — Hot springs">Hot springs</option>
+            <option value="Da Nang — Da Nang in one day">Da Nang in One Day</option>
+            <option value="Da Nang — VinWonders">VinWonders</option>
+            <option value="Da Nang — Cham Islands">Cham Islands</option>
+            <option value="Da Nang — Fishing">Fishing</option>
+            <option value="Da Nang — Sea trip">Sea Trip</option>
+            <option value="Da Nang — Hai Van">Hai Van</option>
+            <option value="Da Nang — Dong Giang">Dong Giang</option>
+            <option value="Da Nang — Other, I'll write in the message">Other, I'll write in the message</option>
+          </select>
+        </div>
+        <div class="frow">
+          <div class="field"><label>Number of people</label><input type="number" name="people" placeholder="2" min="1" required></div>
+        </div>
+        <div class="field"><label>Approximate travel date</label><input type="date" name="date"></div>
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <label class="fconsent">
+          <input type="checkbox" name="consent" required>
+          <span>I agree to the processing of personal data — we need your name and contact to reply to your request. <a href"/privacy/#en" target="_blank" rel="noopener noreferrer">Privacy policy</a></span>
+        </label>
+        <button type="submit" class="fsubmit">Send request</button>
+      </form>
+      <div id="fok">Request sent! We'll be in touch shortly.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="flogo">Narada Travels</div>
+  <p>Day tours from Da Nang with an English- or Russian-speaking guide · Vietnam</p>
+  <p class="fdirs"><a href"/en/" class="on">Day tours from Da Nang</a><a href"/en/phu-quoc/">Phu Quoc tours</a><a href"/en/nha-trang/">Nha Trang tours</a><a class="only-preview" href"/en/ho-chi-minh/">Ho Chi Minh City tours</a><a class="only-preview" href"/en/hanoi/">Hanoi tours</a><a class="only-preview" href"/en/mui-ne/">Mui Ne tours</a><a class="only-preview" href"/en/vietnam/">All destinations</a></p>
+  <p>© 2026 Narada · <a href"/privacy/#en" style="color:rgba(255,255,255,0.35);text-decoration:underline;text-underline-offset:2px">Privacy policy</a></p>
+</footer>
+
+</div><!-- /w -->
+
+<div class="overlay" id="overlay" onclick="closeD()"></div>
+<div class="drawer" id="drawer">
+  <div class="d-handle"></div>
+  <button class="d-close" onclick="closeD()">✕</button>
+  <div id="d-content"></div>
+</div>
+
+<script>
+const tours = {
+  hue:{title:"Hue — where dragons whisper legends",price:"88$",
+    seo:"Imperial Hue — a day tour from Da Nang to Vietnam's ancient capital with an English- or Russian-speaking guide. The Nguyen Dynasty Citadel holds 600 years of history, and the Thien Mu Pagoda has towered over the Perfume River for 400 years. A detailed story of Vietnam's emperors along the way.",
+    prog:[["07:30","Hotel pickup, Hai Van Pass"],["","Imperial Citadel — 600 years of history"],["12:00","Lunch"],["","Khai Dinh Tomb — the best photo of the tour"],["","Thien Mu Pagoda — 400 years above the Perfume River"],["","Incense village"],["","Bonus — an abandoned water park"],["21:30","Return to the hotel"]],
+    inc:["Hotel transfer both ways","English- or Russian-speaking guide","Entrance tickets","Water"],
+    exc:[],
+    note:["Lunch is paid from the menu — everyone pays for their own order."],
+    prices:[["Format","Price"],["Private, up to 4 people","352 $"],["Each additional person","+ 88 $"],["",""],["Adult and child from 10 years","88 $"],["Child under 10","44 $"],["Child under 3","Free"]]},
+  "bana-evening":{title:"Ba Na Hills by Night — Secrets of the Golden Bridge",price:"200$",
+    seo:"Ba Na Hills by night — a tour from Da Nang to the Golden Bridge with a cable car ride in the sunset light, as the whole city lights up below. The guide takes the group through the French Village, the Debay wine cellars and a buffet with a live show. One of the most spectacular evening tours from Da Nang.",
+    prog:[["14:00","We meet at your hotel. On the way — mountains and serpentine roads"],["","Cable car — jungle below, clouds ahead"],["","Golden Bridge — stone hands hold the bridge over the abyss as Da Nang lights up below"],["","French Village — the park wakes up after dark"],["","Dinner (buffet) at Beer Plaza Restaurant + live stage show"],["","Debay wine cellars — old French galleries under the park"],["","Viewpoint — the sea and city lights"],["","Cable car descent under the stars"],["21:00","Return to the hotel"]],
+    inc:["Hotel transfer both ways","English- or Russian-speaking guide","A bottle of water"],
+    exc:["Entrance tickets + DINNER","Debay wine cellars — 100,000 VND (on site)","Alpine coaster, rides, rock climbing"],
+    note:["Entrance tickets include: the round-trip cable car, buffet dinner, a free glass of Sun KraftBeer (500 ml) or fast food, free games and rides.<br>🧥 Bring a warm layer — it's cool at the top<br>👟 Comfortable shoes — lots of walking on cobblestones<br>🌂 A raincoat — the weather changes quickly"],
+    prices:[["Format","Price"],["Private, up to 4 people","200 $"],["Each additional person","+ 50 $"],["",""],["Entrance tickets + DINNER",""],["Entrance ticket adult / child over 140 cm","1 100 000 VND"],["Child 100–140 cm","900 000 VND"],["Child under 100 cm","Free"]]},
+  hoian:{title:"Hoi An — an ancient UNESCO town",price:"65$",
+    seo:"Ancient Hoi An — a tour from Da Nang to the UNESCO-protected museum town. The 16th-century Japanese Bridge, thousands of lanterns on the Hoai River and a coconut forest with basket boats. The guide tells Hoi An's story in the evening, when the old town is at its most beautiful.",
+    prog:[["14:00","Hotel pickup"],["","Coconut forest — round basket boats, a show on the water"],["","Old town — the 16th-century Japanese Bridge, temples"],["18:30","Dinner"],["","Lanterns on the Hoai River"],["","Night market on An Hoi Island"],["22:00","Return to the hotel"]],
+    inc:["Hotel transfer both ways","English- or Russian-speaking guide","Coconut boats","Tickets","Water"],
+    exc:["Museum ticket","Lanterns"],
+    note:["Dinner is paid from the menu — everyone pays for their own order."],
+    prices:[["Format","Price"],["Private, up to 4 people","260 $"],["Each additional person","+ 65 $"],["",""],["Adult and child from 10 years","65 $"],["Child under 10","33 $"],["Child under 3","Free"]]},
+  bana:{title:"Ba Na Hills — Golden Bridge",price:"50$",
+    seo:"Ba Na Hills is the top day trip from Da Nang. A mountain resort at 1,487 meters, reached by a Guinness-record cable car. The Golden Bridge “Hands of God” — stone palms hold the bridge above the clouds. An English- or Russian-speaking guide tells the story of the French Village and Fantasy Park.",
+    prog:[["08:00","Departure (bring a warm layer)"],["","Cable car — soaring over the jungle"],["","Golden Bridge — the giant's palms"],["","French Village — cathedrals, wine cellars"],["","Fantasy Park — alpine coaster, maze"],["13:00","Buffet + beer voucher"],["18:00","Return"]],
+    inc:["Hotel transfer both ways","English- or Russian-speaking guide","Water"],
+    exc:["Entrance tickets (separately)"],
+    note:["Entrance tickets — what's included:<br>— round-trip cable car<br>— Golden Bridge<br>— buffet lunch<br>— a voucher for 500 ml of Sun KraftBeer craft beer or fast food."],
+    prices:[["Format","Price"],["Private, up to 4 people","200 $"],["Each additional person","+ 50 $"],["",""],["Adult / child over 140 cm","50 $"],["Child 100–140 cm","25 $"],["Child under 100 cm","Free"],["Entrance tickets — morning from 08:00",""],["Entrance ticket adult / child over 140 cm","1 300 000 VND"],["Child 100–140 cm","1 000 000 VND"]]},
+  danang:{title:"Da Nang in One Day",price:"67$",
+    seo:"A Da Nang city tour with an English- or Russian-speaking guide: the Marble Mountains with caves and ocean views, the Lady Buddha statue and an evening cruise on the Han River. On Fridays, Saturdays and Sundays the route coincides with the Dragon Bridge fire show. A packed route for those short on time in Da Nang.",
+    prog:[["14:00","Hotel pickup"],["","Marble Mountains — caves, ocean panorama"],["","Lady Buddha on Monkey Mountain"],["17:00","Lunch"],["","Evening cruise on the Han River"],["Fri","Dragon show from the boat"],["21:00","Return"]],
+    inc:["Hotel transfer both ways","English- or Russian-speaking guide","Tickets","Cruise","Water"],
+    exc:[],
+    note:["Lunch is paid from the menu — everyone pays for their own order."],
+    prices:[["Format","Price"],["Private, up to 4 people","268 $"],["Each additional person","+ 67 $"],["",""],["Adult and child from 10 years","67 $"],["Child under 10","34 $"],["Child under 3","Free"]]},
+  kalmar:{title:"Fishing in Vietnam",price:"75$",
+    seo:"Sea fishing in Da Nang and night squid fishing in the South China Sea — a tour with an English- or Russian-speaking guide for sea lovers. Several formats: night fishing, relaxed daytime fishing or a trip to the open sea on a private boat. Guide and fishing gear included.",
+    prog:[["1","Night fishing"],["2","Relaxed fishing"],["3","Professional — in the open sea"],["4","Private boat — just for you"],["07:00","until 12:00"],["13:00","until 18:00"],["18:00","until 23:00"],["23:00","until 04:00"]],
+    inc:["Hotel transfer both ways","Fishing gear","Lunch: Mi Quang","Water"],
+    exc:[],
+    prices:[["Format","Price"],["Adult","75 $"],["Private boat up to 8 people","360 $"]]},
+  springs:{title:"Hot Springs — Mountain of Fortune",price:"72$",
+    seo:"Hot springs in Da Nang — a tour to Nui Than Tai park (Núi Thần Tài), a thermal complex with Japanese onsens, a Himalayan sauna and a water park near Ba Na mountain. The guide accompanies you to the Temple of the God of Wealth and the dinosaur park. One of the most varied day tours in Vietnam.",
+    prog:[["08:30","Departure to the mountains"],["","Dinosaur park and 12D cinema"],["","Temple of the God of Wealth — a bag of luck"],["","Water park and Lazy River"],["","Egg of longevity in a boiling spring"],["12:00","Buffet at the Red Dragon"],["","Thermal complex — onsen, three types of sauna"],["16:30","Return"]],
+    inc:["Hotel transfer both ways","English- or Russian-speaking guide","Water"],
+    exc:["Entrance tickets (separately)","Massage"],
+    note:["Entrance tickets — what's included:<br>✓ Ficus jacuzzi<br>✓ Japanese-style onsen bath<br>✓ Foot bath and hot mineral spring bath on Blood Dragon Lake<br>✓ Himalayan salt stone sauna, steam and dry sauna<br>✓ Buggy<br>✓ Than Tai Temple (God of Wealth)<br>✓ Dinosaur park<br>✓ Water park<br>✓ 9D–12D cinema<br>✓ Kayaking on the River of Love<br>✓ Bird garden<br>✓ A bottle of water<br>✓ Lunch"],
+    prices:[["Format","Price"],["Private, up to 4 people","288 $"],["Each additional person","+ 72 $"],["",""],["Adult / child over 140 cm","72 $"],["Child 100–140 cm","36 $"],["Child under 100 cm","Free"],["Entrance tickets",""],["Entrance ticket adult / child over 140 cm","1 400 000 VND"],["Child 100–140 cm","1 100 000 VND"]]},
+  cham:{title:"Cham Islands — UNESCO",price:"70$",
+    seo:"Cham Islands — a speedboat tour from Da Nang to a UNESCO reserve. Snorkeling in clear water, a seafood lunch and Bai Chong beach with hammocks under the palms. English- or Russian-speaking escort, snorkeling gear included.",
+    prog:[["07:30","Hotel pickup"],["","Speedboat — 20 min over the waves"],["","Reserve museum, pagoda, wishing well"],["","Snorkeling — fish eat from your hand"],["12:00","Seafood lunch"],["","Bai Chong beach — a hammock under the palms"],["16:00","Return"]],
+    inc:["Hotel transfer both ways","English- or Russian-speaking guide","Speedboat","Gear","Lunch","Water"],
+    exc:["Sea fishing — $90","Scuba diving — $100"],
+    prices:[["Format","Price"],["Private, up to 4 people","280 $"],["Each additional person","+ 70 $"],["",""],["Adult and child from 10 years","70 $"],["Child under 10","35 $"],["Child under 3","Free"]]},
+  vin:{title:"VinWonders Hoi An",price:"60$",
+    seo:"VinWonders Nam Hoi An amusement park — a tour from Da Nang with a safari, Adventure Land rides and the Water World water park. An English- or Russian-speaking guide accompanies the group; tickets include a buffet and unlimited buggy transfers around the park.",
+    prog:[["09:00","Departure to VinWonders"],["","River Safari — giraffes, zebras, white lions"],["","Adventure Land — 100 rides"],["","Water World — water park"],["13:00","Deli Land buffet — 70+ dishes"],["","60 m Ferris wheel, bird show"],["17:00","Return"]],
+    inc:["Hotel transfer both ways","English- or Russian-speaking guide","Water"],
+    exc:["Entrance tickets (separately)"],
+    note:["Entrance ticket includes:<br>✓ Access to all themed zones<br>✓ Unlimited buggy transfers<br>✓ Lunch"],
+    prices:[["Format","Price"],["Private, up to 4 people","240 $"],["Each additional person","+ 60 $"],["",""],["Adult / child over 140 cm","60 $"],["Child 100–140 cm","30 $"],["Child under 100 cm","Free"],["Entrance tickets",""],["Entrance ticket adult / child over 140 cm","950 000 VND"],["Child 100–140 cm","600 000 VND"]]},
+  hayvan:{title:"Waterfall Swimming on the Hai Van Pass",price:"65$",
+    seo:"Hai Van Pass — a tour from Da Nang along Vietnam's most beautiful road with an English- or Russian-speaking guide. Sea panoramas, the historic Gate of Heaven and swimming in waterfall cascades on the way. Pearl Lagoon and lunch are included.",
+    prog:[["08:00","Pickup at the hotel"],["09:00","Hai Van Pass — photo stop with a sea panorama"],["09:15","Hai Van Quan — the historic Gate of Heaven"],["12:30","Pearl Lagoon"],["13:00","Lunch"],["14:00","Waterfall cascade — swimming"],["17:00","Return to the hotel"]],
+    inc:["Hotel transfer both ways","English- or Russian-speaking guide"],
+    exc:[],
+    note:["Lunch is paid from the menu — everyone pays for their own order."],
+    prices:[["Format","Price"],["Private, up to 4 people","260 $"],["Each additional person","+ 65 $"],["",""],["Adult and child from 10 years","65 $"],["Child under 10","33 $"],["Child under 3","Free"]]},
+  dong:{title:"Heaven's Gate Dong Giang",price:"70$",
+    seo:"Dong Giang Park (Dong Giang Heaven Gate) — a tour from Da Nang to Heaven's Gate, stalactite caves and a glass bridge over a gorge. The guide shows you a Co Tu village and the Tien waterfall, where you can swim. One of the longest and most packed tours from Da Nang.",
+    prog:[["08:00","Hotel pickup and departure to Dong Giang Heaven's Gate"],["09:30","Arrival at Dong Giang Heaven’s Gate"],["10:00","Phoenix Mountain, the Co Tu child statue, the Orange Farm and the Troy Citadel, then a cable car up Bao Lam Mountain, a walk along the Dragon Corridor — the longest in Vietnam — and the Ngoc Rong glass bridge"],["12:00","Lunch at a restaurant"],["13:00","Visit and swim at the Fairy waterfalls, the Dragon Egg. A walk through Bon Bon park and Ngoc De cave"],["15:30","Getting to know the Co Tu people's culture in their traditional village: traditional singing, bamboo pole dancing, making buffalo-horn-shaped cakes, crossbow shooting, stilt walking, weaving and a photo session in traditional Co Tu costumes"],["18:00","Return to the hotel"]],
+    inc:["Hotel transfer both ways","English- or Russian-speaking guide","A bottle of water","Entrance tickets — waterfalls, caves, viewpoints","Electric car rides","Lunch — buffet at a mountain restaurant","Visit to a Co Tu village"],
+    exc:[],
+    prices:[["Format","Price"],["Group (per person)","70 $"],["Private — up to 4 people","280 $"]]},
+  sea:{title:"Sea trip in Da Nang",price:"70$",
+    seo:"A sea trip in Da Nang with snorkeling, SUP boards and swimming in the open sea — a boat tour with an English- or Russian-speaking escort. Several departures a day; a private boat can be rented for your group. A good choice for a day on the water without a long drive.",
+    prog:[["08–10","Start of your choice: 08:00, 09:00 or 10:00"],["","Snorkeling — corals, bright fish"],["","SUP boards"],["","Return to port"]],
+    inc:["Hotel transfer both ways","Snorkeling","SUP boards","Water"],
+    exc:["Jet ski and banana boat — $15"],
+    prices:[["Format","Price"],["Private boat up to 8 people","360 $"],["",""],["Adult / child over 140 cm","70 $"],["Child 100–140 cm","35 $"],["Child under 100 cm","Free"]]}
+};
+
+function openD(key) {
+  const t = tours[key];
+  if (!t) return;
+  const prog = t.prog.map(([time,text]) => `<li class="prog-item"><span class="prog-t">${time}</span><span>${text}</span></li>`).join('');
+  const inc = t.inc.map(i => `<div class="inc-i"><span class="y">✓</span><span>${i}</span></div>`).join('');
+  const exc = t.exc.map(i => `<div class="inc-i"><span class="n">✗</span><span>${i}</span></div>`).join('');
+  const note = (t.note||[]).map(i => `<div class="inc-i"><span style="color:var(--gray);font-size:13px">ℹ</span><span>${i}</span></div>`).join('');
+  const prices = t.prices.map(([cat,val]) => val===''
+    ? `<div class="pr" style="background:#f0f4f8;font-weight:700;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--gray);margin-top:6px">${cat}</div>`
+    : `<div class="pr"><span>${cat}</span><span class="pv">${val}</span></div>`).join('');
+  const hasHeight = t.prices.some(([cat]) => /рост|см/i.test(cat));
+  const heightCard = hasHeight ? `<div style="background:#fffbeb;border-left:4px solid #E8533A;border-radius:0 8px 8px 0;padding:16px 20px;margin-top:12px;width:100%;box-sizing:border-box"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="font-size:16px">📏</span><span style="font-size:15px;font-weight:700;color:#111">Child tickets by height</span></div><p style="font-size:14px;color:#6B7280;margin:0 0 8px;line-height:1.6">The park measures height <strong style="color:#111">with shoes on</strong> — with posts at the entrance and at the restaurant. If the soles add 2 cm and the child reaches 140 cm, you pay for an adult ticket. Arguing is pointless.</p><p style="font-size:14px;color:#6B7280;margin:0;line-height:1.6">Tip: put the child in <strong style="color:#111">flat-soled sneakers</strong> and measure at home in advance.</p></div>` : '';
+  const seo = t.seo ? `<p class="d-seo">${t.seo}</p>` : '';
+  document.getElementById('d-content').innerHTML = `
+    <div class="d-title">${t.title}</div>
+    ${seo}<div class="d-price">${t.price}</div>
+    <div class="d-grid">
+      <div>
+        <div class="d-lbl">Program</div>
+        <ul class="prog">${prog}</ul>
+        ${heightCard}
+      </div>
+      <div>
+        <div class="d-lbl">What's included</div>
+        <div class="inc">${inc}${exc}${note}</div>
+        <div class="d-lbl">Price</div>
+        <div class="ptbl">${prices}</div>
+        <p class="pnote">Payment: $, dong, rubles, USDT</p>
+        <div class="d-cta">
+          <a href="#form" class="btn-primary" onclick="closeD()">Book</a>
+          <button class="btn-outline" onclick="closeD()">Close</button>
+        </div>
+      </div>
+    </div>`;
+  document.getElementById('overlay').classList.add('open');
+  document.getElementById('drawer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeD() {
+  document.getElementById('overlay').classList.remove('open');
+  document.getElementById('drawer').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function toggleMenu() {
+  const links = document.querySelector('.nav-links');
+  const cta = document.querySelector('.nav-cta');
+  const show = links.style.display !== 'flex';
+  links.style.cssText = show ? 'display:flex;flex-direction:column;position:fixed;top:'+document.querySelector('nav').offsetHeight+'px;left:0;right:0;background:rgba(17,17,17,0.96);padding:20px;gap:16px;z-index:99' : 'display:none';
+  cta && (cta.style.display = show ? 'block' : '');
+}
+
+document.querySelectorAll('.fq').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.fi').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// ── Регион в форме ──────────────────────────────────────────
+// Страница сама знает, где человек находится, и подставляет свой регион.
+// Переключатель меняет список экскурсий, не уводя со страницы: если
+// человек читал про Дананг, а спросить хочет про Фукуок — пусть спросит здесь.
+// Регион уезжает в заявку прямо в названии тура, поэтому воркер править не нужно.
+const PAGE_REGION = 'danang';
+const REGION_TOURS = {
+  danang: [
+    ["Da Nang — Hue","Hue"],
+    ["Da Nang — Hoi An","Hoi An"],
+    ["Da Nang — Ba Na Hills","Ba Na Hills"],
+    ["Da Nang — Hot springs","Hot springs"],
+    ["Da Nang — Da Nang in one day","Da Nang in One Day"],
+    ["Da Nang — VinWonders","VinWonders"],
+    ["Da Nang — Cham Islands","Cham Islands"],
+    ["Da Nang — Fishing","Fishing"],
+    ["Da Nang — Sea trip","Sea Trip"],
+    ["Da Nang — Hai Van","Hai Van"],
+    ["Da Nang — Dong Giang","Dong Giang"],
+    ["Da Nang — Other, I'll write in the message","Other, I'll write in the message"]
+  ],
+  phuquoc: [
+    ["Phu Quoc — Sunset Town, cable car and show","Sunset Town, cable car and show"],
+    ["Phu Quoc — Cable car and islands","Cable car and islands"],
+    ["Phu Quoc — Safari and Starfish Beach","Safari and Starfish Beach"],
+    ["Phu Quoc — Southern islands and snorkeling","Southern islands and snorkeling"],
+    ["Phu Quoc — Pearl of the North","Pearl of the North"],
+    ["Phu Quoc — Treasures of Southern Phu Quoc","Treasures of Southern Phu Quoc"],
+    ["Phu Quoc — Deep-sea fishing","Deep-sea fishing"],
+    ["Phu Quoc — Other, I'll write in the message","Other, I'll write in the message"]
+  ],
+  nhatrang: [
+    ["Nha Trang — Dalat Classic","Dalat Classic"],
+    ["Nha Trang — Dalat Bridge","Dalat Bridge"],
+    ["Nha Trang — Dalat 2.0 Reboot","Dalat 2.0 Reboot"],
+    ["Nha Trang — Dalat in two days","Dalat in two days"],
+    ["Nha Trang — Northern islands","Northern islands"],
+    ["Nha Trang — Yang Bay","Yang Bay"],
+    ["Nha Trang — Hon Tam Island","Hon Tam Island"],
+    ["Nha Trang — Diving","Diving"],
+    ["Nha Trang — Phan Rang and Mui Ne, two days","Phan Rang and Mui Ne, two days"],
+    ["Nha Trang — Mui Ne and Saigon, three days","Mui Ne and Saigon, three days"],
+    ["Nha Trang — Marmoris yacht","Marmoris yacht"],
+    ["Nha Trang — Da Nang in a day","Da Nang in a day"],
+    ["Nha Trang — Da Nang and Hoi An, two days","Da Nang and Hoi An, two days"],
+    ["Nha Trang — Other, I'll write in the message","Other, I'll write in the message"]
+  ],
+  hcm: [
+    ["Ho Chi Minh City — City tour","Ho Chi Minh City tour"],
+    ["Ho Chi Minh City — Mekong Delta","Mekong Delta"],
+    ["Ho Chi Minh City — Cu Chi tunnels","Cu Chi tunnels"],
+    ["Ho Chi Minh City — Saigon River cruise","Saigon River cruise"],
+    ["Ho Chi Minh City — Other, I'll write in the message","Other, I'll write in the message"]
+  ],
+  // Туров пока нет — только заявка «подберите программу».
+  hanoi: [
+    ["Hanoi — Help me choose a program","Help me choose a program, I'll write in the message"]
+  ],
+  muine: [
+    ["Mui Ne — Help me choose a program","Help me choose a program, I'll write in the message"]
+  ]
+};
+
+function setRegion(region) {
+  const sel = document.getElementById('fTour');
+  if (!sel || !REGION_TOURS[region]) return;
+  const было = sel.value;
+  sel.innerHTML = '<option value="">Choose a tour</option>'
+    + REGION_TOURS[region].map(([v,l]) => `<option value="${v}">${l}</option>`).join('');
+  // Если тот же тур есть и в новом списке — не сбрасываем выбор.
+  if ([...sel.options].some(o => o.value === было)) sel.value = было;
+  document.querySelectorAll('.regsw-b').forEach(b => b.classList.toggle('on', b.dataset.region === region));
+}
+
+document.querySelectorAll('.regsw-b').forEach(b => {
+  b.addEventListener('click', () => setRegion(b.dataset.region));
+});
+setRegion(PAGE_REGION);
+
+// Заявки уходят на Cloudflare Worker — его код держим вне публичного репозитория.
+// Токен бота лежит в переменных окружения воркера и в браузер не попадает.
+const FORM_ENDPOINT = 'https://narada-form.cocame.workers.dev';
+
+// Срочность заявки: кто уже на месте, ждать до утра не станет.
+let КОГДА = 'Planning a trip';
+document.querySelectorAll('.whensw-b').forEach(b => {
+  b.addEventListener('click', () => {
+    КОГДА = b.dataset.when;
+    document.querySelectorAll('.whensw-b').forEach(x => x.classList.toggle('on', x === b));
+  });
+});
+
+document.getElementById('bForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('.fsubmit');
+  const d = new FormData(this);
+  const dates = d.get('date') || '';
+  btn.disabled = true;
+  try {
+    const r = await fetch(FORM_ENDPOINT, {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        name: d.get('name'), contact: d.get('contact'), tour: d.get('tour'),
+        people: d.get('people'), dates, comment: 'EN-сайт · ' + КОГДА,
+        consent: d.get('consent') === 'on', website: d.get('website'),
+        ...источникЗаявки()
+      })
+    });
+    if (!r.ok) throw new Error(r.status);
+    this.style.display = 'none';
+    document.getElementById('fok').style.display = 'block';
+  } catch(err) {
+    btn.disabled = false;
+    alert('Error. Please message us on Telegram directly.');
+  }
+});
+</script>
+
+<!-- Floating button -->
+<button class="fab-tours" id="fabTours" aria-label="Back to top, to the menu" title="Back to top, to the menu">↑</button>
+<script>
+// Шапка закреплена и прозрачна поверх обложки; дальше по странице ей нужен
+// фон, иначе тёмные буквы лягут на фотографию карточек и пропадут.
+(function(){
+  const nav = document.getElementById('siteNav');
+  function onScroll(){ nav.classList.toggle('solid', window.scrollY > 40); }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  // Переход по якорю (/#faq) прокручивает страницу без события scroll,
+  // поэтому состояние пересчитываем ещё и после загрузки.
+  window.addEventListener('load', onScroll);
+  setTimeout(onScroll, 60);
+  onScroll();
+})();
+
+(function(){
+  const btn = document.getElementById('fabTours');
+  const hero = document.querySelector('.hero') || document.querySelector('nav');
+  function onScroll(){
+    const threshold = hero ? hero.offsetHeight : 400;
+    btn.classList.toggle('visible', window.scrollY > threshold);
+  }
+  window.addEventListener('scroll', onScroll, {passive: true});
+  window.addEventListener('load', onScroll);
+  setTimeout(onScroll, 60);
+  onScroll();
+  // Наверх, а не к списку туров: шапка на этой странице не залипает,
+  // она лежит внутри обложки. Пролистал обложку — и меню с переключателем
+  // «Дананг · Фукуок» больше не достать ничем, кроме прокрутки в самый верх.
+  // Стрелка вверх и должна означать «вверх».
+  btn.addEventListener('click', function(){
+    const было = window.scrollY;
+    window.scrollTo({top: 0, behavior: 'smooth'});
+    // Плавная прокрутка кое-где не срабатывает молча — проверено, в одном
+    // из браузеров scrollTo с behavior:'smooth' не делает ничего. Кнопка
+    // обязана работать всегда, поэтому доезжаем рывком, если не поехали.
+    setTimeout(function(){ if (window.scrollY === было) window.scrollTo(0, 0); }, 120);
+  });
+})();
+
+// Копирование ссылки на карточку. clipboard работает только на https,
+// поэтому оставлен запасной путь через скрытое поле — иначе на части
+// браузеров кнопка молча не срабатывала бы.
+function copyCardLink(ev, key) {
+  ev.stopPropagation();
+  const link = location.origin + location.pathname + '#' + key;
+  const done = () => showCopyToast('Link copied');
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(link).then(done, () => fallbackCopy(link, done));
+  } else {
+    fallbackCopy(link, done);
+  }
+}
+function fallbackCopy(text, done) {
+  const t = document.createElement('textarea');
+  t.value = text;
+  t.style.cssText = 'position:fixed;left:-9999px;top:0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); done(); }
+  catch(e) { showCopyToast(text); }
+  t.remove();
+}
+function showCopyToast(msg) {
+  let el = document.getElementById('copyToast');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = 'copyToast'; el.className = 'copy-toast';
+    document.body.appendChild(el);
+  }
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(el._t);
+  el._t = setTimeout(() => el.classList.remove('show'), 2200);
+}
+
+// Ссылка на конкретную экскурсию: /#hue, /#dong и так далее.
+// Браузер прыгает по якорю сам, но делает это до загрузки фотографий —
+// картинки догружаются, высота меняется, и нужная карточка уезжает.
+// Поэтому доводим прокрутку после load и подсвечиваем, куда именно попали.
+(function(){
+  function goToCard(){
+    const key = decodeURIComponent(location.hash.replace('#',''));
+    if(!key) return;
+    const card = document.getElementById(key);
+    if(!card || !card.classList.contains('bc')) return;
+    card.scrollIntoView({block:'center'});
+    card.classList.add('bc-target');
+    setTimeout(function(){
+      card.classList.add('bc-target-off');
+      setTimeout(function(){ card.classList.remove('bc-target','bc-target-off'); }, 900);
+    }, 2500);
+  }
+  window.addEventListener('load', goToCard);
+  window.addEventListener('hashchange', goToCard);
+})();
+</script>
+<script>
+// Лента «Другие направления»: раз в 5 с следующий город, всегда вперёд по кругу.
+// После последнего города стоит копия первого: доехали до неё — незаметно
+// перескакиваем в начало, поэтому лента никогда не едет назад.
+(function () {
+  var t = document.querySelector('.mc-track'); if (!t) return;
+  var dots = document.querySelector('.mc-dots');
+  var cards = [...t.querySelectorAll('.mc-card')].filter(function (c) { return c.offsetParent !== null; });
+  var n = cards.length; if (n < 2) return;
+  var clone = cards[0].cloneNode(true);
+  clone.setAttribute('aria-hidden', 'true'); clone.tabIndex = -1; clone.classList.add('mc-clone');
+  t.appendChild(clone);
+  function idx() { return Math.round(t.scrollLeft / t.clientWidth); }
+  function jump(i) { t.style.scrollBehavior = 'auto'; t.scrollLeft = i * t.clientWidth; t.style.scrollBehavior = ''; }
+  function paint() { var i = idx() % n; [...dots.children].forEach(function (d, k) { d.classList.toggle('on', k === i); }); }
+  var settle;
+  function onScroll() {
+    requestAnimationFrame(paint);
+    clearTimeout(settle);
+    settle = setTimeout(function () { if (idx() >= n) jump(0); }, 120);
+  }
+  t.addEventListener('scroll', onScroll, { passive: true });
+  cards.forEach(function (c, k) {
+    var b = document.createElement('button'); b.type = 'button';
+    b.setAttribute('aria-label', c.querySelector('b').textContent);
+    b.addEventListener('click', function () { hold(); t.scrollTo({ left: k * t.clientWidth }); }); dots.appendChild(b);
+  });
+  paint();
+  var until = 0;
+  function hold() { until = Date.now() + 8000; }
+  // Пауза только от настоящего касания или листания вбок. Просто мышь над фото
+  // не в счёт: фото во всю ширину, мышь над ним почти всегда.
+  ['pointerdown', 'touchstart', 'focusin'].forEach(function (e) { t.addEventListener(e, hold, { passive: true }); });
+  t.addEventListener('wheel', function (e) { if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) hold(); }, { passive: true });
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  setInterval(function () {
+    if (Date.now() < until || document.hidden) return;
+    var r = t.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
+    var i = idx(); if (i >= n) { jump(0); i = 0; }
+    t.scrollTo({ left: (i + 1) * t.clientWidth });
+  }, 5000);
+})();
+</script>
+</body>
+</html>

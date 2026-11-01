@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P1GH6D3HYX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-P1GH6D3HYX');
+</script>
+
+<!-- Предпросмотр нового: Хошимин и «Все направления» пока видны только
+     по временной ссылке ?preview=…  Метка запоминается в браузере,
+     ?preview=off её снимает. Это не защита, а скрытие: страницы не в
+     поиске и не в меню, но открываются, если знать адрес и метку. -->
+<script>
+(function () {
+  try {
+    var q = new URLSearchParams(location.search).get('preview');
+    if (q === 'FRKVgSZpQC0') localStorage.setItem('narada_preview', '1');
+    if (q === 'off') localStorage.removeItem('narada_preview');
+    if (localStorage.getItem('narada_preview') === '1') document.documentElement.classList.add('preview');
+  } catch (e) {}
+})();
+document.addEventListener('DOMContentLoaded', function () {
+  if (!document.documentElement.classList.contains('preview')) return;
+  document.querySelectorAll('[data-preview-href]').forEach(function (a) { a.href = a.dataset.previewHref; });
+});
+</script>
+<style>
+  html:not(.preview) .only-preview { display: none !important; }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- PWA: манифест и офлайн-режим — сайт упакован в приложение для Google Play.
+     Файлы лежат в корне: /manifest.webmanifest, /sw.js, /offline.html. -->
+<link rel="manifest" href"/manifest.webmanifest">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="apple-touch-icon" href"/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="48x48" href"/favicon-48.png">
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('/sw.js').catch(function () {});
+    });
+  }
+</script>
+<!-- Признак приложения: страницы с классом app-only видны только тем,
+     кто открыл сайт через приложение из Google Play. На обычном сайте их нет. -->
+<script>
+(function () {
+  try {
+    var q = new URLSearchParams(location.search);
+    var app = q.get('source') === 'pwa'
+      || (document.referrer || '').indexOf('android-app://') === 0
+      || matchMedia('(display-mode: standalone)').matches
+      || window.navigator.standalone === true;
+    // fullscreen и minimal-ui бывают и у обычного браузера на компьютере,
+    // поэтому их учитываем только на этой странице и не запоминаем
+    var похоже = matchMedia('(display-mode: fullscreen)').matches
+      || matchMedia('(display-mode: minimal-ui)').matches;
+    // Надёжный признак запоминаем навсегда (localStorage), а не до закрытия вкладки:
+    // иначе при сбое проверки связи с сайтом «Услуги» пропадают (01.11.2026)
+    if (app) localStorage.setItem('narada_app', '1');
+    if (app || похоже || localStorage.getItem('narada_app') === '1'
+        || sessionStorage.getItem('inApp') === '1') document.documentElement.classList.add('in-app');
+  } catch (e) {}
+})();
+</script>
+<style>
+  .app-only { display: none; }
+  html.in-app .app-only { display: revert; }
+  /* Вкладка в переключателе направлений — отдельной парой правил.
+     У шапки своё правило «.regnav a { display: block }», и оно весомее
+     простого «.app-only»: без этих двух строк вкладка торчала бы
+     и в обычном браузере, а в приложении съезжала бы в строку. */
+  .regnav a.app-only { display: none; }
+  html.in-app .regnav a.app-only { display: block; }
+</style>
+
+<title>Ancient Hoi An, Vietnam — the city of lanterns | A tour from Da Nang</title>
+<meta name="description" content="A tour from Da Nang to Hoi An, Vietnam: the city of lanterns, round basket boats, the Cam Thanh coconut jungle and the UNESCO-protected Old Town.">
+<link rel="canonical" href="https://narada-travels.com/en/hoi-an/">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/png" href="/images/favicon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Narada Travels">
+<meta property="og:url" content="https://narada-travels.com/en/hoi-an/">
+<meta property="og:title" content="Ancient Hoi An, Vietnam — the city of lanterns | A tour from Da Nang">
+<meta property="og:description" content="A tour from Da Nang to Hoi An, Vietnam: the city of lanterns, round basket boats, the Cam Thanh coconut jungle and the UNESCO-protected Old Town.">
+<meta property="og:image" content="https://narada-travels.com/images/hoi-an-hero.jpg">
+<meta property="og:image:alt" content="Hoi An and the coconut jungle — a tour from Da Nang">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ancient Hoi An, Vietnam — the city of lanterns | A tour from Da Nang">
+<meta name="twitter:description" content="A tour from Da Nang to Hoi An, Vietnam: the city of lanterns, round basket boats, the Cam Thanh coconut jungle and the UNESCO-protected Old Town.">
+<meta name="twitter:image" content="https://narada-travels.com/images/hoi-an-hero.jpg">
+<meta name="twitter:image:alt" content="Hoi An and the coconut jungle — a tour from Da Nang">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Day tours from Da Nang", "item": "https://narada-travels.com/en/" },
+        { "@type": "ListItem", "position": 2, "name": "Hoi An and the coconut jungle", "item": "https://narada-travels.com/en/hoi-an/" }
+      ]
+    },
+    {
+      "@type": "TouristTrip",
+      "@id": "https://narada-travels.com/en/hoi-an/#trip",
+      "name": "Hoi An and the coconut jungle",
+      "description": "A tour from Da Nang to Hoi An, Vietnam: the city of lanterns, round basket boats, the Cam Thanh coconut jungle and the UNESCO-protected Old Town.",
+      "url": "https://narada-travels.com/en/hoi-an/",
+      "image": "https://narada-travels.com/images/hoi-an-hero.jpg",
+      "inLanguage": "ru",
+      "touristType": "Private and small groups",
+      "provider": { "@id": "https://narada-travels.com/en/#organization" },
+      "itinerary": {
+        "@type": "ItemList",
+        "numberOfItems": 7,
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Pickup at your hotel in Da Nang" },
+          { "@type": "ListItem", "position": 2, "name": "Coconut forest and round basket boats" },
+          { "@type": "ListItem", "position": 3, "name": "Hoi An Old Town and the Japanese Bridge" },
+          { "@type": "ListItem", "position": 4, "name": "Dinner" },
+          { "@type": "ListItem", "position": 5, "name": "Lanterns on the Hoai River" },
+          { "@type": "ListItem", "position": 6, "name": "Night market on An Hoi Island" },
+          { "@type": "ListItem", "position": 7, "name": "Return to the hotel" }
+        ]
+      }
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; min-height: 100vh; background: #f5f5f5; font-family: 'Onest', sans-serif; -webkit-font-smoothing: antialiased; }
+
+:root {
+  --c: #E8533A;
+  --dark: #111;
+  --gray: #6B7280;
+  --line: #E5E7EB;
+  --r: 8px;
+  --accent: #95845E;
+  --accent-hover: #7F704F;
+  --accent-text: #FFFFFF;
+  --btn-r: 9px;
+}
+
+.w { max-width: 1440px; width: 100%; margin: 0 auto; background: #fff; box-shadow: 0 0 50px rgba(0,0,0,0.15); overflow: hidden; }
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  height: 64px; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 56px;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo img { height: 32px; }
+.logo-txt { font-size: 17px; font-weight: 700; color: var(--dark); }
+.nav-r { display: flex; align-items: center; gap: 28px; }
+.nav-links { display: flex; gap: 24px; list-style: none; }
+.nav-links a { text-decoration: none; color: var(--gray); font-size: 13px; font-weight: 500; transition: color .2s; }
+.nav-links a:hover { color: var(--dark); }
+.nav-cta {
+  background: var(--accent); color: var(--accent-text);
+  padding: 10px 22px; border-radius: var(--btn-r);
+  border: none; text-decoration: none; font-size: 13px; font-weight: 600;
+  transition: background .2s ease;
+}
+.nav-cta:hover { background: var(--accent-hover); }
+
+/* HERO */
+.hero {
+  position: relative; width: 100%; height: 62vh; min-height: 420px;
+  display: flex; align-items: flex-end; overflow: hidden; border-radius: 0;
+}
+.hero-bg {
+  position: absolute; inset: 0; border-radius: 0;
+  background-image: url('/images/hoi-an-hero.jpg');
+  background-size: cover; background-position: center;
+}
+.hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.15) 55%, transparent 100%);
+}
+.hero-content { position: relative; z-index: 1; padding: 0 56px 44px; width: 100%; }
+.hero-content h1 {
+  font-size: clamp(1.85rem, 3.4vw, 3.2rem);
+  font-weight: 800; line-height: 1.08; color: #fff;
+  letter-spacing: -0.03em; max-width: 900px;
+}
+
+/* Заголовок под hero */
+.lead-s { background: #fff; }
+.lead-in { max-width: 1180px; margin: 0 auto; padding: 54px 56px 26px; }
+
+/* Легенда — полноширинная секция */
+.legend { background: #FBF9F4; padding: 44px 0; }
+.legend-in { max-width: 1180px; margin: 0 auto; padding-left: 56px; padding-right: 56px; }
+.legend-in p {
+  color: #333333; font-size: 16px; font-weight: 400; line-height: 1.68;
+  text-align: left;
+}
+.legend-in p + p { margin-top: 18px; }
+
+/* КОНТЕНТ — единый белый фон */
+main {
+  background: #fff;
+  max-width: 1180px; margin: 0 auto;
+  padding: 60px 56px 80px;
+}
+
+.lead {
+  font-size: clamp(21px, 2.1vw, 30px);
+  font-weight: 800; letter-spacing: -0.02em;
+  line-height: 1.28; color: var(--dark);
+  max-width: 780px; margin-bottom: 26px;
+}
+.included {
+  font-size: 15.5px; line-height: 1.65; color: var(--gray);
+  margin-bottom: 18px;
+}
+.included b { color: var(--dark); font-weight: 700; }
+.notice {
+  background: var(--c); color: #fff; border-radius: 0;
+  font-size: 15px; font-weight: 700; line-height: 1.4;
+  padding: 16px 24px; text-align: center;
+  margin-top: 26px; margin-bottom: 46px;
+}
+
+/* ЕДИНАЯ ТАБЛИЦА */
+.tbl {
+  width: 100%; border-collapse: collapse; table-layout: fixed;
+  background: #fff;
+}
+.tbl th, .tbl td {
+  text-align: left; vertical-align: top;
+  padding: 22px 24px;
+  font-size: 15px; line-height: 1.6; color: var(--dark);
+  border-bottom: 1px solid var(--line);
+  font-weight: 400;
+  overflow-wrap: break-word;
+}
+.tbl thead th {
+  font-size: 17px; font-weight: 800; letter-spacing: -0.01em;
+  padding-top: 0; padding-bottom: 18px;
+  border-bottom: 2px solid #d6d6d4;
+}
+.tbl thead th:first-child {
+  font-size: 12px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--gray);
+}
+.tbl tbody th[scope="row"] {
+  font-size: 14.5px; font-weight: 500; color: var(--gray);
+}
+.tbl tbody tr:last-child th, .tbl tbody tr:last-child td { border-bottom: none; }
+.e { margin-right: 7px; }
+
+/* Плашка про билеты — строкой таблицы, перед стоимостью билетов */
+.notice-row td {
+  background: var(--c); color: #fff;
+  font-size: 13.5px; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase; line-height: 1.4;
+  padding: 14px 24px; border-bottom: none;
+}
+
+/* Подзаголовок группы внутри таблицы — без заливки */
+.grp th {
+  font-size: 12px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--gray);
+  padding-top: 34px; padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.v { font-weight: 600; color: var(--dark); }
+.dash { color: #c9c9c9; }
+
+/* Списки внутри ячеек */
+.steps { list-style: none; }
+.steps li { padding: 5px 0; line-height: 1.55; }
+.steps li:first-child { padding-top: 0; }
+.steps li:last-child { padding-bottom: 0; }
+.steps .t { font-weight: 700; color: var(--dark); margin-right: 8px; }
+.bul { list-style: none; }
+.bul li { padding: 5px 0 5px 17px; position: relative; line-height: 1.55; }
+.bul li::before { content: '—'; position: absolute; left: 0; color: #b9b9b9; }
+.bul li:first-child { padding-top: 0; }
+.bul li:last-child { padding-bottom: 0; }
+
+/* Кликабельная плашка «Как измеряют рост ребёнка?» */
+.height-wrap { margin-top: 34px; text-align: center; }
+.height-box {
+  display: inline-block;
+  font-family: inherit; cursor: pointer;
+  border: 1px solid var(--c); background: #fff;
+  padding: 15px 30px; border-radius: var(--btn-r);
+  font-size: 15px; font-weight: 600; color: var(--c);
+  text-decoration: none; transition: background .2s ease, color .2s ease;
+}
+.height-box:hover { background: var(--c); color: #fff; }
+
+/* Нижний информационный блок — только тонкие линии */
+.info { margin-top: 34px; }
+.info-row {
+  border-top: 1px solid var(--line);
+  padding: 20px 0;
+  font-size: 15px; line-height: 1.7; color: var(--gray);
+}
+.info-row b { color: var(--dark); font-weight: 700; }
+
+/* Кнопка */
+.cta { border-top: 1px solid var(--line); padding-top: 36px; text-align: center; }
+.btn-primary {
+  display: inline-block; background: var(--accent); color: var(--accent-text);
+  padding: 16px 54px; border-radius: var(--btn-r); border: none;
+  text-decoration: none; font-size: 15px; font-weight: 600;
+  transition: background .2s ease;
+}
+.btn-primary:hover { background: var(--accent-hover); }
+
+/* Модалка про рост ребёнка */
+.hmodal {
+  position: fixed; inset: 0; z-index: 300;
+  background: rgba(0, 0, 0, 0.45);
+  display: none; align-items: center; justify-content: center;
+  padding: 20px;
+}
+.hmodal.open { display: flex; }
+.hmodal-box {
+  position: relative; background: #FFFFFF;
+  border-radius: var(--btn-r);
+  width: 100%; max-width: 470px;
+  padding: 32px 34px 30px;
+}
+.hmodal-box p { color: #333333; font-size: 15.5px; line-height: 1.62; }
+.hmodal-box p + p { margin-top: 13px; }
+.hmodal-x {
+  position: absolute; top: 8px; right: 10px;
+  background: none; border: none; color: #333333;
+  font-size: 26px; line-height: 1; cursor: pointer;
+  padding: 4px 9px; font-family: inherit;
+}
+
+/* FOOTER */
+footer {
+  background: #121212; padding: 32px 56px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 16px; border-top: 1px solid rgba(255,255,255,0.06);
+}
+.flogo { font-size: 15px; font-weight: 700; color: #fff; }
+footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
+footer a { color: rgba(255,255,255,0.35); text-decoration: underline; text-underline-offset: 2px; }
+
+/* ПЛАНШЕТ */
+@media (max-width: 1000px) {
+  main { padding: 48px 32px 64px; }
+  .tbl th, .tbl td { padding: 20px 16px; font-size: 14.5px; }
+  .tbl thead th { font-size: 16px; }
+}
+
+/* МОБИЛЬНЫЙ */
+@media (max-width: 768px) {
+  .w { max-width: 100%; box-shadow: none; }
+  nav { padding: 0 16px; }
+  .nav-links { display: none; }
+  .hero { height: 50vh; min-height: 340px; }
+  .hero-content { padding: 0 20px 32px; }
+  main { padding: 34px 16px 52px; }
+  .lead { margin-bottom: 20px; }
+  .lead-in { padding: 34px 20px 20px; }
+  .legend { padding: 32px 0; }
+  .legend-in { padding-left: 20px; padding-right: 20px; }
+  .legend-in p { font-size: 15.5px; }
+  .included { font-size: 14.5px; }
+  .notice { font-size: 14px; padding: 15px 16px; margin-top: 22px; margin-bottom: 32px; }
+  .tbl col:nth-child(1) { width: 30% !important; }
+  .tbl col:nth-child(2), .tbl col:nth-child(3) { width: 35% !important; }
+  .tbl th, .tbl td { padding: 15px 9px; font-size: 14px; line-height: 1.5; hyphens: auto; }
+  .tbl thead th { font-size: 14.5px; padding-bottom: 13px; }
+  .tbl thead th:first-child { font-size: 11px; }
+  .tbl tbody th[scope="row"] { font-size: 13.5px; }
+  .grp th { padding-top: 26px; font-size: 11px; }
+  .notice-row td { font-size: 12px; padding: 12px 9px; }
+  .e { margin-right: 4px; }
+  .steps .t { display: block; margin-right: 0; }
+  .height-box { padding: 15px 28px; font-size: 14px; width: 100%; }
+  .info-row { font-size: 14.5px; padding: 17px 0; }
+  .btn-primary { padding: 15px 40px; width: 100%; }
+  .hmodal { padding: 16px; }
+  .hmodal-box { padding: 26px 20px 24px; }
+  .hmodal-box p { font-size: 15px; line-height: 1.58; }
+  footer { padding: 28px 16px; }
+}
+@media (max-width: 380px) {
+  .tbl th, .tbl td { padding: 13px 7px; font-size: 13.5px; }
+}
+
+/* Подстрочник под H1 на hero — одинаково на всех страницах экскурсий */
+.hero-sub {
+  margin-top: 12px;
+  font-size: clamp(13px, 1.05vw, 15px);
+  font-weight: 400; line-height: 1.5; letter-spacing: .01em;
+  color: rgba(255,255,255,0.82);
+}
+/* Программа: время + описание */
+/* Сноска под таблицей — второстепенная */
+.tbl-note {
+  margin-top: 12px;
+  font-size: 12.5px; font-weight: 400; line-height: 1.55;
+  color: var(--gray);
+}
+
+/* Маршрут — обычный текстовый блок, без таблицы */
+.route { margin-bottom: 8px; }
+.r-time {
+  font-size: 15.5px; font-weight: 700; color: var(--dark);
+  line-height: 1.45; margin-top: 26px;
+}
+.r-time:first-child { margin-top: 0; }
+.r-head {
+  font-size: 15.5px; font-weight: 700; color: var(--dark);
+  line-height: 1.5; letter-spacing: -0.01em; margin-top: 26px;
+}
+.r-desc {
+  font-size: 15px; font-weight: 400; color: var(--gray);
+  line-height: 1.62; margin-top: 7px; max-width: 860px;
+}
+/* Метка раздела — как подзаголовки групп на /ba-na-hills/ */
+.sec-lbl {
+  font-size: 12px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--gray);
+  margin: 44px 0 10px;
+}
+/* Ссылка, открывающая модалку */
+.mlink {
+  background: none; border: none; padding: 0; font: inherit; cursor: pointer;
+  color: var(--c); text-decoration: underline; text-underline-offset: 3px;
+}
+.mlink:hover { text-decoration: none; }
+.hmodal-box h2 {
+  font-size: 19px; font-weight: 700; color: var(--dark);
+  margin-bottom: 14px; padding-right: 26px; line-height: 1.3;
+}
+@media (max-width: 768px) {
+  .hero-sub { margin-top: 11px; }
+  .stop-d, .prog-t { font-size: 13.5px; }
+  .hmodal-box h2 { font-size: 17px; }
+}
+
+/* ── Возврат к списку экскурсий ──
+   Ссылка живёт в залипающей шапке, поэтому доступна с любого места страницы.
+   Намеренно не внутри .nav-links: тот блок на телефоне скрывается, а бургера
+   здесь нет — и человек оставался без единого пути назад к списку туров. */
+.navback {
+  display: inline-flex; align-items: center; gap: 7px;
+  margin-left: 20px; padding: 7px 14px;
+  border: 1px solid var(--line); border-radius: 999px;
+  font-size: 13px; font-weight: 600; color: var(--dark);
+  text-decoration: none; white-space: nowrap;
+  transition: border-color .2s, background .2s;
+}
+.navback:hover { border-color: var(--dark); background: #faf9f7; }
+.navback .arw { font-size: 14px; line-height: 1; }
+.nav-l { display: flex; align-items: center; min-width: 0; }
+
+/* Вторая дверь — внизу страницы, рядом с «Забронировать»:
+   дочитал до конца, не захотел бронировать — сразу видит, куда идти дальше. */
+.cta-back {
+  display: inline-block; margin-left: 14px;
+  padding: 16px 32px; border-radius: var(--btn-r);
+  border: 1px solid var(--line); background: transparent;
+  color: var(--dark); text-decoration: none; font-size: 15px; font-weight: 600;
+  transition: border-color .2s;
+}
+.cta-back:hover { border-color: var(--dark); }
+
+@media (max-width: 768px) {
+  /* Подпись у логотипа уступает место ссылке назад — она важнее. */
+  .logo-txt { display: none; }
+  .navback { margin-left: 12px; padding: 7px 12px; font-size: 12.5px; }
+  .cta-back { display: block; margin: 12px auto 0; text-align: center; }
+}
+@media (max-width: 380px) {
+  /* На самом узком экране жертвуем «Написать нам», а не подписью у стрелки:
+     голая стрелка — это снова «угадай, куда нажать». Кнопка заявки
+     всё равно есть внизу страницы. */
+  .nav-cta { display: none; }
+  .navback { padding: 7px 12px; }
+}
+
+/* Направления в подвале — третья точка входа, как список городов
+   в подвале у агрегаторов: на любой странице, в предсказуемом месте. */
+.fdirs { display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; margin: 14px 0 10px; }
+.fdirs a { color: #fff; font-size: 13.5px; font-weight: 600; text-decoration: none;
+           border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 2px; }
+.fdirs a:hover { border-color: #fff; }
+</style>
+<!-- langsw -->
+<link rel="alternate" hreflang="ru" href="https://narada-travels.com/hoi-an/">
+<link rel="alternate" hreflang="en" href="https://narada-travels.com/en/hoi-an/">
+<style>
+  html:not(.preview) .langsw.only-preview{display:none!important}
+  .langsw{display:inline-flex;gap:2px;font:600 12px/1 system-ui,-apple-system,sans-serif;letter-spacing:.04em;align-items:center}
+  .langsw a{padding:5px 7px;border-radius:6px;color:inherit;text-decoration:none;opacity:.6}
+  .langsw a[aria-current]{opacity:1;background:rgba(127,127,127,.18)}
+  .langsw.float{position:fixed;top:10px;right:10px;z-index:999;background:rgba(255,255,255,.85);border-radius:8px;color:#222}
+  nav:not(.solid) .nav-r .langsw a{color:#fff}
+  .nav-r .langsw{margin-right:4px}
+  /* телефон: только ссылка на другой язык, чтобы не выдавить меню */
+  @media (max-width:768px){.nav-r .langsw a[aria-current]{display:none} .nav-r .langsw a{opacity:.9;padding:5px 8px}}
+</style>
+<script>try{if(localStorage.getItem('narada_preview')==='1')document.documentElement.classList.add('preview')}catch(e){}</script>
+<!-- /langsw -->
+</head>
+<body><script>
+// ── Метки источника ──────────────────────────────────────────
+// Человек приходит по рекламе на одну страницу, ходит по сайту и отправляет
+// заявку уже с другой — в адресе меток к тому моменту нет. Поэтому запоминаем
+// их при первом заходе и достаём при отправке. Храним 90 дней: позже метка
+// уже ни о чём не говорит. Ничего личного здесь не лежит — только откуда пришёл.
+(function(){
+  try {
+    var П = new URLSearchParams(location.search);
+    var ПОЛЯ = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','yclid'];
+    var КЛЮЧ = 'narada_src';
+    var есть = ПОЛЯ.some(function(k){ return П.get(k); });
+    if (есть) {
+      // Новая метка перебивает старую: интересна последняя реклама, которая сработала.
+      var д = { t: Date.now(), ref: document.referrer || '', land: location.pathname };
+      ПОЛЯ.forEach(function(k){ var v = П.get(k); if (v) д[k] = v.slice(0, 120); });
+      localStorage.setItem(КЛЮЧ, JSON.stringify(д));
+    } else if (!localStorage.getItem(КЛЮЧ) && document.referrer &&
+               document.referrer.indexOf(location.host) === -1) {
+      // Меток нет, но пришёл с чужого сайта — сохраняем хотя бы его.
+      localStorage.setItem(КЛЮЧ, JSON.stringify({
+        t: Date.now(), ref: document.referrer, land: location.pathname }));
+    }
+  } catch (e) {}
+})();
+function источникЗаявки(){
+  var д = {};
+  try { д = JSON.parse(localStorage.getItem('narada_src') || '{}') || {}; } catch (e) {}
+  if (д.t && Date.now() - д.t > 90 * 24 * 3600 * 1000) д = {};
+  var части = [];
+  ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','yclid']
+    .forEach(function(k){ if (д[k]) части.push(k.replace('utm_','') + ': ' + д[k]); });
+  return {
+    utm:  части.join(' · '),
+    land: д.land || '',
+    ref:  д.ref || document.referrer || '',
+    page: location.pathname
+  };
+}
+</script>
+
+
+<div class="w">
+
+<nav>
+  <div class="nav-l">
+  <a class="logo" href"/en/" data-preview-href"/en/vietnam/">
+    <img src="/images/logo.png" alt="Narada Travels">
+    <span class="logo-txt">Narada</span>
+  </a>
+  <a class="navback" href"/en/#tours" data-preview-href"/en/vietnam/"><span class="arw">←</span><span>All tours</span></a>
+  </div>
+
+  <div class="nav-r"><!-- langsw --><span class="langsw only-preview" aria-label="Language"><a href="/hoi-an/" hreflang="ru">RU</a><a href="/en/hoi-an/" hreflang="en" aria-current="true">EN</a></span><!-- /langsw -->    <ul class="nav-links">
+      <li><a href"/en/#tours">Tours</a></li>
+      <li><a href"/en/#faq">FAQ</a></li>
+      <li><a href"/en/#emotions">Reviews</a></li>
+    </ul>
+    <a href"/en/#form" class="nav-cta">Contact us</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h1>Ancient Hoi An — the city of lanterns</h1>
+    <p class="hero-sub">Tour from Da Nang</p>
+  </div>
+</section>
+
+<section class="lead-s">
+  <div class="lead-in">
+    <h2 class="lead">Basket boats, Old Town museums — 400 years of history under UNESCO protection</h2>
+  </div>
+</section>
+
+<section class="legend">
+  <div class="legend-in">
+    <p>Ancient Hoi An and the Cam Thanh coconut jungle keep the memory of the area's trading past. Today people come for the round bamboo boats, walks among nipa palms and hundreds of colorful lanterns. By day basket boats spin along the canals. And in the evening Hoi An Ancient Town lights up with thousands of lights…</p>
+    <p>They say a Moon Dragon lives in the Thu Bon River. On full-moon nights it rises closer to the surface, and the water around it begins to glow gold. Fireflies flock to the light, and silk lanterns light up one after another along the bank. The Dragon swims toward old Hoi An, and for a few moments the river turns into a road of light.</p>
+    <p>Whoever catches the moon's reflection in it will take home a piece of the ancient town's magic.</p>
+  </div>
+</section>
+
+<main>
+
+  <p class="included"><b>The tour price includes:</b> hotel transfer both ways · English- or Russian-speaking guide · coconut boats · tickets · water</p>
+
+  <p class="included"><b>Not included:</b> dinner — paid from the menu, everyone for their own order; museum ticket; lanterns</p>
+
+  <div class="route">
+    <p class="r-time">14:00 — We meet at your hotel</p>
+
+    <p class="r-head">Coconut forest · round basket boats · show on the water</p>
+
+    <p class="r-head">Hoi An</p>
+    <p class="r-desc">Old Town · 16th-century Japanese Bridge · temples</p>
+
+    <p class="r-time">18:30 — Dinner</p>
+
+    <p class="r-head">Lanterns on the Hoai River · night market on An Hoi Island</p>
+
+    <p class="r-time">22:00 — Back to the hotel</p>
+  </div>
+
+  <h2 class="sec-lbl">Price</h2>
+  <table class="tbl">
+    <colgroup><col style="width:62%"><col style="width:38%"></colgroup>
+    <tbody>
+      <tr><th scope="row">Adult and child from 10 years</th><td><span class="v">65 $</span></td></tr>
+      <tr><th scope="row">Child under 10</th><td><span class="v">33 $</span></td></tr>
+      <tr><th scope="row">Child under 3</th><td><span class="v">Free</span></td></tr>
+      <tr><th scope="row">Private tour, group of 1–4 people</th><td><span class="v">260 $</span></td></tr>
+      <tr><th scope="row">Each additional person</th><td><span class="v">+ 65 $</span></td></tr>
+    </tbody>
+  </table>
+  <p class="tbl-note">*Child rates do not apply to private tours: the price depends on the number of participants. Children under 3 are free.</p>
+
+  <div class="info">
+    <p class="info-row"><b>What to bring:</b> comfortable shoes · sunscreen · a hat · umbrella or raincoat · a good mood 🙂</p>
+    <p class="info-row"><b>⚠️ Important:</b> the order of stops may change depending on the weather, traffic and opening hours. Dinner is paid from the menu — everyone pays for their own order.</p>
+  </div>
+
+  <div class="cta">
+    <a href="https://t.me/taysafinskaya?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20Narada%20Travels.%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%B1%D1%80%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D1%8D%D0%BA%D1%81%D0%BA%D1%83%D1%80%D1%81%D0%B8%D1%8E%20%D0%B2%20%D0%A5%D0%BE%D0%B9%D0%B0%D0%BD%20%D0%B8%20%D0%BA%D0%BE%D0%BA%D0%BE%D1%81%D0%BE%D0%B2%D1%8B%D0%B5%20%D0%B4%D0%B6%D1%83%D0%BD%D0%B3%D0%BB%D0%B8." target="_blank" rel="noopener noreferrer" class="btn-primary">Book</a>
+    <a href"/en/#tours" class="cta-back">← All Da Nang tours</a>
+  </div>
+
+</main>
+
+<footer>
+  <div class="flogo">Narada Travels</div>
+  <p>Day tours from Da Nang with an English- or Russian-speaking guide · Vietnam</p>
+  <p class="fdirs"><a href"/en/">Day tours from Da Nang</a><a href"/en/phu-quoc/">Phu Quoc tours</a><a href"/en/nha-trang/">Nha Trang tours</a></p>
+  <p>© 2026 Narada · <a href"/privacy/#en">Privacy policy</a></p>
+</footer>
+
+</div><!-- /w -->
+
+</body>
+</html>
