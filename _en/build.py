@@ -200,6 +200,9 @@ def build():
             en = en.replace('<span class="on">Ho Chi Minh</span>', '<span class="on c2">Ho Chi Minh</span>', 1)
             en = re.sub(r'(<div class="citybar2"><div class="citybar-in">\s*<a href="/en/hanoi/">Hanoi</a>)',
                         r'\1<a href="/en/ho-chi-minh/">Ho Chi Minh</a>', en, count=1)
+        # Chrome сам переводит английскую страницу на русский, и длинный перевод
+        # («Часто задаваемые вопросы») выдавливает города из шапки — шапку не переводить
+        en = re.sub(r'<nav\b(?![^>]*translate=)', '<nav translate="no"', en, count=1)
         en = add_lang_bits(en, d, 'en')
         out = os.path.join(ROOT, 'en', d, 'index.html')
         os.makedirs(os.path.dirname(out), exist_ok=True)
