@@ -1043,17 +1043,21 @@ nav.solid .citybar .soon, nav.solid .citybar2 .soon { color: var(--gray); }
   .langsw.float{position:fixed;top:12px;right:12px;z-index:999;background:#fff}
   /* логотип-капля чуть крупнее старого квадратика */
   .logo img.logo-mark{height:34px;width:auto}
-  /* Телефон: где есть меню «три полоски» — язык пунктом внутри меню, в шапке его нет.
-     Где меню нет (страницы экскурсий) — в шапке только другой язык, тонкой рамкой.
-     Квадратик внизу экрана (01.11) смотрелся заплаткой — убран. */
-  .nav-links .langli{display:none!important}
+  /* Телефон, где есть второй ряд городов: кнопка языка — в этом ряду, на одной линии
+     с городами и той же высоты, правым краем ровно по иконке «три полоски».
+     Где второго ряда нет (страницы экскурсий) — в шапке, только другой язык.
+     Квадратик внизу экрана и пункт в скрытом меню (01.11) — убраны. */
+  .langsw.m2{display:none}
   @media (max-width:768px){
-    /* под иконкой меню «три полоски», во втором ряду справа */
-    .nav-r .langsw.hasmenu{position:absolute;right:12px;top:75px;margin:0}
-    .nav-r .langsw{border:1px solid rgba(17,17,17,.18);padding:0;margin-right:10px}
-    #siteNav:not(.solid) .nav-r .langsw{border-color:rgba(255,255,255,.4)}
-    .nav-r .langsw a[aria-current]{display:none}
-    .nav-r .langsw a{padding:6px 8px;font-size:12px}
+    .nav-r .langsw.has2{display:none!important}
+    .citybar2{position:relative}
+    .citybar2 > .langsw.m2{display:flex;position:absolute;right:12px;top:2px;bottom:10px;align-items:center;
+      border:0;padding:0;margin:0;background:none}
+    .langsw a[aria-current]{display:none}
+    .nav-r .langsw{border:0;padding:0;margin-right:10px}
+    .langsw a{display:block;padding:6px 8px;font-size:12.5px;line-height:1;border-radius:6px;
+      border:1px solid rgba(17,17,17,.2)}
+    #siteNav:not(.solid) .langsw a{border-color:rgba(255,255,255,.45)}
   }
   @media (max-width:420px){.citybar2 .all-long{display:none}}
 </style>
@@ -1120,12 +1124,12 @@ function источникЗаявки(){
         <a class="c2" href="/en/mui-ne/">Mui Ne</a>
         <a class="all only-preview c2" href="/en/vietnam/">All<span class="all-long"> destinations</span><span class="arw">→</span></a>
       </div></div>
-    <div class="nav-r"><!-- langsw --><span class="langsw hasmenu only-preview" aria-label="Language"><a href="/" hreflang="ru" lang="ru">RU</a><a href="/en/" hreflang="en" lang="en" aria-current="true">EN</a></span><!-- /langsw -->      <ul class="nav-links">
+    <div class="nav-r"><!-- langsw --><span class="langsw has2 only-preview" aria-label="Language"><a href="/" hreflang="ru" lang="ru">RU</a><a href="/en/" hreflang="en" lang="en" aria-current="true">EN</a></span><!-- /langsw -->      <ul class="nav-links">
         <li><a href="#tours">Tours</a></li>
         <li class="app-only"><a href="/en/uslugi/">Services</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#emotions">Reviews</a></li>
-      <!-- langsw --><li class="langli only-preview"><a href="/" hreflang="ru" lang="ru">Русский</a></li><!-- /langsw --></ul>
+      </ul>
       <a href="#form" class="nav-cta">Contact us</a>      <div class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
     </div>
   </div>
@@ -1136,7 +1140,7 @@ function источникЗаявки(){
       <a href="/en/ho-chi-minh/">Ho Chi Minh</a>
       <a href="/en/mui-ne/">Mui Ne</a>
       <a class="all only-preview" href="/en/vietnam/">All<span class="all-long"> destinations</span><span class="arw">→</span></a>
-  </div></div>
+  </div><!-- langsw --><span class="langsw m2 only-preview" aria-label="Language"><a href="/" hreflang="ru" lang="ru">RU</a><a href="/en/" hreflang="en" lang="en" aria-current="true">EN</a></span><!-- /langsw --></div>
 </nav>
 
   <div class="hero-content">

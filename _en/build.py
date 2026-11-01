@@ -126,17 +126,21 @@ HEAD_BITS = """<!-- langsw -->
   .langsw.float{{position:fixed;top:12px;right:12px;z-index:999;background:#fff}}
   /* логотип-капля чуть крупнее старого квадратика */
   .logo img.logo-mark{{height:34px;width:auto}}
-  /* Телефон: где есть меню «три полоски» — язык пунктом внутри меню, в шапке его нет.
-     Где меню нет (страницы экскурсий) — в шапке только другой язык, тонкой рамкой.
-     Квадратик внизу экрана (01.11) смотрелся заплаткой — убран. */
-  .nav-links .langli{{display:none!important}}
+  /* Телефон, где есть второй ряд городов: кнопка языка — в этом ряду, на одной линии
+     с городами и той же высоты, правым краем ровно по иконке «три полоски».
+     Где второго ряда нет (страницы экскурсий) — в шапке, только другой язык.
+     Квадратик внизу экрана и пункт в скрытом меню (01.11) — убраны. */
+  .langsw.m2{{display:none}}
   @media (max-width:768px){{
-    /* под иконкой меню «три полоски», во втором ряду справа */
-    .nav-r .langsw.hasmenu{{position:absolute;right:12px;top:75px;margin:0}}
-    .nav-r .langsw{{border:1px solid rgba(17,17,17,.18);padding:0;margin-right:10px}}
-    #siteNav:not(.solid) .nav-r .langsw{{border-color:rgba(255,255,255,.4)}}
-    .nav-r .langsw a[aria-current]{{display:none}}
-    .nav-r .langsw a{{padding:6px 8px;font-size:12px}}
+    .nav-r .langsw.has2{{display:none!important}}
+    .citybar2{{position:relative}}
+    .citybar2 > .langsw.m2{{display:flex;position:absolute;right:12px;top:2px;bottom:10px;align-items:center;
+      border:0;padding:0;margin:0;background:none}}
+    .langsw a[aria-current]{{display:none}}
+    .nav-r .langsw{{border:0;padding:0;margin-right:10px}}
+    .langsw a{{display:block;padding:6px 8px;font-size:12.5px;line-height:1;border-radius:6px;
+      border:1px solid rgba(17,17,17,.2)}}
+    #siteNav:not(.solid) .langsw a{{border-color:rgba(255,255,255,.45)}}
   }}
   @media (max-width:420px){{.citybar2 .all-long{{display:none}}}}
 </style>
@@ -162,13 +166,12 @@ def add_lang_bits(s, d, cur):
     # сразу после строки городов — в начало правого блока шапки
     if '<div class="nav-r">' in s:
         sw = switcher(ru, en, cur)
-        if 'toggleMenu' in s and '<ul class="nav-links">' in s:
-            sw = sw.replace('class="langsw', 'class="langsw hasmenu', 1)
-            other, lang, label = (en, 'en', 'English') if cur == 'ru' else (ru, 'ru', 'Русский')
-            li = (f'<!-- langsw --><li class="langli only-preview"><a href="{other}" hreflang="{lang}" '
-                  f'lang="{lang}">{label}</a></li><!-- /langsw -->')
-            i = s.index('<ul class="nav-links">'); j = s.index('</ul>', i)
-            s = s[:j] + li + s[j:]
+        m2 = re.search(r'<div class="citybar2[^"]*">', s)
+        if m2:
+            # телефон: копия кнопки во втором ряду городов, под «тремя полосками»
+            sw = sw.replace('class="langsw', 'class="langsw has2', 1)
+            j = s.index('</div></div>', m2.end()) + len('</div>')
+            s = s[:j] + switcher(ru, en, cur).replace('class="langsw', 'class="langsw m2', 1) + s[j:]
         s = s.replace('<div class="nav-r">', '<div class="nav-r">' + sw, 1)
     else:
         s = re.sub(r'(<body\b[^>]*>)', lambda m: m.group(1) + switcher(ru, en, cur, True), s, count=1)
