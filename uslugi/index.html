@@ -155,23 +155,20 @@ footer a { color: var(--gray); }
   .langsw.float{position:fixed;top:12px;right:12px;z-index:999;background:#fff}
   /* логотип-капля чуть крупнее старого квадратика */
   .logo img.logo-mark{height:34px;width:auto}
-  /* Телефон (идея Ленара, 01.11): язык — квадратик внизу над стрелкой «наверх»,
-     виден всегда, при прокрутке тоже; в шапке переключателя нет */
-  .langfab{display:none}
-  html:not(.preview) .langfab.only-preview{display:none!important}
+  /* Телефон: в шапке перед меню — только другой язык (EN или RU), тонкой рамкой.
+     Квадратик внизу экрана (01.11) смотрелся заплаткой — убран. */
   @media (max-width:768px){
-    .langsw{display:none!important}
-    .langfab{display:flex;position:fixed;right:16px;bottom:76px;z-index:999;width:46px;height:46px;
-      align-items:center;justify-content:center;border-radius:var(--r,10px);background:#fff;color:#111;
-      font:700 14px/1 system-ui,-apple-system,sans-serif;letter-spacing:.04em;text-decoration:none;
-      box-shadow:0 4px 18px rgba(0,0,0,.18)}
+    .nav-r .langsw{border:1px solid rgba(17,17,17,.18);padding:0;margin-right:10px}
+    #siteNav:not(.solid) .nav-r .langsw{border-color:rgba(255,255,255,.4)}
+    .nav-r .langsw a[aria-current]{display:none}
+    .nav-r .langsw a{padding:6px 8px;font-size:12px}
   }
   @media (max-width:420px){.citybar2 .all-long{display:none}}
 </style>
 <script>try{if(localStorage.getItem('narada_preview')==='1')document.documentElement.classList.add('preview')}catch(e){}</script>
 <!-- /langsw -->
 </head>
-<body><!-- langsw --><a class="langfab only-preview" href="/en/uslugi/" hreflang="en" lang="en" aria-label="English version">EN</a><!-- /langsw --><!-- langsw --><span class="langsw only-preview float" aria-label="Language"><a href="/uslugi/" hreflang="ru" lang="ru" aria-current="true">RU</a><a href="/en/uslugi/" hreflang="en" lang="en">EN</a></span><!-- /langsw --><div class="wrap">
+<body><!-- langsw --><span class="langsw only-preview float" aria-label="Language"><a href="/uslugi/" hreflang="ru" lang="ru" aria-current="true">RU</a><a href="/en/uslugi/" hreflang="en" lang="en">EN</a></span><!-- /langsw --><div class="wrap">
 <header>
   <a class="home" href="/">Narada Travels</a>
   <a class="back" href="/">← На главную</a>

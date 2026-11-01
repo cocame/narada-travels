@@ -126,16 +126,13 @@ HEAD_BITS = """<!-- langsw -->
   .langsw.float{{position:fixed;top:12px;right:12px;z-index:999;background:#fff}}
   /* логотип-капля чуть крупнее старого квадратика */
   .logo img.logo-mark{{height:34px;width:auto}}
-  /* Телефон (идея Ленара, 01.11): язык — квадратик внизу над стрелкой «наверх»,
-     виден всегда, при прокрутке тоже; в шапке переключателя нет */
-  .langfab{{display:none}}
-  html:not(.preview) .langfab.only-preview{{display:none!important}}
+  /* Телефон: в шапке перед меню — только другой язык (EN или RU), тонкой рамкой.
+     Квадратик внизу экрана (01.11) смотрелся заплаткой — убран. */
   @media (max-width:768px){{
-    .langsw{{display:none!important}}
-    .langfab{{display:flex;position:fixed;right:16px;bottom:76px;z-index:999;width:46px;height:46px;
-      align-items:center;justify-content:center;border-radius:var(--r,10px);background:#fff;color:#111;
-      font:700 14px/1 system-ui,-apple-system,sans-serif;letter-spacing:.04em;text-decoration:none;
-      box-shadow:0 4px 18px rgba(0,0,0,.18)}}
+    .nav-r .langsw{{border:1px solid rgba(17,17,17,.18);padding:0;margin-right:10px}}
+    #siteNav:not(.solid) .nav-r .langsw{{border-color:rgba(255,255,255,.4)}}
+    .nav-r .langsw a[aria-current]{{display:none}}
+    .nav-r .langsw a{{padding:6px 8px;font-size:12px}}
   }}
   @media (max-width:420px){{.citybar2 .all-long{{display:none}}}}
 </style>
@@ -163,12 +160,6 @@ def add_lang_bits(s, d, cur):
         s = s.replace('<div class="nav-r">', '<div class="nav-r">' + switcher(ru, en, cur), 1)
     else:
         s = re.sub(r'(<body\b[^>]*>)', lambda m: m.group(1) + switcher(ru, en, cur, True), s, count=1)
-    # телефон: квадратик с другим языком, сразу после <body>
-    other, lang = (en, 'en') if cur == 'ru' else (ru, 'ru')
-    label = 'English version' if lang == 'en' else 'Русская версия'
-    fab = (f'<!-- langsw --><a class="langfab only-preview" href="{other}" hreflang="{lang}" lang="{lang}" '
-           f'aria-label="{label}">{lang.upper()}</a><!-- /langsw -->')
-    s = re.sub(r'(<body\b[^>]*>)', lambda m: m.group(1) + fab, s, count=1)
     return s
 
 
@@ -202,16 +193,6 @@ def build():
                     lambda m: m.group(1) + (en_path(m.group(2)) or m.group(2)), en)
         # пока английская версия не открыта — не индексировать
         en = re.sub(r'<meta name="robots" content="[^"]*">', '<meta name="robots" content="noindex, follow">', en)
-        # длинные английские названия: Ho Chi Minh на телефоне уходит во второй ряд
-        m2 = re.search(r'<div class="citybar2[^"]*"><div class="citybar-in">', en)
-        if m2:
-            head, tail = en[:m2.end()], en[m2.end():]
-            head = head.replace('<a href="/en/ho-chi-minh/">Ho Chi Minh</a>', '<a class="c2" href="/en/ho-chi-minh/">Ho Chi Minh</a>', 1)
-            head = head.replace('<span class="on">Ho Chi Minh</span>', '<span class="on c2">Ho Chi Minh</span>', 1)
-            hcm = '<span class="on">Ho Chi Minh</span>' if d == 'ho-chi-minh' else '<a href="/en/ho-chi-minh/">Ho Chi Minh</a>'
-            tail = re.sub(r'(<a href="/en/hanoi/">Hanoi</a>|<span class="on">Hanoi</span>)',
-                          lambda m: m.group(1) + hcm, tail, count=1)
-            en = head + tail
         # Chrome сам переводит английскую страницу на русский, и длинный перевод
         # («Часто задаваемые вопросы») выдавливает города из шапки — шапку не переводить
         en = re.sub(r'<nav\b(?![^>]*translate=)', '<nav translate="no"', en, count=1)
