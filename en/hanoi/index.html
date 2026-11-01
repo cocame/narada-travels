@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 <style>
   html:not(.preview) .only-preview { display: none !important; }
+  html.preview .only-public { display: none !important; }
 /* Заголовок над сеткой туров не показываем — по карточкам и так понятно.
    В разметке он остаётся для поисковиков и экранного диктора. */
 .tours > h2 { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; margin:0; }
@@ -948,6 +949,16 @@ nav.solid .regnav-soon { color: var(--gray); }
 .nt-dananghoian { grid-column: 6 / span 7; grid-row: 9 / span 2; }
 .nt-hontam    { grid-column: 1 / span 12; grid-row: 11 / span 2; }
 
+/* Ханой: 12 туров fasttur — сверху однодневные, ниже с ночёвкой.
+   Каждый ряд в сумме 12 колонок, поэтому раскладка держится сама. */
+.hn-w7 { grid-column: span 7; grid-row: span 2; }
+.hn-w5 { grid-column: span 5; grid-row: span 2; }
+.hn-w4 { grid-column: span 4; grid-row: span 2; }
+.hn-w6 { grid-column: span 6; grid-row: span 2; }
+@media (max-width: 900px) {
+  .hn-w7, .hn-w5, .hn-w4, .hn-w6 { grid-column: span 6; grid-row: auto / span 2; }
+}
+
 /* Хошимин: четыре тура — обзорная и Меконг сверху, Кути и круиз ниже. */
 .hc-obzor  { grid-column: 1 / span 7;  grid-row: 1 / span 2; }
 .hc-mekong { grid-column: 8 / span 5;  grid-row: 1 / span 2; }
@@ -1212,7 +1223,7 @@ function источникЗаявки(){
         <a class="all only-preview c2" href="/en/vietnam/">All<span class="all-long"> destinations</span><span class="arw">→</span></a>
       </div></div>
     <div class="nav-r"><!-- langsw --><span class="langsw has2 only-preview" aria-label="Language"><a href="/hanoi/" hreflang="ru" lang="ru">RU</a><a href="/en/hanoi/" hreflang="en" lang="en" aria-current="true">EN</a></span><!-- /langsw -->      <ul class="nav-links">
-        <li><a href="#tours">Tours</a></li>
+        <li class="only-preview"><a href="#tours">Tours</a></li><li class="only-public"><a href="#tours-soon">Tours</a></li>
         <li class="app-only"><a href="/en/uslugi/">Services</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#emotions">Reviews</a></li>
@@ -1240,13 +1251,131 @@ function источникЗаявки(){
 
 
 <!-- ── ПРОГРАММЫ И ЦЕНЫ ── -->
-<section class="tours" id="tours">
+<section class="tours only-public" id="tours-soon">
   <h2>Tours</h2>
-  <!-- Туров пока нет. Когда появятся — сюда сетка карточек, как на других страницах. -->
   <div class="soon-plate">
     <span class="soon-tag">Soon</span>
     <p>We're preparing tours in Hanoi. Message us — we can plan a program for you right now.</p>
     <a href="#form" class="soon-btn">Contact us</a>
+  </div>
+</section>
+
+<section class="tours only-preview" id="tours">
+  <h2>Programs and prices</h2>
+
+  <!-- Туры партнёра fasttur.ru, программы и фото с их сайта (снято 01.11.2026),
+       разобраны в ~/Downloads/hanoi/ЧТО ПРОДАЁМ.md. Цена на карточке — с человека
+       (минимум двое), у туров с ночёвкой — при отеле 4★. -->
+
+  <div class="nt-grid">
+    <div class="bc hn-w7" id="obzor" onclick="openD('obzor')">
+      <img src="/hanoi/images/obzor.jpg" alt="Tran Quoc Pagoda on West Lake in the evening" style="object-position:center 50%">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Hanoi city tour</h3><div class="bc-price">140<span>$</span></div></div>
+        <div class="bc-sub">Old Quarter, Citadel, Mausoleum and Train Street</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'obzor')">🔗</div>
+    </div>
+    <div class="bc hn-w5" id="ninhbinh" onclick="openD('ninhbinh')">
+      <img src="/hanoi/images/ninhbinh.jpg" alt="Temple by the water among the Trang An cliffs" style="object-position:center 50%" loading="lazy">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Ninh Binh in a day</h3><div class="bc-price">190<span>$</span></div></div>
+        <div class="bc-sub">Bai Dinh Pagoda, Trang An boat ride, ancient capital Hoa Lu</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'ninhbinh')">🔗</div>
+    </div>
+    <div class="bc hn-w5" id="tamkok" onclick="openD('tamkok')">
+      <img src="/hanoi/images/tamkok.jpg" alt="Dragon statue on top of Hang Mua" style="object-position:center 40%" loading="lazy">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Tam Coc and Hang Mua</h3><div class="bc-price">190<span>$</span></div></div>
+        <div class="bc-sub">Boats through the «three caves», Dancing Cave, 500 steps to the dragon</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'tamkok')">🔗</div>
+    </div>
+    <div class="bc hn-w7" id="lanha" onclick="openD('lanha')">
+      <img src="/hanoi/images/lanha.jpg" alt="Catamaran yacht in Lan Ha Bay" style="object-position:center 50%" loading="lazy">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Lan Ha Bay by catamaran</h3><div class="bc-price">130<span>$</span></div></div>
+        <div class="bc-sub">Kayaks, Three Peaches beach, sunset tea ceremony</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'lanha')">🔗</div>
+    </div>
+    <div class="bc hn-w4" id="tamchuc" onclick="openD('tamchuc')">
+      <img src="/hanoi/images/tamchuc.jpg" alt="Tam Chuc Pagoda on the lakeshore" style="object-position:center 50%" loading="lazy">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Tam Chuc Pagoda</h3><div class="bc-price">190<span>$</span></div></div>
+        <div class="bc-sub">The world's largest pagoda, garden of stone sutras</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'tamchuc')">🔗</div>
+    </div>
+    <div class="bc hn-w4" id="secret" onclick="openD('secret')">
+      <img src="/hanoi/images/secret.jpg" alt="Thay Pagoda on the water" style="object-position:center 50%" loading="lazy">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Secret Hanoi</h3><div class="bc-price">280<span>$</span></div></div>
+        <div class="bc-sub">Gate to the underworld and Ho Chi Minh's cave</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'secret')">🔗</div>
+    </div>
+    <div class="bc hn-w4" id="food" onclick="openD('food')">
+      <img src="/hanoi/images/food.jpg" alt="Vietnamese dishes" style="object-position:center 50%" loading="lazy">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Hanoi food tour</h3><div class="bc-price">190<span>$</span></div></div>
+        <div class="bc-sub">Pho, nem, banh mi — several Old Quarter restaurants</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'food')">🔗</div>
+    </div>
+    <div class="bc hn-w6" id="seaplane" onclick="openD('seaplane')">
+      <img src="/hanoi/images/seaplane.jpg" alt="Ha Long Bay from a seaplane window" style="object-position:center 50%" loading="lazy">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Ha Long by seaplane</h3><div class="bc-price">280<span>$</span></div></div>
+        <div class="bc-sub">25-minute flight over the bay's islands</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'seaplane')">🔗</div>
+    </div>
+    <div class="bc hn-w6" id="halong2" onclick="openD('halong2')">
+      <img src="/hanoi/images/halong2.jpg" alt="Ha Long Bay" style="object-position:center 50%" loading="lazy">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Hanoi and Ha Long, 2 days</h3><div class="bc-price">330<span>$</span></div></div>
+        <div class="bc-sub">Hanoi city tour and a 5★ yacht cruise on Ha Long</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'halong2')">🔗</div>
+    </div>
+    <div class="bc hn-w4" id="sapa" onclick="openD('sapa')">
+      <img src="/hanoi/images/sapa.jpg" alt="Fansipan summit above the clouds" style="object-position:center 50%" loading="lazy">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Sapa, 2 days</h3><div class="bc-price">480<span>$</span></div></div>
+        <div class="bc-sub">Hmong village, rice terraces, Heaven's Gate, waterfall</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'sapa')">🔗</div>
+    </div>
+    <div class="bc hn-w4" id="tri" onclick="openD('tri')">
+      <img src="/hanoi/images/tri.jpg" alt="Bai Dinh Pagoda from above" style="object-position:center 50%" loading="lazy">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Hanoi, Ninh Binh and Ha Long, 3 days</h3><div class="bc-price">750<span>$</span></div></div>
+        <div class="bc-sub">The best of the north in three days, with hotel</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'tri')">🔗</div>
+    </div>
+    <div class="bc hn-w4" id="hagiang" onclick="openD('hagiang')">
+      <img src="/hanoi/images/hagiang.jpg" alt="Nho Que river canyon from Ma Pi Leng Pass" style="object-position:center 50%" loading="lazy">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Ha Giang Loop, 4 days</h3><div class="bc-price">950<span>$</span></div></div>
+        <div class="bc-sub">Ma Pi Leng Pass, Ban Gioc waterfall, Ba Be Lake</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'hagiang')">🔗</div>
+    </div>
   </div>
 </section>
 
@@ -1283,6 +1412,12 @@ function источникЗаявки(){
 <section class="faq" id="faq">
   <h2>FAQ</h2>
   <div class="faq-wrap">
+    <div class="fi only-preview"><button class="fq">Is the price per person or per group? <span class="fi-icon">+</span></button><div class="fa">Per person, for groups of two or more. Tours are private: the car and guide are just for you, groups up to 8. For the Lan Ha cruise the transfer from Hanoi is extra — $180 per car.</div></div>
+    <div class="fi only-preview"><button class="fq">What is included in the price? <span class="fi-icon">+</span></button><div class="fa">An air-conditioned car or minivan, a guide and entrance tickets on the route; on overnight tours — the hotel. Lunches and dinners are extra unless the tour description says otherwise.</div></div>
+    <div class="fi only-preview"><button class="fq">Where do you pick up from? <span class="fi-icon">+</span></button><div class="fa">From any hotel in Hanoi — or from the airport if the tour is on your arrival day.</div></div>
+    <div class="fi only-preview"><button class="fq">Can we go on any day? <span class="fi-icon">+</span></button><div class="fa">Yes. Tours aren't tied to dates — we start on any day you like. The program can be adjusted for you.</div></div>
+    <div class="fi only-preview"><button class="fq">What language does the guide speak? <span class="fi-icon">+</span></button><div class="fa">The guide speaks Russian. Need an English-speaking guide? Write to us and we'll check.</div></div>
+    <div class="fi only-preview"><button class="fq">Is prepayment required? <span class="fi-icon">+</span></button><div class="fa">The Lan Ha cruise and the seaplane flight are booked with full prepayment only. If you miss the yacht, the money is not refunded. For other tours — see «How do I pay for a tour?» below.</div></div>
     <div class="fi"><button class="fq">How do I pay for a tour? <span class="fi-icon">+</span></button><div class="fa">Tour prices are in US dollars. There are two ways to pay.<br><br><b>In two steps.</b> A deposit of 50% or more — no later than one day before the tour. The balance is paid to the guide in cash before departure, in dong or dollars.<br><br><b>Fully online.</b> 100% — also no later than one day before the tour.<br><br>Online we accept: rubles via SBP transfer, dong via QR code, USDT via Bybit UID transfer. Cash dollars — in some cases our staff member can come to you, only for hotels in the tourist area.<br><br>Cash dollars: only 100-dollar bills with the blue stripe, without creases, stamps or writing. Change is given in dong.<br><br>We do not accept: old-design dollars, bills smaller than 100 dollars, card payments via terminal, crypto wallets.<br><br>Rubles and dong are converted at the company's internal rate on the day of payment.</div></div>
     <div class="fi"><button class="fq">Do you have tours in other cities? <span class="fi-icon">+</span></button><div class="fa">Yes: in <a href="/en/" style="color:var(--c);text-decoration:underline;text-underline-offset:2px">Da Nang</a>, <a href="/en/nha-trang/" style="color:var(--c);text-decoration:underline;text-underline-offset:2px">Nha Trang</a> and on <a href="/en/phu-quoc/" style="color:var(--c);text-decoration:underline;text-underline-offset:2px">Phu Quoc</a>.</div></div>
   </div>
@@ -1415,35 +1550,90 @@ function источникЗаявки(){
 </div>
 
 <script>
-// Данные туров Хошимина. Источник — гид Ирина Стольная, программы
-// переслал Ленар 29.10.2026, разобраны в ~/Downloads/hoshimin/ЧТО ПРОДАЁМ.md.
-// Продаём по цене партнёра, цены за группу.
+// Данные туров Ханоя. Источник — сайт партнёра fasttur.ru (снято 01.11.2026),
+// разобраны в ~/Downloads/hanoi/ЧТО ПРОДАЁМ.md.
+// Продаём по цене партнёра, цены с человека, минимум двое.
 const tours = {
-  obzor:{title:"Ho Chi Minh tour",price:"from $45 / person",
-    seo:"Ho Chi Minh is a city of contrasts: old and modern, East and West. The War Remnants Museum or the History Museum of your choice, Vinh Nghiem Temple, workshops and exotic markets, the French quarter with City Hall, Notre-Dame Cathedral and the old Post Office, the Saigon River embankment and skyscrapers.",
-    prog:[["","War Remnants Museum or History Museum — your choice"],["","Vinh Nghiem Temple"],["","Local craft workshops and markets"],["","French quarter: City Hall, Notre-Dame Cathedral, Virgin Mary statue"],["","Old Post Office and Opera House"],["","Saigon River embankment, skyscrapers"],["","4 hours"]],
-    inc:["Air-conditioned car","English- or Russian-speaking guide","Entrance tickets","A bottle of water"],
-    exc:["Airport or station pickup — on request"],
-    prices:[["Group","Price"],["1 person","120 $"],["2 people","$70 each"],["3–4 people","$50 each"],["5–6 people","$45 each"]]},
-  mekong:{title:"Mekong Delta",price:"from $220",
-    seo:"A ride on a large boat along a branch of the Mekong about three kilometers wide, a fruit orchard with tasting, an apiary and flower honey, songs of southern Vietnam, coconut candy, a cart ride through a village and rowing boats along shady canals. Lunch at a riverside restaurant and the old Vinh Trang Buddhist temple.",
-    prog:[["","Boat along the upper branch of the Mekong"],["","Fruit orchard, fruit tasting"],["","Apiary and flower honey"],["","Traditional songs of southern Vietnam"],["","How coconut candy is made"],["","Cart ride along a village street"],["","Rowing boats along narrow canals"],["","Lunch at a riverside restaurant"],["","Vinh Trang Temple"],["","8 hours"]],
-    inc:["Transport","English- or Russian-speaking guide","Boat and rowing boats","Lunch"],
+  obzor:{title:"Hanoi city tour",price:"$140 / person",
+    seo:"Hanoi in half a day: West Lake and the ancient Tran Quoc Pagoda, the thousand-year-old Dragon Citadel and the wartime command bunker, Ho Chi Minh's Mausoleum and the One Pillar Pagoda. Then Train Street, where the train passes a step from the cafés, the Lake of the Returned Sword with its turtle legend, Ngoc Son Temple and the Old Quarter.",
+    prog:[["","West Lake, Tran Quoc Pagoda"],["","Dragon Citadel and the Forbidden City"],["","High Command bunker"],["","Ho Chi Minh Mausoleum, Ba Dinh Square"],["","One Pillar Pagoda"],["","Train Street"],["","Lake of the Returned Sword, Ngoc Son Temple"],["","Old Quarter"],["","About 5 hours. Start 6:00–10:00 or 13:30–14:00"]],
+    inc:["Air-conditioned car or minivan","English- or Russian-speaking guide","Entrance tickets"],
+    exc:["Meals"],
+    note:["Temples require covered shoulders and knees"],
+    prices:[["Group","Price"],["From 2 people","$140 per person"]]},
+  ninhbinh:{title:"Ninh Binh in a day",price:"$190 / person",
+    seo:"The most beautiful places of the north in one day. Bai Dinh is Vietnam's largest pagoda, with a giant bell and thousands of Buddha statues. Then a boat ride along the river between the Trang An cliffs and through caves, and Hoa Lu, Vietnam's 10th-century capital.",
+    prog:[["","Hotel pickup after breakfast"],["","Bai Dinh Pagoda"],["","Boat ride through Trang An rivers and caves"],["","Ancient capital Hoa Lu"],["","Optional — Unicorn Rock temple and Hoa Lu evening lights"],["","Return to Hanoi"]],
+    inc:["Car for the whole route","Guide","Bai Dinh tickets","Trang An boat"],
+    exc:["Lunches and dinners"],
+    prices:[["Group","Price"],["From 2 people","$190 per person"]]},
+  tamkok:{title:"Tam Coc and Hang Mua",price:"$190 / person",
+    seo:"Tam Coc means «three caves»: an hour and a half by boat along a river between cliffs up to 100 metres high. The Dancing Cave, where maids danced for the king, and a climb of almost 500 steps to the white dragon on Hang Mua peak — the best viewpoint in the north.",
+    prog:[["","Hotel pickup after breakfast"],["","Tam Coc boat ride — about 1.5 hours"],["","Dancing Cave"],["","Climb to Hang Mua — 30–40 minutes"],["","Optional — Thung Nham bird park"],["","Return to Hanoi"]],
+    inc:["Car for the whole route","English- or Russian-speaking guide","Entrance tickets"],
+    exc:["Lunches and dinners","Thung Nham bird park — $25 per person"],
+    note:["The Hang Mua climb is about 500 steps — manageable"],
+    prices:[["Group","Price"],["From 2 people","$190 per person"]]},
+  lanha:{title:"Lan Ha Bay by catamaran",price:"$130 / person",
+    seo:"Six hours on a catamaran yacht in Lan Ha Bay, Ha Long's quieter neighbour. Kayaks to a grotto and a lagoon ringed by cliffs, lunch on board, a white beach on the Three Peaches islands, a cooking class and tea with sweets at sunset.",
+    prog:[["6:30","Departure from Hanoi"],["9:30","Boarding the catamaran"],["10:30","Kayaks: grotto and lagoon"],["12:15","Lunch on board"],["14:00","Beach on the Three Peaches islands"],["16:00","Cooking class"],["16:30","Sunset tea ceremony"],["17:30","Back to the pier and to Hanoi"]],
+    inc:["Catamaran cruise","Kayaks","Lunch on board"],
+    exc:["Transfer from Hanoi and back — $180 per car"],
+    note:["Full prepayment only. Departure time is set by your hotel's location; if you miss the yacht, the money is not refunded","The whole yacht for your group of up to 10 — $3500, each extra person +$130"],
+    prices:[["Group","Price"],["Per person","130 $"],["Transfer, per car","180 $"]]},
+  tamchuc:{title:"Tam Chuc Pagoda",price:"$190 / person",
+    seo:"Tam Chuc is the world's largest pagoda by area. We cross the lake on a boat styled as an ancient one, walk through the garden of 99 stone pillars carved with Buddhist sutras and see three huge bronze Buddha statues. Optional — the Perfume Pagoda in the caves of the Huong mountains, the country's main pilgrimage site.",
+    prog:[["","Hotel pickup after breakfast"],["","Boat across the lake"],["","Tam Chuc Pagoda and the garden of stone sutras"],["","Three bronze Buddha statues"],["","Optional — Perfume Pagoda"],["","Return to Hanoi"]],
+    inc:["Car for the whole route","Guide","Entrance tickets"],
+    exc:["Lunches and dinners","Perfume Pagoda — early start and extra charge","Cable car"],
+    prices:[["Group","Price"],["From 2 people","$190 per person"]]},
+  secret:{title:"Secret Hanoi",price:"$280 / person",
+    seo:"Places tourists don't go. The 11th-century Thay Pagoda — the temple of the water puppet master with pavilions on the water — and a cave in Sai Son mountain believed to be the entrance to the underworld. After lunch — Tram Pagoda and the cave where Ho Chi Minh hid and ran an underground radio.",
+    prog:[["8:00","Departure from Hanoi"],["9:00","Thay Pagoda, water puppet temple"],["10:00","Sai Son mountain and the «gate to the underworld» cave"],["12:00","Lunch"],["13:00","Tram Pagoda and Ho Chi Minh's cave base"],["18:00","Return to Hanoi"]],
+    inc:["Car for the whole route","English- or Russian-speaking guide","Entrance tickets"],
+    exc:["Lunches and dinners"],
+    note:["Climb of about 100 metres"],
+    prices:[["Group","Price"],["From 2 people","$280 per person"]]},
+  food:{title:"Hanoi food tour",price:"from $190 / person",
+    seo:"About four hours in Hanoi's historic centre: several Vietnamese restaurants — pho with beef, chicken or fish, nem rolls, banh mi, coconut dessert. The level of places and the menu are agreed in advance. For the brave — «crazy food» with dishes unusual for Europeans.",
+    prog:[["","Hanoi historic centre"],["","Several Vietnamese restaurants"],["","About 4 hours"]],
+    inc:["Car for the route","English- or Russian-speaking guide","Restaurant visits"],
     exc:[],
-    prices:[["Group","Price"],["1 person","220 $"],["2 people","$240 for two"],["3 people","$260 for three"],["4 people","$280 for four"]]},
-  kuchi:{title:"Cu Chi tunnels",price:"from $170",
-    seo:"50 km from Ho Chi Minh lies an underground guerrilla city: over 200 km of tunnels on three levels, where about 17,000 people lived during the war. A black-and-white film from 1967, searching for hidden entrances, a walk through a tunnel, a field hospital, a weapons workshop and guerrilla food.",
-    prog:[["","A film shot here in 1967"],["","Searching for hidden entrances"],["","Walking underground through a widened section"],["","Field hospital and weapons workshop"],["","Tasting guerrilla food"],["","Shooting range — optional"],["","5–6 hours"]],
-    inc:["Transport","English- or Russian-speaking guide","Entrance tickets"],
-    exc:["Shooting — paid separately"],
-    prices:[["Group","Price"],["1–2 people","$170 per group"],["3 people","$200 per group"],["4 people","$240 per group"]]},
-  kruiz:{title:"Saigon River cruise",price:"from $130",
-    seo:"An evening on a boat on the Saigon River: musicians, singers and dancers in traditional costumes, an all-you-can-eat dinner — Vietnamese and European cuisine, salads, soups, barbecue — and a panorama of the city at night. Many people celebrate birthdays here.",
-    prog:[["19:45","Boarding, start of the cruise"],["","Show: musicians, singers, dancers"],["","All-you-can-eat dinner"],["","Photos with the performers"],["","Panorama of Saigon at night"],["21:15","End of the cruise"]],
-    inc:["Transport","English- or Russian-speaking guide","Dinner","Show"],
-    exc:["Drinks with dinner"],
-    prices:[["Group","Price"],["1–2 people","$130 per group"],["3 people","$170 per group"],["4 people","$210 per group"]]}
+    note:["The price depends on the chosen places and menu"],
+    prices:[["Group","Price"],["From 2 people","from $190 per person"]]},
+  seaplane:{title:"Ha Long by seaplane",price:"$280 / person",
+    seo:"Almost two thousand limestone islands above emerald water — from the air. A 25-minute flight over Dau Be and Cong Do islands in a Cessna Grand Caravan amphibious plane, taking off and landing at Tuan Chau pier. Can be combined with a bay cruise.",
+    prog:[["","Departure from Hanoi — between 7:00 and 13:00, time agreed"],["","Tuan Chau pier, Ha Long"],["","25-minute flight over the bay's islands"]],
+    inc:["Seaplane flight"],
+    exc:[],
+    note:["Full prepayment only"],
+    prices:[["Group","Price"],["From 2 people","$280 per person"]]},
+  halong2:{title:"Hanoi and Ha Long, 2 days",price:"from $330 / person",
+    seo:"Day one — Hanoi city tour: the citadel, the mausoleum, Train Street, the Old Quarter. Day two — six hours on a 5★ yacht in Ha Long: Fighting Cocks rock, Swan and Finger islets, Luon Cave and Ti Top beach, named after cosmonaut Titov.",
+    prog:[["Day 1","Hanoi city tour, night at the hotel"],["7:30","Day 2: departure to Ha Long"],["12:00","Boarding the 5★ yacht, lunch on board"],["13:00","Fighting Cocks rock, Swan and Finger islets"],["14:45","Luon Cave"],["15:45","Ti Top beach"],["18:00","Back to the port, then to the hotel"]],
+    inc:["Guide on the Hanoi day","Car for the whole route","Entrance tickets","1 night in a 4★ or 5★ hotel"],
+    exc:["Lunches and dinners"],
+    prices:[["Hotel","Price"],["4★","$330 per person"],["5★ (InterContinental Westlake or similar)","$590 per person"]]},
+  sapa:{title:"Sapa, 2 days",price:"from $480 / person",
+    seo:"Mountains in the far north by the Chinese border. Rice terraces, Sapa town, the Hmong village of Cat Cat and Heaven's Gate pass, a night in a hotel above the clouds. In the morning — Silver Waterfall and Muong Hoa valley. Optional — the train up Fansipan, the highest peak in Indochina, and the glass bridge.",
+    prog:[["8:00","Day 1: departure from Hanoi"],["","Rice terraces, Sapa town"],["","Cat Cat Hmong village"],["","Heaven's Gate (O Quy Ho pass), night at the hotel"],["Day 2","Silver Waterfall"],["","Muong Hoa valley"],["","Return to Hanoi"]],
+    inc:["Car for the whole route","Guide","Entrance tickets","Night in a 4★ or 5★ hotel"],
+    exc:["Fansipan — $50","Glass bridge — $25","Lunches and dinners"],
+    prices:[["Hotel","Price"],["4★","$480 per person"],["5★ (Topas Ecolodge or similar)","$750 per person"]]},
+  tri:{title:"Hanoi, Ninh Binh and Ha Long, 3 days",price:"from $750 / person",
+    seo:"The best of the north in three days. Hanoi with its citadel and Train Street, Ninh Binh with Bai Dinh Pagoda, Trang An boats and the ancient capital Hoa Lu, and a 5★ yacht cruise in Ha Long Bay.",
+    prog:[["Day 1","Hanoi city tour"],["Day 2","Ninh Binh: Bai Dinh, Trang An, Hoa Lu"],["Day 3","5★ Ha Long cruise, 6 hours"],["","Return to Hanoi"]],
+    inc:["Guide (except the cruise day)","Car for the whole route","4★ or 5★ hotel"],
+    exc:["Lunches and dinners"],
+    prices:[["Hotel","Price"],["4★","$750 per person"],["5★ (InterContinental Westlake or similar)","$1400 per person"]]},
+  hagiang:{title:"Ha Giang Loop, 4 days",price:"$950 / person",
+    seo:"Vietnam's wildest landscapes. Quan Ba Heaven's Gate, the Dong Van stone plateau, Ma Pi Leng Pass above the Nho Que canyon and Hmong villages, Ban Gioc waterfall on the Chinese border and Nguom Ngao cave, God's Eye mountain and Ba Be Lake in the rainforest.",
+    prog:[["6:00","Day 1: departure from Hanoi"],["","Ha Giang, «kilometre zero», Quan Ba Heaven's Gate"],["Day 2","Dong Van plateau, Ma Pi Leng Pass, night in Bao Lac"],["Day 3","Nguom Ngao cave and Ban Gioc waterfall"],["Day 4","God's Eye mountain, Nui Cac Mac complex, Ba Be Lake"],["22:00","Return to Hanoi"]],
+    inc:["Car for the whole route","English- or Russian-speaking guide","Entrance tickets","4★ hotels"],
+    exc:["Lunches and dinners"],
+    prices:[["Group","Price"],["From 2 people","$950 per person"]]}
 };
+
 
 function openD(key) {
   const t = tours[key];
@@ -1561,9 +1751,20 @@ const REGION_TOURS = {
     ["Ho Chi Minh — Saigon River cruise","Saigon River cruise"],
     ["Ho Chi Minh — Other, I'll write in the message","Other, I'll write in the message"]
   ],
-  // Туров пока нет — только заявка «подберите программу».
   hanoi: [
-    ["Hanoi — Help me choose a program","Help me choose a program, I'll write in the message"]
+    ["Hanoi — City tour","Hanoi city tour"],
+    ["Hanoi — Ninh Binh in a day","Ninh Binh in a day"],
+    ["Hanoi — Tam Coc and Hang Mua","Tam Coc and Hang Mua"],
+    ["Hanoi — Lan Ha Bay by catamaran","Lan Ha Bay by catamaran"],
+    ["Hanoi — Tam Chuc Pagoda","Tam Chuc Pagoda"],
+    ["Hanoi — Secret Hanoi","Secret Hanoi"],
+    ["Hanoi — Food tour","Hanoi food tour"],
+    ["Hanoi — Ha Long by seaplane","Ha Long by seaplane"],
+    ["Hanoi — Hanoi and Ha Long, 2 days","Hanoi and Ha Long, 2 days"],
+    ["Hanoi — Sapa, 2 days","Sapa, 2 days"],
+    ["Hanoi — Hanoi, Ninh Binh and Ha Long, 3 days","Hanoi, Ninh Binh and Ha Long, 3 days"],
+    ["Hanoi — Ha Giang Loop, 4 days","Ha Giang Loop, 4 days"],
+    ["Hanoi — Something else, I'll explain in the message","Other, I'll write in the message"]
   ],
   muine: [
     ["Mui Ne — Help me choose a program","Help me choose a program, I'll write in the message"]
