@@ -1090,15 +1090,20 @@ nav.solid .citybar .soon, nav.solid .citybar2 .soon { color: var(--gray); }
 <link rel="alternate" hreflang="en" href="https://narada-travels.com/en/nha-trang/">
 <style>
   html:not(.preview) .langsw.only-preview{display:none!important}
-  /* Переключатель языка — кнопка того же вида, что «Написать нам», сразу за ней.
-     На кнопке — другой язык: на русской странице EN, на английской RU. */
-  .langsw{display:inline-block;background:var(--accent,#9C8659);color:var(--accent-text,#fff);
-    padding:10px 16px;border-radius:var(--btn-r,8px);text-decoration:none;font-size:13px;font-weight:600;
-    letter-spacing:.04em;line-height:normal;transition:background .2s ease;flex:none}
-  .langsw:hover{background:var(--accent-hover,#86724a)}
-  .nav-r .langsw{margin-left:-18px}
-  .langsw.float{position:fixed;top:12px;right:12px;z-index:999}
-  @media (max-width:768px){.nav-r .langsw{margin:0 10px 0 0;padding:7px 11px;font-size:12px}}
+  /* Переключатель языка — сразу после строки городов: RU | EN, выбранный язык
+     выделен золотистым, как «Написать нам», второй — просто текстом рядом. */
+  .langsw{display:inline-flex;align-items:center;gap:2px;padding:3px;border-radius:var(--btn-r,8px);
+    border:1px solid rgba(17,17,17,.14);flex:none;font-size:12.5px;font-weight:600;line-height:1;letter-spacing:.04em}
+  .langsw a{padding:6px 9px;border-radius:calc(var(--btn-r,8px) - 3px);color:var(--gray,#555);text-decoration:none;transition:background .2s,color .2s}
+  .langsw a:hover{color:var(--dark,#111);background:rgba(17,17,17,.06)}
+  .langsw a[aria-current]{background:var(--accent,#95845E);color:var(--accent-text,#fff)}
+  /* тёмная полупрозрачная шапка городов — светлый вариант */
+  #siteNav:not(.solid) .langsw{border-color:rgba(255,255,255,.28)}
+  #siteNav:not(.solid) .langsw a:not([aria-current]){color:rgba(255,255,255,.85)}
+  #siteNav:not(.solid) .langsw a:not([aria-current]):hover{color:#fff;background:rgba(255,255,255,.14)}
+  .langsw.float{position:fixed;top:12px;right:12px;z-index:999;background:#fff}
+  /* телефон: только ссылка на другой язык, чтобы не выдавить меню */
+  @media (max-width:768px){.nav-r .langsw{border:0;padding:0;margin-right:6px} .nav-r .langsw a[aria-current]{display:none}}
 </style>
 <script>try{if(localStorage.getItem('narada_preview')==='1')document.documentElement.classList.add('preview')}catch(e){}</script>
 <!-- /langsw -->
@@ -1164,13 +1169,13 @@ function источникЗаявки(){
         <a class="c2" href"/en/mui-ne/">Mui Ne</a>
         <a class="all only-preview c2" href"/en/vietnam/">All<span class="all-long"> destinations</span><span class="arw">→</span></a>
       </div></div>
-    <div class="nav-r">      <ul class="nav-links">
+    <div class="nav-r"><!-- langsw --><span class="langsw only-preview" aria-label="Language"><a href="/nha-trang/" hreflang="ru" lang="ru">RU</a><a href="/en/nha-trang/" hreflang="en" lang="en" aria-current="true">EN</a></span><!-- /langsw -->      <ul class="nav-links">
         <li><a href="#tours">Tours</a></li>
         <li class="app-only"><a href"/en/uslugi/">Services</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#emotions">Reviews</a></li>
       </ul>
-      <a href="#form" class="nav-cta">Contact us</a><!-- langsw --><a class="langsw only-preview" href="/nha-trang/" hreflang="ru" lang="ru" title="Русская версия">RU</a><!-- /langsw -->      <div class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+      <a href="#form" class="nav-cta">Contact us</a>      <div class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
     </div>
   </div>
   <!-- Телефон: второй ряд городов под шапкой. На компьютере эти же

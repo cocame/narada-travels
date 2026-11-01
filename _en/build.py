@@ -112,15 +112,20 @@ def fix_links(s, d):
 HEAD_BITS = """<!-- langsw -->
 {alt}<style>
   html:not(.preview) .langsw.only-preview{{display:none!important}}
-  /* Переключатель языка — кнопка того же вида, что «Написать нам», сразу за ней.
-     На кнопке — другой язык: на русской странице EN, на английской RU. */
-  .langsw{{display:inline-block;background:var(--accent,#9C8659);color:var(--accent-text,#fff);
-    padding:10px 16px;border-radius:var(--btn-r,8px);text-decoration:none;font-size:13px;font-weight:600;
-    letter-spacing:.04em;line-height:normal;transition:background .2s ease;flex:none}}
-  .langsw:hover{{background:var(--accent-hover,#86724a)}}
-  .nav-r .langsw{{margin-left:-18px}}
-  .langsw.float{{position:fixed;top:12px;right:12px;z-index:999}}
-  @media (max-width:768px){{.nav-r .langsw{{margin:0 10px 0 0;padding:7px 11px;font-size:12px}}}}
+  /* Переключатель языка — сразу после строки городов: RU | EN, выбранный язык
+     выделен золотистым, как «Написать нам», второй — просто текстом рядом. */
+  .langsw{{display:inline-flex;align-items:center;gap:2px;padding:3px;border-radius:var(--btn-r,8px);
+    border:1px solid rgba(17,17,17,.14);flex:none;font-size:12.5px;font-weight:600;line-height:1;letter-spacing:.04em}}
+  .langsw a{{padding:6px 9px;border-radius:calc(var(--btn-r,8px) - 3px);color:var(--gray,#555);text-decoration:none;transition:background .2s,color .2s}}
+  .langsw a:hover{{color:var(--dark,#111);background:rgba(17,17,17,.06)}}
+  .langsw a[aria-current]{{background:var(--accent,#95845E);color:var(--accent-text,#fff)}}
+  /* тёмная полупрозрачная шапка городов — светлый вариант */
+  #siteNav:not(.solid) .langsw{{border-color:rgba(255,255,255,.28)}}
+  #siteNav:not(.solid) .langsw a:not([aria-current]){{color:rgba(255,255,255,.85)}}
+  #siteNav:not(.solid) .langsw a:not([aria-current]):hover{{color:#fff;background:rgba(255,255,255,.14)}}
+  .langsw.float{{position:fixed;top:12px;right:12px;z-index:999;background:#fff}}
+  /* телефон: только ссылка на другой язык, чтобы не выдавить меню */
+  @media (max-width:768px){{.nav-r .langsw{{border:0;padding:0;margin-right:6px}} .nav-r .langsw a[aria-current]{{display:none}}}}
 </style>
 <script>try{{if(localStorage.getItem('narada_preview')==='1')document.documentElement.classList.add('preview')}}catch(e){{}}</script>
 <!-- /langsw -->
@@ -128,11 +133,11 @@ HEAD_BITS = """<!-- langsw -->
 
 def switcher(ru, en, cur, float_=False):
     cls = 'langsw only-preview' + (' float' if float_ else '')
-    if cur == 'ru':
-        href, lang, label, title = en, 'en', 'EN', 'English version'
-    else:
-        href, lang, label, title = ru, 'ru', 'RU', 'Русская версия'
-    return f'<!-- langsw --><a class="{cls}" href="{href}" hreflang="{lang}" lang="{lang}" title="{title}">{label}</a><!-- /langsw -->'
+    a_ru = ' aria-current="true"' if cur == 'ru' else ''
+    a_en = ' aria-current="true"' if cur == 'en' else ''
+    return (f'<!-- langsw --><span class="{cls}" aria-label="Language">'
+            f'<a href="{ru}" hreflang="ru" lang="ru"{a_ru}>RU</a><a href="{en}" hreflang="en" lang="en"{a_en}>EN</a>'
+            '</span><!-- /langsw -->')
 
 def add_lang_bits(s, d, cur):
     ru = '/' + (d + '/' if d else '')
@@ -141,9 +146,9 @@ def add_lang_bits(s, d, cur):
            f'<link rel="alternate" hreflang="en" href="https://narada-travels.com{en}">\n')
     s = re.sub(r'<!-- langsw -->.*?<!-- /langsw -->\n?', '', s, flags=re.S)
     s = s.replace('</head>', HEAD_BITS.format(alt=alt) + '</head>', 1)
-    m = re.search(r'<a [^>]*class="nav-cta"[^>]*>.*?</a>', s, flags=re.S)
-    if m:
-        s = s[:m.end()] + switcher(ru, en, cur) + s[m.end():]
+    # сразу после строки городов — в начало правого блока шапки
+    if '<div class="nav-r">' in s:
+        s = s.replace('<div class="nav-r">', '<div class="nav-r">' + switcher(ru, en, cur), 1)
     else:
         s = re.sub(r'(<body\b[^>]*>)', lambda m: m.group(1) + switcher(ru, en, cur, True), s, count=1)
     return s
