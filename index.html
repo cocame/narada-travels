@@ -1060,6 +1060,19 @@ nav.solid .citybar .soon, nav.solid .citybar2 .soon { color: var(--gray); }
     #siteNav:not(.solid) .langsw a{border-color:rgba(255,255,255,.45)}
   }
   @media (max-width:420px){.citybar2 .all-long{display:none}}
+  /* Узкое окно компьютера (769–1300 px): чтобы города не обрезались —
+     «Все направления» → «Все →»; до 1100 px меню и «Написать нам» уходят в «три полоски»,
+     переключатель — только другой язык */
+  @media (min-width:769px) and (max-width:1300px){ #siteNav .citybar .all-long{display:none} }
+  @media (min-width:769px) and (max-width:1100px){
+    #siteNav .nav-links, #siteNav .nav-cta{display:none}
+    #siteNav .burger{display:flex;margin-left:14px}
+    #siteNav .nav-r .langsw{border:0;padding:0}
+    #siteNav .nav-r .langsw a[aria-current]{display:none}
+    #siteNav .nav-r .langsw a{padding:6px 8px;border-radius:6px;border:1px solid rgba(255,255,255,.45)}
+    #siteNav.solid .nav-r .langsw a{border-color:rgba(17,17,17,.2)}
+  }
+  @media (min-width:769px) and (max-width:900px){ #siteNav .citybar-in > a, #siteNav .citybar-in > span{padding:6px 8px} }
 </style>
 <script>try{if(localStorage.getItem('narada_preview')==='1')document.documentElement.classList.add('preview')}catch(e){}</script>
 <!-- /langsw -->
