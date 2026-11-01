@@ -40,10 +40,6 @@ document.addEventListener('DOMContentLoaded', function () {
 .tours > h2 { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; margin:0; }
 </style>
 <meta name="robots" content="noindex, follow">
-<script>
-  // Страница ещё не открыта для посетителей — без метки предпросмотра на главную.
-  if (!document.documentElement.classList.contains('preview')) location.replace('/en/');
-</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- PWA: манифест и офлайн-режим — сайт упакован в приложение для Google Play.
@@ -1176,8 +1172,8 @@ function источникЗаявки(){
         <a href"/en/">Da Nang</a>
         <a href"/en/phu-quoc/">Phu Quoc</a>
         <a href"/en/nha-trang/">Nha Trang</a>
-        <a class="only-preview c2" href"/en/hanoi/">Hanoi</a>
-        <a class="only-preview" href"/en/ho-chi-minh/">Saigon</a>
+        <a class="c2" href"/en/hanoi/">Hanoi</a>
+        <a href"/en/ho-chi-minh/">Saigon</a>
         <span class="on c2">Mui Ne</span>
         <a class="all only-preview c2" href"/en/vietnam/">All<span class="all-long"> destinations</span><span class="arw">→</span></a>
       </div></div>
@@ -1330,7 +1326,7 @@ function источникЗаявки(){
 <footer>
   <div class="flogo">Narada Travels</div>
   <p>Mui Ne tours with an English- or Russian-speaking guide · Vietnam</p>
-  <p class="fdirs"><a href"/en/">Day tours from Da Nang</a><a href"/en/phu-quoc/">Phu Quoc tours</a><a href"/en/nha-trang/">Tours from Nha Trang</a><a class="only-preview" href"/en/ho-chi-minh/">Ho Chi Minh City tours</a><a class="only-preview" href"/en/hanoi/">Hanoi tours</a><a class="only-preview" href"/en/mui-ne/">Mui Ne tours</a><a class="only-preview" href"/en/vietnam/">All destinations</a></p>
+  <p class="fdirs"><a href"/en/">Day tours from Da Nang</a><a href"/en/phu-quoc/">Phu Quoc tours</a><a href"/en/nha-trang/">Tours from Nha Trang</a><a href"/en/ho-chi-minh/">Ho Chi Minh City tours</a><a href"/en/hanoi/">Hanoi tours</a><a href"/en/mui-ne/">Mui Ne tours</a><a class="only-preview" href"/en/vietnam/">All destinations</a></p>
   <p>© 2026 Narada · <a href"/privacy/#en" style="color:rgba(255,255,255,0.35);text-decoration:underline;text-underline-offset:2px">Privacy policy</a></p>
 </footer>
 

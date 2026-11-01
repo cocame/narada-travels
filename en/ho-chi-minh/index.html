@@ -38,12 +38,19 @@ document.addEventListener('DOMContentLoaded', function () {
 /* Заголовок над сеткой туров не показываем — по карточкам и так понятно.
    В разметке он остаётся для поисковиков и экранного диктора. */
 .tours > h2 { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; margin:0; }
+/* Город без туров: плашка «Скоро» вместо сетки карточек. */
+.soon-plate { max-width: 720px; margin: 0 auto; padding: 48px 32px; text-align: center;
+  background: #fff; border: 1px solid var(--border); border-radius: var(--r); }
+.soon-tag { display: inline-block; padding: 6px 14px; border-radius: 6px; background: var(--dark); color: #fff;
+  font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.soon-plate p { margin: 18px auto 24px; max-width: 460px; font-size: 16px; line-height: 1.55; color: var(--gray); }
+.soon-btn { display: inline-block; padding: 13px 26px; border-radius: var(--btn-r, 8px); background: var(--accent);
+  color: var(--accent-text, #fff); font-weight: 700; text-decoration: none; }
+.photo-credit { position: absolute; right: 14px; bottom: 10px; z-index: 2; margin: 0;
+  font-size: 10.5px; color: rgba(255,255,255,0.6); }
+@media (max-width: 768px) { .soon-plate { padding: 36px 20px; } .tours .soon-plate { height: auto !important; } }
 </style>
 <meta name="robots" content="noindex, follow">
-<script>
-  // Страница ещё не открыта для посетителей — без метки предпросмотра на главную.
-  if (!document.documentElement.classList.contains('preview')) location.replace('/en/');
-</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- PWA: манифест и офлайн-режим — сайт упакован в приложение для Google Play.
@@ -1165,15 +1172,15 @@ function источникЗаявки(){
         <a href"/en/">Da Nang</a>
         <a href"/en/phu-quoc/">Phu Quoc</a>
         <a href"/en/nha-trang/">Nha Trang</a>
-        <a class="only-preview c2" href"/en/hanoi/">Hanoi</a>
+        <a class="c2" href"/en/hanoi/">Hanoi</a>
         <span class="on">Saigon</span>
-        <a class="only-preview c2" href"/en/mui-ne/">Mui Ne</a>
+        <a class="c2" href"/en/mui-ne/">Mui Ne</a>
         <a class="all only-preview c2" href"/en/vietnam/">All<span class="all-long"> destinations</span><span class="arw">→</span></a>
       </div></div>
     <div class="nav-r">      <ul class="nav-links">
-        <li><a href="#tours">Tours</a></li>
+        <li class="only-preview"><a href="#tours">Tours</a></li><li class="only-public"><a href="#tours-soon">Tours</a></li>
         <li class="app-only"><a href"/en/uslugi/">Services</a></li>
-        <li><a href="#faq">FAQ</a></li>
+        <li class="only-preview"><a href="#faq">FAQ</a></li>
         <li><a href="#emotions">Reviews</a></li>
       </ul>
       <a href="#form" class="nav-cta">Contact us</a><!-- langsw --><a class="langsw only-preview" href="/ho-chi-minh/" hreflang="ru" lang="ru" title="Русская версия">RU</a><!-- /langsw -->      <div class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
@@ -1198,7 +1205,16 @@ function источникЗаявки(){
 
 
 <!-- ── ПРОГРАММЫ И ЦЕНЫ ── -->
-<section class="tours" id="tours">
+<!-- Пока туры в работе, посетитель видит «Скоро», а мы по ссылке предпросмотра — туры и цены -->
+<section class="tours only-public" id="tours-soon">
+  <h2>Tours</h2>
+  <div class="soon-plate">
+    <span class="soon-tag">Soon</span>
+    <p>We are preparing tours in Ho Chi Minh City. Message us — we can plan a program for you right now.</p>
+    <a href="#form" class="soon-btn">Contact us</a>
+  </div>
+</section>
+<section class="tours only-preview" id="tours">
   <h2>Programs and prices</h2>
 
   <!-- Фото от гида Ирины Стольной, присланы 29.10.2026.
@@ -1274,7 +1290,7 @@ function источникЗаявки(){
 
 
 <!-- ── FAQ ── -->
-<section class="faq" id="faq">
+<section class="faq only-preview" id="faq">
   <h2>FAQ</h2>
   <div class="faq-wrap">
     <div class="fi"><button class="fq">Is the price per person or per group? <span class="fi-icon">+</span></button><div class="fa">Per whole group. The city tour is priced per person: the bigger the group, the cheaper — from $120 for one person to $30 per person in a group of 11–13. The cruise, Cu Chi and the Mekong are priced per group. Prices for any number of people are in each tour's description.</div></div>
@@ -1366,7 +1382,7 @@ function источникЗаявки(){
 <footer>
   <div class="flogo">Narada Travels</div>
   <p>Ho Chi Minh City tours with an English- or Russian-speaking guide · Vietnam</p>
-  <p class="fdirs"><a href"/en/">Day tours from Da Nang</a><a href"/en/phu-quoc/">Phu Quoc tours</a><a href"/en/nha-trang/">Tours from Nha Trang</a><a href"/en/ho-chi-minh/" class="on">Ho Chi Minh City tours</a><a class="only-preview" href"/en/hanoi/">Hanoi tours</a><a class="only-preview" href"/en/mui-ne/">Mui Ne tours</a><a class="only-preview" href"/en/vietnam/">All destinations</a></p>
+  <p class="fdirs"><a href"/en/">Day tours from Da Nang</a><a href"/en/phu-quoc/">Phu Quoc tours</a><a href"/en/nha-trang/">Tours from Nha Trang</a><a href"/en/ho-chi-minh/" class="on">Ho Chi Minh City tours</a><a href"/en/hanoi/">Hanoi tours</a><a href"/en/mui-ne/">Mui Ne tours</a><a class="only-preview" href"/en/vietnam/">All destinations</a></p>
   <p>© 2026 Narada · <a href"/privacy/#en" style="color:rgba(255,255,255,0.35);text-decoration:underline;text-underline-offset:2px">Privacy policy</a></p>
 </footer>
 

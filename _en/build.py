@@ -179,8 +179,6 @@ def build():
                     lambda m: m.group(1) + (en_path(m.group(2)) or m.group(2)), en)
         # пока английская версия не открыта — не индексировать
         en = re.sub(r'<meta name="robots" content="[^"]*">', '<meta name="robots" content="noindex, follow">', en)
-        # «Soon»-города в строке меню на английской версии не показываем (01.11)
-        en = re.sub(r'<span class="soon[^"]*">[^<]*<em>[^<]*</em></span>', '', en)
         en = add_lang_bits(en, d, 'en')
         out = os.path.join(ROOT, 'en', d, 'index.html')
         os.makedirs(os.path.dirname(out), exist_ok=True)
