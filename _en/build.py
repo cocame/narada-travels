@@ -112,14 +112,15 @@ def fix_links(s, d):
 HEAD_BITS = """<!-- langsw -->
 {alt}<style>
   html:not(.preview) .langsw.only-preview{{display:none!important}}
-  .langsw{{display:inline-flex;gap:2px;font:600 12px/1 system-ui,-apple-system,sans-serif;letter-spacing:.04em;align-items:center}}
-  .langsw a{{padding:5px 7px;border-radius:6px;color:inherit;text-decoration:none;opacity:.6}}
-  .langsw a[aria-current]{{opacity:1;background:rgba(127,127,127,.18)}}
-  .langsw.float{{position:fixed;top:10px;right:10px;z-index:999;background:rgba(255,255,255,.85);border-radius:8px;color:#222}}
-  nav:not(.solid) .nav-r .langsw a{{color:#fff}}
-  .nav-r .langsw{{margin-right:4px}}
-  /* телефон: только ссылка на другой язык, чтобы не выдавить меню */
-  @media (max-width:768px){{.nav-r .langsw a[aria-current]{{display:none}} .nav-r .langsw a{{opacity:.9;padding:5px 8px}}}}
+  /* Переключатель языка — кнопка того же вида, что «Написать нам», сразу за ней.
+     На кнопке — другой язык: на русской странице EN, на английской RU. */
+  .langsw{{display:inline-block;background:var(--accent,#9C8659);color:var(--accent-text,#fff);
+    padding:10px 16px;border-radius:var(--btn-r,8px);text-decoration:none;font-size:13px;font-weight:600;
+    letter-spacing:.04em;line-height:normal;transition:background .2s ease;flex:none}}
+  .langsw:hover{{background:var(--accent-hover,#86724a)}}
+  .nav-r .langsw{{margin-left:-18px}}
+  .langsw.float{{position:fixed;top:12px;right:12px;z-index:999}}
+  @media (max-width:768px){{.nav-r .langsw{{margin:0 10px 0 0;padding:7px 11px;font-size:12px}}}}
 </style>
 <script>try{{if(localStorage.getItem('narada_preview')==='1')document.documentElement.classList.add('preview')}}catch(e){{}}</script>
 <!-- /langsw -->
@@ -127,10 +128,11 @@ HEAD_BITS = """<!-- langsw -->
 
 def switcher(ru, en, cur, float_=False):
     cls = 'langsw only-preview' + (' float' if float_ else '')
-    a_ru = ' aria-current="true"' if cur == 'ru' else ''
-    a_en = ' aria-current="true"' if cur == 'en' else ''
-    return (f'<!-- langsw --><span class="{cls}" aria-label="Language">'
-            f'<a href="{ru}" hreflang="ru"{a_ru}>RU</a><a href="{en}" hreflang="en"{a_en}>EN</a></span><!-- /langsw -->')
+    if cur == 'ru':
+        href, lang, label, title = en, 'en', 'EN', 'English version'
+    else:
+        href, lang, label, title = ru, 'ru', 'RU', 'Русская версия'
+    return f'<!-- langsw --><a class="{cls}" href="{href}" hreflang="{lang}" lang="{lang}" title="{title}">{label}</a><!-- /langsw -->'
 
 def add_lang_bits(s, d, cur):
     ru = '/' + (d + '/' if d else '')
@@ -139,8 +141,9 @@ def add_lang_bits(s, d, cur):
            f'<link rel="alternate" hreflang="en" href="https://narada-travels.com{en}">\n')
     s = re.sub(r'<!-- langsw -->.*?<!-- /langsw -->\n?', '', s, flags=re.S)
     s = s.replace('</head>', HEAD_BITS.format(alt=alt) + '</head>', 1)
-    if '<div class="nav-r">' in s:
-        s = s.replace('<div class="nav-r">', '<div class="nav-r">' + switcher(ru, en, cur), 1)
+    m = re.search(r'<a [^>]*class="nav-cta"[^>]*>.*?</a>', s, flags=re.S)
+    if m:
+        s = s[:m.end()] + switcher(ru, en, cur) + s[m.end():]
     else:
         s = re.sub(r'(<body\b[^>]*>)', lambda m: m.group(1) + switcher(ru, en, cur, True), s, count=1)
     return s
@@ -176,6 +179,8 @@ def build():
                     lambda m: m.group(1) + (en_path(m.group(2)) or m.group(2)), en)
         # пока английская версия не открыта — не индексировать
         en = re.sub(r'<meta name="robots" content="[^"]*">', '<meta name="robots" content="noindex, follow">', en)
+        # «Soon»-города в строке меню на английской версии не показываем (01.11)
+        en = re.sub(r'<span class="soon[^"]*">[^<]*<em>[^<]*</em></span>', '', en)
         en = add_lang_bits(en, d, 'en')
         out = os.path.join(ROOT, 'en', d, 'index.html')
         os.makedirs(os.path.dirname(out), exist_ok=True)
