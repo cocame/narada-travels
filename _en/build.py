@@ -126,6 +126,7 @@ HEAD_BITS = """<!-- langsw -->
   .langsw.float{{position:fixed;top:12px;right:12px;z-index:999;background:#fff}}
   /* логотип-капля чуть крупнее старого квадратика */
   .logo img.logo-mark{{height:40px;width:auto}}
+  @media (max-width: 768px){{.logo img.logo-mark{{height:32px;margin-left:10px}}}}
   /* Телефон, где есть второй ряд городов: кнопка языка — в этом ряду, на одной линии
      с городами и той же высоты, правым краем ровно по иконке «три полоски».
      Где второго ряда нет (страницы экскурсий) — в шапке, только другой язык.
