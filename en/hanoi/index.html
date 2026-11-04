@@ -315,6 +315,8 @@ nav {
   white-space: nowrap;
 }
 .bc img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+/* Фото туров пока нет (fasttur запретил брать свои, 02.11) — спокойный фон вместо снимка. */
+.bc:not(:has(img)) { background: radial-gradient(120% 90% at 20% 15%, #3d5f55 0%, #22362f 55%, #16231f 100%); }
 .bc:hover img { transform: scale(1.04); }
 .bc::after {
   content: ''; position: absolute; inset: 0;
@@ -1269,7 +1271,6 @@ function источникЗаявки(){
 
   <div class="nt-grid">
     <div class="bc hn-w7" id="obzor" onclick="openD('obzor')">
-      <img src="/hanoi/images/obzor.jpg" alt="Tran Quoc Pagoda on West Lake in the evening" style="object-position:center 50%">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Hanoi city tour</h3><div class="bc-price">140<span>$</span></div></div>
         <div class="bc-sub">Old Quarter, Citadel, Mausoleum and Train Street</div>
@@ -1278,7 +1279,6 @@ function источникЗаявки(){
       <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'obzor')">🔗</div>
     </div>
     <div class="bc hn-w5" id="ninhbinh" onclick="openD('ninhbinh')">
-      <img src="/hanoi/images/ninhbinh.jpg" alt="Temple by the water among the Trang An cliffs" style="object-position:center 50%" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Ninh Binh in a day</h3><div class="bc-price">190<span>$</span></div></div>
         <div class="bc-sub">Bai Dinh Pagoda, Trang An boat ride, ancient capital Hoa Lu</div>
@@ -1287,7 +1287,6 @@ function источникЗаявки(){
       <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'ninhbinh')">🔗</div>
     </div>
     <div class="bc hn-w5" id="tamkok" onclick="openD('tamkok')">
-      <img src="/hanoi/images/tamkok.jpg" alt="Dragon statue on top of Hang Mua" style="object-position:center 40%" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Tam Coc and Hang Mua</h3><div class="bc-price">190<span>$</span></div></div>
         <div class="bc-sub">Boats through the «three caves», Dancing Cave, 500 steps to the dragon</div>
@@ -1296,7 +1295,6 @@ function источникЗаявки(){
       <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'tamkok')">🔗</div>
     </div>
     <div class="bc hn-w7" id="lanha" onclick="openD('lanha')">
-      <img src="/hanoi/images/lanha.jpg" alt="Catamaran yacht in Lan Ha Bay" style="object-position:center 50%" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Lan Ha Bay by catamaran</h3><div class="bc-price">130<span>$</span></div></div>
         <div class="bc-sub">Kayaks, Three Peaches beach, sunset tea ceremony</div>
@@ -1305,7 +1303,6 @@ function источникЗаявки(){
       <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'lanha')">🔗</div>
     </div>
     <div class="bc hn-w4" id="tamchuc" onclick="openD('tamchuc')">
-      <img src="/hanoi/images/tamchuc.jpg" alt="Tam Chuc Pagoda on the lakeshore" style="object-position:center 50%" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Tam Chuc Pagoda</h3><div class="bc-price">190<span>$</span></div></div>
         <div class="bc-sub">The world's largest pagoda, garden of stone sutras</div>
@@ -1314,7 +1311,6 @@ function источникЗаявки(){
       <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'tamchuc')">🔗</div>
     </div>
     <div class="bc hn-w4" id="secret" onclick="openD('secret')">
-      <img src="/hanoi/images/secret.jpg" alt="Thay Pagoda on the water" style="object-position:center 50%" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Secret Hanoi</h3><div class="bc-price">280<span>$</span></div></div>
         <div class="bc-sub">Gate to the underworld and Ho Chi Minh's cave</div>
@@ -1323,7 +1319,6 @@ function источникЗаявки(){
       <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'secret')">🔗</div>
     </div>
     <div class="bc hn-w4" id="food" onclick="openD('food')">
-      <img src="/hanoi/images/food.jpg" alt="Vietnamese dishes" style="object-position:center 50%" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Hanoi food tour</h3><div class="bc-price">190<span>$</span></div></div>
         <div class="bc-sub">Pho, nem, banh mi — several Old Quarter restaurants</div>
@@ -1332,7 +1327,6 @@ function источникЗаявки(){
       <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'food')">🔗</div>
     </div>
     <div class="bc hn-w6" id="seaplane" onclick="openD('seaplane')">
-      <img src="/hanoi/images/seaplane.jpg" alt="Ha Long Bay from a seaplane window" style="object-position:center 50%" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Ha Long by seaplane</h3><div class="bc-price">280<span>$</span></div></div>
         <div class="bc-sub">25-minute flight over the bay's islands</div>
@@ -1341,7 +1335,6 @@ function источникЗаявки(){
       <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'seaplane')">🔗</div>
     </div>
     <div class="bc hn-w6" id="halong2" onclick="openD('halong2')">
-      <img src="/hanoi/images/halong2.jpg" alt="Ha Long Bay" style="object-position:center 50%" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Hanoi and Ha Long, 2 days</h3><div class="bc-price">330<span>$</span></div></div>
         <div class="bc-sub">Hanoi city tour and a 5★ yacht cruise on Ha Long</div>
@@ -1350,7 +1343,6 @@ function источникЗаявки(){
       <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'halong2')">🔗</div>
     </div>
     <div class="bc hn-w4" id="sapa" onclick="openD('sapa')">
-      <img src="/hanoi/images/sapa.jpg" alt="Fansipan summit above the clouds" style="object-position:center 50%" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Sapa, 2 days</h3><div class="bc-price">480<span>$</span></div></div>
         <div class="bc-sub">Hmong village, rice terraces, Heaven's Gate, waterfall</div>
@@ -1359,7 +1351,6 @@ function источникЗаявки(){
       <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'sapa')">🔗</div>
     </div>
     <div class="bc hn-w4" id="tri" onclick="openD('tri')">
-      <img src="/hanoi/images/tri.jpg" alt="Bai Dinh Pagoda from above" style="object-position:center 50%" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Hanoi, Ninh Binh and Ha Long, 3 days</h3><div class="bc-price">750<span>$</span></div></div>
         <div class="bc-sub">The best of the north in three days, with hotel</div>
@@ -1368,7 +1359,6 @@ function источникЗаявки(){
       <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'tri')">🔗</div>
     </div>
     <div class="bc hn-w4" id="hagiang" onclick="openD('hagiang')">
-      <img src="/hanoi/images/hagiang.jpg" alt="Nho Que river canyon from Ma Pi Leng Pass" style="object-position:center 50%" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Ha Giang Loop, 4 days</h3><div class="bc-price">950<span>$</span></div></div>
         <div class="bc-sub">Ma Pi Leng Pass, Ban Gioc waterfall, Ba Be Lake</div>

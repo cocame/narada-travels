@@ -315,6 +315,8 @@ nav {
   white-space: nowrap;
 }
 .bc img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+/* Фото туров пока нет (fasttur запретил брать свои, 02.11) — спокойный фон вместо снимка. */
+.bc:not(:has(img)) { background: radial-gradient(120% 90% at 20% 15%, #3d5f55 0%, #22362f 55%, #16231f 100%); }
 .bc:hover img { transform: scale(1.04); }
 .bc::after {
   content: ''; position: absolute; inset: 0;
@@ -1269,7 +1271,6 @@ function источникЗаявки(){
 
   <div class="nt-grid">
     <div class="bc hn-w7" id="obzor" onclick="openD('obzor')">
-      <img src="images/obzor.jpg" alt="Пагода Чанкуок на Западном озере вечером" style="object-position:center 50%">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Обзорная по Ханою</h3><div class="bc-price">140<span>$</span></div></div>
         <div class="bc-sub">Старый город, Цитадель, мавзолей и Железнодорожная улица</div>
@@ -1278,7 +1279,6 @@ function источникЗаявки(){
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'obzor')">🔗</div>
     </div>
     <div class="bc hn-w5" id="ninhbinh" onclick="openD('ninhbinh')">
-      <img src="images/ninhbinh.jpg" alt="Храм у воды среди скал Чанган" style="object-position:center 50%" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Ниньбинь за день</h3><div class="bc-price">190<span>$</span></div></div>
         <div class="bc-sub">Пагода Бай Динь, лодки по Чангану, древняя столица Хоалы</div>
@@ -1287,7 +1287,6 @@ function источникЗаявки(){
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'ninhbinh')">🔗</div>
     </div>
     <div class="bc hn-w5" id="tamkok" onclick="openD('tamkok')">
-      <img src="images/tamkok.jpg" alt="Статуя дракона на вершине Ханг Муа" style="object-position:center 40%" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Там Кок и Ханг Муа</h3><div class="bc-price">190<span>$</span></div></div>
         <div class="bc-sub">Лодки по «трём пещерам», Танцующая пещера, 500 ступеней к дракону</div>
@@ -1296,7 +1295,6 @@ function источникЗаявки(){
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'tamkok')">🔗</div>
     </div>
     <div class="bc hn-w7" id="lanha" onclick="openD('lanha')">
-      <img src="images/lanha.jpg" alt="Яхта-катамаран в бухте Лан Ха" style="object-position:center 50%" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Бухта Лан Ха на катамаране</h3><div class="bc-price">130<span>$</span></div></div>
         <div class="bc-sub">Каяки, пляж Трёх персиков, чайная церемония на закате</div>
@@ -1305,7 +1303,6 @@ function источникЗаявки(){
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'lanha')">🔗</div>
     </div>
     <div class="bc hn-w4" id="tamchuc" onclick="openD('tamchuc')">
-      <img src="images/tamchuc.jpg" alt="Пагода Там Чук на берегу озера" style="object-position:center 50%" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Пагода Там Чук</h3><div class="bc-price">190<span>$</span></div></div>
         <div class="bc-sub">Самая большая пагода в мире, сад каменных сутр</div>
@@ -1314,7 +1311,6 @@ function источникЗаявки(){
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'tamchuc')">🔗</div>
     </div>
     <div class="bc hn-w4" id="secret" onclick="openD('secret')">
-      <img src="images/secret.jpg" alt="Пагода Тай на воде" style="object-position:center 50%" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Секретный Ханой</h3><div class="bc-price">280<span>$</span></div></div>
         <div class="bc-sub">Врата в загробный мир и пещера Хо Ши Мина</div>
@@ -1323,7 +1319,6 @@ function источникЗаявки(){
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'secret')">🔗</div>
     </div>
     <div class="bc hn-w4" id="food" onclick="openD('food')">
-      <img src="images/food.jpg" alt="Блюда вьетнамской кухни" style="object-position:center 50%" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Гастротур по Ханою</h3><div class="bc-price">190<span>$</span></div></div>
         <div class="bc-sub">Фо, нэм, бань ми — несколько ресторанов старого города</div>
@@ -1332,7 +1327,6 @@ function источникЗаявки(){
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'food')">🔗</div>
     </div>
     <div class="bc hn-w6" id="seaplane" onclick="openD('seaplane')">
-      <img src="images/seaplane.jpg" alt="Бухта Халонг из окна гидросамолёта" style="object-position:center 50%" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Халонг с гидросамолёта</h3><div class="bc-price">280<span>$</span></div></div>
         <div class="bc-sub">25 минут полёта над островами бухты</div>
@@ -1341,7 +1335,6 @@ function источникЗаявки(){
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'seaplane')">🔗</div>
     </div>
     <div class="bc hn-w6" id="halong2" onclick="openD('halong2')">
-      <img src="images/halong2.jpg" alt="Бухта Халонг" style="object-position:center 50%" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Ханой и Халонг, 2 дня</h3><div class="bc-price">330<span>$</span></div></div>
         <div class="bc-sub">Обзорная по Ханою и круиз на яхте 5★ по Халонгу</div>
@@ -1350,7 +1343,6 @@ function источникЗаявки(){
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'halong2')">🔗</div>
     </div>
     <div class="bc hn-w4" id="sapa" onclick="openD('sapa')">
-      <img src="images/sapa.jpg" alt="Вершина Фансипан над облаками" style="object-position:center 50%" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Сапа, 2 дня</h3><div class="bc-price">480<span>$</span></div></div>
         <div class="bc-sub">Деревня хмонгов, рисовые террасы, Врата рая, водопад</div>
@@ -1359,7 +1351,6 @@ function источникЗаявки(){
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'sapa')">🔗</div>
     </div>
     <div class="bc hn-w4" id="tri" onclick="openD('tri')">
-      <img src="images/tri.jpg" alt="Пагода Бай Динь сверху" style="object-position:center 50%" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Ханой, Ниньбинь и Халонг, 3 дня</h3><div class="bc-price">750<span>$</span></div></div>
         <div class="bc-sub">Главное на севере за три дня с отелем</div>
@@ -1368,7 +1359,6 @@ function источникЗаявки(){
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'tri')">🔗</div>
     </div>
     <div class="bc hn-w4" id="hagiang" onclick="openD('hagiang')">
-      <img src="images/hagiang.jpg" alt="Каньон реки Нхо Куэ с перевала Мапиленг" style="object-position:center 50%" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Хазянгское кольцо, 4 дня</h3><div class="bc-price">950<span>$</span></div></div>
         <div class="bc-sub">Перевал Мапиленг, водопад Банзек, озеро Бабе</div>
