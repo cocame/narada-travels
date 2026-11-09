@@ -1,0 +1,7 @@
+<!doctype html><body><pre id="o"></pre><div id="w"></div>
+<script>
+var q=location.search.slice(1).split('|'), p=q[0], widths=[790,850,900,960,1024,1100,1180,1240,1300,1366], out=[], left=widths.length;
+widths.forEach(function(w){var f=document.createElement('iframe');f.width=w;f.height=120;f.src=p;f.onload=function(){setTimeout(function(){var d=f.contentDocument,c=d.querySelector('.citybar-in'),n=d.querySelector('.nav-inner');
+out.push(w+': '+(c.scrollWidth>c.clientWidth+1?'CLIPPED '+(c.scrollWidth-c.clientWidth)+'px':'ok'));
+if(--left==0)document.getElementById('o').textContent=p+'\n'+out.sort(function(a,b){return parseInt(a)-parseInt(b)}).join('\n');},200)};document.getElementById('w').appendChild(f);});
+</script>

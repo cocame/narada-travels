@@ -163,7 +163,7 @@ HEAD_BITS = """<!-- langsw -->
 """
 
 def switcher(ru, en, cur, float_=False):
-    cls = 'langsw only-preview' + (' float' if float_ else '')
+    cls = 'langsw' + (' float' if float_ else '')
     a_ru = ' aria-current="true"' if cur == 'ru' else ''
     a_en = ' aria-current="true"' if cur == 'en' else ''
     return (f'<!-- langsw --><span class="{cls}" aria-label="Language">'
@@ -220,8 +220,11 @@ def build():
         en = en.replace('content="ru_RU"', 'content="en_US"')
         en = re.sub(r'(https://narada-travels\.com)(/[\w-]*/?)(?=["#?])',
                     lambda m: m.group(1) + (en_path(m.group(2)) or m.group(2)), en)
-        # пока английская версия не открыта — не индексировать
-        en = re.sub(r'<meta name="robots" content="[^"]*">', '<meta name="robots" content="noindex, follow">', en)
+        # английская версия открыта для поиска так же, как русская: страницы, закрытые
+        # у русской (Ханой, Хошимин, Муйне, «Весь Вьетнам», услуги), закрыты и у английской
+        if 'noindex' in s:
+            en = re.sub(r'\s*<meta name="robots" content="[^"]*">', '', en)
+            en = en.replace('<meta name="viewport"', '<meta name="robots" content="noindex, follow">\n<meta name="viewport"', 1)
         # Chrome сам переводит английскую страницу на русский, и длинный перевод
         # («Часто задаваемые вопросы») выдавливает города из шапки — шапку не переводить
         en = re.sub(r'<nav\b(?![^>]*translate=)', '<nav translate="no"', en, count=1)
