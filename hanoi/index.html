@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', function () {
    В разметке он остаётся для поисковиков и экранного диктора. */
 .tours > h2 { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; margin:0; }
 </style>
-<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- PWA: манифест и офлайн-режим — сайт упакован в приложение для Google Play.
@@ -90,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </style>
 
 <title>Экскурсии из Ханоя с русскоязычным гидом | Narada Travels</title>
-<meta name="description" content="Экскурсии из Ханоя с русскоязычным гидом: старый город, бухта Халонг и север Вьетнама. Программы скоро.">
+<meta name="description" content="Экскурсии из Ханоя с русскоязычным гидом: старый город, бухта Халонг и север Вьетнама. Программы и цены на странице.">
 <link rel="icon" type="image/png" href="/images/favicon.png">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://narada-travels.com/hanoi/">
@@ -99,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <meta property="og:site_name" content="Narada Travels">
 <meta property="og:url" content="https://narada-travels.com/hanoi/">
 <meta property="og:title" content="Экскурсии из Ханоя с русскоязычным гидом | Narada Travels">
-<meta property="og:description" content="Экскурсии из Ханоя с русскоязычным гидом: старый город, бухта Халонг и север Вьетнама. Программы скоро.">
+<meta property="og:description" content="Экскурсии из Ханоя с русскоязычным гидом: старый город, бухта Халонг и север Вьетнама. Программы и цены на странице.">
 <meta property="og:image" content="https://narada-travels.com/images/og-preview.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
@@ -108,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Экскурсии из Ханоя с русскоязычным гидом | Narada Travels">
-<meta name="twitter:description" content="Экскурсии из Ханоя с русскоязычным гидом: старый город, бухта Халонг и север Вьетнама. Программы скоро.">
+<meta name="twitter:description" content="Экскурсии из Ханоя с русскоязычным гидом: старый город, бухта Халонг и север Вьетнама. Программы и цены на странице.">
 <meta name="twitter:image" content="https://narada-travels.com/images/og-preview.jpg">
 <meta name="twitter:image:alt" content="Экскурсии из Ханоя с русскоязычным гидом">
 <script type="application/ld+json">
@@ -120,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
   "url": "https://narada-travels.com/hanoi/",
   "logo": "https://narada-travels.com/images/logo.png",
   "image": "https://narada-travels.com/images/og-preview.jpg",
-  "description": "Экскурсии из Ханоя с русскоязычным гидом: старый город, бухта Халонг и север Вьетнама. Программы скоро.",
+  "description": "Экскурсии из Ханоя с русскоязычным гидом: старый город, бухта Халонг и север Вьетнама. Программы и цены на странице.",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Hanoi",
@@ -1227,7 +1226,7 @@ function источникЗаявки(){
         <a class="all only-preview c2" href="/vietnam/">Все<span class="all-long"> направления</span><span class="arw">→</span></a>
       </div></div>
     <div class="nav-r"><!-- langsw --><span class="langsw has2" aria-label="Language"><a href="/hanoi/" hreflang="ru" lang="ru" aria-current="true">RU</a><a href="/en/hanoi/" hreflang="en" lang="en">EN</a></span><!-- /langsw -->      <ul class="nav-links">
-        <li class="only-preview"><a href="#tours">Экскурсии</a></li><li class="only-public"><a href="#tours-soon">Экскурсии</a></li>
+        <li><a href="#tours">Экскурсии</a></li>
         <li class="app-only"><a href="/uslugi/">Услуги</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#emotions">Отзывы</a></li>
@@ -1255,16 +1254,7 @@ function источникЗаявки(){
 
 
 <!-- ── ПРОГРАММЫ И ЦЕНЫ ── -->
-<section class="tours only-public" id="tours-soon">
-  <h2>Экскурсии</h2>
-  <div class="soon-plate">
-    <span class="soon-tag">Скоро</span>
-    <p>Экскурсии из Ханоя готовим. Напишите нам — подберём программу уже сейчас.</p>
-    <a href="#form" class="soon-btn">Написать нам</a>
-  </div>
-</section>
-
-<section class="tours only-preview" id="tours">
+<section class="tours" id="tours">
   <h2>Программы и цены</h2>
 
   <!-- Туры партнёра fasttur.ru, программы и фото с их сайта (снято 01.11.2026),
@@ -1384,8 +1374,8 @@ function источникЗаявки(){
   <p class="hn-credits">Фото: <a href="https://commons.wikimedia.org/wiki/File:Ch%C3%B9a_Th%E1%BA%A7y_2.jpg" target="_blank" rel="noopener">DuongQuocTrung</a> (Секретный Ханой, CC BY-SA 4.0), <a href="https://commons.wikimedia.org/w/index.php?curid=163606166" target="_blank" rel="noopener">kitmasterbloke</a> (гидросамолёт, CC BY 2.0), <a href="https://commons.wikimedia.org/wiki/File:Cruise_Ship-Halong_Bay_Vietnam-Andres_Larin.jpg" target="_blank" rel="noopener">Saaremees</a> (круиз по Халонгу, CC BY-SA 4.0), <a href="https://commons.wikimedia.org/wiki/File:Ha_Giang_Loop,_Northern_Vietnam.jpg" target="_blank" rel="noopener">miketnorton</a> (Хазянг, CC BY 2.0); остальные — общественное достояние (CC0) и бесплатные фото Pexels.</p>
 </section>
 
-<!-- ── ДРУГИЕ НАПРАВЛЕНИЯ ── пока только в предпросмотре -->
-<section class="morecities only-preview" aria-label="Другие направления">
+<!-- ── ДРУГИЕ НАПРАВЛЕНИЯ ── -->
+<section class="morecities" aria-label="Другие направления">
   <h2>Другие направления</h2>
   <div class="mc-track">
     <a class="mc-card" href="/">
@@ -1417,12 +1407,12 @@ function источникЗаявки(){
 <section class="faq" id="faq">
   <h2>Частые вопросы</h2>
   <div class="faq-wrap">
-    <div class="fi only-preview"><button class="fq">Цена за человека или за группу? <span class="fi-icon">+</span></button><div class="fa">За человека, в группе от двух. Экскурсии индивидуальные: машина и гид только для вас, группа до 8 человек. У круиза по Лан Ха трансфер из Ханоя отдельно — 180 $ за машину.</div></div>
-    <div class="fi only-preview"><button class="fq">Что включено в стоимость? <span class="fi-icon">+</span></button><div class="fa">Машина или минивэн с кондиционером, гид и входные билеты по маршруту, в турах с ночёвкой — отель. Обеды и ужины оплачиваются отдельно, если в описании тура не сказано иначе.</div></div>
-    <div class="fi only-preview"><button class="fq">Откуда вы забираете? <span class="fi-icon">+</span></button><div class="fa">Из любого отеля в Ханое — или из аэропорта, если экскурсия в день прилёта.</div></div>
-    <div class="fi only-preview"><button class="fq">Можно в любой день? <span class="fi-icon">+</span></button><div class="fa">Да. Экскурсии не привязаны к датам, начинаем в любой удобный день. Программу можно подстроить под вас.</div></div>
-    <div class="fi only-preview"><button class="fq">Гид говорит по-русски? <span class="fi-icon">+</span></button><div class="fa">Да, гид русскоязычный.</div></div>
-    <div class="fi only-preview"><button class="fq">Нужна ли предоплата? <span class="fi-icon">+</span></button><div class="fa">Круиз по Лан Ха и полёт на гидросамолёте бронируются только с полной предоплатой. Если опоздать на яхту, деньги не возвращаются. Для остальных экскурсий — как написано ниже, в ответе «Как оплатить тур?».</div></div>
+    <div class="fi"><button class="fq">Цена за человека или за группу? <span class="fi-icon">+</span></button><div class="fa">За человека, в группе от двух. Экскурсии индивидуальные: машина и гид только для вас, группа до 8 человек. У круиза по Лан Ха трансфер из Ханоя отдельно — 180 $ за машину.</div></div>
+    <div class="fi"><button class="fq">Что включено в стоимость? <span class="fi-icon">+</span></button><div class="fa">Машина или минивэн с кондиционером, гид и входные билеты по маршруту, в турах с ночёвкой — отель. Обеды и ужины оплачиваются отдельно, если в описании тура не сказано иначе.</div></div>
+    <div class="fi"><button class="fq">Откуда вы забираете? <span class="fi-icon">+</span></button><div class="fa">Из любого отеля в Ханое — или из аэропорта, если экскурсия в день прилёта.</div></div>
+    <div class="fi"><button class="fq">Можно в любой день? <span class="fi-icon">+</span></button><div class="fa">Да. Экскурсии не привязаны к датам, начинаем в любой удобный день. Программу можно подстроить под вас.</div></div>
+    <div class="fi"><button class="fq">Гид говорит по-русски? <span class="fi-icon">+</span></button><div class="fa">Да, гид русскоязычный.</div></div>
+    <div class="fi"><button class="fq">Нужна ли предоплата? <span class="fi-icon">+</span></button><div class="fa">Круиз по Лан Ха и полёт на гидросамолёте бронируются только с полной предоплатой. Если опоздать на яхту, деньги не возвращаются. Для остальных экскурсий — как написано ниже, в ответе «Как оплатить тур?».</div></div>
     <div class="fi"><button class="fq">Как оплатить тур? <span class="fi-icon">+</span></button><div class="fa">Цена тура указана в долларах. Оплатить можно двумя способами.<br><br><b>В два этапа.</b> Предоплата от 50 % — не позднее чем за сутки до экскурсии. Остаток отдаёте гиду перед посадкой, наличными: донгами или долларами.<br><br><b>Полностью онлайн.</b> Все 100 % — тоже не позднее чем за сутки до экскурсии.<br><br>Онлайн принимаем: рубли переводом по СБП, донги по QR-коду, USDT переводом по UID на Bybit. Доллары наличными — в отдельных случаях к вам подъедет наш сотрудник, только для отелей в туристической зоне.<br><br>Наличные доллары: только 100-долларовые купюры с синей полосой, без заломов, штампов и надписей. Сдача выдаётся в донгах.<br><br>Не принимаем: доллары старого образца, купюры меньше 100 долларов, оплату картой через терминал, криптокошельки.<br><br>Расчёт в рублях и донгах — по внутреннему курсу компании на день оплаты.</div></div>
     <div class="fi"><button class="fq">А в других городах у вас есть экскурсии? <span class="fi-icon">+</span></button><div class="fa">Есть: в <a href="/" style="color:var(--c);text-decoration:underline;text-underline-offset:2px">Дананге</a>, <a href="/nha-trang/" style="color:var(--c);text-decoration:underline;text-underline-offset:2px">Нячанге</a> и на <a href="/phu-quoc/" style="color:var(--c);text-decoration:underline;text-underline-offset:2px">Фукуоке</a>.</div></div>
   </div>
@@ -1459,7 +1449,7 @@ function источникЗаявки(){
             <button type="button" class="regsw-b" data-region="phuquoc">Фукуок</button>
             <button type="button" class="regsw-b" data-region="nhatrang">Нячанг</button>
             <button type="button" class="regsw-b only-preview" data-region="hcm">Хошимин</button>
-            <button type="button" class="regsw-b only-preview" data-region="hanoi">Ханой</button>
+            <button type="button" class="regsw-b" data-region="hanoi">Ханой</button>
             <button type="button" class="regsw-b only-preview" data-region="muine">Муйне</button>
           </div>
           <div class="reghint">Выбран по странице, с которой вы пришли. Можно переключить.</div>

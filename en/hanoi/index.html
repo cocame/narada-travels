@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', function () {
    В разметке он остаётся для поисковиков и экранного диктора. */
 .tours > h2 { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; margin:0; }
 </style>
-<meta name="robots" content="noindex, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- PWA: манифест и офлайн-режим — сайт упакован в приложение для Google Play.
@@ -90,15 +89,16 @@ document.addEventListener('DOMContentLoaded', function () {
 </style>
 
 <title>Hanoi Tours with an English- or Russian-Speaking Guide | Narada Travels</title>
-<meta name="description" content="Tours from Hanoi with an English- or Russian-speaking guide: the Old Quarter, Ha Long Bay and northern Vietnam. Programs coming soon.">
+<meta name="description" content="Tours from Hanoi with an English- or Russian-speaking guide: the Old Quarter, Ha Long Bay and northern Vietnam. Programs and prices on the page.">
 <link rel="icon" type="image/png" href="/images/favicon.png">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://narada-travels.com/en/hanoi/">
 <meta name="keywords" content="Hanoi tours, English-speaking guide Hanoi, Ha Long Bay, Vietnam tours">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Narada Travels">
 <meta property="og:url" content="https://narada-travels.com/en/hanoi/">
 <meta property="og:title" content="Hanoi Tours with an English- or Russian-Speaking Guide | Narada Travels">
-<meta property="og:description" content="Tours from Hanoi with an English- or Russian-speaking guide: the Old Quarter, Ha Long Bay and northern Vietnam. Programs coming soon.">
+<meta property="og:description" content="Tours from Hanoi with an English- or Russian-speaking guide: the Old Quarter, Ha Long Bay and northern Vietnam. Programs and prices on the page.">
 <meta property="og:image" content="https://narada-travels.com/images/og-preview.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Hanoi Tours with an English- or Russian-Speaking Guide | Narada Travels">
-<meta name="twitter:description" content="Tours from Hanoi with an English- or Russian-speaking guide: the Old Quarter, Ha Long Bay and northern Vietnam. Programs coming soon.">
+<meta name="twitter:description" content="Tours from Hanoi with an English- or Russian-speaking guide: the Old Quarter, Ha Long Bay and northern Vietnam. Programs and prices on the page.">
 <meta name="twitter:image" content="https://narada-travels.com/images/og-preview.jpg">
 <meta name="twitter:image:alt" content="Hanoi tours with an English- or Russian-speaking guide">
 <script type="application/ld+json">
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
   "url": "https://narada-travels.com/en/hanoi/",
   "logo": "https://narada-travels.com/images/logo.png",
   "image": "https://narada-travels.com/images/og-preview.jpg",
-  "description": "Tours from Hanoi with an English- or Russian-speaking guide: the Old Quarter, Ha Long Bay and northern Vietnam. Programs coming soon.",
+  "description": "Tours from Hanoi with an English- or Russian-speaking guide: the Old Quarter, Ha Long Bay and northern Vietnam. Programs and prices on the page.",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Hanoi",
@@ -1226,7 +1226,7 @@ function источникЗаявки(){
         <a class="all only-preview c2" href="/en/vietnam/">All<span class="all-long"> destinations</span><span class="arw">→</span></a>
       </div></div>
     <div class="nav-r"><!-- langsw --><span class="langsw has2" aria-label="Language"><a href="/hanoi/" hreflang="ru" lang="ru">RU</a><a href="/en/hanoi/" hreflang="en" lang="en" aria-current="true">EN</a></span><!-- /langsw -->      <ul class="nav-links">
-        <li class="only-preview"><a href="#tours">Tours</a></li><li class="only-public"><a href="#tours-soon">Tours</a></li>
+        <li><a href="#tours">Tours</a></li>
         <li class="app-only"><a href="/en/uslugi/">Services</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#emotions">Reviews</a></li>
@@ -1254,16 +1254,7 @@ function источникЗаявки(){
 
 
 <!-- ── ПРОГРАММЫ И ЦЕНЫ ── -->
-<section class="tours only-public" id="tours-soon">
-  <h2>Tours</h2>
-  <div class="soon-plate">
-    <span class="soon-tag">Soon</span>
-    <p>We're preparing tours from Hanoi. Message us — we can plan a program for you right now.</p>
-    <a href="#form" class="soon-btn">Contact us</a>
-  </div>
-</section>
-
-<section class="tours only-preview" id="tours">
+<section class="tours" id="tours">
   <h2>Programs and prices</h2>
 
   <!-- Туры партнёра fasttur.ru, программы и фото с их сайта (снято 01.11.2026),
@@ -1383,8 +1374,8 @@ function источникЗаявки(){
   <p class="hn-credits">Photos: <a href="https://commons.wikimedia.org/wiki/File:Ch%C3%B9a_Th%E1%BA%A7y_2.jpg" target="_blank" rel="noopener">DuongQuocTrung</a> (Secret Hanoi, CC BY-SA 4.0), <a href="https://commons.wikimedia.org/w/index.php?curid=163606166" target="_blank" rel="noopener">kitmasterbloke</a> (seaplane, CC BY 2.0), <a href="https://commons.wikimedia.org/wiki/File:Cruise_Ship-Halong_Bay_Vietnam-Andres_Larin.jpg" target="_blank" rel="noopener">Saaremees</a> (Ha Long cruise, CC BY-SA 4.0), <a href="https://commons.wikimedia.org/wiki/File:Ha_Giang_Loop,_Northern_Vietnam.jpg" target="_blank" rel="noopener">miketnorton</a> (Ha Giang, CC BY 2.0); others are public domain (CC0) and free Pexels photos.</p>
 </section>
 
-<!-- ── ДРУГИЕ НАПРАВЛЕНИЯ ── пока только в предпросмотре -->
-<section class="morecities only-preview" aria-label="Other destinations">
+<!-- ── ДРУГИЕ НАПРАВЛЕНИЯ ── -->
+<section class="morecities" aria-label="Other destinations">
   <h2>Other destinations</h2>
   <div class="mc-track">
     <a class="mc-card" href="/en/">
@@ -1416,12 +1407,12 @@ function источникЗаявки(){
 <section class="faq" id="faq">
   <h2>FAQ</h2>
   <div class="faq-wrap">
-    <div class="fi only-preview"><button class="fq">Is the price per person or per group? <span class="fi-icon">+</span></button><div class="fa">Per person, for groups of two or more. Tours are private: the car and guide are just for you, groups up to 8. For the Lan Ha cruise the transfer from Hanoi is extra — $180 per car.</div></div>
-    <div class="fi only-preview"><button class="fq">What is included in the price? <span class="fi-icon">+</span></button><div class="fa">An air-conditioned car or minivan, a guide and entrance tickets on the route; on overnight tours — the hotel. Lunches and dinners are extra unless the tour description says otherwise.</div></div>
-    <div class="fi only-preview"><button class="fq">Where do you pick up from? <span class="fi-icon">+</span></button><div class="fa">From any hotel in Hanoi — or from the airport if the tour is on your arrival day.</div></div>
-    <div class="fi only-preview"><button class="fq">Can we go on any day? <span class="fi-icon">+</span></button><div class="fa">Yes. Tours aren't tied to dates — we start on any day you like. The program can be adjusted for you.</div></div>
-    <div class="fi only-preview"><button class="fq">What language does the guide speak? <span class="fi-icon">+</span></button><div class="fa">The guide speaks Russian. Need an English-speaking guide? Write to us and we'll check.</div></div>
-    <div class="fi only-preview"><button class="fq">Is prepayment required? <span class="fi-icon">+</span></button><div class="fa">The Lan Ha cruise and the seaplane flight are booked with full prepayment only. If you miss the yacht, the money is not refunded. For other tours — see «How do I pay for a tour?» below.</div></div>
+    <div class="fi"><button class="fq">Is the price per person or per group? <span class="fi-icon">+</span></button><div class="fa">Per person, for groups of two or more. Tours are private: the car and guide are just for you, groups up to 8. For the Lan Ha cruise the transfer from Hanoi is extra — $180 per car.</div></div>
+    <div class="fi"><button class="fq">What is included in the price? <span class="fi-icon">+</span></button><div class="fa">An air-conditioned car or minivan, a guide and entrance tickets on the route; on overnight tours — the hotel. Lunches and dinners are extra unless the tour description says otherwise.</div></div>
+    <div class="fi"><button class="fq">Where do you pick up from? <span class="fi-icon">+</span></button><div class="fa">From any hotel in Hanoi — or from the airport if the tour is on your arrival day.</div></div>
+    <div class="fi"><button class="fq">Can we go on any day? <span class="fi-icon">+</span></button><div class="fa">Yes. Tours aren't tied to dates — we start on any day you like. The program can be adjusted for you.</div></div>
+    <div class="fi"><button class="fq">What language does the guide speak? <span class="fi-icon">+</span></button><div class="fa">The guide speaks Russian. Need an English-speaking guide? Write to us and we'll check.</div></div>
+    <div class="fi"><button class="fq">Is prepayment required? <span class="fi-icon">+</span></button><div class="fa">The Lan Ha cruise and the seaplane flight are booked with full prepayment only. If you miss the yacht, the money is not refunded. For other tours — see «How do I pay for a tour?» below.</div></div>
     <div class="fi"><button class="fq">How do I pay for a tour? <span class="fi-icon">+</span></button><div class="fa">Tour prices are in US dollars. There are two ways to pay.<br><br><b>In two steps.</b> A deposit of 50% or more — no later than one day before the tour. The balance is paid to the guide in cash before departure, in dong or dollars.<br><br><b>Fully online.</b> 100% — also no later than one day before the tour.<br><br>Online we accept: rubles via SBP transfer, dong via QR code, USDT via Bybit UID transfer. Cash dollars — in some cases our staff member can come to you, only for hotels in the tourist area.<br><br>Cash dollars: only 100-dollar bills with the blue stripe, without creases, stamps or writing. Change is given in dong.<br><br>We do not accept: old-design dollars, bills smaller than 100 dollars, card payments via terminal, crypto wallets.<br><br>Rubles and dong are converted at the company's internal rate on the day of payment.</div></div>
     <div class="fi"><button class="fq">Do you have tours in other cities? <span class="fi-icon">+</span></button><div class="fa">Yes: in <a href="/en/" style="color:var(--c);text-decoration:underline;text-underline-offset:2px">Da Nang</a>, <a href="/en/nha-trang/" style="color:var(--c);text-decoration:underline;text-underline-offset:2px">Nha Trang</a> and on <a href="/en/phu-quoc/" style="color:var(--c);text-decoration:underline;text-underline-offset:2px">Phu Quoc</a>.</div></div>
   </div>
@@ -1458,7 +1449,7 @@ function источникЗаявки(){
             <button type="button" class="regsw-b" data-region="phuquoc">Phu Quoc</button>
             <button type="button" class="regsw-b" data-region="nhatrang">Nha Trang</button>
             <button type="button" class="regsw-b only-preview" data-region="hcm">Ho Chi Minh</button>
-            <button type="button" class="regsw-b only-preview" data-region="hanoi">Hanoi</button>
+            <button type="button" class="regsw-b" data-region="hanoi">Hanoi</button>
             <button type="button" class="regsw-b only-preview" data-region="muine">Mui Ne</button>
           </div>
           <div class="reghint">Pre-selected from the page you came from. You can change it.</div>
