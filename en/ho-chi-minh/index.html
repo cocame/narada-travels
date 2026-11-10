@@ -51,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function () {
   font-size: 10.5px; color: rgba(255,255,255,0.6); }
 @media (max-width: 768px) { .soon-plate { padding: 36px 20px; } .tours .soon-plate { height: auto !important; } }
 </style>
-<meta name="robots" content="noindex, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- PWA: манифест и офлайн-режим — сайт упакован в приложение для Google Play.
@@ -103,6 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <title>Ho Chi Minh Tours with an English- or Russian-Speaking Guide | Narada Travels</title>
 <meta name="description" content="Tours from Ho Chi Minh with an English- or Russian-speaking guide: Saigon city tour, Cu Chi tunnels, the Mekong Delta, an evening Saigon River cruise with dinner and a show.">
 <link rel="icon" type="image/png" href="/images/favicon.png">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://narada-travels.com/en/ho-chi-minh/">
 <meta name="keywords" content="Ho Chi Minh tours, Saigon tours, English-speaking guide Ho Chi Minh, Cu Chi tunnels, Mekong Delta, Saigon River cruise, Ho Chi Minh tour, Ho Chi Minh tours 2026">
 <meta property="og:type" content="website">
@@ -1213,9 +1213,9 @@ function источникЗаявки(){
         <a class="all only-preview c2" href="/en/vietnam/">All<span class="all-long"> destinations</span><span class="arw">→</span></a>
       </div></div>
     <div class="nav-r"><!-- langsw --><span class="langsw has2" aria-label="Language"><a href="/ho-chi-minh/" hreflang="ru" lang="ru">RU</a><a href="/en/ho-chi-minh/" hreflang="en" lang="en" aria-current="true">EN</a></span><!-- /langsw -->      <ul class="nav-links">
-        <li class="only-preview"><a href="#tours">Tours</a></li><li class="only-public"><a href="#tours-soon">Tours</a></li>
+        <li><a href="#tours">Tours</a></li>
         <li class="app-only"><a href="/en/uslugi/">Services</a></li>
-        <li class="only-preview"><a href="#faq">FAQ</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="#emotions">Reviews</a></li>
       </ul>
       <a href="#form" class="nav-cta">Contact us</a>      <div class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
@@ -1241,16 +1241,7 @@ function источникЗаявки(){
 
 
 <!-- ── ПРОГРАММЫ И ЦЕНЫ ── -->
-<!-- Пока туры в работе, посетитель видит «Скоро», а мы по ссылке предпросмотра — туры и цены -->
-<section class="tours only-public" id="tours-soon">
-  <h2>Tours</h2>
-  <div class="soon-plate">
-    <span class="soon-tag">Soon</span>
-    <p>We are preparing tours from Ho Chi Minh. Message us — we can plan a program for you right now.</p>
-    <a href="#form" class="soon-btn">Contact us</a>
-  </div>
-</section>
-<section class="tours only-preview" id="tours">
+<section class="tours" id="tours">
   <h2>Programs and prices</h2>
 
   <!-- Фото от гида Ирины Стольной, присланы 29.10.2026.
@@ -1297,7 +1288,7 @@ function источникЗаявки(){
 </section>
 
 <!-- ── ДРУГИЕ НАПРАВЛЕНИЯ ── пока только в предпросмотре -->
-<section class="morecities only-preview" aria-label="Other destinations">
+<section class="morecities" aria-label="Other destinations">
   <h2>Other destinations</h2>
   <div class="mc-track">
     <a class="mc-card" href="/en/">
@@ -1326,7 +1317,7 @@ function источникЗаявки(){
 
 
 <!-- ── FAQ ── -->
-<section class="faq only-preview" id="faq">
+<section class="faq" id="faq">
   <h2>FAQ</h2>
   <div class="faq-wrap">
     <div class="fi"><button class="fq">Is the price per person or per group? <span class="fi-icon">+</span></button><div class="fa">Per whole group. The city tour is priced per person: the bigger the group, the cheaper — from $120 for one person to $30 per person in a group of 11–13. The cruise, Cu Chi and the Mekong are priced per group. Prices for any number of people are in each tour's description.</div></div>
@@ -1371,7 +1362,7 @@ function источникЗаявки(){
             <button type="button" class="regsw-b" data-region="danang">Da Nang</button>
             <button type="button" class="regsw-b" data-region="phuquoc">Phu Quoc</button>
             <button type="button" class="regsw-b" data-region="nhatrang">Nha Trang</button>
-            <button type="button" class="regsw-b only-preview" data-region="hcm">Ho Chi Minh</button>
+            <button type="button" class="regsw-b" data-region="hcm">Ho Chi Minh</button>
             <button type="button" class="regsw-b" data-region="hanoi">Hanoi</button>
             <button type="button" class="regsw-b only-preview" data-region="muine">Mui Ne</button>
           </div>

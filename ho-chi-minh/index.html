@@ -51,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function () {
   font-size: 10.5px; color: rgba(255,255,255,0.6); }
 @media (max-width: 768px) { .soon-plate { padding: 36px 20px; } .tours .soon-plate { height: auto !important; } }
 </style>
-<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- PWA: манифест и офлайн-режим — сайт упакован в приложение для Google Play.
@@ -1214,9 +1213,9 @@ function источникЗаявки(){
         <a class="all only-preview c2" href="/vietnam/">Все<span class="all-long"> направления</span><span class="arw">→</span></a>
       </div></div>
     <div class="nav-r"><!-- langsw --><span class="langsw has2" aria-label="Language"><a href="/ho-chi-minh/" hreflang="ru" lang="ru" aria-current="true">RU</a><a href="/en/ho-chi-minh/" hreflang="en" lang="en">EN</a></span><!-- /langsw -->      <ul class="nav-links">
-        <li class="only-preview"><a href="#tours">Экскурсии</a></li><li class="only-public"><a href="#tours-soon">Экскурсии</a></li>
+        <li><a href="#tours">Экскурсии</a></li>
         <li class="app-only"><a href="/uslugi/">Услуги</a></li>
-        <li class="only-preview"><a href="#faq">FAQ</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="#emotions">Отзывы</a></li>
       </ul>
       <a href="#form" class="nav-cta">Написать нам</a>      <div class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
@@ -1242,16 +1241,7 @@ function источникЗаявки(){
 
 
 <!-- ── ПРОГРАММЫ И ЦЕНЫ ── -->
-<!-- Пока туры в работе, посетитель видит «Скоро», а мы по ссылке предпросмотра — туры и цены -->
-<section class="tours only-public" id="tours-soon">
-  <h2>Экскурсии</h2>
-  <div class="soon-plate">
-    <span class="soon-tag">Скоро</span>
-    <p>Экскурсии из Хошимина готовим. Напишите нам — подберём программу уже сейчас.</p>
-    <a href="#form" class="soon-btn">Написать нам</a>
-  </div>
-</section>
-<section class="tours only-preview" id="tours">
+<section class="tours" id="tours">
   <h2>Программы и цены</h2>
 
   <!-- Фото от гида Ирины Стольной, присланы 29.10.2026.
@@ -1298,7 +1288,7 @@ function источникЗаявки(){
 </section>
 
 <!-- ── ДРУГИЕ НАПРАВЛЕНИЯ ── пока только в предпросмотре -->
-<section class="morecities only-preview" aria-label="Другие направления">
+<section class="morecities" aria-label="Другие направления">
   <h2>Другие направления</h2>
   <div class="mc-track">
     <a class="mc-card" href="/">
@@ -1327,7 +1317,7 @@ function источникЗаявки(){
 
 
 <!-- ── FAQ ── -->
-<section class="faq only-preview" id="faq">
+<section class="faq" id="faq">
   <h2>Частые вопросы</h2>
   <div class="faq-wrap">
     <div class="fi"><button class="fq">Цена за человека или за группу? <span class="fi-icon">+</span></button><div class="fa">За всю группу. Обзорная считается за человека: чем больше группа, тем дешевле — от 120 $ за одного до 30 $ с человека в группе 11–13 человек. Круиз, Кути и Меконг — за группу. Цены для любого числа людей — в описании каждого тура.</div></div>
@@ -1372,7 +1362,7 @@ function источникЗаявки(){
             <button type="button" class="regsw-b" data-region="danang">Дананг</button>
             <button type="button" class="regsw-b" data-region="phuquoc">Фукуок</button>
             <button type="button" class="regsw-b" data-region="nhatrang">Нячанг</button>
-            <button type="button" class="regsw-b only-preview" data-region="hcm">Хошимин</button>
+            <button type="button" class="regsw-b" data-region="hcm">Хошимин</button>
             <button type="button" class="regsw-b" data-region="hanoi">Ханой</button>
             <button type="button" class="regsw-b only-preview" data-region="muine">Муйне</button>
           </div>
