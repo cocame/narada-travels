@@ -957,8 +957,9 @@ nav.solid .regnav-soon { color: var(--gray); }
 .hn-w5 { grid-column: span 5; grid-row: span 2; }
 .hn-w4 { grid-column: span 4; grid-row: span 2; }
 .hn-w6 { grid-column: span 6; grid-row: span 2; }
+.hn-w12 { grid-column: span 12; grid-row: span 2; }
 @media (max-width: 900px) {
-  .hn-w7, .hn-w5, .hn-w4, .hn-w6 { grid-column: span 6; grid-row: auto / span 2; }
+  .hn-w7, .hn-w5, .hn-w4, .hn-w6, .hn-w12 { grid-column: span 6; grid-row: auto / span 2; }
 }
 
 /* Хошимин: четыре тура — обзорная и Меконг сверху, Кути и круиз ниже. */
@@ -1325,16 +1326,7 @@ function источникЗаявки(){
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
       <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'food')">🔗</div>
     </div>
-    <div class="bc hn-w6" id="seaplane" onclick="openD('seaplane')">
-      <img src="/hanoi/images/seaplane.jpg" alt="Seaplane at the Ha Long terminal" style="object-position:62% 50%" loading="lazy">
-      <div class="bc-info">
-        <div class="bc-head"><h3 class="bc-title">Ha Long by seaplane</h3><div class="bc-price">280<span>$</span></div></div>
-        <div class="bc-sub">25-minute flight over the bay's islands</div>
-      </div>
-      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
-      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'seaplane')">🔗</div>
-    </div>
-    <div class="bc hn-w6" id="halong2" onclick="openD('halong2')">
+    <div class="bc hn-w12" id="halong2" onclick="openD('halong2')">
       <img src="/hanoi/images/halong2.jpg" alt="5★ cruise ship in Ha Long Bay" style="object-position:center 50%" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Hanoi and Ha Long, 2 days</h3><div class="bc-price">330<span>$</span></div></div>
@@ -1371,7 +1363,7 @@ function источникЗаявки(){
       <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'hagiang')">🔗</div>
     </div>
   </div>
-  <p class="hn-credits">Photos: <a href="https://commons.wikimedia.org/wiki/File:Ch%C3%B9a_Th%E1%BA%A7y_2.jpg" target="_blank" rel="noopener">DuongQuocTrung</a> (Secret Hanoi, CC BY-SA 4.0), <a href="https://commons.wikimedia.org/w/index.php?curid=163606166" target="_blank" rel="noopener">kitmasterbloke</a> (seaplane, CC BY 2.0), <a href="https://commons.wikimedia.org/wiki/File:Cruise_Ship-Halong_Bay_Vietnam-Andres_Larin.jpg" target="_blank" rel="noopener">Saaremees</a> (Ha Long cruise, CC BY-SA 4.0), <a href="https://commons.wikimedia.org/wiki/File:Ha_Giang_Loop,_Northern_Vietnam.jpg" target="_blank" rel="noopener">miketnorton</a> (Ha Giang, CC BY 2.0); others are public domain (CC0) and free Pexels photos.</p>
+  <p class="hn-credits">Photos: <a href="https://commons.wikimedia.org/wiki/File:Ch%C3%B9a_Th%E1%BA%A7y_2.jpg" target="_blank" rel="noopener">DuongQuocTrung</a> (Secret Hanoi, CC BY-SA 4.0), <a href="https://commons.wikimedia.org/wiki/File:Cruise_Ship-Halong_Bay_Vietnam-Andres_Larin.jpg" target="_blank" rel="noopener">Saaremees</a> (Ha Long cruise, CC BY-SA 4.0), <a href="https://commons.wikimedia.org/wiki/File:Ha_Giang_Loop,_Northern_Vietnam.jpg" target="_blank" rel="noopener">miketnorton</a> (Ha Giang, CC BY 2.0); others are public domain (CC0) and free Pexels photos.</p>
 </section>
 
 <!-- ── ДРУГИЕ НАПРАВЛЕНИЯ ── -->
@@ -1412,7 +1404,7 @@ function источникЗаявки(){
     <div class="fi"><button class="fq">Where do you pick up from? <span class="fi-icon">+</span></button><div class="fa">From any hotel in Hanoi — or from the airport if the tour is on your arrival day.</div></div>
     <div class="fi"><button class="fq">Can we go on any day? <span class="fi-icon">+</span></button><div class="fa">Yes. Tours aren't tied to dates — we start on any day you like. The program can be adjusted for you.</div></div>
     <div class="fi"><button class="fq">What language does the guide speak? <span class="fi-icon">+</span></button><div class="fa">The guide speaks Russian. Need an English-speaking guide? Write to us and we'll check.</div></div>
-    <div class="fi"><button class="fq">Is prepayment required? <span class="fi-icon">+</span></button><div class="fa">The Lan Ha cruise and the seaplane flight are booked with full prepayment only. If you miss the yacht, the money is not refunded. For other tours — see «How do I pay for a tour?» below.</div></div>
+    <div class="fi"><button class="fq">Is prepayment required? <span class="fi-icon">+</span></button><div class="fa">The Lan Ha cruise is booked with full prepayment only. If you miss the yacht, the money is not refunded. For other tours — see «How do I pay for a tour?» below.</div></div>
     <div class="fi"><button class="fq">How do I pay for a tour? <span class="fi-icon">+</span></button><div class="fa">Tour prices are in US dollars. There are two ways to pay.<br><br><b>In two steps.</b> A deposit of 50% or more — no later than one day before the tour. The balance is paid to the guide in cash before departure, in dong or dollars.<br><br><b>Fully online.</b> 100% — also no later than one day before the tour.<br><br>Online we accept: rubles via SBP transfer, dong via QR code, USDT via Bybit UID transfer. Cash dollars — in some cases our staff member can come to you, only for hotels in the tourist area.<br><br>Cash dollars: only 100-dollar bills with the blue stripe, without creases, stamps or writing. Change is given in dong.<br><br>We do not accept: old-design dollars, bills smaller than 100 dollars, card payments via terminal, crypto wallets.<br><br>Rubles and dong are converted at the company's internal rate on the day of payment.</div></div>
     <div class="fi"><button class="fq">Do you have tours in other cities? <span class="fi-icon">+</span></button><div class="fa">Yes: in <a href="/en/" style="color:var(--c);text-decoration:underline;text-underline-offset:2px">Da Nang</a>, <a href="/en/nha-trang/" style="color:var(--c);text-decoration:underline;text-underline-offset:2px">Nha Trang</a> and on <a href="/en/phu-quoc/" style="color:var(--c);text-decoration:underline;text-underline-offset:2px">Phu Quoc</a>.</div></div>
   </div>
@@ -1596,13 +1588,6 @@ const tours = {
     exc:[],
     note:["The price depends on the chosen places and menu"],
     prices:[["Group","Price"],["From 2 people","from $190 per person"]]},
-  seaplane:{title:"Ha Long by seaplane",price:"$280 / person",
-    seo:"Almost two thousand limestone islands above emerald water — from the air. A 25-minute flight over Dau Be and Cong Do islands in a Cessna Grand Caravan amphibious plane, taking off and landing at Tuan Chau pier. Can be combined with a bay cruise.",
-    prog:[["","Departure from Hanoi — between 7:00 and 13:00, time agreed"],["","Tuan Chau pier, Ha Long"],["","25-minute flight over the bay's islands"]],
-    inc:["Seaplane flight"],
-    exc:[],
-    note:["Full prepayment only"],
-    prices:[["Group","Price"],["From 2 people","$280 per person"]]},
   halong2:{title:"Hanoi and Ha Long, 2 days",price:"from $330 / person",
     seo:"Day one — Hanoi city tour: the citadel, the mausoleum, Train Street, the Old Quarter. Day two — six hours on a 5★ yacht in Ha Long: Fighting Cocks rock, Swan and Finger islets, Luon Cave and Ti Top beach, named after cosmonaut Titov.",
     prog:[["Day 1","Hanoi city tour, night at the hotel"],["7:30","Day 2: departure to Ha Long"],["12:00","Boarding the 5★ yacht, lunch on board"],["13:00","Fighting Cocks rock, Swan and Finger islets"],["14:45","Luon Cave"],["15:45","Ti Top beach"],["18:00","Back to the port, then to the hotel"]],
@@ -1754,7 +1739,6 @@ const REGION_TOURS = {
     ["Hanoi — Tam Chuc Pagoda","Tam Chuc Pagoda"],
     ["Hanoi — Secret Hanoi","Secret Hanoi"],
     ["Hanoi — Food tour","Hanoi food tour"],
-    ["Hanoi — Ha Long by seaplane","Ha Long by seaplane"],
     ["Hanoi — Hanoi and Ha Long, 2 days","Hanoi and Ha Long, 2 days"],
     ["Hanoi — Sapa, 2 days","Sapa, 2 days"],
     ["Hanoi — Hanoi, Ninh Binh and Ha Long, 3 days","Hanoi, Ninh Binh and Ha Long, 3 days"],

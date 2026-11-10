@@ -957,8 +957,9 @@ nav.solid .regnav-soon { color: var(--gray); }
 .hn-w5 { grid-column: span 5; grid-row: span 2; }
 .hn-w4 { grid-column: span 4; grid-row: span 2; }
 .hn-w6 { grid-column: span 6; grid-row: span 2; }
+.hn-w12 { grid-column: span 12; grid-row: span 2; }
 @media (max-width: 900px) {
-  .hn-w7, .hn-w5, .hn-w4, .hn-w6 { grid-column: span 6; grid-row: auto / span 2; }
+  .hn-w7, .hn-w5, .hn-w4, .hn-w6, .hn-w12 { grid-column: span 6; grid-row: auto / span 2; }
 }
 
 /* Хошимин: четыре тура — обзорная и Меконг сверху, Кути и круиз ниже. */
@@ -1325,16 +1326,7 @@ function источникЗаявки(){
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'food')">🔗</div>
     </div>
-    <div class="bc hn-w6" id="seaplane" onclick="openD('seaplane')">
-      <img src="images/seaplane.jpg" alt="Гидросамолёт у терминала в Халонге" style="object-position:62% 50%" loading="lazy">
-      <div class="bc-info">
-        <div class="bc-head"><h3 class="bc-title">Халонг с гидросамолёта</h3><div class="bc-price">280<span>$</span></div></div>
-        <div class="bc-sub">25 минут полёта над островами бухты</div>
-      </div>
-      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Забронировать</a>
-      <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'seaplane')">🔗</div>
-    </div>
-    <div class="bc hn-w6" id="halong2" onclick="openD('halong2')">
+    <div class="bc hn-w12" id="halong2" onclick="openD('halong2')">
       <img src="images/halong2.jpg" alt="Круизный корабль 5★ в бухте Халонг" style="object-position:center 50%" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Ханой и Халонг, 2 дня</h3><div class="bc-price">330<span>$</span></div></div>
@@ -1371,7 +1363,7 @@ function источникЗаявки(){
       <div class="bc-link" title="Скопировать ссылку на эту экскурсию" onclick="copyCardLink(event,'hagiang')">🔗</div>
     </div>
   </div>
-  <p class="hn-credits">Фото: <a href="https://commons.wikimedia.org/wiki/File:Ch%C3%B9a_Th%E1%BA%A7y_2.jpg" target="_blank" rel="noopener">DuongQuocTrung</a> (Секретный Ханой, CC BY-SA 4.0), <a href="https://commons.wikimedia.org/w/index.php?curid=163606166" target="_blank" rel="noopener">kitmasterbloke</a> (гидросамолёт, CC BY 2.0), <a href="https://commons.wikimedia.org/wiki/File:Cruise_Ship-Halong_Bay_Vietnam-Andres_Larin.jpg" target="_blank" rel="noopener">Saaremees</a> (круиз по Халонгу, CC BY-SA 4.0), <a href="https://commons.wikimedia.org/wiki/File:Ha_Giang_Loop,_Northern_Vietnam.jpg" target="_blank" rel="noopener">miketnorton</a> (Хазянг, CC BY 2.0); остальные — общественное достояние (CC0) и бесплатные фото Pexels.</p>
+  <p class="hn-credits">Фото: <a href="https://commons.wikimedia.org/wiki/File:Ch%C3%B9a_Th%E1%BA%A7y_2.jpg" target="_blank" rel="noopener">DuongQuocTrung</a> (Секретный Ханой, CC BY-SA 4.0), <a href="https://commons.wikimedia.org/wiki/File:Cruise_Ship-Halong_Bay_Vietnam-Andres_Larin.jpg" target="_blank" rel="noopener">Saaremees</a> (круиз по Халонгу, CC BY-SA 4.0), <a href="https://commons.wikimedia.org/wiki/File:Ha_Giang_Loop,_Northern_Vietnam.jpg" target="_blank" rel="noopener">miketnorton</a> (Хазянг, CC BY 2.0); остальные — общественное достояние (CC0) и бесплатные фото Pexels.</p>
 </section>
 
 <!-- ── ДРУГИЕ НАПРАВЛЕНИЯ ── -->
@@ -1412,7 +1404,7 @@ function источникЗаявки(){
     <div class="fi"><button class="fq">Откуда вы забираете? <span class="fi-icon">+</span></button><div class="fa">Из любого отеля в Ханое — или из аэропорта, если экскурсия в день прилёта.</div></div>
     <div class="fi"><button class="fq">Можно в любой день? <span class="fi-icon">+</span></button><div class="fa">Да. Экскурсии не привязаны к датам, начинаем в любой удобный день. Программу можно подстроить под вас.</div></div>
     <div class="fi"><button class="fq">Гид говорит по-русски? <span class="fi-icon">+</span></button><div class="fa">Да, гид русскоязычный.</div></div>
-    <div class="fi"><button class="fq">Нужна ли предоплата? <span class="fi-icon">+</span></button><div class="fa">Круиз по Лан Ха и полёт на гидросамолёте бронируются только с полной предоплатой. Если опоздать на яхту, деньги не возвращаются. Для остальных экскурсий — как написано ниже, в ответе «Как оплатить тур?».</div></div>
+    <div class="fi"><button class="fq">Нужна ли предоплата? <span class="fi-icon">+</span></button><div class="fa">Круиз по Лан Ха бронируется только с полной предоплатой. Если опоздать на яхту, деньги не возвращаются. Для остальных экскурсий — как написано ниже, в ответе «Как оплатить тур?».</div></div>
     <div class="fi"><button class="fq">Как оплатить тур? <span class="fi-icon">+</span></button><div class="fa">Цена тура указана в долларах. Оплатить можно двумя способами.<br><br><b>В два этапа.</b> Предоплата от 50 % — не позднее чем за сутки до экскурсии. Остаток отдаёте гиду перед посадкой, наличными: донгами или долларами.<br><br><b>Полностью онлайн.</b> Все 100 % — тоже не позднее чем за сутки до экскурсии.<br><br>Онлайн принимаем: рубли переводом по СБП, донги по QR-коду, USDT переводом по UID на Bybit. Доллары наличными — в отдельных случаях к вам подъедет наш сотрудник, только для отелей в туристической зоне.<br><br>Наличные доллары: только 100-долларовые купюры с синей полосой, без заломов, штампов и надписей. Сдача выдаётся в донгах.<br><br>Не принимаем: доллары старого образца, купюры меньше 100 долларов, оплату картой через терминал, криптокошельки.<br><br>Расчёт в рублях и донгах — по внутреннему курсу компании на день оплаты.</div></div>
     <div class="fi"><button class="fq">А в других городах у вас есть экскурсии? <span class="fi-icon">+</span></button><div class="fa">Есть: в <a href="/" style="color:var(--c);text-decoration:underline;text-underline-offset:2px">Дананге</a>, <a href="/nha-trang/" style="color:var(--c);text-decoration:underline;text-underline-offset:2px">Нячанге</a> и на <a href="/phu-quoc/" style="color:var(--c);text-decoration:underline;text-underline-offset:2px">Фукуоке</a>.</div></div>
   </div>
@@ -1596,13 +1588,6 @@ const tours = {
     exc:[],
     note:["Цена зависит от выбранных заведений и меню"],
     prices:[["Группа","Цена"],["От 2 человек","от 190 $ с человека"]]},
-  seaplane:{title:"Халонг с гидросамолёта",price:"280$ / чел",
-    seo:"Почти две тысячи известняковых островов над изумрудной водой — сверху. 25 минут полёта над островами Дау Бе и Конг До на самолёте-амфибии Cessna Grand Caravan, взлёт и посадка у пристани Туан Чау. Можно совместить с круизом по бухте.",
-    prog:[["","Выезд из Ханоя — с 7:00 до 13:00, время согласуем"],["","Пристань Туан Чау, Халонг"],["","Полёт 25 минут над островами бухты"]],
-    inc:["Полёт на гидросамолёте"],
-    exc:[],
-    note:["Только полная предоплата"],
-    prices:[["Группа","Цена"],["От 2 человек","280 $ с человека"]]},
   halong2:{title:"Ханой и Халонг, 2 дня",price:"от 330$ / чел",
     seo:"Первый день — обзорная по Ханою: цитадель, мавзолей, Железнодорожная улица, старый квартал. Второй — шесть часов на яхте 5★ по Халонгу: скала Бойцовых петухов, островки Лебединый и Палец, пещера Луон и пляж Ти Топ, названный в честь космонавта Титова.",
     prog:[["День 1","Обзорная по Ханою, ночь в отеле"],["7:30","День 2: выезд в Халонг"],["12:00","Посадка на яхту 5★, обед на борту"],["13:00","Скала Бойцовых петухов, островки Лебединый и Палец"],["14:45","Пещера Луон"],["15:45","Пляж Ти Топ"],["18:00","Возвращение в порт, затем в отель"]],
@@ -1754,7 +1739,6 @@ const REGION_TOURS = {
     ["Ханой — Пагода Там Чук","Пагода Там Чук"],
     ["Ханой — Секретный Ханой","Секретный Ханой"],
     ["Ханой — Гастротур","Гастротур по Ханою"],
-    ["Ханой — Халонг с гидросамолёта","Халонг с гидросамолёта"],
     ["Ханой — Ханой и Халонг, 2 дня","Ханой и Халонг, 2 дня"],
     ["Ханой — Сапа, 2 дня","Сапа, 2 дня"],
     ["Ханой — Ханой, Ниньбинь и Халонг, 3 дня","Ханой, Ниньбинь и Халонг, 3 дня"],
