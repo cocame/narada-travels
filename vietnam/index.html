@@ -1336,7 +1336,13 @@ function источникЗаявки(){
         </div>
         <div class="frow">
           <div class="field"><label>Ваше имя</label><input type="text" name="name" placeholder="Как вас зовут?" required></div>
-          <div class="field"><label>Телеграм для связи</label><input type="text" name="contact" placeholder="@username или телефон" required></div>
+          <div class="field"><label>Как с вами связаться</label>
+            <div class="whensw" id="chanSw" style="margin-bottom:8px">
+              <button type="button" class="whensw-b on" data-chan="tg">Telegram</button>
+              <button type="button" class="whensw-b" data-chan="mail">Почта</button>
+            </div>
+            <input type="text" name="contact" id="fContact" placeholder="@username или телефон" required>
+          </div>
         </div>
         <div class="field">
           <label>Экскурсия</label>
@@ -1616,6 +1622,20 @@ document.querySelectorAll('.whensw-b').forEach(b => {
   });
 });
 
+// Канал связи: у части гостей Телеграм не открывается, для них — почта.
+let КАНАЛ = 'tg';
+const ph0 = document.getElementById('fContact').placeholder;
+document.querySelectorAll('#chanSw .whensw-b').forEach(b => {
+  b.addEventListener('click', () => {
+    КАНАЛ = b.dataset.chan;
+    document.querySelectorAll('#chanSw .whensw-b').forEach(x => x.classList.toggle('on', x === b));
+    const c = document.getElementById('fContact');
+    c.type = КАНАЛ === 'mail' ? 'email' : 'text';
+    c.placeholder = КАНАЛ === 'mail' ? 'name@example.com' : ph0;
+    c.value = '';
+  });
+});
+
 document.getElementById('bForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   const btn = this.querySelector('.fsubmit');
@@ -1626,7 +1646,7 @@ document.getElementById('bForm').addEventListener('submit', async function(e) {
     const r = await fetch(FORM_ENDPOINT, {
       method: 'POST', headers: {'Content-Type':'application/json'},
       body: JSON.stringify({
-        name: d.get('name'), contact: d.get('contact'), tour: d.get('tour'),
+        name: d.get('name'), contact: (КАНАЛ === 'mail' ? 'Почта: ' : 'Telegram/телефон: ') + d.get('contact'), tour: d.get('tour'),
         people: d.get('people'), dates, comment: КОГДА,
         consent: d.get('consent') === 'on', website: d.get('website'),
         ...источникЗаявки()

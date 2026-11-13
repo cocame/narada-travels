@@ -1353,7 +1353,13 @@ function источникЗаявки(){
         </div>
         <div class="frow">
           <div class="field"><label>Your name</label><input type="text" name="name" placeholder="What's your name?" required></div>
-          <div class="field"><label>Contact</label><input type="text" name="contact" placeholder="Telegram, WhatsApp, phone" required></div>
+          <div class="field"><label>How to reach you</label>
+            <div class="whensw" id="chanSw" style="margin-bottom:8px">
+              <button type="button" class="whensw-b on" data-chan="tg">Telegram</button>
+              <button type="button" class="whensw-b" data-chan="mail">Email</button>
+            </div>
+            <input type="text" name="contact" id="fContact" placeholder="Telegram, WhatsApp, phone" required>
+          </div>
         </div>
         <div class="field">
           <label>Tour</label>
@@ -1656,6 +1662,20 @@ setRegion(PAGE_REGION);
 // Токен бота лежит в переменных окружения воркера и в браузер не попадает.
 const FORM_ENDPOINT = 'https://narada-form.cocame.workers.dev';
 
+// Канал связи: у части гостей Телеграм не открывается, для них — почта.
+let КАНАЛ = 'tg';
+const ph0 = document.getElementById('fContact').placeholder;
+document.querySelectorAll('#chanSw .whensw-b').forEach(b => {
+  b.addEventListener('click', () => {
+    КАНАЛ = b.dataset.chan;
+    document.querySelectorAll('#chanSw .whensw-b').forEach(x => x.classList.toggle('on', x === b));
+    const c = document.getElementById('fContact');
+    c.type = КАНАЛ === 'mail' ? 'email' : 'text';
+    c.placeholder = КАНАЛ === 'mail' ? 'name@example.com' : ph0;
+    c.value = '';
+  });
+});
+
 document.getElementById('bForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   const btn = this.querySelector('.fsubmit');
@@ -1666,7 +1686,7 @@ document.getElementById('bForm').addEventListener('submit', async function(e) {
     const r = await fetch(FORM_ENDPOINT, {
       method: 'POST', headers: {'Content-Type':'application/json'},
       body: JSON.stringify({
-        name: d.get('name'), contact: d.get('contact'), tour: d.get('tour'),
+        name: d.get('name'), contact: (КАНАЛ === 'mail' ? 'Email: ' : 'Telegram/phone: ') + d.get('contact'), tour: d.get('tour'),
         people: d.get('people'), dates, comment: 'EN-сайт',
         consent: d.get('consent') === 'on', website: d.get('website'),
         ...источникЗаявки()
