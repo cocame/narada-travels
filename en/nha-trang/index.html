@@ -1302,7 +1302,7 @@ function источникЗаявки(){
       <img src="/nha-trang/images/ostrova.jpg" alt="An island off the coast of Nha Trang" loading="lazy">
       <div class="bc-info">
         <div class="bc-head"><h3 class="bc-title">Northern islands</h3><div class="bc-price">33<span>$</span></div></div>
-        <div class="bc-sub">Bird show, monkey circus and swimming</div>
+        <div class="bc-sub">Bird show, Monkey Island and swimming</div>
       </div>
       <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
       <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'ostrova')">🔗</div>
@@ -1550,16 +1550,16 @@ function источникЗаявки(){
 // Цены взяты с фото прайса: продаём по его цене, без наценки.
 const tours = {
   dalat:{title:"Dalat Classic",price:"43$",
-    seo:"Vietnam changes dramatically: coolness instead of heat, mountains instead of the sea. The “Faces of Love” clay village, Datanla waterfall, coffee plantations, a mini zoo, Linh Phuoc Pagoda covered in porcelain mosaic and the famous Crazy House.",
-    prog:[["05:00","Hotel departure"],["","Mountain pass"],["","French quarters"],["","Coffee plantations and Dalat's biggest coffee shop"],["","“Faces of Love” clay village"],["","Crazy House"],["","Linh Phuoc Pagoda"],["","Datanla waterfall"],["","Zoo: elephants, ostriches, crocodiles, capybaras"],["","Lunch"],["20:00","Return"]],
+    seo:"Vietnam changes sharply: instead of heat, coolness; instead of the sea, mountains. The clay village “Faces of Love”, Datanla Waterfall, coffee plantations, the Linh Phuoc Pagoda covered in porcelain mosaic and the famous Crazy House.",
+    prog:[["05:00","Hotel pickup"],["","“Faces of Love” clay village"],["","Datanla waterfall"],["","Coffee plantations"],["","Linh Phuoc Pagoda"],["","Crazy House"],["","Lunch"],["19:30","Return"]],
     inc:["Transfer from any hotel in Nha Trang","English- or Russian-speaking guide","Entrance tickets per program","Lunch and rum-cola"],
-    exc:["Waterfall alpine coaster — 130,000 ₫","Cable car","Elephant and ostrich rides"],
+    exc:["Waterfall alpine coaster — 130,000 ₫"],
     prices:[["Format","Price"],["Group","43 $"],["VIP","80 $"]]},
   bridge:{title:"Dalat Bridge",price:"60$",
-    seo:"The essential Dalat and a 325-meter glass bridge over the valley: a mountain pass, Datanla waterfall, Crazy House, French quarters, coffee plantations, the “Faces of Love” clay village, a zoo and Linh Phuoc Pagoda.",
-    prog:[["05:00","Hotel departure"],["","Mountain pass"],["","Datanla waterfall"],["","Crazy House"],["","French quarters"],["","Coffee plantations and Dalat's biggest coffee shop"],["","“Faces of Love” clay village"],["","325-meter glass bridge with 7D effects"],["","Zoo: elephants, ostriches, crocodiles, capybaras"],["","Linh Phuoc Pagoda"],["","Lunch"],["20:00","Return"]],
-    inc:["Transfer from any hotel in Nha Trang","English- or Russian-speaking guide","Entrance tickets per program","Lunch and rum-cola"],
-    exc:["Alpine coaster — 130,000 ₫","Elephant and ostrich rides"],
+    seo:"The main Dalat and the glass bridge over the valley: the clay village “Faces of Love”, Crazy House, Datanla Waterfall, coffee plantations and a coffee shop with tasting.",
+    prog:[["","Clay village"],["","“Lovers’ Faces”"],["","Glass bridge"],["","Crazy House"],["","Datanla waterfall"],["","Coffee plantations"],["","Coffee shop with tasting"],["","Lunch at a local restaurant"]],
+    inc:["Transfer from any hotel in Nha Trang","English- or Russian-speaking guide","Entrance tickets per program","Lunch"],
+    exc:["Waterfall alpine coaster — 130,000 ₫"],
     prices:[["Format","Price"],["Group","60 $"],["VIP","95 $"]]},
   dalat2:{title:"Dalat 2.0 Reboot",price:"70$",
     seo:"Another Dalat: a golden Tibetan pagoda, the “Hands of God” bridge, a temple complex with giant Buddha statues, the Alley of Gods and a cable car ride.",
@@ -1568,20 +1568,20 @@ const tours = {
     exc:[],
     prices:[["Format","Price"],["Group","70 $"],["VIP","120 $"]]},
   dalat2d:{title:"Dalat in two days",price:"100$",
-    seo:"Two days in the cool mountains. A mountain pass, the Lake of Love, the clay village, Datanla waterfall, Crazy House and the mosaic Linh Phuoc Pagoda, a night in a 3* hotel in central Dalat. On day two — Pongour and Elephant waterfalls, the 72-meter Guan Yin statue, a silk factory, the Valley of Love and the glass bridge.",
-    prog:[["05:00","Day 1: hotel departure"],["","Mountain pass, Lake of Love, French quarters"],["","Coffee plantations, zoo"],["","Clay village and Datanla waterfall"],["","Crazy House, Linh Phuoc Pagoda"],["","Night in a 3* hotel in central Dalat"],["","Day 2: Pongour waterfall, Linh An Pagoda"],["","Guan Yin statue, 72 meters"],["","Elephant waterfall, silk factory"],["","Valley of Love and the glass bridge"],["18:00","Return"]],
+    seo:"Two days in the cool mountains. Mountain pass, Love Lake, clay village, Datanla Waterfall, Crazy House and the mosaic Linh Phuoc Pagoda, a night at a 3* hotel in central Dalat. On the second day the Pongour and Elephant waterfalls, the 72-metre Guanyin statue, a silk factory, the Valley of Love and the glass bridge.",
+    prog:[["05:00","Day 1: hotel departure"],["","Mountain pass, Lake of Love, French quarters"],["","Coffee plantations"],["","Clay village and Datanla waterfall"],["","Crazy House, Linh Phuoc Pagoda"],["","Night in a 3* hotel in central Dalat"],["","Day 2: Pongour Waterfall, Linh An Pagoda"],["","Guan Yin statue, 72 meters"],["","Elephant waterfall, silk factory"],["","Valley of Love and the glass bridge"],["18:00","Return"]],
     inc:["Hotel transfer both ways","English- or Russian-speaking guide","3* hotel in central Dalat","Breakfast, lunches and rum-cola","Entrance tickets"],
-    exc:["Cable car","Waterfall alpine coaster — 130,000 ₫","Elephant rides"],
+    exc:["Waterfall alpine coaster — 130,000 ₫"],
     prices:[["Format","Price"],["Group, double room","100 $"],["Single room supplement","15 $"],["VIP","150 $"]]},
   ostrova:{title:"Northern islands",price:"33$",
-    seo:"Orchid Island: a bird show, a petting zoo and a butterfly farm. Monkey Island: a circus show, monkeys on motorbikes and in the pool, a beach and swimming. Two options: a large boat or a speedboat for a group of up to 15 that leaves right away and reaches the islands first.",
-    prog:[["07:00","Hotel pickup"],["","Orchid Island: bird show, butterfly farm"],["","Petting zoo, photo spots"],["","Monkey Island: circus show"],["","Beach and swimming"],["16:00","Return"]],
+    seo:"Orchid Island: bird show, petting zoo and photo spots. Monkey Island: walks around the island, beach and swimming. Two ways to get there: a large boat or a speedboat for a group of up to 15 people — it leaves right away and reaches the islands first.",
+    prog:[["07:00","Hotel pickup"],["","Orchid Island: bird show"],["","Petting zoo, photo spots"],["","Monkey Island: walks around the island"],["","Beach and swimming"],["16:00","Return"]],
     inc:["Hotel transfer both ways","English- or Russian-speaking guide","Entrance tickets","Show","Lunch"],
     exc:["Water activities"],
     prices:[["Format","Price"],["Large boat","33 $"],["Speedboat, group up to 15","43 $"]]},
   yangbay:{title:"Yang Bay",price:"50$",
     seo:"A crocodile farm, a wishing tree, a mini zoo, a carp lake, swimming at Yang Bay waterfall and four hot springs from 15 to 54 degrees.",
-    prog:[["07:00","Hotel pickup"],["","Crocodile farm, you can feed them"],["","Cockfights and pig races"],["","Wishing tree"],["","Mini zoo, carp lake and a lotus leaf"],["","Yang Bay waterfall, swimming"],["","Raglai tribe show: traditional dances and music"],["","Hot springs"],["15:00","Return"]],
+    prog:[["07:00","Hotel pickup"],["","Crocodile farm, you can feed them"],["","Wishing tree"],["","Mini zoo, carp lake"],["","Yang Bay waterfall, swimming"],["","Ethnic performance: songs and dances"],["","Hot springs"],["15:00","Return"]],
     inc:["Hotel transfer both ways","English- or Russian-speaking guide","Entrance tickets","Hot springs","Lunch"],
     exc:[],
     prices:[["Category","Price"],["Per person","50 $"]]},
