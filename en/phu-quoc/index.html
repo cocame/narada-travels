@@ -1188,6 +1188,16 @@ function источникЗаявки(){
   <!-- ФОТО СЮДА: когда появятся снимки, внутрь карточки добавить
        <img src="/images/pq-sunset.webp" alt="Sunset Town на Фукуоке">
        и убрать background-image у .p-sunset в стилях. -->
+  <div class="bc p-sunset" id="evening" onclick="openD('evening')">
+      <img src="/phu-quoc/images/sunset.jpg" alt="Sunset Town in the evening at sunset">
+    <div class="bc-info">
+      <div class="bc-head"><h3 class="bc-title">Sunset Town evening shows: Kiss Bridge and electric carts</h3><div class="bc-price">105<span>$</span></div></div>
+      <div class="bc-sub">No cable car · “Symphony of the Sea” · sunset on the Kiss Bridge · fireworks</div>
+    </div>
+    <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+    <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'evening')">🔗</div>
+  </div>
+
   <div class="bc p-sunset" id="sunset" onclick="openD('sunset')">
       <img src="/phu-quoc/images/sunset.jpg" alt="Sunset Town at sunset">
     <div class="bc-info">
@@ -1365,6 +1375,7 @@ function источникЗаявки(){
           <label>Tour</label>
           <select name="tour" id="fTour" required>
             <option value="">Choose a tour</option>
+            <option value="Phu Quoc — Sunset Town evening shows">Sunset Town evening shows, no cable car</option>
             <option value="Phu Quoc — Sunset Town, cable car and show">Sunset Town, cable car and show</option>
             <option value="Phu Quoc — Cable car and islands">Cable car and islands</option>
             <option value="Phu Quoc — Safari and Starfish Beach">Safari and Starfish Beach</option>
@@ -1480,6 +1491,13 @@ const tours = {
     exc:[],
     note:["Pickup between 8:00 and 8:30, return between 16:00 and 17:30."],
     prices:[["Category","Price"],["Adult","50 $"],["Children 5–10 years","40 $"]]},
+  evening:{title:"Sunset Town evening shows: Kiss Bridge and electric carts",price:"105$",
+    seo:"An evening in Sunset Town without the cable car: a ride around Sunset Town in electric carts, sunset on the Kiss Bridge, the “Symphony of the Sea” show and the Kiss of the Sea fireworks.",
+    prog:[["","Pickup at the hotel"],["","Sunset Town by electric car, photo spots and viewpoints"],["","Sunset on the Kiss Bridge"],["","“Symphony of the Sea” show"],["","Kiss of the Sea fireworks in the amphitheater"],["","Return to the hotel"]],
+    inc:["Comfortable hotel transfer both ways","English- or Russian-speaking guide","Tickets to the evening shows","Electric cart ride around Sunset Town"],
+    exc:["Cable car and water park — they are part of the Sunset Town tour with the cable car"],
+    note:["Departure time is confirmed when booking — it depends on your hotel's area."],
+    prices:[["Category","Price"],["Adult","105 $"],["Child from 1 meter to 140 cm","95 $"]]},
   sunset:{title:"Sunset Town: cable car, water park and shows till midnight",price:"146$",
     seo:"The most action-packed day on Phu Quoc: a cable car over the sea, unlimited access to all zones of Hon Thom island, the water park and Paradise Beach, and in the evening — sunset on the Kiss Bridge, the “Symphony of the Sea” show with dinner and the Kiss of the Sea fireworks.",
     prog:[["","Pickup at the hotel"],["","Cable car to Hon Thom island"],["","Unlimited access to all zones of the island"],["","Water park and Paradise Beach, rides"],["","Lunch — all-you-can-eat buffet"],["","Daytime “Symphony of the Sea” show"],["","Sunset Town by electric car, photo spots and viewpoints"],["","Sunset on the Kiss Bridge, VIP access"],["","“Symphony of the Sea” show — VIP seats with dinner"],["","Kiss of the Sea fireworks in the amphitheater"],["21:40","Return to the hotel"]],
@@ -1591,6 +1609,7 @@ const REGION_TOURS = {
     ["Da Nang — Other, I'll write in the message","Other, I'll write in the message"]
   ],
   phuquoc: [
+    ["Phu Quoc — Sunset Town evening shows","Sunset Town evening shows, no cable car"],
     ["Phu Quoc — Sunset Town, cable car and show","Sunset Town, cable car and show"],
     ["Phu Quoc — Cable car and islands","Cable car and islands"],
     ["Phu Quoc — Safari and Starfish Beach","Safari and Starfish Beach"],
