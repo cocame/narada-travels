@@ -922,6 +922,9 @@ nav.solid .regnav-soon { color: var(--gray); }
    Рыбалка переехала в узкую карточку — туда влез вертикальный снимок
    с уловом: рыба в кадре целиком, лицо не срезано. */
 .p-fishing > img { object-position: center 35%; }
+.pq-more { margin-top: 10px; }
+.p-more { grid-column: span 4; grid-row: span 2; }
+@media (max-width: 768px) { .p-more { grid-column: span 1 !important; grid-row: span 1 !important; } }
 @media (max-width: 768px) {
   .p-cable,.p-safari,.p-sea,.p-north,.p-south,.p-fishing {
     grid-column: span 1 !important; grid-row: span 1 !important; }
@@ -1267,6 +1270,54 @@ function источникЗаявки(){
       <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'south')">🔗</div>
     </div>
   </div>
+
+  <div class="pq-bento pq-more">
+    <div class="bc p-more" id="cableaqua" onclick="openD('cableaqua')">
+      <img src="/phu-quoc/images/kanatka.jpg" alt="Cable car, water park and Hon Thom island">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Cable car, water park and Hon Thom island: Kiss Bridge</h3><div class="bc-price">79<span>$</span></div></div>
+        <div class="bc-sub">A full day on the island · water park · Paradise Beach · “Symphony of the Sea”</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'cableaqua')">🔗</div>
+    </div>
+    <div class="bc p-more" id="evcruise" onclick="openD('evcruise')">
+      <img src="/phu-quoc/images/zakat.jpg" alt="Evening cruise around the Phu Quoc islands">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Evening island cruise and squid fishing</h3><div class="bc-price">75<span>$</span></div></div>
+        <div class="bc-sub">At sea 14:00–19:30 · lunch on the island · squid fishing</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'evcruise')">🔗</div>
+    </div>
+    <div class="bc p-more" id="yacht" onclick="openD('yacht')">
+      <img src="/phu-quoc/images/snorkling.jpg" alt="Group yacht cruise off Phu Quoc">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Yachts: group cruise with lunch and water activities</h3><div class="bc-price">from 95<span>$</span></div></div>
+        <div class="bc-sub">Morning 8:00–14:30 or evening 14:30–20:30 · lunch · snorkelling</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'yacht')">🔗</div>
+    </div>
+    <div class="bc p-more" id="squid" onclick="openD('squid')">
+      <img src="/phu-quoc/images/rybalka.jpg" alt="Squid fishing at sunset">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Squid fishing at sunset</h3><div class="bc-price">48<span>$</span></div></div>
+        <div class="bc-sub">At sea at sunset · squid fishing</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'squid')">🔗</div>
+    </div>
+    <div class="bc p-more" id="stars" onclick="openD('stars')">
+      <img src="/phu-quoc/images/sever.jpg" alt="Starfish Beach on Phu Quoc">
+      <div class="bc-info">
+        <div class="bc-head"><h3 class="bc-title">Starfish Beach</h3><div class="bc-price">50<span>$</span></div></div>
+        <div class="bc-sub">Morning 9:00–15:00 or evening 11:30–19:00</div>
+      </div>
+      <a href="#form" class="bc-book" onclick="event.stopPropagation()">Book</a>
+      <div class="bc-link" title="Copy the link to this tour" onclick="copyCardLink(event,'stars')">🔗</div>
+    </div>
+  </div>
 </section>
 
 <!-- ── ДРУГИЕ НАПРАВЛЕНИЯ ── пока только в предпросмотре -->
@@ -1375,6 +1426,11 @@ function источникЗаявки(){
           <label>Tour</label>
           <select name="tour" id="fTour" required>
             <option value="">Choose a tour</option>
+            <option value="Phu Quoc — Cable car, water park and Kiss Bridge">Cable car, water park and Kiss Bridge</option>
+            <option value="Phu Quoc — Evening cruise and squid fishing">Evening cruise and squid fishing</option>
+            <option value="Phu Quoc — Yachts, group cruise">Yachts, group cruise</option>
+            <option value="Phu Quoc — Squid fishing at sunset">Squid fishing at sunset</option>
+            <option value="Phu Quoc — Starfish Beach">Starfish Beach</option>
             <option value="Phu Quoc — Sunset Town evening shows">Sunset Town evening shows, no cable car</option>
             <option value="Phu Quoc — Sunset Town, cable car and show">Sunset Town, cable car and show</option>
             <option value="Phu Quoc — Cable car and islands">Cable car and islands</option>
@@ -1491,6 +1547,41 @@ const tours = {
     exc:[],
     note:["Pickup between 8:00 and 8:30, return between 16:00 and 17:30."],
     prices:[["Category","Price"],["Adult","50 $"],["Children 5–10 years","40 $"]]},
+  cableaqua:{title:"Cable car, water park and Hon Thom island: Kiss Bridge",price:"79$",
+    seo:"A full day of fun on Hon Thom island: the cable car both ways, Paradise Beach, the unlimited “Mango” buffet, the water park and rides, the Kiss Bridge and the daytime “Symphony of the Sea” show.",
+    prog:[["09:30","Hotel departure"],["","Round-trip cable car"],["","Paradise Beach"],["","Lunch — unlimited “Mango” buffet"],["","Unlimited water park and rides"],["","Kiss Bridge and the daytime “Symphony of the Sea” show"],["18:00","Return to the hotel"]],
+    inc:["Round-trip transfer","Guide-instructor","Round-trip cable car","Unlimited “Mango” buffet","Unlimited water park and rides","Daytime “Symphony of the Sea” show"],
+    exc:[],
+    note:["The programme, departure time and children’s price are confirmed when you book."],
+    prices:[["Category","Price"],["Adult","79 $"],["Children","Confirmed when you book"]]},
+  evcruise:{title:"Evening island cruise and squid fishing",price:"75$",
+    seo:"An evening trip out to the Phu Quoc islands: lunch on the island and squid fishing.",
+    prog:[["14:00","Heading out to sea"],["","Cruise around the islands"],["","Lunch on the island"],["","Squid fishing"],["19:30","Return"]],
+    inc:["Boat trip out to sea","Lunch on the island","Squid fishing"],
+    exc:[],
+    note:["The programme, departure time and children’s price are confirmed when you book."],
+    prices:[["Category","Price"],["Adult","75 $"],["Children","Confirmed when you book"]]},
+  yacht:{title:"Yachts: group cruise with lunch and water activities",price:"from 95$",
+    seo:"A group yacht cruise off Phu Quoc: a morning or evening trip, a buffet lunch, water activities, a photo shoot, snorkelling and professional spinning fishing. The price depends on the yacht.",
+    prog:[["08:00–14:30","Morning cruise"],["14:30–20:30","Evening cruise"]],
+    inc:["Lunch — buffet","Alcohol","Water activities: jet ski, banana boat, SUP, foil","Photo shoot","Snorkeling","Professional spinning fishing"],
+    exc:[],
+    note:["The programme, departure time and children’s price are confirmed when you book."],
+    prices:[["Category","Price"],["Group cruise, depending on the yacht","from 95 to 135 $"]]},
+  squid:{title:"Squid fishing at sunset",price:"48$",
+    seo:"Squid fishing at sea at sunset.",
+    prog:[["","Heading out to sea at sunset"],["","Squid fishing"]],
+    inc:["Heading out to sea","Squid fishing"],
+    exc:[],
+    note:["The programme, departure time and children’s price are confirmed when you book."],
+    prices:[["Category","Price"],["Adult","48 $"],["Children","Confirmed when you book"]]},
+  stars:{title:"Starfish Beach",price:"50$",
+    seo:"A relaxing day at Starfish Beach: a morning trip from 9:00 to 15:00 or an evening trip from 11:30 to 19:00.",
+    prog:[["09:00–15:00","Morning trip"],["11:30–19:00","Evening trip"]],
+    inc:["Trip to Starfish Beach"],
+    exc:[],
+    note:["The programme, departure time and children’s price are confirmed when you book."],
+    prices:[["Category","Price"],["Adult","50 $"],["Children","Confirmed when you book"]]},
   evening:{title:"Sunset Town evening shows: Kiss Bridge and electric carts",price:"105$",
     seo:"An evening in Sunset Town without the cable car: a ride around Sunset Town in electric carts, sunset on the Kiss Bridge, the “Symphony of the Sea” show and the Kiss of the Sea fireworks.",
     prog:[["","Pickup at the hotel"],["","Sunset Town by electric car, photo spots and viewpoints"],["","Sunset on the Kiss Bridge"],["","“Symphony of the Sea” show"],["","Kiss of the Sea fireworks in the amphitheater"],["","Return to the hotel"]],
@@ -1609,6 +1700,11 @@ const REGION_TOURS = {
     ["Da Nang — Other, I'll write in the message","Other, I'll write in the message"]
   ],
   phuquoc: [
+    ["Phu Quoc — Cable car, water park and Kiss Bridge","Cable car, water park and Kiss Bridge"],
+    ["Phu Quoc — Evening cruise and squid fishing","Evening cruise and squid fishing"],
+    ["Phu Quoc — Yachts, group cruise","Yachts, group cruise"],
+    ["Phu Quoc — Squid fishing at sunset","Squid fishing at sunset"],
+    ["Phu Quoc — Starfish Beach","Starfish Beach"],
     ["Phu Quoc — Sunset Town evening shows","Sunset Town evening shows, no cable car"],
     ["Phu Quoc — Sunset Town, cable car and show","Sunset Town, cable car and show"],
     ["Phu Quoc — Cable car and islands","Cable car and islands"],
